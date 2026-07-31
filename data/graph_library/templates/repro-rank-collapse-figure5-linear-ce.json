@@ -1,0 +1,264 @@
+{
+  "id": "repro-rank-collapse-figure5-linear-ce",
+  "name": "repro: Rank Collapse Figure 5 linear CE (calibrated)",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "rc5-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -300
+        },
+        "data": {
+          "text": "Rank Collapse \u00b7 arXiv:2509.23024 Figure 5 + Appendix B (interpretable small model).\nDataset: this is the complete synthetic training set, not a natural corpus or a six-sample subsample. Figure 5A depicts six inputs with labels [0,0,1,1,2,3], giving class counts [2,2,1,1]. Appendix B assumes orthogonal rows SS\u1d40=I; CR chooses the canonical coordinates S=I6, with no test split.\nLive generation: the dataset is generated on the fly from the node parameters. You can change inputDim/outputDim/trainSize (e.g., I6 or I256) or pick another experimentMode and the materializer will rebuild the sample matrix at runtime; no precomputed artifact is required.\nModel/objective: \u03b8\u2208R^(6\u00d72), F=S\u03b8\u2208R^(6\u00d72), W\u2208R^(2\u00d74), logits Z=FW, and the full softmax CE L=-(1/6)\u03a3_i log softmax(Z_i)[y_i]. Both Linear biases are zero and frozen, so 6\u21922\u21924 is a bias-free linear factorization with d=2<|V|=4, not a nonlinear MLP. This is an intentionally interpretable rank-collapse model: every weight has a direct geometric meaning (F's singular vectors are the learned features, W's rows are the class templates), so the compression phase can be read off as the slow singular value catching up and the fast one decaying.\nPaper claim: skewed class frequency plus a representation bottleneck can yield primacy bias (frequent classes learn first) and selection bias (|d\u03c3_i/dt|\u221d\u03c3_i), producing warmup, entropy expansion, then late-window compression. Theorem B.2 assumes aligned initialization F\u1d40F=WW\u1d40 and preserves it; Theorem B.3's dominant-class-size bound additionally assumes near-uniform initial predictions and |V|\u226b1, so that quantitative bound is not exact for this four-class Figure-5 toy.\nCalibrated (not disclosed by the paper): SGD lr=0.06, seed=25, singular values [1.56,1.20]. This is a post-hoc deterministic figure reconstruction, not exact numerical recovery and not a random-seed robustness claim. The 0\u2013300 published-window reconstruction passes; extending the same configuration to 10,000 steps re-expands toward the d=2 RankMe ceiling, so persistent/asymptotic collapse is not claimed. The canvas directly renders Figure 5D RankMe; this observable also captures F, W and the two eigenvalue histories for the B/C/D report. Run scripts/phenomena/rank_collapse.py for uniform-frequency, no-bottleneck and MSE controls. No Grokking experiment is used.",
+          "instanceTitle": "Figure-5 fidelity boundary"
+        }
+      },
+      {
+        "id": "rc5-dataset",
+        "type": "paper_classification_dataset",
+        "position": {
+          "x": 40,
+          "y": 20
+        },
+        "data": {
+          "experimentMode": "rank_figure5_main",
+          "inputDim": 6,
+          "outputDim": 4,
+          "trainSize": 6,
+          "testSize": 0,
+          "frequencyRatio": 1.0,
+          "classSeparation": 1.0,
+          "seed": 25,
+          "samplingMode": "fixed",
+          "instanceTitle": "Synthetic full train set \u00b7 S=I6, labels 001123"
+        }
+      },
+      {
+        "id": "rc5-model",
+        "type": "mlp_model",
+        "position": {
+          "x": 40,
+          "y": 230
+        },
+        "data": {
+          "inputDim": 6,
+          "outputDim": 4,
+          "depth": 1,
+          "width": 2,
+          "activation": "identity",
+          "outputScale": 1.0,
+          "seed": 25,
+          "instanceTitle": "Bias-free linear factorization \u00b7 6\u21922\u21924"
+        }
+      },
+      {
+        "id": "rc5-init",
+        "type": "rank_aligned_initialization",
+        "position": {
+          "x": 40,
+          "y": 460
+        },
+        "data": {
+          "scale": 1.2,
+          "singularRatio": 1.3,
+          "seed": 25,
+          "instanceTitle": "Balanced F\u1d40F=WW\u1d40 init"
+        }
+      },
+      {
+        "id": "rc5-optimizer",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 340,
+          "y": 20
+        },
+        "data": {
+          "learningRate": 0.06,
+          "momentum": 0.0,
+          "weightDecay": 0.0,
+          "instanceTitle": "Calibrated full-batch SGD (lr=0.06)"
+        }
+      },
+      {
+        "id": "rc5-loss",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 340,
+          "y": 210
+        },
+        "data": {
+          "lossScale": 1.0,
+          "labelSmoothing": 0.0,
+          "instanceTitle": "Cross entropy"
+        }
+      },
+      {
+        "id": "rc5-rankme",
+        "type": "observable_representation_rankme",
+        "position": {
+          "x": 340,
+          "y": 390
+        },
+        "data": {
+          "representationId": "0::output",
+          "captureTrajectories": true,
+          "instanceTitle": "Capture F/W/RankMe/spectrum for B/C/D report"
+        }
+      },
+      {
+        "id": "rc5-accuracy",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 340,
+          "y": 560
+        },
+        "data": {
+          "instanceTitle": "Full-training accuracy"
+        }
+      },
+      {
+        "id": "rc5-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 650,
+          "y": 180
+        },
+        "data": {
+          "trainingSteps": 300,
+          "logFrequency": 1,
+          "batchSize": -1,
+          "computeDevice": "cpu",
+          "gradClipMaxNorm": 0.0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Figure-5 full-batch Trainer \u00b7 300 steps"
+        }
+      },
+      {
+        "id": "rc5-loss_viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 980,
+          "y": 20
+        },
+        "data": {
+          "instanceTitle": "Full-batch CE"
+        }
+      },
+      {
+        "id": "rc5-rankme_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 980,
+          "y": 260
+        },
+        "style": {
+          "width": 580,
+          "height": 500
+        },
+        "data": {
+          "pairedObservableId": "rc5-rankme",
+          "pairedTrainerId": "rc5-trainer",
+          "vizVariant": "user",
+          "instanceTitle": "Figure 5D \u00b7 RankMe trajectory",
+          "rankCollapseFigure5": true
+        }
+      },
+      {
+        "id": "rc5-accuracy_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 980,
+          "y": 820
+        },
+        "data": {
+          "pairedObservableId": "rc5-accuracy",
+          "pairedTrainerId": "rc5-trainer",
+          "vizVariant": "accuracy",
+          "instanceTitle": "Full-training accuracy"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-rc5-dataset-rc5-trainer-dataset-dataset",
+        "source": "rc5-dataset",
+        "target": "rc5-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rc5-model-rc5-trainer-model-model",
+        "source": "rc5-model",
+        "target": "rc5-trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rc5-init-rc5-model-initialization-initialization",
+        "source": "rc5-init",
+        "target": "rc5-model",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-rc5-optimizer-rc5-trainer-optimizer-optimizer",
+        "source": "rc5-optimizer",
+        "target": "rc5-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rc5-loss-rc5-trainer-loss-loss",
+        "source": "rc5-loss",
+        "target": "rc5-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rc5-rankme-rc5-trainer-observables-observables",
+        "source": "rc5-rankme",
+        "target": "rc5-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rc5-accuracy-rc5-trainer-observables-observables",
+        "source": "rc5-accuracy",
+        "target": "rc5-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rc5-trainer-rc5-loss_viz-loss_results-tensor_list",
+        "source": "rc5-trainer",
+        "target": "rc5-loss_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rc5-trainer-rc5-rankme_viz-observable_results-tensor",
+        "source": "rc5-trainer",
+        "target": "rc5-rankme_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-rc5-trainer-rc5-accuracy_viz-observable_results-tensor",
+        "source": "rc5-trainer",
+        "target": "rc5-accuracy_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.45
+    }
+  },
+  "savedAt": 1784027102348.8318
+}

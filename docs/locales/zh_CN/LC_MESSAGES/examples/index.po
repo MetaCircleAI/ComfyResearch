@@ -1,0 +1,359 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-29 15:36+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/index.md:7
+msgid "Examples"
+msgstr "示例"
+
+#: ../../en/examples/index.md:10
+msgid "Reproductions"
+msgstr "复现"
+
+#: ../../en/examples/index.md:13
+msgid ""
+"Classic learning-mechanics and physics-of-AI phenomena, reproduced as runnable "
+"graphs. Each article states its experimental boundary, method, result, and "
+"limitations; visual similarity alone is not presented as numeric replication."
+msgstr "以可运行图复现经典学习机制和 AI 物理学现象。每篇文章都说明实验边界、方法、结果和局限性；仅凭视觉相似性不构成数值复现。"
+
+#: ../../en/examples/index.md:19
+msgid ""
+"**Claim legend:** **PHENOMENON** reproduces the reported qualitative behavior; "
+"**PAPER-FAITHFUL** follows the original experimental setup closely enough for that "
+"stronger claim. The current collection contains sixteen phenomenon reproductions. Author"
+" attribution appears inside each article."
+msgstr ""
+"**结论图例：** **PHENOMENON** 复现所报告的定性行为；**PAPER-FAITHFUL** "
+"足够严格地遵循原始实验设置，从而支持这一更强结论。当前集合包含十六个现象复现，作者署名位于各文章内部。"
+
+#: ../../en/examples/index.md:25
+msgid "Optimization Stability and Sharpness"
+msgstr "优化稳定性与尖锐度"
+
+#: ../../en/examples/index.md:27
+msgid ""
+"How learning rate, batch size, noise, and curvature interact during "
+"optimization."
+msgstr "学习率、批量大小、噪声与曲率如何在优化过程中相互作用。"
+
+#: ../../en/examples/index.md:34
+msgid "Cyclic Batch Size vs. Cyclic Learning Rate"
+msgstr "循环批量大小与循环学习率"
+
+#: ../../en/examples/index.md:39 ../../en/examples/index.md:60
+#: ../../en/examples/index.md:81 ../../en/examples/index.md:112
+#: ../../en/examples/index.md:133 ../../en/examples/index.md:154
+#: ../../en/examples/index.md:175
+#, python-brace-format
+msgid "{bdg-secondary}`PHENOMENON`"
+msgstr "{bdg-secondary}`PHENOMENON`"
+
+#: ../../en/examples/index.md:42
+msgid "Matched cyclic noise-scale schedules produce similar five-seed training dynamics."
+msgstr "相匹配的循环噪声尺度调度会产生相似的五种子训练动态。"
+
+#: ../../en/examples/index.md:47
+msgid "`noise-scale` `optimization`"
+msgstr "`noise-scale` `optimization`"
+
+#: ../../en/examples/index.md:51
+msgid "Template: `repro-jastrzbski-fig1-vgg11`"
+msgstr "模板：`repro-jastrzbski-fig1-vgg11`"
+
+#: ../../en/examples/index.md:55
+msgid "Edge of Stability on a Small CPU MLP"
+msgstr "小型 CPU MLP 上的稳定性边缘"
+
+#: ../../en/examples/index.md:63
+msgid ""
+"The top Hessian eigenvalue reaches and fluctuates around $2 / \\eta$ while full-batch"
+" loss decreases non-monotonically."
+msgstr "最大 Hessian 特征值到达并围绕 $2 / \\eta$ 波动，而全批量损失以非单调方式下降。"
+
+#: ../../en/examples/index.md:68
+msgid "`sharpness` `full-batch`"
+msgstr "`sharpness` `full-batch`"
+
+#: ../../en/examples/index.md:72
+msgid "Template: `edge-of-stability-cpu`"
+msgstr "模板：`edge-of-stability-cpu`"
+
+#: ../../en/examples/index.md:76
+msgid "Rank Collapse in a Linear Bottleneck"
+msgstr "线性瓶颈中的秩坍塌"
+
+#: ../../en/examples/index.md:84
+msgid ""
+"Skewed class frequency and a d=2 bottleneck produce warmup, entropy expansion, then "
+"late-window RankMe compression."
+msgstr "偏斜的类别频率与 d=2 瓶颈会产生预热、熵扩张，随后出现后期窗口 RankMe 压缩。"
+
+#: ../../en/examples/index.md:89
+msgid "`rank-collapse` `representation`"
+msgstr "`rank-collapse` `representation`"
+
+#: ../../en/examples/index.md:93
+msgid "Template: `repro-rank-collapse-figure5-linear-ce`"
+msgstr "模板：`repro-rank-collapse-figure5-linear-ce`"
+
+#: ../../en/examples/index.md:98
+msgid "Learning Phases and Feature Formation"
+msgstr "学习阶段与特征形成"
+
+#: ../../en/examples/index.md:100
+msgid ""
+"How networks enter distinct regimes, learn dominant modes, and "
+"specialize."
+msgstr "网络如何进入不同机制、学习主导模式并发生专化。"
+
+#: ../../en/examples/index.md:107
+msgid "Small-Batch vs. Large-Batch Training"
+msgstr "小批量与大批量训练"
+
+#: ../../en/examples/index.md:115
+msgid ""
+"A generalization gap appears alongside greater path-wise sharpness near the large-"
+"batch solution."
+msgstr "在大批量解附近，更大的路径尖锐度伴随泛化差距出现。"
+
+#: ../../en/examples/index.md:120
+msgid "`generalization` `sharpness`"
+msgstr "`generalization` `sharpness`"
+
+#: ../../en/examples/index.md:124
+msgid "Template: `repro-keskar-fig23-sb-lb`"
+msgstr "模板：`repro-keskar-fig23-sb-lb`"
+
+#: ../../en/examples/index.md:128
+msgid "Diffusion Reproducibility Across Data Scale"
+msgstr "跨数据规模的扩散可复现性"
+
+#: ../../en/examples/index.md:136
+msgid ""
+"Same-noise diffusion outputs progress from unstable memorization to fine-grained, "
+"less-train-near agreement as CIFAR-10 data scale increases."
+msgstr "随着 CIFAR-10 数据规模增加，同噪声扩散输出从不稳定记忆转向细粒度、且更不接近训练样本的一致性。"
+
+#: ../../en/examples/index.md:141
+msgid "`diffusion` `reproducibility` `generalization`"
+msgstr "`diffusion` `reproducibility` `generalization`"
+
+#: ../../en/examples/index.md:145
+msgid "Template: `repro-diffusion-same-init-different-seed`"
+msgstr "模板：`repro-diffusion-same-init-different-seed`"
+
+#: ../../en/examples/index.md:149
+msgid "Linear and Curve Mode Connectivity"
+msgstr "线性与曲线模态连通性"
+
+#: ../../en/examples/index.md:157
+msgid ""
+"Direct interpolation becomes less favorable during training, while a quadratic Bezier"
+" path remains low-loss between the final same-init endpoints."
+msgstr "训练过程中直接插值愈发不利，而二次 Bezier 路径在最终同初始化端点之间仍保持低损失。"
+
+#: ../../en/examples/index.md:162
+msgid "`loss-landscape` `mode-connectivity` `CIFAR-10`"
+msgstr "`loss-landscape` `mode-connectivity` `CIFAR-10`"
+
+#: ../../en/examples/index.md:166
+msgid "Template: `repro-linear-mode-connectivity-cifar10`"
+msgstr "模板：`repro-linear-mode-connectivity-cifar10`"
+
+#: ../../en/examples/index.md:170
+msgid "Rank Collapse on Real Text (TinyShakespeare)"
+msgstr "真实文本上的秩坍塌（TinyShakespeare）"
+
+#: ../../en/examples/index.md:178
+msgid ""
+"A small causal Transformer trained on real TinyShakespeare text shows the same warmup"
+" → expansion → compression RankMe signature as intermediate pretraining checkpoints."
+msgstr "在真实 TinyShakespeare 文本上训练的小型因果 Transformer，呈现出与中间预训练检查点相同的预热 → 扩张 → 压缩 RankMe 特征。"
+
+#: ../../en/examples/index.md:184
+msgid "`rank-collapse` `language-model`"
+msgstr "`rank-collapse` `language-model`"
+
+#: ../../en/examples/index.md:188
+msgid "Template: `repro-rank-collapse-tinyshakespeare-pretraining`"
+msgstr "模板：`repro-rank-collapse-tinyshakespeare-pretraining`"
+
+#: ../../en/examples/index.md
+msgid "Lazy vs. Rich Training Regimes"
+msgstr "Lazy vs. Rich 训练机制"
+
+msgid "Output scaling controls whether a wide ReLU network learns moving features or stays close to its initialization."
+msgstr "输出缩放决定宽 ReLU 网络是学习会移动的特征，还是保持在初始化附近。"
+
+msgid "`feature-learning` `scaling`"
+msgstr "`特征学习` `缩放`"
+
+msgid "Staggered Singular-Value Dynamics"
+msgstr "Staggered Singular-Value 动力学"
+
+msgid "Deep linear training learns the strongest effective-map singular modes before weaker ones."
+msgstr "深度线性训练先学习有效映射中最强的奇异模式，再学习较弱模式。"
+
+msgid "`deep-linear` `singular-values`"
+msgstr "`深度线性` `奇异值`"
+
+msgid "Edge of Stability (EOS)"
+msgstr "Edge of Stability（EoS）"
+
+msgid "Leading curvature approaches 2 / eta while full-batch loss makes non-monotonic net progress."
+msgstr "主导曲率接近 2 / eta，而全批量损失以非单调方式取得总体进展。"
+
+msgid "`sharpness` `full-batch`"
+msgstr "`尖锐度` `全批量`"
+
+msgid "In-Context Associative Recall"
+msgstr "In-Context Associative Recall（上下文联想回忆）"
+
+msgid "A causal Transformer retrieves a paired value from a synthetic context and exposes the attention patterns used during recall."
+msgstr "因果 Transformer 从合成上下文中检索配对值，并展示回忆时使用的注意力模式。"
+
+msgid "`in-context-learning` `attention`"
+msgstr "`上下文学习` `注意力`"
+
+#: ../../docs/en/examples/index.md:97
+msgid "Spectral Bias: Low Frequencies Are Learned First"
+msgstr "频谱偏置：低频成分优先学习"
+
+#: ../../docs/en/examples/index.md:105
+msgid ""
+"Ten equal-amplitude Fourier components reach their target amplitudes in a"
+" consistent low-to-high frequency order."
+msgstr "十个等幅 Fourier 分量以一致的从低频到高频顺序达到目标幅值。"
+
+#: ../../docs/en/examples/index.md:110
+msgid "`spectral-bias` `fourier`"
+msgstr "`spectral-bias` `fourier`"
+
+#: ../../docs/en/examples/index.md:114
+msgid "Template: `repro-spectral-bias-fig1a`"
+msgstr "模板：`repro-spectral-bias-fig1a`"
+
+#: ../../docs/en/examples/index.md:213
+msgid "Information Bottleneck Dynamics Across Training-Set Sizes"
+msgstr "不同训练集规模下的信息瓶颈动力学"
+
+#: ../../docs/en/examples/index.md:221
+msgid ""
+"Information-plane trajectories show early label-information growth, later"
+" leftward motion, and more final label information with more training "
+"data."
+msgstr "信息平面轨迹显示标签信息早期增长、随后向左移动，并且更多训练数据对应更多最终标签信息。"
+
+#: ../../docs/en/examples/index.md:226
+msgid "`information-bottleneck` `representation`"
+msgstr "`information-bottleneck` `representation`"
+
+#: ../../docs/en/examples/index.md:230
+msgid "Template: `dafb8339-a932-4b10-b3b6-185fc53a5a4f`"
+msgstr "模板：`dafb8339-a932-4b10-b3b6-185fc53a5a4f`"
+
+#: ../../docs/en/examples/index.md:234
+msgid "Memorizing Random Labels on CIFAR-10"
+msgstr "在 CIFAR-10 上记忆随机标签"
+
+#: ../../docs/en/examples/index.md:242
+msgid ""
+"A Small Inception model reaches 100% training accuracy on true labels, "
+"fixed random labels, and three randomized-input conditions."
+msgstr "Small Inception 模型在真实标签、固定随机标签和三种随机化输入条件上都达到 100% 训练准确率。"
+
+#: ../../docs/en/examples/index.md:247
+msgid "`memorization` `generalization`"
+msgstr "`memorization` `generalization`"
+
+#: ../../docs/en/examples/index.md:251
+msgid "Template: `repro-random-label-memorization-fig1a`"
+msgstr "模板：`repro-random-label-memorization-fig1a`"
+
+#: ../../en/examples/index.md:340
+msgid "Exact Solution for On-Line Learning in Multilayer Neural Networks"
+msgstr "多层神经网络在线学习的精确解"
+
+#: ../../en/examples/index.md:348
+msgid ""
+"On-line gradient-descent learning exhibits a plateau in generalization "
+"error before specialization eliminates the redundant student node."
+msgstr ""
+"在线梯度下降学习在泛化误差中展现出平台期，随后专化消除冗余的学生节点。"
+
+#: ../../en/examples/index.md:352
+msgid "`teacher-student` `generalization`"
+msgstr "`师生网络` `泛化`"
+
+#: ../../en/examples/index.md:356
+msgid "Template: `e399fd7d-e107-44d0-94b6-7e2159392253`"
+msgstr "模板：`e399fd7d-e107-44d0-94b6-7e2159392253`"
+
+#: ../../en/examples/index.md:360
+msgid "Neural Mechanics: Symmetry and Broken Conservation Laws"
+msgstr "神经力学：对称性与破缺守恒律"
+
+#: ../../en/examples/index.md:368
+msgid ""
+"Finite learning rates and weight decay break the conservation laws of "
+"gradient flow; VGG-11 on CIFAR-10 traces the full centripetal-centrifugal"
+" spectrum."
+msgstr ""
+"有限学习率和权重衰减打破了梯度流的守恒律；VGG-11 在 CIFAR-10 上展现了"
+"完整的向心-离心谱。"
+
+#: ../../en/examples/index.md:372
+msgid "`symmetry` `conservation-laws`"
+msgstr "`对称性` `守恒律`"
+
+#: ../../en/examples/index.md:376
+msgid "Template: `b38ae9dd-735b-46c4-973f-a850a2a55544`"
+msgstr "模板：`b38ae9dd-735b-46c4-973f-a850a2a55544`"
+
+msgid "Representation Compression and Information Flow"
+msgstr "表征压缩与信息流"
+
+msgid ""
+"How internal representations expand, compress, and retain task-relevant "
+"information."
+msgstr "内部表征如何扩张、压缩并保留与任务相关的信息。"
+
+msgid "Generalization, Memorization, and Reproducibility"
+msgstr "泛化、记忆与可复现性"
+
+msgid ""
+"How models fit their data, generalize beyond it, and agree across training "
+"runs."
+msgstr "模型如何拟合数据、泛化到数据之外，并在不同训练运行间保持一致。"
+
+msgid "Loss Geometry and Parameter Symmetry"
+msgstr "损失几何与参数对称性"
+
+msgid ""
+"How solutions relate across parameter space and how training breaks "
+"geometric invariants."
+msgstr "不同解在参数空间中如何关联，以及训练如何打破几何不变量。"
+
+msgid "In-Context Learning"
+msgstr "上下文学习"
+
+msgid "How sequence models acquire task behavior from the current context."
+msgstr "序列模型如何从当前上下文中获得任务行为。"

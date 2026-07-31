@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-27 19:58+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/reference/data-contracts.md:7
+msgid "Reference"
+msgstr "参考"
+
+#: ../../en/reference/data-contracts.md:10
+msgid "Data contracts"
+msgstr "数据契约"
+
+#: ../../en/reference/data-contracts.md:12
+msgid "Graph document"
+msgstr "图文档"
+
+#: ../../en/reference/data-contracts.md:14
+msgid "Graph document version: `1`."
+msgstr "图文档版本：`1`。"
+
+#: ../../en/reference/data-contracts.md:25
+msgid ""
+"A node requires `id` and a generated `type`; it also carries `position`, "
+"validated `data`, and optional parent-layout fields. An edge requires "
+"`id`, `source`, and `target`, with nullable `sourceHandle` and "
+"`targetHandle`."
+msgstr ""
+"节点需要 `id` 和生成的 `type`；它还包含 `position`、经过验证的 `data` 以及可选的父级布局字段。边需要 "
+"`id`、`source` 和 `target`，其中 `sourceHandle` 与 `targetHandle` 可以为 null。"
+
+#: ../../en/reference/data-contracts.md:29
+msgid ""
+"Only serialized edges determine dependencies. Position and viewport are "
+"editor state and do not connect nodes."
+msgstr "只有序列化的边决定依赖关系。位置和视口属于编辑器状态，不会连接节点。"
+
+#: ../../en/reference/data-contracts.md:32
+msgid "Source: `comfy_research/schemas/graph.py`."
+msgstr "来源：`comfy_research/schemas/graph.py`。"
+
+#: ../../en/reference/data-contracts.md:34
+msgid "Workspace snapshot"
+msgstr "工作区快照"
+
+#: ../../en/reference/data-contracts.md:36
+msgid "Workspace snapshot version: `3`."
+msgstr "工作区快照版本：`3`。"
+
+#: ../../en/reference/data-contracts.md:38
+msgid ""
+"The root contains `active_project_id` and one or more projects. Each "
+"project owns exactly one canvas. `active_project_id` is validated against"
+" the project collection. To compare variants, use one project per "
+"variant."
+msgstr ""
+"根对象包含 `active_project_id` 和一个或多个项目。每个项目恰好拥有一张画布。`active_project_id` "
+"会针对项目集合进行验证。若要比较不同变体，请为每个变体使用一个项目。"
+
+#: ../../en/reference/data-contracts.md:42
+msgid ""
+"`GET /api/workspace` loads `data/workspace.json` when it exists. If it is"
+" absent, the backend creates and persists a fresh version-3 workspace "
+"with one project and one canvas. An invalid existing workspace is an "
+"error rather than an instruction to silently discard state."
+msgstr ""
+"`GET /api/workspace` 会在 `data/workspace.json` "
+"存在时加载它。若该文件不存在，后端会创建并持久化一个全新的版本 3 工作区，其中包含一个项目和一张画布。现有工作区无效会报错，而不会静默丢弃状态。"
+
+#: ../../en/reference/data-contracts.md:47
+msgid ""
+"Source: `comfy_research/schemas/workspace.py` and "
+"`comfy_research/api/workspace.py`."
+msgstr ""
+"来源：`comfy_research/schemas/workspace.py` 和 "
+"`comfy_research/api/workspace.py`。"
+
+#: ../../en/reference/data-contracts.md:50
+msgid "Saved graph entry"
+msgstr "已保存图条目"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Field"
+msgstr "字段"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Type"
+msgstr "类型"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Meaning"
+msgstr "含义"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`id`"
+msgstr "`id`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "string"
+msgstr "string"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Stable library identifier"
+msgstr "稳定的库标识符"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`name`"
+msgstr "`name`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Display name"
+msgstr "显示名称"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`tier`"
+msgstr "`tier`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`small`, `medium`, or `large`"
+msgstr "`small`、`medium` 或 `large`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Export filtering already applied to `document`"
+msgstr "已对 `document` 应用导出过滤"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`document`"
+msgstr "`document`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "GraphDocument"
+msgstr "GraphDocument"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Saved graph version and content"
+msgstr "已保存图的版本和内容"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`savedAt`"
+msgstr "`savedAt`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "number"
+msgstr "number"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Unix time in milliseconds"
+msgstr "以毫秒为单位的 Unix 时间"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "`libraryOrigin`"
+msgstr "`libraryOrigin`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "optional `combined_model`"
+msgstr "可选的 `combined_model`"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Origin marker for supported combined-model entries"
+msgstr "受支持组合模型条目的来源标记"
+
+#: ../../en/reference/data-contracts.md:61
+msgid ""
+"Libraries accept at most 200 entries. Workflow JSON lists keep the newest"
+" 200 inserts. Canonical Templates use one JSON file per ID under "
+"`data/graph_library/templates/` and trim the oldest valid entries when "
+"the same limit is exceeded."
+msgstr ""
+"每个库最多接受 200 个条目。Workflow JSON 列表保留最新插入的 200 个条目。规范的 Template 在 "
+"`data/graph_library/templates/` 下每个 ID 使用一个 JSON 文件，超过同一上限时会裁剪最旧的有效条目。"
+
+#: ../../en/reference/data-contracts.md:66
+msgid ""
+"Template IDs must be non-empty and cannot contain slash, backslash, or a "
+"leading dot when used as canonical filenames."
+msgstr "作为规范文件名时，Template ID 不得为空，也不得包含斜杠、反斜杠或以点开头。"
+
+#: ../../en/reference/data-contracts.md:69
+msgid "Export tiers"
+msgstr "导出层级"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Tier"
+msgstr "层级"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Filtering contract"
+msgstr "过滤契约"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Small"
+msgstr "小"
+
+#: ../../en/reference/data-contracts.md:6
+msgid ""
+"Remove checkpoint bytes and known plot, visualization, and runtime "
+"histories"
+msgstr "移除检查点字节以及已知的绘图、可视化和运行时历史"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Medium"
+msgstr "中"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Remove checkpoint bytes but retain plot and visualization data"
+msgstr "移除检查点字节，但保留绘图和可视化数据"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Large"
+msgstr "大"
+
+#: ../../en/reference/data-contracts.md:6
+msgid "Return the full graph document unchanged"
+msgstr "原样返回完整图文档"
+
+#: ../../en/reference/data-contracts.md:77
+msgid ""
+"The tier describes filtering, not confidentiality. Inspect all documents "
+"before publishing them."
+msgstr "层级描述的是过滤，而非保密性。发布前请检查所有文档。"

@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/get-started/development-mode.md:7
+msgid "Get Started"
+msgstr "快速开始"
+
+#: ../../en/get-started/development-mode.md:10
+msgid "Use development mode"
+msgstr "使用开发模式"
+
+#: ../../en/get-started/development-mode.md:13
+msgid ""
+"Run the Python backend and Vite frontend separately while changing the web "
+"application, then verify the static production path before finishing."
+msgstr "修改 Web 应用时分别运行 Python 后端和 Vite 前端，完成前再验证静态生产路径。"
+
+#: ../../en/get-started/development-mode.md:17
+msgid "Start both development servers"
+msgstr "启动两个开发服务器"
+
+#: ../../en/get-started/development-mode.md:19
+msgid "Activate the Python environment and start the backend in one terminal:"
+msgstr "在一个终端中激活 Python 环境并启动后端："
+
+#: ../../en/get-started/development-mode.md:25
+msgid "Start Vite in a second terminal and tell it which backend port to proxy:"
+msgstr "在第二个终端中启动 Vite，并指定要代理的后端端口："
+
+#: ../../en/get-started/development-mode.md:31
+msgid ""
+"Open `http://127.0.0.1:5173/`. Requests under `/api/` are proxied to the "
+"backend on port 8042. A Vite page without a running backend can render the "
+"shell while application data and training actions fail, so verify "
+"`/api/health` first."
+msgstr ""
+"打开 `http://127.0.0.1:5173/`。`/api/` 下的请求会代理到 8042 端口的后端。没有运行后端的 Vite "
+"页面可以渲染外壳，但应用数据和训练操作会失败，因此应先验证 `/api/health`。"
+
+#: ../../en/get-started/development-mode.md:35
+msgid "Choose the right loop"
+msgstr "选择合适的循环"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Workflow"
+msgstr "工作流"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Frontend"
+msgstr "前端"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Use it for"
+msgstr "适用场景"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Development"
+msgstr "开发"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Vite on port 5173"
+msgstr "5173 端口上的 Vite"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Fast feedback and hot module replacement"
+msgstr "快速反馈和热模块替换"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Production-like"
+msgstr "类生产环境"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Static `frontend/dist` served by `app.py`"
+msgstr "由 `app.py` 提供的静态 `frontend/dist`"
+
+#: ../../en/get-started/development-mode.md:12
+msgid "Final integration and packaging checks"
+msgstr "最终集成与打包检查"
+
+#: ../../en/get-started/development-mode.md:42
+msgid ""
+"Backend-only changes do not require Vite. Frontend changes should be checked"
+" in both loops because proxy behavior can hide a stale or missing static "
+"build."
+msgstr "仅后端改动不需要 Vite。前端改动应在两种循环中检查，因为代理行为可能掩盖过期或缺失的静态构建。"
+
+#: ../../en/get-started/development-mode.md:45
+msgid "Return to the static application"
+msgstr "返回静态应用"
+
+#: ../../en/get-started/development-mode.md:47
+msgid "Stop Vite, rebuild the checked-in frontend sources, and restart the backend:"
+msgstr "停止 Vite，重新构建已提交的前端源代码，然后重启后端："
+
+#: ../../en/get-started/development-mode.md:54
+msgid ""
+"Confirm that the page loads from `http://127.0.0.1:8042/` and that "
+"`http://127.0.0.1:8042/api/health` still reports `\"ok\": true`."
+msgstr ""
+"确认页面从 `http://127.0.0.1:8042/` 加载，且 `http://127.0.0.1:8042/api/health` 仍报告 "
+"`\"ok\": true`。"
+
+#: ../../en/get-started/development-mode.md:58
+msgid ""
+"Binding to `127.0.0.1` keeps the development service on the local machine. "
+"Do not expose it to a network until authentication, credentials, and stored "
+"research artifacts have been reviewed for that environment."
+msgstr "绑定到 `127.0.0.1` 会使开发服务仅保留在本机。在针对该环境审查认证、凭据和已存储研究产物之前，不要将其暴露到网络。"

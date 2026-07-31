@@ -1,0 +1,464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 12:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:7
+msgid "Optimization Stability and Sharpness · Phenomenon reproduction"
+msgstr "优化稳定性与尖锐度 · 现象复现"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:10
+msgid "Cyclic Batch Size vs. Cyclic Learning Rate"
+msgstr "循环批量大小与循环学习率"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:12
+msgid "Compute cost"
+msgstr "计算成本"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:15
+msgid ""
+"This reproduction is computationally expensive. Choose the experiment "
+"configuration with care."
+msgstr "本复现计算开销较高，请谨慎选择实验配置。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:20
+msgid ""
+"Matched periodic changes in $\\eta/B$ produce similar overall learning "
+"dynamics across five seeds."
+msgstr "$\\eta/B$ 的匹配周期变化会在五个 seed 上产生相似的整体学习动态。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:29
+msgid "WJ"
+msgstr "金鑫"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:34
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:42
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:44
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:49
+msgid ""
+"This example uses Comfy Research to reproduce the central experiment in "
+"the left panel of Figure 1 from Jastrzębski et al.: whether cyclic batch "
+"size (CBS) and cyclic learning rate (CLR) produce similar training "
+"dynamics. This is a qualitative reproduction; it does not claim point-by-"
+"point or numeric replication of the paper's curves."
+msgstr ""
+"本示例使用 Comfy Research 复现 Jastrzębski 等人 Figure 1 左图的核心实验：循环批量大小（CBS）与循环学习率（CLR）是否产生相似的训练动态。这是一项定性复现，并不主张逐点或数值上复现论文曲线。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:56
+msgid ""
+"**Paper:** [Three Factors Influencing Minima in "
+"SGD](https://arxiv.org/abs/1711.04623)"
+msgstr ""
+"**论文：** [Three Factors Influencing Minima in "
+"SGD](https://arxiv.org/abs/1711.04623)"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:58
+msgid "**Template:** `repro: Jastrzębski Fig 1 cyclic CBS vs CLR`"
+msgstr "**模板：** `repro: Jastrzębski Fig 1 cyclic CBS vs CLR`"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:60
+msgid "**Template ID:** `repro-jastrzbski-fig1-vgg11`"
+msgstr "**模板 ID：** `repro-jastrzbski-fig1-vgg11`"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:62
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:64
+msgid ""
+"The paper studies the relationship between learning rate, batch size, and"
+" the final point reached by SGD. The authors focus in particular on the "
+"ratio of learning rate to batch size:"
+msgstr "论文研究学习率、批量大小与 SGD 达到的最终点之间的关系。作者尤其关注学习率与批量大小之比："
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:68
+#, python-brace-format
+msgid ""
+"\n"
+"\\frac{\\eta}{B}\n"
+msgstr ""
+"\n"
+"\\frac{\\eta}{B}\n"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:72
+msgid ""
+"where $\\eta$ is the learning rate and $B$ is the batch size. The left "
+"panel of Figure 1 compares two periodic training strategies:"
+msgstr "其中 $\\eta$ 是学习率，$B$ 是批量大小。图 1 左图比较两种周期训练策略："
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:75
+msgid ""
+"**CBS:** Keep the learning rate fixed and change the batch size "
+"periodically."
+msgstr "**CBS：** 保持学习率固定，周期性改变批量大小。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:76
+msgid ""
+"**CLR:** Keep the batch size fixed and change the learning rate "
+"periodically."
+msgstr "**CLR：** 保持批量大小固定，周期性改变学习率。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:78
+msgid ""
+"The two experiments use matching ranges of $\\eta/B$. Similar overall "
+"accuracy trajectories would support the paper's qualitative observation "
+"that, in this experimental setting, a learning-rate schedule can be "
+"replaced by a matching batch-size schedule."
+msgstr "两项实验使用匹配的 $\\eta/B$ 范围。相似的整体准确率轨迹将支持论文的定性观察：在该实验设置中，学习率调度可以由匹配的批量大小调度替代。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:83
+msgid "Paper Experiment and Reproduction Boundary"
+msgstr "论文实验与复现边界"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:85
+msgid ""
+"The current template represents the VGG-11 with Batch Normalization "
+"experiment on CIFAR-10 from the left panel of Figure 1. It retains the "
+"CBS-versus-CLR comparison and aggregates results over five initialization"
+" seeds."
+msgstr ""
+"当前模板对应 Figure 1 左图的 CIFAR-10 上 VGG-11 with Batch Normalization 实验，保留 CBS 与 CLR"
+" 的比较，并汇总五个初始化 seed 的结果。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Current Comfy Research template"
+msgstr "当前 Comfy Research 模板"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "CIFAR-10: 45,000 training samples and 10,000 test samples"
+msgstr "CIFAR-10：45,000 个训练样本和 10,000 个测试样本"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Data split"
+msgstr "数据划分"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "`RandomState(777)`, split seed 777"
+msgstr "`RandomState(777)`，划分 seed 777"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Data processing"
+msgstr "数据处理"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid ""
+"Pixel mean/global standard deviation normalization, random crop, "
+"horizontal flip, and shuffling each epoch"
+msgstr "像素均值/全局标准差归一化、随机裁剪、水平翻转，以及每个 epoch 的随机打乱"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "VGG-11 with Batch Normalization"
+msgstr "带 Batch Normalization 的 VGG-11"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Initialization"
+msgstr "初始化"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Seeds 0, 1, 2, 3, and 4"
+msgstr "seed 0、1、2、3 和 4"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Objective"
+msgstr "目标函数"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Cross-entropy"
+msgstr "交叉熵"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "SGD, momentum 0, weight decay 0"
+msgstr "SGD，动量为 0，权重衰减为 0"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Training length"
+msgstr "训练时长"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "300 data epochs"
+msgstr "300 个数据 epoch"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Result aggregation"
+msgstr "结果聚合"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Mean over the five seeds, computed by Trainer run"
+msgstr "由 Trainer 运行计算的五个 seed 的均值"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:101
+msgid ""
+"This reproduction checks whether the two schedules yield similar training"
+" dynamics. It does not provide per-epoch numeric errors, confidence "
+"intervals, or pixel-level alignment with the original figure, so its "
+"conclusions remain qualitative."
+msgstr "本复现检验两种调度是否产生相似的训练动态。它不提供逐 epoch 的数值误差、置信区间或与原图的像素级对齐，因此结论仍仅具定性意义。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:106
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:108
+msgid ""
+"CBS and CLR share the data, model, objective, and initialization seeds. "
+"Only the batch-size and learning-rate schedules differ."
+msgstr "CBS 与 CLR 使用相同的数据、模型、目标函数和初始化 seed；只有批量大小与学习率调度不同。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Configuration"
+msgstr "配置"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "CBS"
+msgstr "CBS"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "CLR"
+msgstr "CLR"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Learning rate"
+msgstr "学习率"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Fixed at 0.005"
+msgstr "固定为 0.005"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Cycles between 0.001 and 0.005"
+msgstr "在 0.001 和 0.005 之间循环"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Batch size"
+msgstr "批量大小"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Cycles between 128 and 640"
+msgstr "在 128 与 640 之间循环"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Fixed at 128"
+msgstr "固定为 128"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Schedule"
+msgstr "调度"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "5 epochs high, 5 epochs low"
+msgstr "高值 5 个 epoch，低值 5 个 epoch"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Cycle length"
+msgstr "周期长度"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "10 epochs"
+msgstr "10 个 epoch"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Trainer"
+msgstr "Trainer"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "`Trainer CBS (cyclic batch)`"
+msgstr "`Trainer CBS (cyclic batch)`"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "`Trainer CLR (cyclic LR)`"
+msgstr "`Trainer CLR (cyclic LR)`"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:119
+msgid "The $\\eta/B$ values match exactly at both endpoints:"
+msgstr "两个端点处的 $\\eta/B$ 值完全一致："
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Noise-scale phase"
+msgstr "噪声尺度区间"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "$\\eta/B$"
+msgstr "$\\eta/B$"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "High"
+msgstr "高"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "$0.005 / 128$"
+msgstr "$0.005 / 128$"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+#, python-brace-format
+msgid "$3.90625 \\times 10^{-5}$"
+msgstr "$3.90625 \\times 10^{-5}$"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "Low"
+msgstr "低"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "$0.005 / 640$"
+msgstr "$0.005 / 640$"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+msgid "$0.001 / 128$"
+msgstr "$0.001 / 128$"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:46
+#, python-brace-format
+msgid "$7.8125 \\times 10^{-6}$"
+msgstr "$7.8125 \\times 10^{-6}$"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:126
+msgid ""
+"Because its batch size changes with the epoch, CBS takes 63,450 optimizer"
+" steps to complete 300 data epochs. CLR uses a fixed batch size of 128 "
+"and takes 105,600 steps. The comparison uses data epoch as the horizontal"
+" axis; it does not require equal optimizer-step counts."
+msgstr ""
+"由于批量大小随 epoch 变化，CBS 完成 300 个数据 epoch 需 63,450 个优化器步。CLR 使用固定为 128 的批量大小，需 "
+"105,600 步。该比较以数据 epoch 为横轴，不要求优化器步数相同。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:131
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:133
+msgid "Open Templates and load `repro: Jastrzębski Fig 1 cyclic CBS vs CLR`."
+msgstr "打开 Templates 并加载 `repro: Jastrzębski Fig 1 cyclic CBS vs CLR`。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:134
+msgid ""
+"Confirm that a training device is available. The template uses CUDA by "
+"default and can run remotely through Remote GPU."
+msgstr "确认训练设备可用。模板默认使用 CUDA，也可通过 Remote GPU 远程运行。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:136
+msgid ""
+"Run **Train series** on `Trainer CBS (cyclic batch)` to complete the CBS "
+"experiments for seeds 0-4."
+msgstr "在 `Trainer CBS (cyclic batch)` 上运行 **Train series**，完成 seed 0–4 的 CBS 实验。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:138
+msgid ""
+"Run **Train series** on `Trainer CLR (cyclic LR)` to complete the CLR "
+"experiments for seeds 0-4."
+msgstr "在 `Trainer CLR (cyclic LR)` 上运行 **Train series**，完成 seed 0–4 的 CLR 实验。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:140
+msgid ""
+"Open `Fig 1 acc plot (5-seed mean)` and compare the mean CBS and CLR "
+"train/test accuracy curves."
+msgstr "打开 `Fig 1 acc plot (5-seed mean)`，比较 CBS 与 CLR 的平均训练和测试准确率曲线。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:143
+msgid ""
+"The two Trainers can run sequentially. The final `curve_series_table` "
+"collects `train_acc` and `test_acc`, and the result plot aggregates the "
+"five seeds by Trainer run."
+msgstr ""
+"两个 Trainer 可依次运行。最终的 `curve_series_table` 收集 `train_acc` 和 "
+"`test_acc`，结果图按 Trainer 运行汇总五个 seed。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:147
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:149
+msgid ""
+"In the completed run, the five-seed mean CBS and CLR training and test "
+"accuracies show similar periodic changes and overall trends. The primary "
+"result is that test accuracy for the two schedules remains consistent "
+"rather than identical at every epoch."
+msgstr ""
+"在完成的运行中，五个 seed 的平均 CBS 和 CLR 训练、测试准确率呈现相似的周期变化和整体趋势。主要结果是，两种调度的测试准确率保持一致，而不是在每个 "
+"epoch 都完全相同。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:154
+msgid ""
+"The result is consistent with the central qualitative observation in "
+"Figure 1: when the periodic variation in $\\eta/B$ matches, cyclic batch "
+"size and cyclic learning rate can produce similar training dynamics."
+msgstr "该结果与 Figure 1 的核心定性观察一致：当 $\\eta/B$ 的周期变化匹配时，循环批量大小和循环学习率可以产生相似的训练动态。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:158
+msgid ""
+"Comfy Research graph and results showing the five-seed cyclic batch-size "
+"and cyclic learning-rate accuracy curves."
+msgstr "Comfy Research 图与结果：展示五个 seed 下循环批量大小和循环学习率的准确率曲线。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:163
+msgid "Interpretation"
+msgstr "解读"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:165
+msgid ""
+"This experiment supports a conclusion constrained by its experimental "
+"conditions: on CIFAR-10, with VGG-11 plus Batch Normalization and the "
+"current SGD configuration, CBS and CLR schedules with matching $\\eta/B$ "
+"behave similarly."
+msgstr ""
+"本实验支持一个受实验条件限制的结论：在 CIFAR-10、VGG-11 加 Batch Normalization 以及当前 SGD "
+"配置下，$\\eta/B$ 匹配的 CBS 与 CLR 调度表现相似。"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:170
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md:172
+msgid ""
+"This experiment alone cannot establish that $\\eta/B$ is sufficient to "
+"determine training dynamics for every model, dataset, and optimizer. "
+"Gradient covariance, momentum, regularization, data order, and model "
+"architecture can still affect the result. A stricter numeric replication "
+"would also need to save the complete curves for both schedules, report "
+"variance across seeds, and compare quantitatively with the paper's data."
+msgstr ""
+"仅凭本实验不能证明 $\\eta/B$ "
+"足以决定所有模型、数据集和优化器的训练动态。梯度协方差、动量、正则化、数据顺序和模型架构仍会影响结果。更严格的数值复现还需保存两种调度的完整曲线、报告 seed 间方差，并与论文数据作定量比较。"

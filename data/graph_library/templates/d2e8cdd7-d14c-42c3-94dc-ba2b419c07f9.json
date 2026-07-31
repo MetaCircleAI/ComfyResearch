@@ -1,0 +1,620 @@
+{
+  "id": "d2e8cdd7-d14c-42c3-94dc-ba2b419c07f9",
+  "name": "lazy vs rich regime",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "comment-title",
+        "type": "comment",
+        "position": {
+          "x": 0.0,
+          "y": -200.0
+        },
+        "data": {
+          "text": "## Output multiplier α: rich ↔ lazy regime\n\n**Paper:** Chizat, Oyallon & Bach — *On Lazy Training in Differentiable Programming* (arXiv:1812.07956)  \n**Reproduced as:** Figure 2 of review paper arXiv:2604.21691\n\n**Setup:** Shallow ReLU network `f(x) = α · Σᵢ aᵢ ReLU(wᵢᵀx)` on 2-D synthetic teacher data (3 teacher neurons).\n\n**Claim to verify:**\n- Small α → **rich / feature-learning** regime: hidden neurons migrate toward teacher directions; good test generalisation.\n- Large α → **lazy / NTK** regime: weights barely move from init; model behaves as a linearisation; performance plateaus at random-feature level.\n\n**Sweep:** `outputScale α ∈ [0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 5.0]` (multi-value field on student MLP — one training run per value).\n\n**Key plots:**\n1. Test loss vs training step for each α (training_visualization — run each α separately or use train series).\n2. Hidden neuron weight vectors wᵢ ∈ ℝ² in the 2-D input plane at convergence (model_weight_tensors → slice first linear layer → tensor_viz_scatter; see comment node at right).\n3. Weight displacement vs step per α (observable_weight_displacement).\n\n**Notes:**\n- Output layer init: aᵢ ~ N(0,1/n) then ×α via `outputScale`. Do NOT re-scale after init.\n- Use n ≥ 100 neurons; transition is invisible for small n.\n- SGD with lr=0.01, no momentum, full-batch (batchSize=-1).",
+          "instanceTitle": "Experiment overview",
+          "comment": "\n\n---\n**协议说明**:本 template 保留 PR #18 的展示风格参数(α=0.01、τ=0.01、lr=0.01、lossScale=1、无 warmup),适合交互探索轨迹迁移。机器可查的现象证据用的是干净受控协议(α∈{0.1,1} 对比、τ=1.0、lossScale=1/α² 时标补偿、lr warmup)——见 scripts/phenomena/rich_vs_lazy.py;两者不是同一实验协议。"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "rid-train",
+        "type": "random_input_distribution",
+        "position": {
+          "x": 0.0,
+          "y": 100.0
+        },
+        "data": {
+          "inputDim": 2,
+          "inputDistribution": "standard_normal",
+          "noiseDistribution": "deterministic",
+          "noiseLevel": 0,
+          "seed": 0,
+          "instanceTitle": "Train inputs (2D)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "rid-test",
+        "type": "random_input_distribution",
+        "position": {
+          "x": 0.0,
+          "y": 330.0
+        },
+        "data": {
+          "inputDim": 2,
+          "inputDistribution": "standard_normal",
+          "noiseDistribution": "deterministic",
+          "noiseLevel": 0,
+          "seed": 1,
+          "instanceTitle": "Test inputs (2D)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "sampler-train",
+        "type": "input_sampler",
+        "position": {
+          "x": 260.0,
+          "y": 100.0
+        },
+        "data": {
+          "numSamples": 200,
+          "instanceTitle": "Train (n=200)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "sampler-test",
+        "type": "input_sampler",
+        "position": {
+          "x": 260.0,
+          "y": 330.0
+        },
+        "data": {
+          "numSamples": 500,
+          "instanceTitle": "Test (n=500)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "teacher-mlp",
+        "type": "mlp_model",
+        "position": {
+          "x": 560.0255183413078,
+          "y": 380.05103668261563
+        },
+        "data": {
+          "inputDim": 2,
+          "outputDim": 1,
+          "depth": 1,
+          "width": 3,
+          "activation": "relu",
+          "seed": 42,
+          "instanceTitle": "Teacher (3 neurons)",
+          "levelMode": "high"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "teacher-dataset",
+        "type": "teacher_dataset",
+        "position": {
+          "x": 720.0,
+          "y": 100.0
+        },
+        "data": {
+          "samplingMode": "fixed"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "student-mlp",
+        "type": "mlp_model",
+        "position": {
+          "x": 1020.0,
+          "y": 0.0
+        },
+        "data": {
+          "inputDim": 2,
+          "outputDim": 1,
+          "depth": 1,
+          "width": 200,
+          "activation": "relu",
+          "seed": 0,
+          "outputScale": 0.01,
+          "instanceTitle": "Student (width=200, sweep α)",
+          "levelMode": "high",
+          "__collapsed": false
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": {
+          "minHeight": 0
+        }
+      },
+      {
+        "id": "mse-loss",
+        "type": "mse_loss",
+        "position": {
+          "x": 1020.0,
+          "y": 280.0
+        },
+        "data": {
+          "lossScale": 1,
+          "lossMaskContextLength": 1,
+          "lossMaskMode": "all",
+          "lossMaskCustom": ""
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "lr-schedule",
+        "type": "lr_schedule",
+        "position": {
+          "x": 1020.0,
+          "y": 420.0
+        },
+        "data": {
+          "lrSchedule": "constant",
+          "lrWarmupSteps": 0
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "sgd-optimizer",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 1020.0,
+          "y": 540.0
+        },
+        "data": {
+          "learningRate": 0.01,
+          "momentum": 0,
+          "weightDecay": 0
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "obs-weight-l2",
+        "type": "observable_weight_l2",
+        "position": {
+          "x": 1020.0,
+          "y": 700.0
+        },
+        "data": {
+          "normAggregation": "top_level_module",
+          "instanceTitle": "Weight L2 (per module)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "obs-train-test-gap",
+        "type": "observable_train_test_gap",
+        "position": {
+          "x": 1240.0,
+          "y": 700.0
+        },
+        "data": {
+          "instanceTitle": "Train/test gap"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "obs-weight-displacement",
+        "type": "observable_weight_displacement",
+        "position": {
+          "x": 1460.0,
+          "y": 700.0
+        },
+        "data": {
+          "instanceTitle": "Weight displacement"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "obs-neuron-traj",
+        "type": "observable_neuron_trajectory_2d",
+        "position": {
+          "x": 1020.0,
+          "y": 860.0
+        },
+        "data": {
+          "instanceTitle": "Neuron trajectory 2D"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "trainer",
+        "type": "trainer",
+        "position": {
+          "x": 1340.0,
+          "y": 220.0
+        },
+        "data": {
+          "trainingSteps": 10000,
+          "logFrequency": 100,
+          "computeDevice": "cpu",
+          "batchSize": -1,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "training-viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1680.0,
+          "y": 100.0
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": true,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "model-checkpoint",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 1661.3276975532222,
+          "y": 413.7537774999447
+        },
+        "data": {
+          "checkpointSource": "memory"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "model-weight-tensors",
+        "type": "model_weight_tensors",
+        "position": {
+          "x": 1920.0,
+          "y": 380.0
+        },
+        "data": {},
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "viz-weight-l2",
+        "type": "observable_viz",
+        "position": {
+          "x": 1680.0,
+          "y": 580.0
+        },
+        "data": {
+          "pairedObservableId": "obs-weight-l2",
+          "pairedTrainerId": "trainer",
+          "vizVariant": "weight_l2",
+          "instanceTitle": "Weight L2",
+          "logScaleX": false,
+          "logScaleY": false,
+          "showSeries": true
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "viz-train-test-gap",
+        "type": "observable_viz",
+        "position": {
+          "x": 1680.5442676567975,
+          "y": 840.9579775613286
+        },
+        "data": {
+          "pairedObservableId": "obs-train-test-gap",
+          "pairedTrainerId": "trainer",
+          "vizVariant": "user",
+          "instanceTitle": "Train/test gap",
+          "logScaleX": false,
+          "logScaleY": false
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "viz-weight-displacement",
+        "type": "observable_viz",
+        "position": {
+          "x": 1670.663848776611,
+          "y": 1066.8980229253898
+        },
+        "data": {
+          "pairedObservableId": "obs-weight-displacement",
+          "pairedTrainerId": "trainer",
+          "vizVariant": "user",
+          "instanceTitle": "Weight displacement ‖Δw‖/‖w₀‖",
+          "logScaleX": false,
+          "logScaleY": false
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "viz-neuron-traj",
+        "type": "observable_viz",
+        "position": {
+          "x": 1668.0261115504534,
+          "y": 1358.519791429605
+        },
+        "data": {
+          "pairedObservableId": "obs-neuron-traj",
+          "pairedTrainerId": "trainer",
+          "dimX": 0,
+          "dimY": 1,
+          "showTrails": true,
+          "showPoints": true,
+          "instanceTitle": "Neuron weight trajectories (2D input plane)",
+          "vizVariant": "neuron_trajectory_2d"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "comment-scatter-viz",
+        "type": "comment",
+        "position": {
+          "x": 1920.0,
+          "y": 100.0
+        },
+        "data": {
+          "text": "## 2D weight scatter (post-training)\n\nTo reproduce Fig 2 scatter plots (neuron weight vectors in input space):\n\n1. Connect `model_weight_tensors → tensor_list` to a `tensor_selector` and pick layer `0.weight` (shape [width, 2]).\n2. Slice column 0 (x-coords) and column 1 (y-coords) via two `tensor_slicing` nodes.\n3. Feed both slices into `tensor_viz_scatter` (tensor_1 = x-dim, tensor_2 = y-dim).\n\nRich regime (small α): neuron directions cluster near the 3 teacher neuron directions.\nLazy regime (large α): directions spread uniformly over the 2D input sphere.",
+          "instanceTitle": "Scatter viz instructions"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "symmetrized_mlp_init-gvybo9f0",
+        "type": "symmetrized_mlp_init",
+        "position": {
+          "x": 561.7043649000324,
+          "y": -108.90151924957453
+        },
+        "data": {
+          "tau": 0.01,
+          "instanceTitle": "Symmetrized Mlp Init 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-rid-train-sampler",
+        "source": "rid-train",
+        "target": "sampler-train",
+        "sourceHandle": "input_distribution",
+        "targetHandle": "distribution"
+      },
+      {
+        "id": "e-rid-test-sampler",
+        "source": "rid-test",
+        "target": "sampler-test",
+        "sourceHandle": "input_distribution",
+        "targetHandle": "distribution"
+      },
+      {
+        "id": "e-sampler-train-teacher-ds",
+        "source": "sampler-train",
+        "target": "teacher-dataset",
+        "sourceHandle": "sample_tensor",
+        "targetHandle": "train_input"
+      },
+      {
+        "id": "e-sampler-test-teacher-ds",
+        "source": "sampler-test",
+        "target": "teacher-dataset",
+        "sourceHandle": "sample_tensor",
+        "targetHandle": "test_input"
+      },
+      {
+        "id": "e-teacher-mlp-teacher-ds",
+        "source": "teacher-mlp",
+        "target": "teacher-dataset",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-teacher-ds-trainer",
+        "source": "teacher-dataset",
+        "target": "trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-student-mlp-trainer",
+        "source": "student-mlp",
+        "target": "trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-mse-trainer",
+        "source": "mse-loss",
+        "target": "trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-lr-sgd",
+        "source": "lr-schedule",
+        "target": "sgd-optimizer",
+        "sourceHandle": "lr_schedule",
+        "targetHandle": "lr_schedule"
+      },
+      {
+        "id": "e-sgd-trainer",
+        "source": "sgd-optimizer",
+        "target": "trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-obs-l2-trainer",
+        "source": "obs-weight-l2",
+        "target": "trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-obs-gap-trainer",
+        "source": "obs-train-test-gap",
+        "target": "trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-obs-disp-trainer",
+        "source": "obs-weight-displacement",
+        "target": "trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-obs-neuron-traj-trainer",
+        "source": "obs-neuron-traj",
+        "target": "trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-trainer-viz",
+        "source": "trainer",
+        "target": "training-viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-trainer-checkpoint",
+        "source": "trainer",
+        "target": "model-checkpoint",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e-checkpoint-weight-tensors",
+        "source": "model-checkpoint",
+        "target": "model-weight-tensors",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-trainer-viz-l2",
+        "source": "trainer",
+        "target": "viz-weight-l2",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-trainer-viz-gap",
+        "source": "trainer",
+        "target": "viz-train-test-gap",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-trainer-viz-disp",
+        "source": "trainer",
+        "target": "viz-weight-displacement",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-trainer-viz-neuron-traj",
+        "source": "trainer",
+        "target": "viz-neuron-traj",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "xy-edge__symmetrized_mlp_init-gvybo9f0initialization-student-mlpinitialization",
+        "source": "symmetrized_mlp_init-gvybo9f0",
+        "target": "student-mlp",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      }
+    ],
+    "viewport": {
+      "x": 289.55409119088233,
+      "y": 343.1592726996545,
+      "zoom": 0.32032577375554633
+    }
+  },
+  "savedAt": 1783477769643.0,
+  "libraryOrigin": null
+}

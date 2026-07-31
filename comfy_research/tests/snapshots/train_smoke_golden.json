@@ -1,0 +1,287 @@
+{
+  "fixtures": {
+    "token_mlp_cross_entropy": {
+      "actual": {
+        "loss_history_rounded": [
+          1.59207845,
+          1.59207845,
+          1.52823889,
+          1.46454179
+        ],
+        "observable_metric_shapes": {},
+        "progress": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "reg_loss_history_rounded": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "steps": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "test_loss_history_rounded": [
+          1.76975739,
+          1.70989776,
+          1.66113472,
+          1.61780667
+        ]
+      },
+      "expected": {
+        "loss_points": 4,
+        "reg_loss_points": 4,
+        "steps": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "test_loss_points": 4
+      },
+      "graph": {
+        "edges": [
+          [
+            "dataset-trainer",
+            "dataset",
+            "trainer",
+            "dataset",
+            "dataset"
+          ],
+          [
+            "model-trainer",
+            "model",
+            "trainer",
+            "model",
+            "model"
+          ],
+          [
+            "optimizer-trainer",
+            "optimizer",
+            "trainer",
+            "optimizer",
+            "optimizer"
+          ],
+          [
+            "loss-trainer",
+            "loss",
+            "trainer",
+            "loss",
+            "loss"
+          ]
+        ],
+        "nodes": [
+          {
+            "data": {
+              "contextLength": 3,
+              "samplingMode": "fixed",
+              "seed": 0,
+              "testSize": 4,
+              "trainSize": 8,
+              "vocabSize": 5,
+              "whichToken": -1
+            },
+            "id": "dataset",
+            "type": "token_prediction_dataset"
+          },
+          {
+            "data": {
+              "activation": "relu",
+              "depth": 1,
+              "embedDim": 4,
+              "seed": 0,
+              "tieWeights": "no",
+              "tokensPerInput": 3,
+              "vocabSize": 5,
+              "width": 6
+            },
+            "id": "model",
+            "type": "mlp_token_model"
+          },
+          {
+            "data": {
+              "learningRate": 0.01
+            },
+            "id": "optimizer",
+            "type": "adam_optimizer"
+          },
+          {
+            "data": {},
+            "id": "loss",
+            "type": "cross_entropy_loss"
+          },
+          {
+            "data": {
+              "batchSize": -1,
+              "computeDevice": "cpu",
+              "logFrequency": 1,
+              "trainingSteps": 3
+            },
+            "id": "trainer",
+            "type": "trainer"
+          }
+        ],
+        "trainer_node_id": "trainer"
+      }
+    },
+    "vector_mlp_mse": {
+      "actual": {
+        "loss_history_rounded": [
+          0.02903122,
+          0.02903122,
+          0.02445986,
+          0.02120721
+        ],
+        "observable_metric_shapes": {},
+        "progress": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "reg_loss_history_rounded": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "steps": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "test_loss_history_rounded": [
+          0.00973551,
+          0.00940521,
+          0.00892955,
+          0.00758438
+        ]
+      },
+      "expected": {
+        "loss_points": 4,
+        "reg_loss_points": 4,
+        "steps": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "test_loss_points": 4
+      },
+      "graph": {
+        "edges": [
+          [
+            "dataset-trainer",
+            "dataset",
+            "trainer",
+            "dataset",
+            "dataset"
+          ],
+          [
+            "model-trainer",
+            "model",
+            "trainer",
+            "model",
+            "model"
+          ],
+          [
+            "optimizer-trainer",
+            "optimizer",
+            "trainer",
+            "optimizer",
+            "optimizer"
+          ],
+          [
+            "loss-trainer",
+            "loss",
+            "trainer",
+            "loss",
+            "loss"
+          ]
+        ],
+        "nodes": [
+          {
+            "data": {
+              "inputDim": 2,
+              "noiseLevel": 0,
+              "outputDim": 1,
+              "samplingMode": "fixed",
+              "seed": 0,
+              "testSize": 4,
+              "trainSize": 8
+            },
+            "id": "dataset",
+            "type": "linear_dataset"
+          },
+          {
+            "data": {
+              "activation": "relu",
+              "depth": 1,
+              "inputDim": 2,
+              "outputDim": 1,
+              "seed": 0,
+              "width": 4
+            },
+            "id": "model",
+            "type": "mlp_model"
+          },
+          {
+            "data": {
+              "learningRate": 0.01
+            },
+            "id": "optimizer",
+            "type": "adam_optimizer"
+          },
+          {
+            "data": {},
+            "id": "loss",
+            "type": "mse_loss"
+          },
+          {
+            "data": {
+              "batchSize": -1,
+              "computeDevice": "cpu",
+              "logFrequency": 1,
+              "trainingSteps": 3
+            },
+            "id": "trainer",
+            "type": "trainer"
+          }
+        ],
+        "trainer_node_id": "trainer"
+      }
+    }
+  },
+  "version": 1
+}

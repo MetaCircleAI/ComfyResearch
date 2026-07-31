@@ -1,0 +1,41 @@
+{
+  "beta2": 0.99,
+  "settings": {
+    "2": {
+      "modelDim": 2,
+      "numLayers": 4,
+      "numHeads": 4,
+      "ffDim": 64,
+      "trainingSteps": 1000
+    },
+    "4": {
+      "modelDim": 4,
+      "numLayers": 4,
+      "numHeads": 4,
+      "ffDim": 64,
+      "trainingSteps": 1000
+    },
+    "8": {
+      "modelDim": 8,
+      "numLayers": 4,
+      "numHeads": 4,
+      "ffDim": 64,
+      "trainingSteps": 1000
+    }
+  },
+  "peak_rankme": {
+    "2": 1.9728878345379663,
+    "4": 3.029457798674771,
+    "8": 5.006220901162246
+  },
+  "terminal_rankme": {
+    "2": 1.0123043035645805,
+    "4": 2.441128114550486,
+    "8": 4.75173111087099
+  },
+  "terminal_alpha": {
+    "2": NaN,
+    "4": 3.306595035580912,
+    "8": 1.7767919659754075
+  }
+}

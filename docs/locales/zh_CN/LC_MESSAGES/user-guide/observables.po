@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/observables.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/observables.md:10
+msgid "Record Observables"
+msgstr "记录 Observable"
+
+#: ../../en/user-guide/observables.md:13
+msgid ""
+"Measure training state at deliberate checkpoints without changing the loss "
+"that drives optimization."
+msgstr "在经过审慎选择的检查点测量训练状态，不改变驱动优化的损失。"
+
+#: ../../en/user-guide/observables.md:17
+msgid "Observable, result, and visualization"
+msgstr "Observable、结果与可视化"
+
+#: ../../en/user-guide/observables.md:19
+msgid ""
+"An Observable defines what to measure. The Trainer records it at logging "
+"points. A paired visualization consumes the recorded history. Keeping those "
+"roles separate prevents a plotted quantity from being mistaken for an "
+"optimization objective."
+msgstr "Observable 定义测量什么。Trainer 在记录点采集它，配套可视化使用记录的历史。保持这些角色分离，可避免把绘制的量误认为优化目标。"
+
+#: ../../en/user-guide/observables.md:24
+msgid "Add an Observable from the rail or node library."
+msgstr "从侧栏或 Node 库添加 Observable。"
+
+#: ../../en/user-guide/observables.md:25
+msgid "Connect its output to the Trainer `observables` input."
+msgstr "将其输出连接到 Trainer 的 `observables` 输入。"
+
+#: ../../en/user-guide/observables.md:26
+msgid "Confirm that a paired Observable visualization exists."
+msgstr "确认存在配套的 Observable 可视化。"
+
+#: ../../en/user-guide/observables.md:27
+msgid "Run a short graph and check that values reach that visualization."
+msgstr "运行一张短图，并检查数值是否到达该可视化。"
+
+#: ../../en/user-guide/observables.md:29
+msgid "Product screenshot pending · IMG-07"
+msgstr "产品截图待补 · IMG-07"
+
+#: ../../en/user-guide/observables.md:32
+msgid ""
+"**Purpose:** Show one measurement definition and its downstream result "
+"together."
+msgstr "**目的：** 同时展示一个测量定义及其下游结果。"
+
+#: ../../en/user-guide/observables.md
+msgid "Capture specification"
+msgstr "截图说明"
+
+#: ../../en/user-guide/observables.md:38
+msgid ""
+"**Capture:** Observable edge into the Trainer with its paired visualization "
+"showing recorded values."
+msgstr "**截图：** 展示连接到 Trainer 的 Observable 边，以及显示已记录数值的配套可视化。"
+
+#: ../../en/user-guide/observables.md:41
+msgid "**Final file:** `docs/en/_images/app/observable-and-visualization.png`"
+msgstr "**最终文件：** `docs/en/_images/app/observable-and-visualization.png`"
+
+#: ../../en/user-guide/observables.md:45
+msgid "Control measurement cost"
+msgstr "控制测量成本"
+
+#: ../../en/user-guide/observables.md:47
+msgid ""
+"Observables do not change the primary loss merely because they are "
+"connected, but their measurement cost is real. Accuracy and scalar norms may"
+" be cheap; Hessian, spectral, representation, or attention measurements can "
+"dominate a small training run."
+msgstr ""
+"Observables "
+"不会仅因被连接就改变主损失，但其测量成本真实存在。准确率和标量范数可能很便宜；Hessian、谱、表征或注意力测量可能主导一次小型训练运行。"
+
+#: ../../en/user-guide/observables.md:52
+msgid "Use log frequency as part of the measurement design:"
+msgstr "将记录频率视为测量设计的一部分："
+
+#: ../../en/user-guide/observables.md:54
+msgid "log frequently enough to resolve the phenomenon of interest;"
+msgstr "足够频繁地记录，以分辨感兴趣的现象；"
+
+#: ../../en/user-guide/observables.md:55
+msgid "log less often for expensive second-order or high-dimensional measurements;"
+msgstr "对昂贵的二阶或高维测量降低记录频率；"
+
+#: ../../en/user-guide/observables.md:56
+msgid "reduce model or sample size when validating a new Observable;"
+msgstr "验证新 Observable 时减小模型或样本规模；"
+
+#: ../../en/user-guide/observables.md:57
+msgid "temporarily disable extra Observables when isolating a training failure."
+msgstr "隔离训练故障时暂时禁用额外的 Observables。"
+
+#: ../../en/user-guide/observables.md:59
+msgid ""
+"Changing the logging schedule changes the sampled signal. Keep it fixed when"
+" comparing curves and record it with the graph."
+msgstr "改变记录计划会改变采样信号。比较曲线时请保持它固定，并随图一并记录。"
+
+#: ../../en/user-guide/observables.md:62
+msgid "Decide what supports the claim"
+msgstr "确定支持结论的证据"
+
+#: ../../en/user-guide/observables.md:64
+msgid ""
+"Attach an Observable because it can distinguish the hypotheses being tested,"
+" not because it creates an interesting chart. For every measurement, be able"
+" to state:"
+msgstr "添加 Observable 是因为它能区分正在检验的假设，而不是因为它能生成有趣的图表。对每项测量，都应能说明："
+
+#: ../../en/user-guide/observables.md:68
+msgid "which training state it reads;"
+msgstr "它读取哪种训练状态；"
+
+#: ../../en/user-guide/observables.md:69
+msgid "how it reduces or samples that state;"
+msgstr "它如何归约或采样该状态；"
+
+#: ../../en/user-guide/observables.md:70
+msgid "when it is recorded;"
+msgstr "何时记录；"
+
+#: ../../en/user-guide/observables.md:71
+msgid "what comparison would support or contradict the claim;"
+msgstr "什么比较会支持或反驳该结论；"
+
+#: ../../en/user-guide/observables.md:72
+msgid "what approximation or truncation limits its interpretation."
+msgstr "哪些近似或截断限制了其解释。"
+
+#: ../../en/user-guide/observables.md:74
+msgid ""
+"Save the settings with the graph, then use [Make a result "
+"reproducible](reproducibility.md) before reporting it."
+msgstr "将设置随图保存，并在报告前参考[让结果可复现](reproducibility.md)。"

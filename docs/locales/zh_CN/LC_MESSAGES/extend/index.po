@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/extend/index.md:26 ../../en/extend/index.md:35
+msgid "Add a scalar Observable"
+msgstr "添加标量 Observable"
+
+#: ../../en/extend/index.md:7
+msgid "Extend"
+msgstr "扩展"
+
+#: ../../en/extend/index.md:10
+msgid "Extend Comfy Research"
+msgstr "扩展 Comfy Research"
+
+#: ../../en/extend/index.md:13
+msgid ""
+"Add a Node through the in-repository definition pipeline, then regenerate "
+"and verify the shared backend and frontend contract."
+msgstr "通过仓库内定义流水线添加 Node，然后重新生成并验证共享的后端与前端契约。"
+
+#: ../../en/extend/index.md:17
+msgid ""
+"The extension surface is an in-repository API, not a runtime plugin loader. "
+"Definitions, runtime providers, generated metadata, and frontend behavior "
+"are reviewed together so saved graphs and executable Nodes do not drift "
+"apart."
+msgstr ""
+"扩展接口是仓库内 API，而非运行时插件加载器。定义、运行时 provider、生成的元数据和前端行为会一并审查，确保已保存图与可执行 Nodes "
+"不会漂移。"
+
+#: ../../en/extend/index.md:30
+msgid ""
+"Follow one complete tutorial from definition and recorder to generated "
+"metadata, tests, and application verification."
+msgstr "跟随一份完整教程，从定义和 recorder 到生成的元数据、测试和应用验证。"

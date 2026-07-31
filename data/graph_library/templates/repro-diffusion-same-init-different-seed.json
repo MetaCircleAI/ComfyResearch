@@ -1,0 +1,577 @@
+{
+  "id": "repro-diffusion-same-init-different-seed",
+  "name": "repro: Diffusion same-init / different-seed",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "case-intro",
+        "type": "comment",
+        "position": {
+          "x": -520.0,
+          "y": -360.0
+        },
+        "data": {
+          "text": "# The Emergence of Reproducibility and Generalizability in Diffusion Models\n\n**Same initialization, different training seeds.** This `small` template contains the complete two-endpoint CIFAR-10 DDPM workflow without checkpoints, loss histories, generated images, or observable results.\n\nThe editable default is the 4,096-sample / 5k-step smoke setting. To reproduce the five-condition study, change the CIFAR-10 `trainSize` to 512, 4,096, or 32,768 and set both trainers to the matching step budget. Train seed 0 and seed 1 from the shared initialization, save both checkpoints, sample with the shared noise seed, then run paired similarity, RP, and nearest-train GL."
+        },
+        "style": {
+          "width": 760
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null
+      },
+      {
+        "id": "historical-evidence",
+        "type": "comment",
+        "position": {
+          "x": 1430.0,
+          "y": -360.0
+        },
+        "data": {
+          "text": "# Protocol\n\nHold the dataset subset, model initialization, optimizer hyperparameters, and sampler noise fixed. Only the trainer seed differs: endpoint A is seed 0 and endpoint B is seed 1. This template is intentionally asset-free; see `docs/reproductions/diffusion-reproducibility.md` for the five historical runs."
+        },
+        "style": {
+          "width": 540
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null
+      },
+      {
+        "id": "wf-dataset",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": -420.0,
+          "y": 260.0
+        },
+        "data": {
+          "trainSize": 4096,
+          "testSize": 128,
+          "subsetSeed": 0,
+          "classBalanced": true,
+          "normalize": "minus_one_to_one",
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "paramOrder": [
+            "trainSize",
+            "testSize",
+            "subsetSeed",
+            "classBalanced",
+            "normalize",
+            "samplingMode"
+          ],
+          "instanceTitle": "CIFAR-10 subset (4,096 samples; editable sweep control)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-model-a",
+        "type": "unet_ddpm_model",
+        "position": {
+          "x": -60.0,
+          "y": 80.0
+        },
+        "data": {
+          "imageSize": 32,
+          "inChannels": 3,
+          "baseChannels": 128,
+          "channelMult": "1,2,2,2",
+          "seed": 0,
+          "instanceTitle": "UNet DDPM init seed 0",
+          "diffusionTimesteps": 1000
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-model-b",
+        "type": "unet_ddpm_model",
+        "position": {
+          "x": -60.0,
+          "y": 820.0
+        },
+        "data": {
+          "imageSize": 32,
+          "inChannels": 3,
+          "baseChannels": 128,
+          "channelMult": "1,2,2,2",
+          "seed": 0,
+          "instanceTitle": "UNet DDPM init seed 0",
+          "diffusionTimesteps": 1000
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-opt-a",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 260.0,
+          "y": 60.0
+        },
+        "data": {
+          "learningRate": 0.0002,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Adam seed 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-opt-b",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 260.0,
+          "y": 800.0
+        },
+        "data": {
+          "learningRate": 0.0002,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Adam seed 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-loss-a",
+        "type": "diffusion_mse_loss",
+        "position": {
+          "x": 260.0,
+          "y": 220.0
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "Diffusion loss seed 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-loss-b",
+        "type": "diffusion_mse_loss",
+        "position": {
+          "x": 260.0,
+          "y": 960.0
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "Diffusion loss seed 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-trainer-a",
+        "type": "trainer",
+        "position": {
+          "x": 640.0,
+          "y": 160.0
+        },
+        "data": {
+          "trainingSteps": 5000,
+          "logFrequency": 50,
+          "computeDevice": "auto",
+          "batchSize": 256,
+          "gradClipMaxNorm": 1,
+          "disableExtraObservables": false,
+          "remoteGpu": false,
+          "seed": 0,
+          "instanceTitle": "Trainer seed 0 (4,096 samples, 5k steps)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-trainer-b",
+        "type": "trainer",
+        "position": {
+          "x": 640.0,
+          "y": 900.0
+        },
+        "data": {
+          "trainingSteps": 5000,
+          "logFrequency": 50,
+          "computeDevice": "auto",
+          "batchSize": 256,
+          "gradClipMaxNorm": 1,
+          "disableExtraObservables": false,
+          "remoteGpu": false,
+          "seed": 1,
+          "instanceTitle": "Trainer seed 1 (4,096 samples, 5k steps)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-trainviz-a",
+        "type": "training_visualization",
+        "position": {
+          "x": 980.0,
+          "y": -40.0
+        },
+        "data": {
+          "instanceTitle": "Training viz seed 0",
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "lastSweepSummary": "dataSize=4096, subsetSeed=0, seed=0, checkpoint_step=5000"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-trainviz-b",
+        "type": "training_visualization",
+        "position": {
+          "x": 980.0,
+          "y": 700.0
+        },
+        "data": {
+          "instanceTitle": "Training viz seed 1",
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "lastSweepSummary": "dataSize=4096, subsetSeed=0, seed=1, checkpoint_step=5000"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-ckpt-a",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 980.0,
+          "y": 240.0
+        },
+        "data": {
+          "checkpoint_b64": "",
+          "memoryCheckpoint_b64": "",
+          "checkpointSource": "memory",
+          "checkpointFileName": "",
+          "instanceTitle": "Model checkpoint seed 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-ckpt-b",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 980.0,
+          "y": 980.0
+        },
+        "data": {
+          "checkpoint_b64": "",
+          "memoryCheckpoint_b64": "",
+          "checkpointSource": "memory",
+          "checkpointFileName": "",
+          "instanceTitle": "Model checkpoint seed 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-sampler-a",
+        "type": "deterministic_diffusion_sampler",
+        "position": {
+          "x": 1360.0,
+          "y": 200.0
+        },
+        "data": {
+          "numSteps": 50,
+          "instanceTitle": "Shared-noise sampler endpoint A",
+          "noiseSeed": 0,
+          "sampleCount": 64
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-sampler-b",
+        "type": "deterministic_diffusion_sampler",
+        "position": {
+          "x": 1360.0,
+          "y": 940.0
+        },
+        "data": {
+          "numSteps": 50,
+          "instanceTitle": "Shared-noise sampler endpoint B",
+          "noiseSeed": 0,
+          "sampleCount": 64
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-paired",
+        "type": "observable_paired_generation_similarity",
+        "position": {
+          "x": 1740.0,
+          "y": 180.0
+        },
+        "data": {
+          "instanceTitle": "Paired similarity",
+          "historical": true
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-rp",
+        "type": "observable_rp_score_sscd",
+        "position": {
+          "x": 1740.0,
+          "y": 760.0
+        },
+        "data": {
+          "threshold": 0.95,
+          "instanceTitle": "RP / SSCD",
+          "historical": true
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-nearest-a",
+        "type": "observable_nearest_train_gl",
+        "position": {
+          "x": 1740.0,
+          "y": 1340.0
+        },
+        "data": {
+          "glThreshold": 0.95,
+          "instanceTitle": "Nearest-train GL seed 0",
+          "historical": true
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wf-nearest-b",
+        "type": "observable_nearest_train_gl",
+        "position": {
+          "x": 1740.0,
+          "y": 1920.0
+        },
+        "data": {
+          "glThreshold": 0.95,
+          "instanceTitle": "Nearest-train GL seed 1",
+          "historical": true
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-wf-dataset-trainer-a",
+        "source": "wf-dataset",
+        "target": "wf-trainer-a",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-wf-dataset-trainer-b",
+        "source": "wf-dataset",
+        "target": "wf-trainer-b",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-wf-model-a-trainer-a",
+        "source": "wf-model-a",
+        "target": "wf-trainer-a",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-wf-model-b-trainer-b",
+        "source": "wf-model-b",
+        "target": "wf-trainer-b",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-wf-opt-a-trainer-a",
+        "source": "wf-opt-a",
+        "target": "wf-trainer-a",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-wf-opt-b-trainer-b",
+        "source": "wf-opt-b",
+        "target": "wf-trainer-b",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-wf-loss-a-trainer-a",
+        "source": "wf-loss-a",
+        "target": "wf-trainer-a",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-wf-loss-b-trainer-b",
+        "source": "wf-loss-b",
+        "target": "wf-trainer-b",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-wf-trainer-a-trainviz",
+        "source": "wf-trainer-a",
+        "target": "wf-trainviz-a",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-wf-trainer-b-trainviz",
+        "source": "wf-trainer-b",
+        "target": "wf-trainviz-b",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-wf-trainer-a-ckpt",
+        "source": "wf-trainer-a",
+        "target": "wf-ckpt-a",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e-wf-trainer-b-ckpt",
+        "source": "wf-trainer-b",
+        "target": "wf-ckpt-b",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e-wf-ckpt-a-sampler-a",
+        "source": "wf-ckpt-a",
+        "target": "wf-sampler-a",
+        "sourceHandle": "model",
+        "targetHandle": "checkpoint"
+      },
+      {
+        "id": "e-wf-ckpt-b-sampler-b",
+        "source": "wf-ckpt-b",
+        "target": "wf-sampler-b",
+        "sourceHandle": "model",
+        "targetHandle": "checkpoint"
+      },
+      {
+        "id": "e-wf-sampler-a-paired",
+        "source": "wf-sampler-a",
+        "target": "wf-paired",
+        "sourceHandle": "samples",
+        "targetHandle": "sampler_a"
+      },
+      {
+        "id": "e-wf-sampler-b-paired",
+        "source": "wf-sampler-b",
+        "target": "wf-paired",
+        "sourceHandle": "samples",
+        "targetHandle": "sampler_b"
+      },
+      {
+        "id": "e-wf-sampler-a-rp",
+        "source": "wf-sampler-a",
+        "target": "wf-rp",
+        "sourceHandle": "samples",
+        "targetHandle": "sampler_a"
+      },
+      {
+        "id": "e-wf-sampler-b-rp",
+        "source": "wf-sampler-b",
+        "target": "wf-rp",
+        "sourceHandle": "samples",
+        "targetHandle": "sampler_b"
+      },
+      {
+        "id": "e-wf-sampler-a-nearest",
+        "source": "wf-sampler-a",
+        "target": "wf-nearest-a",
+        "sourceHandle": "samples",
+        "targetHandle": "generated"
+      },
+      {
+        "id": "e-wf-sampler-b-nearest",
+        "source": "wf-sampler-b",
+        "target": "wf-nearest-b",
+        "sourceHandle": "samples",
+        "targetHandle": "generated"
+      },
+      {
+        "id": "e-wf-dataset-nearest-a",
+        "source": "wf-dataset",
+        "target": "wf-nearest-a",
+        "sourceHandle": "dataset",
+        "targetHandle": "train_dataset"
+      },
+      {
+        "id": "e-wf-dataset-nearest-b",
+        "source": "wf-dataset",
+        "target": "wf-nearest-b",
+        "sourceHandle": "dataset",
+        "targetHandle": "train_dataset"
+      }
+    ],
+    "viewport": {
+      "x": 0.0,
+      "y": 0.0,
+      "zoom": 0.55
+    }
+  },
+  "savedAt": 1784600000000
+}

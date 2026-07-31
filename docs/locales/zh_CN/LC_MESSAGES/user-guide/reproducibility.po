@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/reproducibility.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/reproducibility.md:10
+msgid "Make a result reproducible"
+msgstr "让结果可复现"
+
+#: ../../en/user-guide/reproducibility.md:13
+msgid ""
+"Preserve the executable graph and enough scientific context for another "
+"person to understand, rerun, and challenge the result."
+msgstr "保留可执行图和足够的科学上下文，使他人能够理解、重跑并质疑该结果。"
+
+#: ../../en/user-guide/reproducibility.md:17
+msgid "Record the experiment contract"
+msgstr "记录实验契约"
+
+#: ../../en/user-guide/reproducibility.md:19
+msgid "Before sharing a result, record:"
+msgstr "分享结果前请记录："
+
+#: ../../en/user-guide/reproducibility.md:21
+msgid "the exact Template ID, graph file, or committed artifact revision;"
+msgstr "精确的 Template ID、图文件或已提交产物修订；"
+
+#: ../../en/user-guide/reproducibility.md:22
+msgid "dataset source, sizes, split seed, preprocessing, and sampling mode;"
+msgstr "数据集来源、大小、划分种子、预处理和采样模式；"
+
+#: ../../en/user-guide/reproducibility.md:23
+msgid "model architecture, initialization seed, and relevant dimensions;"
+msgstr "模型架构、初始化种子和相关维度；"
+
+#: ../../en/user-guide/reproducibility.md:24
+msgid "optimizer, learning-rate and batch schedules, and regularization;"
+msgstr "优化器、学习率和批量调度，以及正则化；"
+
+#: ../../en/user-guide/reproducibility.md:25
+msgid "steps or epochs, log frequency, compute device, and software environment;"
+msgstr "步数或 epoch、记录频率、计算设备和软件环境；"
+
+#: ../../en/user-guide/reproducibility.md:26
+msgid "every Observable used to support the conclusion and its settings;"
+msgstr "用于支持结论的每个 Observable 及其设置；"
+
+#: ../../en/user-guide/reproducibility.md:27
+msgid "the number of seeds and how runs were aggregated;"
+msgstr "种子数量和运行聚合方式；"
+
+#: ../../en/user-guide/reproducibility.md:28
+msgid "the expected result and the condition that would count against it."
+msgstr "预期结果，以及会对其构成反证的条件。"
+
+#: ../../en/user-guide/reproducibility.md:30
+msgid "Preserve the right evidence"
+msgstr "保留恰当证据"
+
+#: ../../en/user-guide/reproducibility.md:32
+msgid ""
+"Use Small when the graph and parameters are enough to rerun the experiment. "
+"Use Medium when the exact plotted history is part of the evidence. Use Large"
+" only when trained model state must be inspected or resumed, and document "
+"its size and handling requirements."
+msgstr ""
+"当图和参数足以重跑实验时使用 Small；当精确绘图历史是证据的一部分时使用 Medium；仅当必须检查或恢复训练模型状态时使用 "
+"Large，并记录其大小和处理要求。"
+
+#: ../../en/user-guide/reproducibility.md:37
+msgid ""
+"Keep machine-local credentials and unrelated workspace state out of all "
+"three tiers. A screenshot can orient a reader or show expected evidence, but"
+" it is not a substitute for numeric data, the graph artifact, or environment"
+" details."
+msgstr "让本机凭据和无关工作区状态远离所有三个层级。截图可帮助读者定位或展示预期证据，但不能替代数值数据、图产物或环境细节。"
+
+#: ../../en/user-guide/reproducibility.md:41
+msgid "State the claim boundary"
+msgstr "说明结论边界"
+
+#: ../../en/user-guide/reproducibility.md:43
+msgid ""
+"A completed graph does not prove paper-faithful reproduction. Similar-"
+"looking curves do not prove numeric agreement. A single seed does not "
+"establish a distributional result, and a saved checkpoint does not describe "
+"the data or measurement protocol that produced it."
+msgstr "完成的图不能证明忠实复现论文。外观相似的曲线不能证明数值一致。单个种子不能建立分布性结果，保存的检查点也不能说明生成它的数据或测量协议。"
+
+#: ../../en/user-guide/reproducibility.md:48
+msgid "Label the result accurately:"
+msgstr "准确标注结果："
+
+#: ../../en/user-guide/reproducibility.md:50
+msgid "**Smoke test:** the execution and result-routing path works."
+msgstr "**Smoke test：** 执行和结果路由路径可用。"
+
+#: ../../en/user-guide/reproducibility.md:51
+msgid "**Phenomenon reproduction:** the setup demonstrates a qualitative behavior."
+msgstr "**Phenomenon reproduction：** 该设置展示了一种定性行为。"
+
+#: ../../en/user-guide/reproducibility.md:52
+msgid ""
+"**Paper-faithful reproduction:** the documented implementation, data, "
+"protocol, and evaluation match the target closely enough for the stated "
+"comparison."
+msgstr "**Paper-faithful reproduction：** 文档化的实现、数据、协议和评估与目标足够吻合，可支撑所述比较。"
+
+#: ../../en/user-guide/reproducibility.md:56
+msgid ""
+"The reproduction pages in [Examples](../examples/index.md) state this "
+"boundary and list their limitations explicitly."
+msgstr "[示例](../examples/index.md)中的复现页面说明了这一边界，并明确列出其局限性。"

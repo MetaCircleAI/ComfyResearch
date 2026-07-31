@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/extend/add-observable.md:7
+msgid "Extend"
+msgstr "扩展"
+
+#: ../../en/extend/add-observable.md:10
+msgid "Add a scalar Observable"
+msgstr "添加标量 Observable"
+
+#: ../../en/extend/add-observable.md:13
+msgid ""
+"Define one measurement, register its runtime recorder, regenerate the shared"
+" contract, and verify the complete backend-to-frontend path."
+msgstr "定义一项测量，注册其运行时 recorder，重新生成共享契约，并验证完整的后端到前端路径。"
+
+#: ../../en/extend/add-observable.md:17
+msgid "Understand the extension boundary"
+msgstr "理解扩展边界"
+
+#: ../../en/extend/add-observable.md:19
+msgid ""
+"The current extension mechanism is an in-repository API, not a runtime "
+"plugin loader. A new Node is a code contribution under "
+"`comfy_research.nodes.definitions` and is checked in with its generated "
+"artifacts."
+msgstr ""
+"当前扩展机制是仓库内 API，而非运行时插件加载器。新 Node 是 `comfy_research.nodes.definitions` "
+"下的代码贡献，并与其生成产物一并提交。"
+
+#: ../../en/extend/add-observable.md:24
+msgid ""
+"This tutorial uses an Observable because its declaration and runtime "
+"measurement can live in one file. For every supported Node channel and its "
+"registration contract, see [Node contracts](../reference/node-contracts.md)."
+msgstr ""
+"本教程使用 Observable，因为其声明和运行时测量可位于同一个文件中。所有受支持 Node 通道及其注册契约请参阅[Node "
+"契约](../reference/node-contracts.md)。"
+
+#: ../../en/extend/add-observable.md:28
+msgid "Define and register the Observable"
+msgstr "定义并注册 Observable"
+
+#: ../../en/extend/add-observable.md:30
+msgid "Create `comfy_research/nodes/definitions/observables/weight_mean_abs.py`:"
+msgstr "创建 `comfy_research/nodes/definitions/observables/weight_mean_abs.py`："
+
+#: ../../en/extend/add-observable.md:82
+msgid "The important invariants are:"
+msgstr "重要不变量包括："
+
+#: ../../en/extend/add-observable.md:84
+msgid "`type` is globally unique and stable because saved graphs serialize it."
+msgstr "`type` 全局唯一且稳定，因为已保存图会序列化它。"
+
+#: ../../en/extend/add-observable.md:85
+msgid ""
+"`variant=\"user\"` and `SpawnSpec(kind=\"user_scalar\")` use the generic "
+"scalar visualization path, so no custom React component is needed."
+msgstr ""
+"`variant=\"user\"` 和 `SpawnSpec(kind=\"user_scalar\")` 使用通用标量可视化路径，因此不需要自定义 "
+"React 组件。"
+
+#: ../../en/extend/add-observable.md:87
+msgid "The recorder appends exactly one value for each call."
+msgstr "recorder 每次调用恰好追加一个值。"
+
+#: ../../en/extend/add-observable.md:88
+msgid ""
+"Heavy imports stay inside the provider function so definition discovery and "
+"generation remain lightweight."
+msgstr "较重的导入保留在 provider 函数内部，以使定义发现和生成保持轻量。"
+
+#: ../../en/extend/add-observable.md:90
+msgid ""
+"`validate_defs()` requires a registered Observable to have one recorder and "
+"prevents a recorder from existing without its definition."
+msgstr "`validate_defs()` 要求已注册 Observable 有一个 recorder，并阻止 recorder 在没有其定义时存在。"
+
+#: ../../en/extend/add-observable.md:93
+msgid "Add fields when the measurement is configurable"
+msgstr "测量可配置时添加字段"
+
+#: ../../en/extend/add-observable.md:95
+msgid "Declare user-editable parameters in `fields`, for example:"
+msgstr "在 `fields` 中声明用户可编辑参数，例如："
+
+#: ../../en/extend/add-observable.md:105
+msgid ""
+"The value is serialized under the node's `data` object and is available to "
+"the recorder through `on.data`. Use the narrowest field type and an explicit"
+" minimum when the UI can reject invalid values."
+msgstr ""
+"该值序列化在 Node 的 `data` 对象下，并通过 `on.data` 提供给 recorder。当 UI "
+"可以拒绝无效值时，请使用最窄的字段类型和显式最小值。"
+
+#: ../../en/extend/add-observable.md:109
+msgid "Regenerate the contract"
+msgstr "重新生成契约"
+
+#: ../../en/extend/add-observable.md:111
+msgid "From the repository root:"
+msgstr "从仓库根目录："
+
+#: ../../en/extend/add-observable.md:118
+msgid ""
+"Review every generated difference. The expected files and their "
+"responsibilities are listed in [Node contracts](../reference/node-"
+"contracts.md)."
+msgstr "审查每一处生成差异。预期文件及其职责列在[Node 契约](../reference/node-contracts.md)中。"
+
+#: ../../en/extend/add-observable.md:121
+msgid "Test the extension"
+msgstr "测试扩展"
+
+#: ../../en/extend/add-observable.md:123
+msgid "Run the definition and generation contracts:"
+msgstr "运行定义和生成契约："
+
+#: ../../en/extend/add-observable.md:131
+msgid ""
+"Add a focused provider test that constructs the smallest recorder state, "
+"calls `record(...)`, and asserts the exact history value. Then verify the "
+"frontend:"
+msgstr "添加聚焦的 provider 测试：构造最小 recorder 状态，调用 `record(...)`，并断言精确历史值。然后验证前端："
+
+#: ../../en/extend/add-observable.md:138
+msgid "Open the app and check the complete path:"
+msgstr "打开应用并检查完整路径："
+
+#: ../../en/extend/add-observable.md:140
+msgid "The Node appears under **Observables**."
+msgstr "该 Node 出现在 **Observables** 下。"
+
+#: ../../en/extend/add-observable.md:141
+msgid "It can be placed and connected to a Trainer."
+msgstr "它可以放置并连接到 Trainer。"
+
+#: ../../en/extend/add-observable.md:142
+msgid "The connection creates or accepts the expected visualization."
+msgstr "该连接会创建或接受预期的可视化。"
+
+#: ../../en/extend/add-observable.md:143
+msgid "Training appends values at the configured log frequency."
+msgstr "训练按配置的记录频率追加数值。"
+
+#: ../../en/extend/add-observable.md:144
+msgid "Saving and reopening the graph preserves its type and fields."
+msgstr "保存并重新打开图会保留其类型和字段。"
+
+#: ../../en/extend/add-observable.md:146
+msgid "Product screenshot pending · IMG-11"
+msgstr "产品截图待补 · IMG-11"
+
+#: ../../en/extend/add-observable.md:149
+msgid ""
+"**Purpose:** Verify the extension across generation, discovery, graph "
+"wiring, and runtime output rather than showing code alone."
+msgstr "**目的：** 验证扩展的生成、发现、图连线和运行时输出，而不只展示代码。"
+
+#: ../../en/extend/add-observable.md
+msgid "Capture specification"
+msgstr "截图说明"
+
+#: ../../en/extend/add-observable.md:156
+msgid ""
+"**Capture:** The tutorial Observable visible in node search and either "
+"connected to a Trainer or producing its paired scalar visualization."
+msgstr "**截图：** 在 Node 搜索中展示教程 Observable，并展示其已连接到 Trainer 或生成配套标量可视化。"
+
+#: ../../en/extend/add-observable.md:159
+msgid "**Final file:** `docs/en/_images/app/custom-observable-registered.png`"
+msgstr "**最终文件：** `docs/en/_images/app/custom-observable-registered.png`"
+
+#: ../../en/extend/add-observable.md:163
+msgid "When a custom frontend is justified"
+msgstr "何时需要自定义前端"
+
+#: ../../en/extend/add-observable.md:165
+msgid ""
+"`FrontendSpec()` selects the generic component. Keep it when fields, "
+"sockets, and a standard scalar or series visualization are sufficient."
+msgstr "`FrontendSpec()` 选择通用组件。字段、sockets 和标准标量或序列可视化已足够时，请保留它。"
+
+#: ../../en/extend/add-observable.md:168
+msgid ""
+"A custom React component is warranted only when the Node needs interaction "
+"or visualization that the generated schema cannot express. In that case, add"
+" a stable `component_key`, implement and register the component in the "
+"frontend, and add a node-registry invariant test. Do not add a custom "
+"component only to change spacing, labels, or basic numeric controls."
+msgstr ""
+"仅当 Node 需要生成 schema 无法表达的交互或可视化时，才需要自定义 React 组件。此时请添加稳定的 "
+"`component_key`，在前端实现并注册该组件，并添加 node-registry "
+"不变量测试。不要仅为改变间距、标签或基本数值控件而添加自定义组件。"
+
+#: ../../en/extend/add-observable.md:174
+msgid "Contribution checklist"
+msgstr "贡献检查清单"
+
+#: ../../en/extend/add-observable.md:176
+msgid "Start from current `main` and use a focused topic branch."
+msgstr "从当前 `main` 开始，并使用聚焦的主题分支。"
+
+#: ../../en/extend/add-observable.md:177
+msgid "Keep the new Node type and saved-graph compatibility stable."
+msgstr "保持新 Node 类型和已保存图兼容性稳定。"
+
+#: ../../en/extend/add-observable.md:178
+msgid "Regenerate artifacts; never hand-edit them."
+msgstr "重新生成产物；绝不要手动编辑它们。"
+
+#: ../../en/extend/add-observable.md:179
+msgid "Test runtime behavior and frontend registration."
+msgstr "测试运行时行为和前端注册。"
+
+#: ../../en/extend/add-observable.md:180
+msgid ""
+"Include a Small template when the Node is best understood in a complete "
+"graph."
+msgstr "当完整图最能说明该 Node 时，请附上 Small 模板。"
+
+#: ../../en/extend/add-observable.md:181
+msgid "Explain the scientific purpose and limitations of the measurement."
+msgstr "说明测量的科学目的和局限性。"

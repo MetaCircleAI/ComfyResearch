@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/index.md:25 ../../en/user-guide/index.md:75
+msgid "Build and run graphs"
+msgstr "构建并运行图"
+
+#: ../../en/user-guide/index.md:32 ../../en/user-guide/index.md:75
+msgid "Record Observables"
+msgstr "记录 Observable"
+
+#: ../../en/user-guide/index.md:39 ../../en/user-guide/index.md:75
+msgid "Manage projects and artifacts"
+msgstr "管理项目和产物"
+
+#: ../../en/user-guide/index.md:46 ../../en/user-guide/index.md:75
+msgid "Use a remote GPU"
+msgstr "使用远程 GPU"
+
+#: ../../en/user-guide/index.md:53 ../../en/user-guide/index.md:75
+msgid "Make a result reproducible"
+msgstr "让结果可复现"
+
+#: ../../en/user-guide/index.md:60 ../../en/user-guide/index.md:75
+msgid "Troubleshoot a run"
+msgstr "排查一次运行"
+
+#: ../../en/user-guide/index.md:67 ../../en/user-guide/index.md:75
+msgid "Understand graph execution"
+msgstr "理解图执行"
+
+#: ../../en/user-guide/index.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/index.md:10
+msgid "Work with experiments"
+msgstr "处理实验"
+
+#: ../../en/user-guide/index.md:13
+msgid ""
+"Build a valid training graph, choose measurements deliberately, preserve the"
+" right artifact, and diagnose failures from the Trainer outward."
+msgstr "构建有效训练图，审慎选择测量，保留合适的产物，并从 Trainer 向外诊断故障。"
+
+#: ../../en/user-guide/index.md:17
+msgid ""
+"Start with the task you are trying to complete. Concept pages explain why "
+"the application behaves that way without repeating the same sequence of "
+"clicks."
+msgstr "从你想完成的任务开始。概念页面解释应用为何如此工作，而不重复同一串点击操作。"
+
+#: ../../en/user-guide/index.md:29
+msgid ""
+"Assemble the stable training core, validate its connections, and run a "
+"focused parameter series."
+msgstr "组装稳定训练核心，验证其连接，并运行聚焦的参数序列。"
+
+#: ../../en/user-guide/index.md:36
+msgid "Attach measurements without confusing them with the optimization objective."
+msgstr "添加测量，但不要将其与优化目标混淆。"
+
+#: ../../en/user-guide/index.md:43
+msgid ""
+"Organize canvases and choose Small, Medium, or Large persistence "
+"intentionally."
+msgstr "组织画布，并有意识地选择 Small、Medium 或 Large 持久化。"
+
+#: ../../en/user-guide/index.md:50
+msgid ""
+"Configure SSH execution, verify the target, and keep credentials out of "
+"research artifacts."
+msgstr "配置 SSH 执行，验证目标，并让凭据远离研究产物。"
+
+#: ../../en/user-guide/index.md:57
+msgid "Record the graph, environment, seeds, measurements, and claim boundary."
+msgstr "记录图、环境、种子、测量和结论边界。"
+
+#: ../../en/user-guide/index.md:64
+msgid "Work from visible symptoms to graph, device, service, or measurement causes."
+msgstr "从可见症状出发，定位图、设备、服务或测量原因。"
+
+#: ../../en/user-guide/index.md:71
+msgid ""
+"Learn how graph fields and edges become a validated backend request and "
+"streamed result."
+msgstr "了解图字段和边如何成为经过验证的后端请求与流式结果。"

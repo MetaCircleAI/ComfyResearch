@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-27 19:58+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/projects-and-artifacts.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/projects-and-artifacts.md:10
+msgid "Manage projects and artifacts"
+msgstr "管理项目和产物"
+
+#: ../../en/user-guide/projects-and-artifacts.md:13
+msgid ""
+"Keep controlled variants separate and persist only the runtime state "
+"required for the next use of the experiment."
+msgstr "将受控变体分开，并且只持久化下次使用实验所需的运行时状态。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:17
+msgid "Projects and canvases"
+msgstr "项目与画布"
+
+#: ../../en/user-guide/projects-and-artifacts.md:19
+msgid ""
+"A workspace contains projects, and each project owns one canvas. The "
+"canvas stores a graph document and its viewport. Use a separate project "
+"for a controlled variant instead of overwriting the only graph that "
+"explains an earlier result."
+msgstr "一个工作区包含项目，每个项目拥有一张画布。该画布存储图文档及其视口。对于受控变体，请使用单独的项目，而不要覆盖唯一能解释早期结果的图。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:24
+msgid ""
+"Saved Templates open as working copies in new projects. The library entry"
+" remains separate from later edits on the canvas."
+msgstr "已保存的 Template 会在新项目中以工作副本打开。库条目仍与之后在画布上的编辑分离。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:27
+msgid "Product screenshot pending · IMG-08"
+msgstr "产品截图待补 · IMG-08"
+
+#: ../../en/user-guide/projects-and-artifacts.md:30
+msgid "**Purpose:** Make ownership between a project and its canvas clear."
+msgstr "**目的：** 明确项目与其画布之间的归属关系。"
+
+#: ../../en/user-guide/projects-and-artifacts.md
+msgid "Capture specification"
+msgstr "截图说明"
+
+#: ../../en/user-guide/projects-and-artifacts.md:36
+msgid ""
+"**Capture:** The project tab bar with a Baseline and a Comparison "
+"project, one open in the workbench."
+msgstr "**截图：** 展示项目标签栏，其中包含 Baseline 和 Comparison 两个项目，并在工作台中打开其中一个。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:39
+msgid "**Final file:** `docs/en/_images/app/project-canvas-tree.png`"
+msgstr "**最终文件：** `docs/en/_images/app/project-canvas-tree.png`"
+
+#: ../../en/user-guide/projects-and-artifacts.md:43
+msgid "Choose a destination"
+msgstr "选择保存位置"
+
+#: ../../en/user-guide/projects-and-artifacts.md:45
+msgid "Use the Graph menu to save a graph file or Template:"
+msgstr "使用 Graph 菜单保存图文件或 Template："
+
+#: ../../en/user-guide/projects-and-artifacts.md:47
+msgid "a **Template** is a reusable starting point."
+msgstr "**Template** 是可复用的起点。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:49
+msgid "Choose a size tier"
+msgstr "选择大小层级"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Tier"
+msgstr "层级"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Retains"
+msgstr "保留"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Removes"
+msgstr "移除"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Recommended use"
+msgstr "推荐用途"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Small"
+msgstr "小"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Graph structure and node settings"
+msgstr "图结构和节点设置"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Plot histories and checkpoint bytes"
+msgstr "绘图历史和检查点字节"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Reviewable templates and graph files"
+msgstr "可审阅的 template 和图文件"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Medium"
+msgstr "中"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Graph and plot or visualization data"
+msgstr "图以及绘图或可视化数据"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Checkpoint bytes"
+msgstr "检查点字节"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Sharing completed curves without a model blob"
+msgstr "在不含模型 blob 的情况下共享已完成曲线"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Large"
+msgstr "大"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Full graph, plots, and model checkpoint data"
+msgstr "完整图、绘图和模型检查点数据"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Nothing"
+msgstr "无"
+
+#: ../../en/user-guide/projects-and-artifacts.md:32
+msgid "Local archival when trained state is required"
+msgstr "需要已训练状态时的本地归档"
+
+#: ../../en/user-guide/projects-and-artifacts.md:57
+msgid "Product screenshot pending · IMG-09"
+msgstr "产品截图待补 · IMG-09"
+
+#: ../../en/user-guide/projects-and-artifacts.md:60
+msgid "**Purpose:** Show the actual tier decision where persistence cost changes."
+msgstr "**目的：** 展示持久化成本发生变化时实际进行层级选择的位置。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:66
+msgid "**Capture:** Graph save menu with tier names and descriptions visible."
+msgstr "**截图：** 展示图保存菜单，其中层级名称和说明均清晰可见。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:68
+msgid "**Final file:** `docs/en/_images/app/save-artifact-tiers.png`"
+msgstr "**最终文件：** `docs/en/_images/app/save-artifact-tiers.png`"
+
+#: ../../en/user-guide/projects-and-artifacts.md:72
+msgid ""
+"Prefer Small for committed Templates. Medium and Large JSON can contain "
+"experiment results or encoded model state, grow rapidly, and expose "
+"information that does not belong in Git history. Inspect a saved file "
+"before sharing it."
+msgstr ""
+"对于提交的 Template，优先使用 Small。Medium 和 Large JSON "
+"可能包含实验结果或编码的模型状态，体积增长很快，并暴露不应进入 Git 历史的信息。共享前请检查已保存文件。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:77
+msgid "Know what is local state"
+msgstr "了解哪些内容属于本地状态"
+
+#: ../../en/user-guide/projects-and-artifacts.md:79
+msgid ""
+"The active workspace is persisted through `/api/workspace` to "
+"`data/workspace.json`. Graph-library data is stored under "
+"`data/graph_library/`; committed canonical templates live in "
+"`data/graph_library/templates/`."
+msgstr ""
+"活动工作区通过 `/api/workspace` 持久化到 `data/workspace.json`。图库数据存储在 "
+"`data/graph_library/` 下；提交的规范 template 位于 "
+"`data/graph_library/templates/`。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:84
+msgid ""
+"The repository ignores most local workspace, library, credential, and "
+"runtime artifact state, but ignore rules are not a data-handling policy. "
+"Check the actual file and Git status before committing or sending an "
+"archive."
+msgstr "仓库会忽略大多数本地工作区、库、凭据和运行时产物状态，但忽略规则不是数据处理策略。提交或发送归档前，请检查实际文件和 Git 状态。"
+
+#: ../../en/user-guide/projects-and-artifacts.md:88
+msgid ""
+"Use [Make a result reproducible](reproducibility.md) to decide what "
+"context a shared artifact still needs outside its JSON."
+msgstr "使用[使结果可复现](reproducibility.md)来决定共享产物在其 JSON 之外仍需要哪些上下文。"

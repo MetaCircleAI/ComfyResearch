@@ -1,0 +1,1 @@
+"""Paper reproduction template tests."""

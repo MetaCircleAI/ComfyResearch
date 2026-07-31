@@ -1,0 +1,70 @@
+comfy-research/
+__pycache__/
+*.py[cod]
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.env
+.venv
+venv/
+data/*.json
+!data/.gitkeep
+# Local MNIST IDX archives (official gzip; same files as cvdf-datasets mirror)
+data/mnist/
+# Local CIFAR-10 archive/batches.
+data/cifar10/
+# Local AutoDL credentials used by direct reproduction scripts.
+reproduce_direct/AutoDL_GPU.txt
+# Nested JSON under data/ is NOT covered by `data/*.json` (single segment only). Ignore dumps; keep small scaffolds.
+data/**/*.json
+!data/graph_library/blog_attention_residual_2026_scaffold.json
+# Per-template graphs under templates/ are tracked; aggregated index stays ignored (below)
+!data/graph_library/templates/
+!data/graph_library/templates/**/*.json
+frontend/node_modules/
+frontend/dist/
+.DS_Store
+reports/*.pdf
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.mplcache/
+*.log
+assets/
+
+# Local planning/reference spreadsheets
+/CR_experiment*.xlsx
+
+# Local AutoDL / remote-train credentials (ssh host, password, etc.)
+.comfyresearch/
+
+# Local experimental playground (work in progress, not part of PRs)
+frontend/src/playground/PlaygroundBoard.tsx
+frontend/src/playground/board/
+
+# Explicit large generated artifacts in graph library
+data/graph_library/templates.json
+data/graph_library/assets.json
+
+# Local development workspaces
+/.tools/
+/.chrome-debug/
+/.cursor/
+/.npm-cache/
+/.vscode/
+/runs/
+/AGENTS.md
+
+# Local visual stress templates
+/data/graph_library/templates/layout-stress-20-observables-trained.json
+
+# Generated website output.
+/ComfyResearchWebsite/_site/
+/docs/_build/
+/docs/locales/**/*.mo
+.diff-worktrees/
+data/runtime/

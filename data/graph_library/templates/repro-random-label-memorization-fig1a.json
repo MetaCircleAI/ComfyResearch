@@ -1,0 +1,612 @@
+{
+  "id": "repro-random-label-memorization-fig1a",
+  "name": "repro: Zhang et al. Figure 1(a) random-label memorization",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "rl-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -300
+        },
+        "data": {
+          "instanceTitle": "Zhang et al. Figure 1(a) protocol",
+          "text": "CIFAR-10 50k/10k; five label/input conditions; center crop 28x28 and per-image whitening; Small Inception; SGD lr=0.1, momentum=0.9, no weight decay; exponential factor 0.95 per epoch; batch 128; 25k steps. Run the five trainers one at a time."
+        }
+      },
+      {
+        "id": "rl-ds-true",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 40
+        },
+        "data": {
+          "trainSize": 50000,
+          "testSize": 10000,
+          "initSeed": 1804,
+          "seed": 0,
+          "subsetSeed": 1703,
+          "classBalanced": false,
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "inputTransform": "none",
+          "labelCorruption": 0.0,
+          "preprocessing": "center_crop_28_per_image_whiten",
+          "instanceTitle": "true labels"
+        }
+      },
+      {
+        "id": "rl-tr-true",
+        "type": "trainer",
+        "position": {
+          "x": 650,
+          "y": 40
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingSteps": 25000,
+          "logFrequency": 100,
+          "logAggregation": "interval_sample_mean",
+          "testEvaluation": "final_only",
+          "batchSize": 128,
+          "minibatchSampling": "epoch_shuffle",
+          "minibatchSeed": 1707,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "train: true labels"
+        }
+      },
+      {
+        "id": "rl-viz-true",
+        "type": "training_visualization",
+        "position": {
+          "x": 960,
+          "y": 40
+        },
+        "data": {
+          "instanceTitle": "true labels"
+        }
+      },
+      {
+        "id": "rl-ds-random-labels",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 260
+        },
+        "data": {
+          "trainSize": 50000,
+          "testSize": 10000,
+          "initSeed": 2813,
+          "seed": 0,
+          "subsetSeed": 1703,
+          "classBalanced": false,
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "inputTransform": "none",
+          "labelCorruption": 1.0,
+          "preprocessing": "center_crop_28_per_image_whiten",
+          "instanceTitle": "random labels"
+        }
+      },
+      {
+        "id": "rl-tr-random-labels",
+        "type": "trainer",
+        "position": {
+          "x": 650,
+          "y": 260
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingSteps": 25000,
+          "logFrequency": 100,
+          "logAggregation": "interval_sample_mean",
+          "testEvaluation": "final_only",
+          "batchSize": 128,
+          "minibatchSampling": "epoch_shuffle",
+          "minibatchSeed": 1707,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "train: random labels"
+        }
+      },
+      {
+        "id": "rl-viz-random-labels",
+        "type": "training_visualization",
+        "position": {
+          "x": 960,
+          "y": 260
+        },
+        "data": {
+          "instanceTitle": "random labels"
+        }
+      },
+      {
+        "id": "rl-ds-shuffled",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 480
+        },
+        "data": {
+          "trainSize": 50000,
+          "testSize": 10000,
+          "initSeed": 3822,
+          "seed": 0,
+          "subsetSeed": 1703,
+          "classBalanced": false,
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "inputTransform": "shuffled_pixels",
+          "labelCorruption": 0.0,
+          "preprocessing": "center_crop_28_per_image_whiten",
+          "instanceTitle": "shuffled pixels"
+        }
+      },
+      {
+        "id": "rl-tr-shuffled",
+        "type": "trainer",
+        "position": {
+          "x": 650,
+          "y": 480
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingSteps": 25000,
+          "logFrequency": 100,
+          "logAggregation": "interval_sample_mean",
+          "testEvaluation": "final_only",
+          "batchSize": 128,
+          "minibatchSampling": "epoch_shuffle",
+          "minibatchSeed": 1707,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "train: shuffled pixels"
+        }
+      },
+      {
+        "id": "rl-viz-shuffled",
+        "type": "training_visualization",
+        "position": {
+          "x": 960,
+          "y": 480
+        },
+        "data": {
+          "instanceTitle": "shuffled pixels"
+        }
+      },
+      {
+        "id": "rl-ds-random-pixels",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 700
+        },
+        "data": {
+          "trainSize": 50000,
+          "testSize": 10000,
+          "initSeed": 4831,
+          "seed": 0,
+          "subsetSeed": 1703,
+          "classBalanced": false,
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "inputTransform": "random_pixels",
+          "labelCorruption": 0.0,
+          "preprocessing": "center_crop_28_per_image_whiten",
+          "instanceTitle": "random pixels"
+        }
+      },
+      {
+        "id": "rl-tr-random-pixels",
+        "type": "trainer",
+        "position": {
+          "x": 650,
+          "y": 700
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingSteps": 25000,
+          "logFrequency": 100,
+          "logAggregation": "interval_sample_mean",
+          "testEvaluation": "final_only",
+          "batchSize": 128,
+          "minibatchSampling": "epoch_shuffle",
+          "minibatchSeed": 1707,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "train: random pixels"
+        }
+      },
+      {
+        "id": "rl-viz-random-pixels",
+        "type": "training_visualization",
+        "position": {
+          "x": 960,
+          "y": 700
+        },
+        "data": {
+          "instanceTitle": "random pixels"
+        }
+      },
+      {
+        "id": "rl-ds-gaussian",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 920
+        },
+        "data": {
+          "trainSize": 50000,
+          "testSize": 10000,
+          "initSeed": 5840,
+          "seed": 0,
+          "subsetSeed": 1703,
+          "classBalanced": false,
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "inputTransform": "gaussian",
+          "labelCorruption": 0.0,
+          "preprocessing": "center_crop_28_per_image_whiten",
+          "instanceTitle": "gaussian"
+        }
+      },
+      {
+        "id": "rl-tr-gaussian",
+        "type": "trainer",
+        "position": {
+          "x": 650,
+          "y": 920
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingSteps": 25000,
+          "logFrequency": 100,
+          "logAggregation": "interval_sample_mean",
+          "testEvaluation": "final_only",
+          "batchSize": 128,
+          "minibatchSampling": "epoch_shuffle",
+          "minibatchSeed": 1707,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "train: gaussian"
+        }
+      },
+      {
+        "id": "rl-viz-gaussian",
+        "type": "training_visualization",
+        "position": {
+          "x": 960,
+          "y": 920
+        },
+        "data": {
+          "instanceTitle": "gaussian"
+        }
+      },
+      {
+        "id": "rl-model",
+        "type": "small_inception_cifar_model",
+        "position": {
+          "x": 340,
+          "y": -80
+        },
+        "data": {
+          "seed": 1706,
+          "specCodeName": "smallInceptionCifarModelSpec",
+          "instanceTitle": "Small Inception (1,649,402 params)"
+        }
+      },
+      {
+        "id": "rl-sgd",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 340,
+          "y": 100
+        },
+        "data": {
+          "learningRate": 0.1,
+          "momentum": 0.9,
+          "weightDecay": 0.0,
+          "instanceTitle": "SGD lr=0.1 momentum=0.9"
+        }
+      },
+      {
+        "id": "rl-ce",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 340,
+          "y": 280
+        },
+        "data": {
+          "lossScale": 1.0,
+          "instanceTitle": "cross entropy"
+        }
+      },
+      {
+        "id": "rl-lr-schedule",
+        "type": "lr_schedule",
+        "position": {
+          "x": 340,
+          "y": 370
+        },
+        "data": {
+          "lrWarmupSteps": 0,
+          "lrSchedule": "exponential_epoch",
+          "cosineLrMinFraction": 0.0,
+          "exponentialDecayFactor": 0.95,
+          "exponentialDecayEpochs": 1,
+          "instanceTitle": "paper LR: x0.95 / epoch"
+        }
+      },
+      {
+        "id": "rl-table",
+        "type": "curve_series_table",
+        "position": {
+          "x": 1260,
+          "y": 390
+        },
+        "data": {
+          "rows": [],
+          "captureMetrics": [
+            "train_loss"
+          ],
+          "selectedSeriesIds": null,
+          "instanceTitle": "Figure 1(a) loss curves"
+        }
+      },
+      {
+        "id": "rl-plot",
+        "type": "curve_series_viz",
+        "position": {
+          "x": 1580,
+          "y": 390
+        },
+        "data": {
+          "plotXMode": "step",
+          "instanceTitle": "Figure 1(a): average loss vs step"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-rl-ds-true-rl-tr-true-dataset-dataset",
+        "source": "rl-ds-true",
+        "target": "rl-tr-true",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rl-model-rl-tr-true-model-model",
+        "source": "rl-model",
+        "target": "rl-tr-true",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rl-sgd-rl-tr-true-optimizer-optimizer",
+        "source": "rl-sgd",
+        "target": "rl-tr-true",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rl-ce-rl-tr-true-loss-loss",
+        "source": "rl-ce",
+        "target": "rl-tr-true",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rl-tr-true-rl-viz-true-loss_results-tensor_list",
+        "source": "rl-tr-true",
+        "target": "rl-viz-true",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rl-viz-true-rl-table-stream-stream",
+        "source": "rl-viz-true",
+        "target": "rl-table",
+        "sourceHandle": "stream",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-rl-ds-random-labels-rl-tr-random-labels-dataset-dataset",
+        "source": "rl-ds-random-labels",
+        "target": "rl-tr-random-labels",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rl-model-rl-tr-random-labels-model-model",
+        "source": "rl-model",
+        "target": "rl-tr-random-labels",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rl-sgd-rl-tr-random-labels-optimizer-optimizer",
+        "source": "rl-sgd",
+        "target": "rl-tr-random-labels",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rl-ce-rl-tr-random-labels-loss-loss",
+        "source": "rl-ce",
+        "target": "rl-tr-random-labels",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rl-tr-random-labels-rl-viz-random-labels-loss_results-tensor_list",
+        "source": "rl-tr-random-labels",
+        "target": "rl-viz-random-labels",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rl-viz-random-labels-rl-table-stream-stream",
+        "source": "rl-viz-random-labels",
+        "target": "rl-table",
+        "sourceHandle": "stream",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-rl-ds-shuffled-rl-tr-shuffled-dataset-dataset",
+        "source": "rl-ds-shuffled",
+        "target": "rl-tr-shuffled",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rl-model-rl-tr-shuffled-model-model",
+        "source": "rl-model",
+        "target": "rl-tr-shuffled",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rl-sgd-rl-tr-shuffled-optimizer-optimizer",
+        "source": "rl-sgd",
+        "target": "rl-tr-shuffled",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rl-ce-rl-tr-shuffled-loss-loss",
+        "source": "rl-ce",
+        "target": "rl-tr-shuffled",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rl-tr-shuffled-rl-viz-shuffled-loss_results-tensor_list",
+        "source": "rl-tr-shuffled",
+        "target": "rl-viz-shuffled",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rl-viz-shuffled-rl-table-stream-stream",
+        "source": "rl-viz-shuffled",
+        "target": "rl-table",
+        "sourceHandle": "stream",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-rl-ds-random-pixels-rl-tr-random-pixels-dataset-dataset",
+        "source": "rl-ds-random-pixels",
+        "target": "rl-tr-random-pixels",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rl-model-rl-tr-random-pixels-model-model",
+        "source": "rl-model",
+        "target": "rl-tr-random-pixels",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rl-sgd-rl-tr-random-pixels-optimizer-optimizer",
+        "source": "rl-sgd",
+        "target": "rl-tr-random-pixels",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rl-ce-rl-tr-random-pixels-loss-loss",
+        "source": "rl-ce",
+        "target": "rl-tr-random-pixels",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rl-tr-random-pixels-rl-viz-random-pixels-loss_results-tensor_list",
+        "source": "rl-tr-random-pixels",
+        "target": "rl-viz-random-pixels",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rl-viz-random-pixels-rl-table-stream-stream",
+        "source": "rl-viz-random-pixels",
+        "target": "rl-table",
+        "sourceHandle": "stream",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-rl-ds-gaussian-rl-tr-gaussian-dataset-dataset",
+        "source": "rl-ds-gaussian",
+        "target": "rl-tr-gaussian",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rl-model-rl-tr-gaussian-model-model",
+        "source": "rl-model",
+        "target": "rl-tr-gaussian",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rl-sgd-rl-tr-gaussian-optimizer-optimizer",
+        "source": "rl-sgd",
+        "target": "rl-tr-gaussian",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rl-ce-rl-tr-gaussian-loss-loss",
+        "source": "rl-ce",
+        "target": "rl-tr-gaussian",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rl-tr-gaussian-rl-viz-gaussian-loss_results-tensor_list",
+        "source": "rl-tr-gaussian",
+        "target": "rl-viz-gaussian",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rl-viz-gaussian-rl-table-stream-stream",
+        "source": "rl-viz-gaussian",
+        "target": "rl-table",
+        "sourceHandle": "stream",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-rl-table-rl-plot-series-curves",
+        "source": "rl-table",
+        "target": "rl-plot",
+        "sourceHandle": "series",
+        "targetHandle": "curves"
+      },
+      {
+        "id": "e-rl-lr-schedule-rl-sgd-lr_schedule-lr_schedule",
+        "source": "rl-lr-schedule",
+        "target": "rl-sgd",
+        "sourceHandle": "lr_schedule",
+        "targetHandle": "lr_schedule"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.46
+    }
+  },
+  "savedAt": 1784601927066.3975
+}

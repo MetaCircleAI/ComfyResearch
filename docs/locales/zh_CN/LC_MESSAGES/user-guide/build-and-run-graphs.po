@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/build-and-run-graphs.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/build-and-run-graphs.md:10
+msgid "Build and run graphs"
+msgstr "构建并运行图"
+
+#: ../../en/user-guide/build-and-run-graphs.md:13
+msgid ""
+"Create the smallest complete training graph, verify every dependency, and add "
+"variation only after one configuration runs successfully."
+msgstr "创建最小完整训练图，验证每一项依赖，并只在一个配置成功运行后再添加变体。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:17
+msgid "What a runnable graph needs"
+msgstr "可运行图需要什么"
+
+#: ../../en/user-guide/build-and-run-graphs.md:19
+msgid ""
+"A standard training experiment centers on one Trainer. Add these sources from the "
+"**Nodes** rail:"
+msgstr "标准训练实验以一个 Trainer 为中心。从 **Nodes** 栏添加以下来源："
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Trainer input"
+msgstr "Trainer 输入"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Source"
+msgstr "来源"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Required"
+msgstr "必需"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "`dataset`"
+msgstr "`dataset`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Dataset node"
+msgstr "Dataset 节点"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Yes"
+msgstr "是"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "`model`"
+msgstr "`model`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Trainable model or combined model"
+msgstr "可训练模型或组合模型"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "`optimizer`"
+msgstr "`optimizer`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Optimizer node"
+msgstr "Optimizer 节点"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "`loss`"
+msgstr "`loss`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Compatible primary loss"
+msgstr "兼容的主损失"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "`observables`"
+msgstr "`observables`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "One or more Observable nodes"
+msgstr "一个或多个 Observable 节点"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "No"
+msgstr "否"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "`batch sched`"
+msgstr "`batch sched`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:12
+msgid "Batch schedule"
+msgstr "批次调度"
+
+#: ../../en/user-guide/build-and-run-graphs.md:31
+msgid "Product screenshot pending · IMG-05"
+msgstr "产品截图待补 · IMG-05"
+
+#: ../../en/user-guide/build-and-run-graphs.md:34
+msgid "**Purpose:** Show how node search relates to the active canvas."
+msgstr "**目的：** 展示 Node 搜索与当前画布之间的关系。"
+
+#: ../../en/user-guide/build-and-run-graphs.md
+msgid "Capture specification"
+msgstr "截图说明"
+
+#: ../../en/user-guide/build-and-run-graphs.md:40
+msgid ""
+"**Capture:** Search the Nodes library for a stable built-in node while the target "
+"canvas remains visible."
+msgstr "**截图：** 在目标画布保持可见时，在 Nodes 库中搜索一个稳定的内置 Node。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:43
+msgid "**Final file:** `docs/en/_images/app/add-node-from-library.png`"
+msgstr "**最终文件：** `docs/en/_images/app/add-node-from-library.png`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:47
+msgid "Connect the training core"
+msgstr "连接训练核心"
+
+#: ../../en/user-guide/build-and-run-graphs.md:49
+msgid "Drag a Dataset, Model, Optimizer, Loss, and Trainer onto the canvas."
+msgstr "将 Dataset、Model、Optimizer、Loss 和 Trainer 拖到画布上。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:50
+msgid "Connect each source socket to the matching Trainer input."
+msgstr "将每个来源 socket 连接到对应的 Trainer 输入。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:51
+msgid "Add **Training viz** and connect the Trainer `loss` output to it."
+msgstr "添加 **Training viz**，并将 Trainer 的 `loss` 输出连接到它。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:52
+msgid "Set the Trainer to a short CPU run."
+msgstr "将 Trainer 设为一次短时 CPU 运行。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:53
+msgid "Read the graph from each required source into the Trainer before clicking **Train**."
+msgstr "点击 **Train** 前，请从每个必需来源沿图读取到 Trainer。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:56
+msgid ""
+"The connection handles are typed. A line that looks close to an input is not enough: "
+"the serialized edge must carry the intended `sourceHandle` and `targetHandle`. The "
+"backend rejects missing inputs and incompatible graph components before running a "
+"partial experiment."
+msgstr ""
+"连接 handle 带有类型。仅看似靠近输入的连线并不够：序列化边必须携带预期的 `sourceHandle` 和 "
+"`targetHandle`。后端会在运行不完整实验前拒绝缺少输入和不兼容的图组件。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:61
+msgid "Product screenshot pending · IMG-06"
+msgstr "产品截图待补 · IMG-06"
+
+#: ../../en/user-guide/build-and-run-graphs.md:64
+msgid "**Purpose:** Show the minimum stable training system as one connected graph."
+msgstr "**目的：** 将最小稳定训练系统展示为一张已连接的图。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:70
+msgid ""
+"**Capture:** Dataset, Model, Optimizer, Loss, and Trainer with readable socket "
+"connections and little empty canvas."
+msgstr "**截图：** 展示 Dataset、Model、Optimizer、Loss 和 Trainer，socket 连线清晰且画布留白较少。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:73
+msgid "**Final file:** `docs/en/_images/app/stable-training-core.png`"
+msgstr "**最终文件：** `docs/en/_images/app/stable-training-core.png`"
+
+#: ../../en/user-guide/build-and-run-graphs.md:77
+msgid "Configure one run"
+msgstr "配置一次运行"
+
+#: ../../en/user-guide/build-and-run-graphs.md:79
+msgid "Start with values that are cheap to inspect:"
+msgstr "先使用便于检查的值："
+
+#: ../../en/user-guide/build-and-run-graphs.md:81
+msgid "use steps rather than epochs until dataset size and batching are understood;"
+msgstr "在了解数据集大小和批处理前，使用 steps 而不是 epochs；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:82
+msgid "use CPU unless the graph specifically requires an accelerator;"
+msgstr "除非图明确需要加速器，否则使用 CPU；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:83
+msgid "choose a log frequency that yields enough points to diagnose the curve;"
+msgstr "选择能产生足够点数以诊断曲线的日志频率；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:84
+msgid "use `-1` batch size only when full-batch training is intentional;"
+msgstr "仅在有意进行全批次训练时使用 `-1` batch size；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:85
+msgid "leave gradient clipping at zero unless clipping is part of the method."
+msgstr "除非裁剪是方法的一部分，否则将梯度裁剪保持为零。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:87
+msgid ""
+"Click **Train**. During a local run the Trainer can request pause or abort. A "
+"completed run sends the model checkpoint, loss histories, and Observable histories "
+"through separate output channels."
+msgstr "点击 **Train**。本地运行期间 Trainer 可以请求暂停或中止。已完成的运行会通过独立输出通道发送模型检查点、损失历史和 Observable 历史。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:91
+msgid "Add a parameter series carefully"
+msgstr "谨慎添加参数序列"
+
+#: ../../en/user-guide/build-and-run-graphs.md:93
+msgid ""
+"Supported numeric controls accept comma-separated values. When more than one field "
+"has multiple values, Comfy Research builds the Cartesian product of the sweep axes. "
+"Two learning rates and three batch sizes therefore produce six runs, not three."
+msgstr ""
+"支持的数值控件接受逗号分隔的值。当多个字段具有多个值时，Comfy Research 会构建扫参轴的笛卡尔积。因此，两个学习率和三个 batch size "
+"会产生六次运行，而不是三次。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:98
+msgid ""
+"Begin with one varying axis and hold seeds, data, measurements, and training length "
+"fixed. Verify that its runs are interpretable before adding a second axis. The "
+"application caps a train series at 256 combinations, but a smaller scientifically "
+"justified sweep is usually better than using the technical maximum."
+msgstr ""
+"先从一个变化轴开始，并固定随机种子、数据、测量和训练长度。添加第二个轴前，先验证其运行结果可解释。应用将训练序列限制为 256 "
+"种组合，但较小且科学上合理的扫参通常优于使用技术上限。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:104
+msgid "Verify the result"
+msgstr "验证结果"
+
+#: ../../en/user-guide/build-and-run-graphs.md:106
+msgid "Before saving, confirm that:"
+msgstr "保存前，确认："
+
+#: ../../en/user-guide/build-and-run-graphs.md:108
+msgid "the Trainer reached its terminal completed state;"
+msgstr "Trainer 已达到终止完成状态；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:109
+msgid "Training viz received the expected number of logged points;"
+msgstr "Training viz 收到了预期数量的记录点；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:110
+msgid "every attached Observable produced the intended result channel;"
+msgstr "每个附加的 Observable 都产生了预期的结果通道；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:111
+msgid "the graph still shows the exact configuration that produced the result;"
+msgstr "图仍显示产生该结果的确切配置；"
+
+#: ../../en/user-guide/build-and-run-graphs.md:112
+msgid "every sweep axis and fixed control is identifiable."
+msgstr "每个扫参轴和固定控件都可识别。"
+
+#: ../../en/user-guide/build-and-run-graphs.md:114
+msgid ""
+"Next, decide which measurements belong in the graph in [Record "
+"Observables](observables.md)."
+msgstr "接下来，在[记录 Observable](observables.md)中决定哪些测量应包含在图内。"

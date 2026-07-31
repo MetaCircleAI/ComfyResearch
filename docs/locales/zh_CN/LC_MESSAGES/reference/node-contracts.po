@@ -1,0 +1,311 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/reference/node-contracts.md:7
+msgid "Reference"
+msgstr "参考"
+
+#: ../../en/reference/node-contracts.md:10
+msgid "Node contracts"
+msgstr "Node 契约"
+
+#: ../../en/reference/node-contracts.md:13
+msgid ""
+"Definition sources, runtime registration channels, generated artifacts, and "
+"validation commands for the in-repository Node API."
+msgstr "仓库内 Node API 的定义来源、运行时注册通道、生成产物和验证命令。"
+
+#: ../../en/reference/node-contracts.md:17
+msgid "Contract pipeline"
+msgstr "契约流水线"
+
+#: ../../en/reference/node-contracts.md:19
+msgid "A Node travels through four layers:"
+msgstr "一个 Node 会经过四个层："
+
+#: ../../en/reference/node-contracts.md:21
+msgid ""
+"A frozen `*Def` object declares its type, label, category, fields, capabilities, "
+"frontend component, and optional ports."
+msgstr "冻结的 `*Def` 对象声明其类型、标签、类别、字段、能力、前端组件和可选端口。"
+
+#: ../../en/reference/node-contracts.md:23
+msgid ""
+"A registry function records the definition and, when applicable, a runtime provider "
+"such as a model builder or Observable recorder."
+msgstr "注册函数记录定义，并在适用时记录运行时提供者，例如模型构建器或 Observable 记录器。"
+
+#: ../../en/reference/node-contracts.md:25
+msgid "`comfy_research/nodes/generate.py` produces backend and frontend contracts."
+msgstr "`comfy_research/nodes/generate.py` 生成后端和前端契约。"
+
+#: ../../en/reference/node-contracts.md:26
+msgid ""
+"The frontend uses generated specs to render the Node while the backend uses the "
+"registered provider when the graph executes."
+msgstr "前端使用生成的规范渲染 Node，图执行时后端使用已注册的提供者。"
+
+#: ../../en/reference/node-contracts.md:29
+msgid ""
+"Definitions under `comfy_research/nodes/definitions/` are discovered recursively. "
+"Adding a module under the correct package does not require a central import list."
+msgstr "会递归发现 `comfy_research/nodes/definitions/` 下的定义。在正确包下添加模块不需要维护集中导入列表。"
+
+#: ../../en/reference/node-contracts.md:33
+msgid "Node channels"
+msgstr "Node 通道"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Node kind"
+msgstr "Node 类型"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Definition"
+msgstr "定义"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Runtime registration"
+msgstr "运行时注册"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`DatasetDef` via `dataset_def(...)`"
+msgstr "通过 `dataset_def(...)` 定义的 `DatasetDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Optional `dataset_materializer_for(...)` and/or `dataset_preview_for(...)`"
+msgstr "可选的 `dataset_materializer_for(...)` 和/或 `dataset_preview_for(...)`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`ModelDef` via `model_def(...)`"
+msgstr "通过 `model_def(...)` 定义的 `ModelDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`model_builder_for(...)` for runnable full models"
+msgstr "用于可运行完整模型的 `model_builder_for(...)`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Loss"
+msgstr "损失"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`LossDef` via `loss_def(...)`"
+msgstr "通过 `loss_def(...)` 定义的 `LossDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`loss_criterion_for(...)` for primary criteria"
+msgstr "用于主损失函数的 `loss_criterion_for(...)`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`OptimizerDef` via `optimizer_def(...)`"
+msgstr "通过 `optimizer_def(...)` 定义的 `OptimizerDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`optimizer_builder_for(...)`"
+msgstr "`optimizer_builder_for(...)`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Trainer"
+msgstr "训练器"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`TrainerDef` via `trainer_def(...)`"
+msgstr "通过 `trainer_def(...)` 定义的 `TrainerDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Uses the Trainer preparation and execution pipeline"
+msgstr "使用 Trainer 准备和执行流水线"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Initialization"
+msgstr "初始化"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`InitializationDef` via `initialization_def(...)`"
+msgstr "通过 `initialization_def(...)` 定义的 `InitializationDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Applied by the Trainer runtime"
+msgstr "由 Trainer 运行时应用"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Observable"
+msgstr "Observable"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`ObservableDef` via `observable_def(...)`"
+msgstr "通过 `observable_def(...)` 定义的 `ObservableDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`recorder_for(...)` is required"
+msgstr "必须使用 `recorder_for(...)`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Frontend-only"
+msgstr "仅前端"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`FrontendNodeDef` via `frontend_node_def(...)`"
+msgstr "通过 `frontend_node_def(...)` 定义的 `FrontendNodeDef`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "No backend provider"
+msgstr "没有后端提供者"
+
+#: ../../en/reference/node-contracts.md:46
+msgid "Definition sources"
+msgstr "定义来源"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Source"
+msgstr "来源"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Responsibility"
+msgstr "职责"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`comfy_research/nodes/schema.py`"
+msgstr "`comfy_research/nodes/schema.py`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Definition dataclasses, field types, ports, frontend metadata, and Observable metadata"
+msgstr "定义数据类、字段类型、端口、前端元数据和 Observable 元数据"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`comfy_research/nodes/registry.py`"
+msgstr "`comfy_research/nodes/registry.py`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Provider decorators, discovery, uniqueness, and completeness validation"
+msgstr "提供者装饰器、发现、唯一性和完整性验证"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`comfy_research/nodes/definitions/`"
+msgstr "`comfy_research/nodes/definitions/`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid ""
+"Dataset, model, loss, optimizer, trainer, initialization, Observable, and frontend "
+"definitions"
+msgstr "数据集、模型、损失、优化器、训练器、初始化、Observable 和前端定义"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "`comfy_research/nodes/generate.py`"
+msgstr "`comfy_research/nodes/generate.py`"
+
+#: ../../en/reference/node-contracts.md:12
+msgid "Deterministic backend and frontend contract generation"
+msgstr "确定性的后端和前端契约生成"
+
+#: ../../en/reference/node-contracts.md:55
+msgid ""
+"Change a definition or generator when the contract changes. Do not edit generated "
+"files to introduce behavior."
+msgstr "契约变更时应修改定义或生成器。不要编辑生成文件来引入行为。"
+
+#: ../../en/reference/node-contracts.md:58
+msgid "Generated outputs"
+msgstr "生成输出"
+
+#: ../../en/reference/node-contracts.md:60
+msgid "The generator writes these main artifacts:"
+msgstr "生成器会写入以下主要产物："
+
+#: ../../en/reference/node-contracts.md:62
+msgid "`comfy_research/generated/node_manifest.json` for served node metadata;"
+msgstr "`comfy_research/generated/node_manifest.json`：供服务使用的节点元数据；"
+
+#: ../../en/reference/node-contracts.md:63
+msgid "`comfy_research/generated/node_kind.py` for accepted generated node kinds;"
+msgstr "`comfy_research/generated/node_kind.py`：可接受的生成节点类型；"
+
+#: ../../en/reference/node-contracts.md:64
+msgid "`comfy_research/generated/node_capabilities.py` for capability lookups;"
+msgstr "`comfy_research/generated/node_capabilities.py`：能力查询；"
+
+#: ../../en/reference/node-contracts.md:65
+msgid "`comfy_research/generated/node_params.py` for per-node parameter validation;"
+msgstr "`comfy_research/generated/node_params.py`：逐节点参数验证；"
+
+#: ../../en/reference/node-contracts.md:66
+msgid ""
+"`frontend/src/generated/generatedNodeSpecs.ts` for frontend defaults, fields, ports, "
+"categories, and sweep metadata."
+msgstr "`frontend/src/generated/generatedNodeSpecs.ts`：前端默认值、字段、端口、类别和扫参元数据。"
+
+#: ../../en/reference/node-contracts.md:69
+msgid ""
+"The Python graph schema validates a node's `data` with the generated parameter model "
+"for its type. The frontend build also checks generated metadata, so stale artifacts "
+"fail before a production bundle is accepted."
+msgstr "Python 图 schema 使用该类型生成的参数模型验证节点的 `data`。前端构建也会检查生成元数据，因此过期产物会在生产包被接受前失败。"
+
+#: ../../en/reference/node-contracts.md:73
+msgid "Generation and validation"
+msgstr "生成与验证"
+
+#: ../../en/reference/node-contracts.md:75
+msgid "Generate after changing definitions:"
+msgstr "修改定义后生成："
+
+#: ../../en/reference/node-contracts.md:81
+msgid "Verify that the checked-in output exactly matches current definitions:"
+msgstr "验证已提交的输出与当前定义完全一致："
+
+#: ../../en/reference/node-contracts.md:87
+msgid "Validate registry completeness directly:"
+msgstr "直接验证注册表完整性："
+
+#: ../../en/reference/node-contracts.md:93
+msgid ""
+"`npm --prefix frontend run build` runs the Node manifest check together with the "
+"other research-code and golden-contract verifiers."
+msgstr "`npm --prefix frontend run build` 会运行 Node manifest 检查，以及其他研究代码和 golden contract 验证器。"
+
+#: ../../en/reference/node-contracts.md:96
+msgid "Edit policy"
+msgstr "编辑策略"
+
+#: ../../en/reference/node-contracts.md:98
+msgid ""
+"Do not edit generated files by hand. A manual change can be overwritten on the next "
+"generation and can make the frontend, backend, and tests disagree about accepted "
+"fields or connections. Review both the source definition and the generated diff when "
+"changing a Node contract."
+msgstr "不要手动编辑生成文件。手动变更可能在下次生成时被覆盖，并使前端、后端和测试对可接受字段或连接产生分歧。修改 Node 契约时，应同时审查源定义和生成差异。"
+
+#: ../../en/reference/node-contracts.md:103
+msgid ""
+"For a complete definition workflow, see [Add a scalar Observable](../extend/add-"
+"observable.md)."
+msgstr "完整的定义工作流请参见[添加标量 Observable](../extend/add-observable.md)。"

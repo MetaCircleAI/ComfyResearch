@@ -1,0 +1,836 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-30 17:56+0800\n"
+"PO-Revision-Date: 2026-07-30 00:00+0800\n"
+"Last-Translator: Comfy Research Docs Team\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:7
+msgid "Loss Geometry and Parameter Symmetry · Phenomenon reproduction"
+msgstr "损失几何与参数对称性：现象复现"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:10
+msgid ""
+"NEURAL MECHANICS: SYMMETRY AND BROKEN CONSERVATION LAWS IN DEEP LEARNING "
+"DYNAMICS"
+msgstr ""
+"神经力学：深度学习动力学中的对称性与守恒律破缺"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:13
+msgid ""
+"Finite learning rates and weight decay break the conservation laws of "
+"gradient flow. A VGG-11 on CIFAR-10 traces the full spectrum of Eq. 19: "
+"monotonic growth, non-monotonic crossover, and monotonic decay of the weight"
+" norm."
+msgstr ""
+"有限学习率和权重衰减会破坏梯度流的守恒律。在 CIFAR-10 上训练的 VGG-11 展现了"
+"公式 19 所描述的完整权重范数变化谱：单调增长、非单调转变和单调衰减。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:23
+msgid "ZH"
+msgstr "浩然"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:28
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:36
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:38
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:43
+msgid ""
+"Neural network architectures embed continuous differentiable symmetries  --  "
+"translation (softmax), scale (batch normalization), and rescale (ReLU)  --  "
+"that impose geometric constraints on gradients and Hessians. Under gradient "
+"flow ($\\eta \\to 0$, $\\lambda = 0$), each symmetry gives rise to a strict "
+"conservation law. Finite learning rates and weight decay break these "
+"conservation laws, yielding exact integral expressions for the dynamics of "
+"the previously conserved quantities. This reproduction trains a VGG-11 on "
+"CIFAR-10 with SGD to verify the qualitative predictions of the scale "
+"symmetry dynamics (Eq. 19) across three weight decay regimes."
+msgstr ""
+"神经网络架构蕴含连续可微的对称性——平移（Softmax）、尺度（BatchNorm）和重缩放"
+"（ReLU）——这些对称性对梯度和 Hessian 施加几何约束。在梯度流（$\\eta \\to 0$、"
+"$\\lambda = 0$）下，每种对称性都会产生严格的守恒定律。有限学习率和权重衰减"
+"会破坏这些守恒律，并为原本守恒量的动力学导出精确的积分表达式。本复现实验使用 "
+"SGD 在 CIFAR-10 上训练 VGG-11，检验三种权重衰减设置下尺度对称性动力学"
+"（公式 19）的定性预测。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:54
+msgid ""
+"**Paper:** [Neural Mechanics: Symmetry and Broken Conservation Laws in Deep "
+"Learning Dynamics](https://arxiv.org/abs/2012.04728), Kunin, Sagastuy-Brena,"
+" Ganguli, Yamins & Tanaka, ICLR 2021 (arXiv:2012.04728)."
+msgstr ""
+"**论文：** [Neural Mechanics: Symmetry and Broken Conservation Laws in Deep "
+"Learning Dynamics](https://arxiv.org/abs/2012.04728)，Kunin、Sagastuy-Brena、"
+"Ganguli、Yamins 与 Tanaka，ICLR 2021（arXiv:2012.04728）。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:58
+msgid "**Template:** `Symmetry & Broken Conservation Laws (GPU)`"
+msgstr "**模板：** `Symmetry & Broken Conservation Laws (GPU)`"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:60
+msgid "**Template ID:** `symmetry-broken-conservation-laws`"
+msgstr "**模板 ID：** `symmetry-broken-conservation-laws`"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:62
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:64
+msgid ""
+"Kunin et al. (2021) showed that any continuous differentiable symmetry of "
+"the training loss imposes geometric constraints on gradients and Hessians, "
+"leading to an associated conservation law in the continuous-time limit of "
+"SGD (gradient flow), akin to Noether's theorem in physics. Finite learning "
+"rates and weight decay break these conservation laws, and the resulting "
+"dynamics can be described by exact integral expressions."
+msgstr ""
+"Kunin 等人（2021）指出，训练损失的任何连续可微对称性都会对梯度和 Hessian "
+"施加几何约束，并在 SGD 的连续时间极限（梯度流）中产生相应的守恒律，类似于"
+"物理学中的 Noether 定理。有限学习率和权重衰减会破坏这些守恒律，由此产生的动力学"
+"可由精确积分表达式刻画。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:71
+msgid "Three symmetries are identified in standard architectures:"
+msgstr "标准架构中可识别出三种对称性："
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Symmetry"
+msgstr "对称性"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Origin"
+msgstr "来源"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Conserved quantity (gradient flow)"
+msgstr "守恒量（梯度流下）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Broken dynamics"
+msgstr "破缺动力学"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Paper Eq."
+msgstr "论文公式"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Translation"
+msgstr "平移"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Softmax (classifier weights and bias)"
+msgstr "Softmax（分类器权重与偏置）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+#, python-brace-format
+msgid "$\\langle \\theta(t), \\mathbf{1}_A \\rangle$"
+msgstr "$\\langle \\theta(t), \\mathbf{1}_A \\rangle$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+#, python-brace-format
+msgid ""
+"$\\langle \\theta(t), \\mathbf{1}_A \\rangle = e^{-\\lambda t} \\langle "
+"\\theta(0), \\mathbf{1}_A \\rangle$"
+msgstr ""
+"$\\langle \\theta(t), \\mathbf{1}_A \\rangle = e^{-\\lambda t} \\langle "
+"\\theta(0), \\mathbf{1}_A \\rangle$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "(18)"
+msgstr "（18）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Scale"
+msgstr "尺度"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "BatchNorm ($\\gamma, \\beta$)"
+msgstr "BatchNorm（$\\gamma, \\beta$）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "$|\\theta_A(t)|^2$"
+msgstr "$|\\theta_A(t)|^2$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+#, python-brace-format
+msgid ""
+"$|\\theta_A(t)|^2 = e^{-2\\lambda t} |\\theta_A(0)|^2 + \\eta \\int_0^t "
+"e^{-2\\lambda(t-\\tau)} |g_A|^2 \\mathrm{d}\\tau$"
+msgstr ""
+"$|\\theta_A(t)|^2 = e^{-2\\lambda t} |\\theta_A(0)|^2 + \\eta \\int_0^t "
+"e^{-2\\lambda(t-\\tau)} |g_A|^2 \\mathrm{d}\\tau$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "(19)"
+msgstr "（19）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Rescale"
+msgstr "重缩放"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "ReLU-connected consecutive layers"
+msgstr "由 ReLU 连接的相邻层"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+#, python-brace-format
+msgid "$|\\theta_{A1}(t)|^2 - |\\theta_{A2}(t)|^2$"
+msgstr "$|\\theta_{A1}(t)|^2 - |\\theta_{A2}(t)|^2$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "same form with difference of gradient norms in the integral"
+msgstr "形式相同，但积分项为梯度范数之差"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "(20)"
+msgstr "（20）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:79
+msgid "The time derivative of Eq. 19,"
+msgstr "对公式 19 求时间导数，可得"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:81
+#, python-brace-format
+msgid ""
+"\n"
+"\\frac{d}{dt}\\|\\theta_A(t)\\|^2 = -2\\lambda \\|\\theta_A(t)\\|^2 + \\eta "
+"\\|g_A\\|^2,\n"
+msgstr ""
+"\n"
+"\\frac{d}{dt}\\|\\theta_A(t)\\|^2 = -2\\lambda \\|\\theta_A(t)\\|^2 + \\eta "
+"\\|g_A\\|^2,\n"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:85
+msgid ""
+"reveals a competition between two forces: a **centripetal effect** due to "
+"weight decay ($-2\\lambda \\|\\theta_A\\|^2$) and a **centrifugal effect** "
+"due to discretization ($\\eta \\|g_A\\|^2$). At $\\lambda = 0$, only the "
+"centrifugal term operates and the norm grows monotonically. At sufficiently "
+"large $\\lambda$, the centripetal term dominates and the norm decays. At "
+"intermediate $\\lambda$, the two terms trade dominance as the gradient norm "
+"evolves through training, producing non-monotonic dynamics."
+msgstr ""
+"这揭示了两种效应之间的竞争：权重衰减带来的**向心效应**"
+"（$-2\\lambda \\|\\theta_A\\|^2$）与离散化产生的**离心效应**"
+"（$\\eta \\|g_A\\|^2$）。当 $\\lambda = 0$ 时，只有离心项起作用，范数单调"
+"增长。当 $\\lambda$ 足够大时，向心项占主导，范数随之下降。当 $\\lambda$ "
+"处于中等范围时，随着训练过程中梯度范数的演化，两项的主导地位发生转换，从而产生"
+"非单调动力学。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:93
+msgid ""
+"This reproduction focuses on **scale symmetry** (Eq. 19) in the batch "
+"normalization layers of a VGG-11 model, tracking the global weight L2 norm "
+"$\\|\\theta(t)\\|$ as a proxy for the aggregate of all BN scale parameter "
+"norms. Three weight decay settings span the full spectrum: zero, "
+"intermediate, and strong."
+msgstr ""
+"本复现实验聚焦于 VGG-11 的 BatchNorm 层中的**尺度对称性**（公式 19），以全局"
+"权重 L2 范数 $\\|\\theta(t)\\|$ 近似表征所有 BN 尺度参数范数的总和。三种"
+"权重衰减设置覆盖完整范围：零、中等和较强。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:99
+msgid "Paper Experiment and Reproduction Boundary"
+msgstr "论文实验与复现边界"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Paper"
+msgstr "论文"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Current Comfy Research template"
+msgstr "当前 Comfy Research 模板"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Claim"
+msgstr "主张"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid ""
+"Finite learning rate and weight decay break the conservation laws of "
+"gradient flow; scale symmetry dynamics follow Eq. 19 with a competition "
+"between centripetal and centrifugal effects"
+msgstr ""
+"有限学习率和权重衰减会破坏梯度流的守恒律；尺度对称性动力学遵循公式 19，"
+"体现为向心效应与离心效应之间的竞争"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid ""
+"Same qualitative signature: monotonic growth ($\\lambda = 0$), non-monotonic"
+" ($\\lambda$ small), monotonic decay ($\\lambda$ large)"
+msgstr ""
+"相同的定性特征：单调增长（$\\lambda = 0$）、非单调变化（$\\lambda$ 较小）、"
+"单调衰减（$\\lambda$ 较大）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "VGG-16 with batch normalization, ~138M parameters"
+msgstr "带 BatchNorm 的 VGG-16，约 1.38 亿个参数"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "VGG-11 with batch normalization, ~9.7M parameters"
+msgstr "带 BatchNorm 的 VGG-11，约 970 万个参数"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Tiny ImageNet (200 classes, 64×64, 100k samples)"
+msgstr "Tiny ImageNet（200 类、64×64、10 万个样本）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "CIFAR-10 (10 classes, 32×32,"
+msgstr "CIFAR-10（10 类、32×32，"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "SGD, $\\eta = 0.1$, momentum 0, batch size 256"
+msgstr "SGD，$\\eta = 0.1$，动量为 0，批量大小为 256"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Same settings"
+msgstr "设置相同"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Weight decay"
+msgstr "权重衰减"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "$\\lambda \\in \\{0, 10^{-4}, 10^{-3}\\}$"
+msgstr "$\\lambda \\in \\{0, 10^{-4}, 10^{-3}\\}$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "$\\lambda \\in \\{0, 5\\times10^{-5}, 0.01\\}$"
+msgstr "$\\lambda \\in \\{0, 5\\times10^{-5}, 0.01\\}$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Training"
+msgstr "训练"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "100 epochs"
+msgstr "100 个 epoch"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "8000 steps (fixed step budget)"
+msgstr "8000 步（固定步数预算）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Observable"
+msgstr "observable"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Per-layer squared channel norms $|W_l|^2$ for specific conv layers"
+msgstr "指定卷积层中各层通道范数的平方 $|W_l|^2$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Global weight L2 norm (all BN layers aggregated) and gradient norm"
+msgstr "全局权重 L2 范数（汇总所有 BN 层）和梯度范数"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Device"
+msgstr "设备"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "(not specified)"
+msgstr "（未说明）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Remote GPU"
+msgstr "远程 GPU"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Runtime goal"
+msgstr "运行目的"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Empirical validation of Eq. 18-20 on large-scale models"
+msgstr "在大规模模型上对公式 18–20 进行实证验证"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Qualitative demonstration of the centripetal-centrifugal competition"
+msgstr "定性展示向心效应与离心效应之间的竞争"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:113
+msgid ""
+"This graph tests a **mechanism-level pattern**  --  the qualitative dependence "
+"of the weight norm trajectory on $\\lambda$  --  rather than a point-by-point "
+"match to the paper's Fig. 5. The use of global weight L2 norm (rather than "
+"per-BN-layer norms) and a smaller model/dataset means the curves are not "
+"directly comparable to the paper's, but the qualitative signatures of Eq. 19"
+" are preserved."
+msgstr ""
+"该计算图检验的是一种**机制层面的规律**——权重范数轨迹对 $\\lambda$ 的定性"
+"依赖，而非对论文图 5 的逐点复现。由于采用全局权重 L2 范数（而非各个 BN 层的"
+"范数）以及更小的模型和数据集，所得曲线不能与论文曲线直接比较，但仍保留了公式 19"
+"的定性特征。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:120
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Template setting"
+msgstr "模板设置"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "CIFAR-10 (32×32 RGB, 10 classes),"
+msgstr "CIFAR-10（32×32 RGB、10 类），"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid ""
+"VGG-11 CIFAR: 8 Conv2D layers each followed by BatchNorm2d + ReLU, with "
+"MaxPool after blocks 2/4/6/8; 3 FC layers (512→512→10); ~9.7M parameters"
+msgstr ""
+"VGG-11 CIFAR：8 个 Conv2D 层，每层后接 BatchNorm2d + ReLU；在第 2/4/6/8 个"
+"模块后使用 MaxPool；3 个全连接层（512→512→10）；约 970 万个参数"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Loss"
+msgstr "损失函数"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Cross-entropy (with implicit softmax → translation symmetry in classifier)"
+msgstr ""
+"交叉熵（隐含 Softmax → 分类器中的平移对称性）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "SGD, learning rate $\\eta = 0.1$, momentum 0, weight decay $\\lambda$ varied"
+msgstr ""
+"SGD，学习率 $\\eta = 0.1$，动量为 0，改变权重衰减 $\\lambda$ 的取值"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Batch size"
+msgstr "批量大小"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "256"
+msgstr "256"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "8000 steps, log every"
+msgstr "8000 步，按设定间隔记录"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Observables"
+msgstr "observable"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid ""
+"Global weight L2 norm $|\\theta(t)|$ (`observable_weight_l2`, "
+"`normAggregation=global`); Global gradient norm (`observable_gradient_norm`,"
+" normalized)"
+msgstr ""
+"全局权重 L2 范数 $|\\theta(t)|$（`observable_weight_l2`，"
+"`normAggregation=global`）；全局梯度范数（`observable_gradient_norm`，"
+"已归一化）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+msgid "Experiment groups"
+msgstr "实验组"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:40
+#, python-brace-format
+msgid ""
+"**A**: $\\eta = 0.1$, $\\lambda = 0$ | **B**: $\\eta = 0.1$, $\\lambda = "
+"5\\times10^{-5}$ | **C**: $\\eta = 0.1$, $\\lambda = 0.01$"
+msgstr ""
+"**A**：$\\eta = 0.1$，$\\lambda = 0$ | **B**：$\\eta = 0.1$，$\\lambda = "
+"5\\times10^{-5}$ | **C**：$\\eta = 0.1$，$\\lambda = 0.01$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:134
+#, python-brace-format
+msgid ""
+"The global weight L2 norm $\\|\\theta(t)\\| = \\sqrt{\\sum_p p^2}$ "
+"aggregates over all trainable parameters (convolution kernels, BN $\\gamma$ "
+"and $\\beta$, FC weights and biases). Since all BN layers share the same "
+"qualitative Eq. 19 dynamics, the global norm inherits the same qualitative "
+"dependence on $\\eta$ and $\\lambda$. The gradient norm serves as a "
+"diagnostic for the centrifugal driving term: when $\\|g\\|^2$ is large, the "
+"integral term in Eq. 19 accumulates rapidly; when it decays, the centripetal"
+" term may overtake the centrifugal term if $\\lambda > 0$."
+msgstr ""
+"全局权重 L2 范数 $\\|\\theta(t)\\| = \\sqrt{\\sum_p p^2}$ 聚合了所有可训练"
+"参数（卷积核、BN 的 $\\gamma$ 和 $\\beta$、全连接层权重与偏置）。由于所有 "
+"BN 层都遵循公式 19 所描述的相同定性动力学，全局范数对 $\\eta$ 和 $\\lambda$ "
+"也具有相同的定性依赖。梯度范数可用于诊断离心驱动项：当 $\\|g\\|^2$ 较大时，"
+"公式 19 中的积分项快速累积；当它衰减时，若 $\\lambda > 0$，向心项可能超过"
+"离心项。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:143
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:145
+msgid ""
+"Open **Templates** and load **`Symmetry & Broken Conservation Laws (GPU)`** "
+"(or import the workspace JSON)."
+msgstr ""
+"打开 **Templates**，加载 **`Symmetry & Broken Conservation Laws "
+"(GPU)`**（或导入工作区 JSON）。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:147
+msgid ""
+"Confirm the graph: `cifar10_dataset` → `trainer`, `vgg11_cifar_model` → "
+"`trainer`, `cross_entropy_loss` → `trainer`, `sgd_optimizer` → `trainer`."
+msgstr ""
+"确认计算图连接：`cifar10_dataset` → `trainer`、`vgg11_cifar_model` → "
+"`trainer`、`cross_entropy_loss` → `trainer`、`sgd_optimizer` → `trainer`。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:149
+msgid "Verify Trainer settings: GPU, 8000 steps, batch size 256, momentum 0."
+msgstr "确认 Trainer 设置：GPU、8000 步、批量大小 256、动量为 0。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:150
+msgid ""
+"Verify observables: `observable_weight_l2` (global) and "
+"`observable_gradient_norm` (normalized) are registered in the Trainer's "
+"observables panel."
+msgstr ""
+"确认 Trainer 的 observables 面板中已注册 `observable_weight_l2`（全局）"
+"和 `observable_gradient_norm`（已归一化）。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:153
+msgid "**Experiment A**: set SGD `weightDecay = 0`. Click **Train**."
+msgstr "**实验 A**：将 SGD 的 `weightDecay` 设为 `0`。点击 **Train**。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:154
+msgid "**Experiment B**: set SGD `weightDecay = 5e-5`. Click **Train**."
+msgstr "**实验 B**：将 SGD 的 `weightDecay` 设为 `5e-5`。点击 **Train**。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:155
+msgid "**Experiment C**: set SGD `weightDecay = 0.01`. Click **Train**."
+msgstr "**实验 C**：将 SGD 的 `weightDecay` 设为 `0.01`。点击 **Train**。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:156
+msgid ""
+"Compare the three runs in the Observables panel to see the full "
+"centripetal-centrifugal spectrum."
+msgstr ""
+"在 Observables 面板中比较三次运行，即可看到完整的向心—离心变化谱。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:159
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:161
+msgid ""
+"The global weight L2 norm $\\|\\theta(t)\\|$ exhibits the three qualitative "
+"regimes predicted by Eq. 19:"
+msgstr ""
+"全局权重 L2 范数 $\\|\\theta(t)\\|$ 呈现公式 19 预测的三种定性区间："
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:164
+msgid "Experiment A: $\\lambda = 0$ (centrifugal effect only)"
+msgstr "实验 A：$\\lambda = 0$（仅有离心效应）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:166
+#, python-brace-format
+msgid ""
+"The weight L2 norm **rises monotonically** throughout training. With no "
+"weight decay, the first term of Eq. 19 stays constant at "
+"$\\|\\theta(0)\\|^2$ and the integral term $\\eta \\int \\|g\\|^2 "
+"\\mathrm{d}\\tau$ accumulates monotonically, driving the norm upward. The "
+"gradient norm peaks early (high initial loss) then decays as training "
+"converges, but even the reduced late-training gradient contributes positive "
+"accumulation to the integral  --  there is no countervailing force."
+msgstr ""
+"权重 L2 范数在整个训练过程中**单调上升**。在没有权重衰减时，公式 19 的第一项"
+"保持为常量 $\\|\\theta(0)\\|^2$，积分项 $\\eta \\int \\|g\\|^2 "
+"\\mathrm{d}\\tau$ 则单调累积，推动范数上升。梯度范数在早期达到峰值（初始"
+"损失较高），随后随着训练收敛而减小；但即使在训练后期，较小的梯度仍会为积分项"
+"带来正向累积——没有任何相反作用与之抗衡。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:174
+msgid ""
+"Comfy Research graph for Experiment A: VGG-11 on CIFAR-10, η = 0.1, λ = 0. "
+"Weight L2 norm rises monotonically."
+msgstr ""
+"实验 A 的 Comfy Research 计算图：在 CIFAR-10 上训练 VGG-11，η = 0.1，"
+"λ = 0。权重 L2 范数单调上升。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:179
+#, python-brace-format
+msgid "Experiment B: $\\lambda = 5 \\times 10^{-5}$ (competitive regime)"
+msgstr "实验 B：$\\lambda = 5 \\times 10^{-5}$（竞争区间）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:181
+msgid ""
+"The weight L2 norm **rises then falls**  --  a non-monotonic trajectory. Early "
+"in training, the gradient norm is large and the centrifugal term $\\eta "
+"\\|g\\|^2$ exceeds the centripetal term $2\\lambda \\|\\theta\\|^2$, so the "
+"norm grows. As training converges and $\\|g\\|^2$ decays, the centripetal "
+"term gradually overtakes the centrifugal term, and the norm begins to "
+"decrease. The peak marks the crossover where $2\\lambda \\|\\theta\\|^2 = "
+"\\eta \\|g\\|^2$. This is the most direct qualitative signature of the "
+"competition described by Eq. 19."
+msgstr ""
+"权重 L2 范数**先升后降**，形成非单调轨迹。训练早期，梯度范数较大，离心项 "
+"$\\eta \\|g\\|^2$ 超过向心项 $2\\lambda \\|\\theta\\|^2$，因此范数增长。"
+"随着训练收敛、$\\|g\\|^2$ 衰减，向心项逐渐超过离心项，范数开始下降。峰值"
+"对应 $2\\lambda \\|\\theta\\|^2 = \\eta \\|g\\|^2$ 的交叉点。这是公式 "
+"19 所描述竞争关系最直接的定性特征。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:189
+msgid ""
+"Comfy Research graph for Experiment B: VGG-11 on CIFAR-10, η = 0.1, λ = "
+"5×10⁻⁵. Weight L2 norm rises then falls  --  non-monotonic dynamics."
+msgstr ""
+"实验 B 的 Comfy Research 计算图：在 CIFAR-10 上训练 VGG-11，η = 0.1，"
+"λ = 5×10⁻⁵。权重 L2 范数先升后降，呈现非单调动力学。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:194
+msgid "Experiment C: $\\lambda = 0.01$ (centripetal effect dominant)"
+msgstr "实验 C：$\\lambda = 0.01$（向心效应占主导）"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:196
+#, python-brace-format
+msgid ""
+"The weight L2 norm **falls monotonically**. The exponential decay factor "
+"$e^{-2\\lambda t}$ in Eq. 19 suppresses both the memory term and the "
+"integral term. With $\\lambda = 0.01$, the centripetal effect dominates from"
+" the start  --  the decay rate outstrips any accumulation from the centrifugal "
+"term."
+msgstr ""
+"权重 L2 范数**单调下降**。公式 19 中的指数衰减因子 $e^{-2\\lambda t}$ "
+"同时抑制记忆项和积分项。当 $\\lambda = 0.01$ 时，向心效应从一开始就占据"
+"主导——衰减速率超过离心项带来的任何累积。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid ""
+"Comfy Research graph for Experiment C: VGG-11 on CIFAR-10, η = 0.1, λ = "
+"0.01. Weight L2 norm falls monotonically."
+msgstr ""
+"实验 C 的 Comfy Research 计算图：在 CIFAR-10 上训练 VGG-11，η = 0.1，"
+"λ = 0.01。权重 L2 范数单调下降。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:206
+msgid "Summary"
+msgstr "小结"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Experiment"
+msgstr "实验"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "$\\eta$"
+msgstr "$\\eta$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "$\\lambda$"
+msgstr "$\\lambda$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "$|\\theta(t)|$ behavior"
+msgstr "$|\\theta(t)|$ 的变化"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Dominant effect"
+msgstr "主导效应"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "A"
+msgstr "实验 A"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "0.1"
+msgstr "0.1"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "0"
+msgstr "0"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Monotonic rise"
+msgstr "单调上升"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Centrifugal only"
+msgstr "仅有离心效应"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "B"
+msgstr "实验 B"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+#, python-brace-format
+msgid "$5\\times 10^{-5}$"
+msgstr "$5\\times 10^{-5}$"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Rise then fall"
+msgstr "先升后降"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Crossover: centrifugal → centripetal"
+msgstr "转折：离心 → 向心"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "C"
+msgstr "实验 C"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "0.01"
+msgstr "0.01"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Monotonic fall"
+msgstr "单调下降"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:201
+msgid "Centripetal dominant"
+msgstr "向心效应占主导"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:214
+msgid "Interpretation"
+msgstr "结果解读"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:216
+msgid ""
+"The three experiments span the full qualitative spectrum predicted by the "
+"scale symmetry dynamics (Eq. 19):"
+msgstr ""
+"三个实验覆盖了尺度对称性动力学（公式 19）所预测的完整定性行为谱："
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:219
+msgid ""
+"**Experiment A** ($\\lambda = 0$): finite learning rate alone breaks the "
+"conservation law. Under gradient flow $\\|\\theta_A\\|^2$ would be "
+"conserved, but discrete updates at finite $\\eta$ introduce a centrifugal "
+"effect that pushes the norm monotonically upward."
+msgstr ""
+"**实验 A**（$\\lambda = 0$）：仅有限学习率就会打破守恒定律。在梯度流下，"
+"$\\|\\theta_A\\|^2$ 本应守恒，但有限 $\\eta$ 下的离散更新引入离心效应，"
+"推动范数单调上升。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:223
+#, python-brace-format
+msgid ""
+"**Experiment B** ($\\lambda = 5 \\times 10^{-5}$): early in training, large "
+"gradients drive the centrifugal term to dominate; later, as gradients "
+"shrink, the centripetal term overtakes it. The crossover where the norm "
+"peaks is the dynamic balance $2\\lambda \\|\\theta\\|^2 = \\eta \\|g\\|^2$."
+msgstr ""
+"**实验 B**（$\\lambda = 5 \\times 10^{-5}$）：训练早期，大梯度使离心项"
+"占据主导；后期随着梯度减小，向心项反超。范数达到峰值的交叉点即动力学平衡点 "
+"$2\\lambda \\|\\theta\\|^2 = \\eta \\|g\\|^2$。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:227
+msgid ""
+"**Experiment C** ($\\lambda = 0.01$): weight decay dominates the dynamics "
+"from the outset, pulling the norm down despite the centrifugal push."
+msgstr ""
+"**实验 C**（$\\lambda = 0.01$）：权重衰减从一开始就主导动力学；尽管存在"
+"离心作用，范数仍被拉低。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:230
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:232
+msgid ""
+"The **global weight L2 norm** aggregates all parameters  --  convolution "
+"kernels, BN $\\gamma$/$\\beta$, and FC weights  --  not solely the BN scale "
+"parameters that define the scale symmetry group. Each BN layer obeys Eq. 19 "
+"independently; the global norm is a superposition and cannot be directly "
+"compared to the paper's per-layer curves."
+msgstr ""
+"**全局权重 L2 范数**汇总了所有参数——卷积核、BN 的 $\\gamma$/$\\beta$ "
+"以及全连接层权重——而不只是定义尺度对称群的 BN 尺度参数。每个 BN 层独立"
+"遵循公式 19；全局范数是这些量的叠加，无法与论文中的逐层曲线直接比较。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:237
+msgid ""
+"The **gradient norm** measures the full gradient across all parameters, not "
+"$\\|g_A\\|^2$ for a specific symmetry group. It serves as a qualitative "
+"proxy for the centrifugal driving term but cannot be used to quantitatively "
+"verify the integral in Eq. 19."
+msgstr ""
+"**梯度范数**测量所有参数的完整梯度，而不是特定对称群的 $\\|g_A\\|^2$。它可"
+"作为离心驱动项的定性替代指标，但不能用于定量验证公式 19 中的积分项。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:241
+#, python-brace-format
+msgid ""
+"This experiment only probes **scale symmetry** (Eq. 19). Translation "
+"symmetry (Eq. 18) and rescale symmetry (Eq. 20) are not directly measured  --  "
+"translation because the `statistics` node in Comfy Research lacks a sum "
+"operation for computing $\\langle \\theta, \\mathbf{1}_A \\rangle$, and "
+"rescale because `statistics2` does not operate as a training-step "
+"observable."
+msgstr ""
+"本实验只探测**尺度对称性**（公式 19），并未直接测量平移对称性（公式 18）和"
+"重缩放对称性（公式 20）。前者是因为 Comfy Research 的 `statistics` 节点缺少"
+"用于计算 $\\langle \\theta, \\mathbf{1}_A \\rangle$ 的求和操作；后者是因为 "
+"`statistics2` 不能作为逐训练步 observable 运行。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:246
+msgid ""
+"The model (VGG-11, ~9.7M parameters) and dataset (CIFAR-10) are smaller than"
+" the paper's VGG-16 + Tiny ImageNet setup, though the symmetry and its "
+"dynamic consequences are architectural properties that do not depend on "
+"scale."
+msgstr ""
+"本实验使用的模型（VGG-11，约 970 万个参数）和数据集（CIFAR-10）小于论文中的 "
+"VGG-16 + Tiny ImageNet 配置。不过，对称性及其动力学后果属于架构属性，并不依赖"
+"规模。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:250
+msgid ""
+"The three $\\lambda$ values were chosen for clear qualitative separation "
+"rather than to match the paper's specific settings."
+msgstr ""
+"这三个 $\\lambda$ 值旨在清晰区分定性行为，并非为匹配论文中的具体设置而选取。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:252
+msgid ""
+"Momentum and stochastic gradient noise  --  both modeled in the paper's full "
+"framework  --  are not explored here."
+msgstr ""
+"本实验未探索动量和随机梯度噪声，尽管论文的完整框架对两者均有建模。"
+
+#: ../../en/examples/reproductions/Neural_Mechanics.md:255
+msgid ""
+"This result should be read as **a fast qualitative demonstration** of how "
+"finite learning rate and weight decay break the scale symmetry conservation "
+"law, producing the centripetal-centrifugal competition described by Eq. 19."
+msgstr ""
+"应将该结果视为一次**快速的定性演示**：它展示了有限学习率和权重衰减如何破坏"
+"尺度对称性的守恒律，并产生公式 19 所描述的向心—离心竞争。"

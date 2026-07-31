@@ -1,0 +1,262 @@
+{
+  "id": "edge-of-stability-cpu",
+  "name": "Edge of Stability (CPU)",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "s23-ds",
+        "type": "linear_dataset",
+        "position": {
+          "x": 40.0,
+          "y": 40.0
+        },
+        "data": {
+          "inputDim": 10,
+          "outputDim": 1,
+          "trainSize": 80,
+          "testSize": 0,
+          "noiseLevel": 0.1,
+          "seed": 0,
+          "inputDistribution": "standard_normal",
+          "outputDistribution": "additive_gaussian",
+          "samplingMode": "fixed",
+          "instanceTitle": "Dataset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-model",
+        "type": "mlp_model",
+        "position": {
+          "x": 40.0,
+          "y": 160.0
+        },
+        "data": {
+          "inputDim": 10,
+          "outputDim": 1,
+          "depth": 2,
+          "width": 24,
+          "activation": "relu",
+          "seed": 0,
+          "instanceTitle": "MLP"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-loss",
+        "type": "mse_loss",
+        "position": {
+          "x": 400.0,
+          "y": 320.0
+        },
+        "data": {
+          "lossScale": 1,
+          "lossMaskContextLength": 1,
+          "lossMaskMode": "all",
+          "lossMaskCustom": "",
+          "instanceTitle": "MSE"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-opt",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 40.0,
+          "y": 320.0
+        },
+        "data": {
+          "learningRate": 0.2,
+          "momentum": 0,
+          "weightDecay": 0,
+          "instanceTitle": "SGD"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-tr",
+        "type": "trainer",
+        "position": {
+          "x": 720.0,
+          "y": 160.0
+        },
+        "data": {
+          "trainingSteps": 80,
+          "logFrequency": 1,
+          "computeDevice": "cpu",
+          "batchSize": -1,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Trainer"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-tviz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1020.0,
+          "y": 160.0
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "instanceTitle": "Training viz"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-obs",
+        "type": "observable_hessian_eigenvalues",
+        "position": {
+          "x": 660.0,
+          "y": 480.0
+        },
+        "data": {
+          "topK": 2,
+          "order": "descending",
+          "instanceTitle": "Hessian λ₁, λ₂"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-oviz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1020.0,
+          "y": 480.0
+        },
+        "data": {
+          "pairedObservableId": "s23-obs",
+          "pairedTrainerId": "s23-tr",
+          "vizVariant": "hessian_eigenvalues",
+          "topK": 2,
+          "order": "descending",
+          "sharpnessThreshold": 10,
+          "instanceTitle": "Hessian viz"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-hyp",
+        "type": "hypothesis",
+        "position": {
+          "x": 40.0,
+          "y": 560.0
+        },
+        "data": {
+          "text": "Qualitative EoS demo: with full-batch GD and η=0.2, λ₁ reaches and fluctuates around 2/η = 10 while λ₂ remains stable; loss is briefly non-monotonic but falls overall.",
+          "instanceTitle": "Hypothesis"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "s23-cmt",
+        "type": "comment",
+        "position": {
+          "x": 40.0,
+          "y": 680.0
+        },
+        "data": {
+          "text": "CPU qualitative demo, not a numeric reproduction: P=889, full-batch η=0.2, 2/η=10. Inspect λ₁/λ₂ and the dashed cutoff. Damian et al. (2023), arXiv:2209.15594.",
+          "instanceTitle": "Comment"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-s23-ds-tr",
+        "source": "s23-ds",
+        "target": "s23-tr",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-s23-md-tr",
+        "source": "s23-model",
+        "target": "s23-tr",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-s23-ls-tr",
+        "source": "s23-loss",
+        "target": "s23-tr",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-s23-op-tr",
+        "source": "s23-opt",
+        "target": "s23-tr",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-s23-tr-tviz",
+        "source": "s23-tr",
+        "target": "s23-tviz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-s23-obs-tr",
+        "source": "s23-obs",
+        "target": "s23-tr",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-s23-tr-oviz",
+        "source": "s23-tr",
+        "target": "s23-oviz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 0.0,
+      "y": 0.0,
+      "zoom": 0.75
+    }
+  },
+  "savedAt": 1782657257294.0,
+  "libraryOrigin": null
+}

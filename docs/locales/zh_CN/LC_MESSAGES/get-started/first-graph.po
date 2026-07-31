@@ -1,0 +1,300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 19:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/get-started/first-graph.md:7
+msgid "Get Started"
+msgstr "快速开始"
+
+#: ../../en/get-started/first-graph.md:10
+msgid "Run your first graph"
+msgstr "运行第一个图"
+
+#: ../../en/get-started/first-graph.md:13
+msgid ""
+"Load a complete experiment, run it on CPU, verify the recorded result, and "
+"change one variable without rewriting a training script."
+msgstr "加载完整实验，在 CPU 上运行，验证记录结果，并在不重写训练脚本的情况下修改一个变量。"
+
+#: ../../en/get-started/first-graph.md:17
+msgid "Before you begin"
+msgstr "开始前准备"
+
+#: ../../en/get-started/first-graph.md:19
+msgid ""
+"Complete [Install and run](index.md), keep the backend running, and confirm "
+"`http://127.0.0.1:8042/api/health` returns `\"ok\": true`."
+msgstr ""
+"完成[安装并运行](index.md)，保持后端运行，并确认 `http://127.0.0.1:8042/api/health` 返回 "
+"`\"ok\": true`。"
+
+#: ../../en/get-started/first-graph.md:22
+msgid ""
+"This tutorial uses the bundled `Edge of Stability (CPU)` template. It "
+"contains a synthetic linear dataset, an MLP, MSE loss, SGD, a Trainer, and "
+"an Observable. The run is small enough for CPU and does not download a "
+"dataset."
+msgstr ""
+"本教程使用内置的 `Edge of Stability (CPU)` 模板，其中包含合成线性数据集、MLP、MSE loss、SGD、Trainer 和"
+" Observable。该实验规模足够小，可在 CPU 上运行，并且不需要下载数据集。"
+
+#: ../../en/get-started/first-graph.md:26
+msgid "1. Load the template"
+msgstr "第一步：加载实验模板"
+
+#: ../../en/get-started/first-graph.md:28
+msgid "Select **Templates** in the left rail."
+msgstr "在左侧栏选择 **Templates**。"
+
+#: ../../en/get-started/first-graph.md:29
+msgid "Open **Edge of Stability (CPU)**."
+msgstr "打开 **Edge of Stability (CPU)**。"
+
+#: ../../en/get-started/first-graph.md:30
+msgid "Wait for its project and saved graph to appear on the canvas."
+msgstr "等待其项目和已保存图出现在画布中。"
+
+#: ../../en/get-started/first-graph.md:32
+msgid "Product screenshot pending · IMG-02"
+msgstr "产品截图待补 · IMG-02"
+
+#: ../../en/get-started/first-graph.md:35
+msgid "**Purpose:** Show where the first-run template is selected."
+msgstr "**目的：** 展示首次运行时在哪里选择模板。"
+
+#: ../../en/get-started/first-graph.md
+msgid "Capture specification"
+msgstr "截图说明"
+
+#: ../../en/get-started/first-graph.md:41
+msgid ""
+"**Capture:** Templates view with `Edge of Stability (CPU)` selected in a "
+"clean demo project."
+msgstr "**Capture：** 在干净的演示项目中打开 Templates 视图，并选中 `Edge of Stability (CPU)`。"
+
+#: ../../en/get-started/first-graph.md:43
+msgid "**Final file:** `docs/en/_images/app/first-graph-template.png`"
+msgstr "**最终文件：** `docs/en/_images/app/first-graph-template.png`"
+
+#: ../../en/get-started/first-graph.md:47
+msgid "2. Read the graph before running it"
+msgstr "第二步：运行前先查看计算图"
+
+#: ../../en/get-started/first-graph.md:49
+msgid ""
+"Find the **Trainer** node and confirm that **compute device** is **CPU**. "
+"Its Dataset, MLP, MSE, and SGD inputs should already be connected. The graph"
+" itself is the executable specification: node fields become parameters and "
+"edges tell the backend which values satisfy each Trainer input."
+msgstr ""
+"找到 **Trainer** Node，并确认 **compute device** 为 **CPU**。其 Dataset、MLP、MSE 和 SGD"
+" 输入应已连接。图本身就是可执行规格：Node 字段会成为参数，边会告知后端哪些值满足每个 Trainer 输入。"
+
+#: ../../en/get-started/first-graph.md:54
+msgid ""
+"The template is configured for 80 steps. It records every step so the edge-"
+"of-stability dynamics stay visible; note its `trainingSteps`, "
+"`logFrequency`, and `batchSize` values before changing anything."
+msgstr ""
+"该模板配置为运行 80 步，并记录每一步，以便清楚展示稳定性边缘动态。在修改任何设置之前，请先记下 "
+"`trainingSteps`、`logFrequency` 和 `batchSize` 的值。"
+
+#: ../../en/get-started/first-graph.md:58
+msgid "Product screenshot pending · IMG-03"
+msgstr "产品截图待补 · IMG-03"
+
+#: ../../en/get-started/first-graph.md:61
+msgid "**Purpose:** Make the minimum valid Trainer wiring and CPU setting visible."
+msgstr "**目的：** 清楚展示最小有效的 Trainer 连线和 CPU 设置。"
+
+#: ../../en/get-started/first-graph.md:67
+msgid ""
+"**Capture:** Loaded graph with the Trainer selected, its inputs connected, "
+"and CPU selected."
+msgstr "**截图：** 展示已加载的图，选中 Trainer、其输入已连接并选择 CPU。"
+
+#: ../../en/get-started/first-graph.md:70
+msgid "**Final file:** `docs/en/_images/app/first-graph-trainer.png`"
+msgstr "**最终文件：** `docs/en/_images/app/first-graph-trainer.png`"
+
+#: ../../en/get-started/first-graph.md:74
+msgid "3. Run and inspect the result"
+msgstr "第三步：运行并查看结果"
+
+#: ../../en/get-started/first-graph.md:76
+msgid "Click **Train** in the Trainer header."
+msgstr "在 Trainer 标题栏中点击 **Train**。"
+
+#: ../../en/get-started/first-graph.md:77
+msgid "Watch the Trainer progress state while the backend executes the graph."
+msgstr "后端执行图时，观察 Trainer 进度状态。"
+
+#: ../../en/get-started/first-graph.md:78
+msgid ""
+"When the run completes, inspect **Training viz** and the paired Observable "
+"visualization."
+msgstr "运行完成后，检查 **Training viz** 和配套的 Observable 可视化。"
+
+#: ../../en/get-started/first-graph.md:80
+msgid "Check that the recorded loss has a history rather than a single value."
+msgstr "确认记录的损失具有历史，而不是单个值。"
+
+#: ../../en/get-started/first-graph.md:82
+msgid ""
+"This is a qualitative CPU demonstration of the edge-of-stability (EoS) "
+"result in [Damian, Nichani, and Lee "
+"(2023)](https://arxiv.org/abs/2209.15594), not a numerical reproduction of "
+"its CIFAR-10 experiments. The Hessian visualization uses its dashed `2/η = "
+"10` line as the stability cutoff. In a successful run:"
+msgstr ""
+"这是对 [Damian、Nichani 和 "
+"Lee（2023）](https://arxiv.org/abs/2209.15594)稳定性边缘（EoS）结果的定性 CPU 演示，并非对其 "
+"CIFAR-10 实验的数值复现。Hessian 可视化使用虚线 `2/η = 10` 作为稳定性阈值。成功运行时："
+
+#: ../../en/get-started/first-graph.md:87
+msgid "`λ₁` rises to the cutoff, briefly overshoots it, then fluctuates around it;"
+msgstr "`λ₁` 上升到阈值，短暂超过阈值，随后在阈值附近波动；"
+
+#: ../../en/get-started/first-graph.md:88
+msgid ""
+"`λ₂` remains well below the cutoff, so the visible instability is confined "
+"to the top direction; and"
+msgstr "`λ₂` 始终显著低于阈值，因此可见的不稳定性仅限于最大特征值方向；并且"
+
+#: ../../en/get-started/first-graph.md:90
+msgid "the loss can rise temporarily after the cutoff, but falls overall."
+msgstr "loss 在越过阈值后可能暂时上升，但总体仍呈下降趋势。"
+
+#: ../../en/get-started/first-graph.md:92
+msgid ""
+"The Hessian Observable demonstrates that measurements are graph components. "
+"It records at the Trainer's logging cadence and does not replace the loss "
+"being optimized. Remove it later when a faster loss-only smoke test is more "
+"useful."
+msgstr ""
+"Hessian Observable 表明测量也是图组件。它按 Trainer 的记录节奏采样，不会替代正在优化的损失。若更快的仅损失 smoke "
+"test 更有用，可稍后移除它。"
+
+#: ../../en/get-started/first-graph.md:97
+msgid "Product screenshot pending · IMG-04"
+msgstr "产品截图待补 · IMG-04"
+
+#: ../../en/get-started/first-graph.md:100
+msgid "**Purpose:** Give the tutorial an unmistakable visual success state."
+msgstr "**目的：** 为本教程提供明确无误的视觉成功状态。"
+
+#: ../../en/get-started/first-graph.md:106
+msgid ""
+"**Capture:** Completed Trainer state with a loss history and one Observable "
+"visualization visible."
+msgstr "**截图：** 展示已完成的 Trainer 状态、损失历史和一个可见的 Observable 可视化。"
+
+#: ../../en/get-started/first-graph.md:109
+msgid "**Final file:** `docs/en/_images/app/first-graph-results.png`"
+msgstr "**最终文件：** `docs/en/_images/app/first-graph-results.png`"
+
+#: ../../en/get-started/first-graph.md:113
+msgid "Success checkpoints"
+msgstr "成功检查点"
+
+#: ../../en/get-started/first-graph.md:115
+msgid "The first run is complete when all of these are true:"
+msgstr "满足以下所有条件时，首次运行即完成："
+
+#: ../../en/get-started/first-graph.md:117
+msgid "the Trainer reaches the end of its 80 steps without an error state;"
+msgstr "Trainer 无错误地完成全部 80 步；"
+
+#: ../../en/get-started/first-graph.md:118
+msgid "Training viz contains a loss history;"
+msgstr "Training viz 包含损失历史；"
+
+#: ../../en/get-started/first-graph.md:119
+msgid ""
+"the paired Observable visualization contains `λ₁` and `λ₂`, plus its `2/η = "
+"10` reference line;"
+msgstr "配套的 Observable 可视化包含 `λ₁`、`λ₂` 以及 `2/η = 10` 参考线；"
+
+#: ../../en/get-started/first-graph.md:121
+msgid "the graph is still editable after the run."
+msgstr "运行后图仍可编辑。"
+
+#: ../../en/get-started/first-graph.md:123
+msgid ""
+"The qualitative relationship is the scientific checkpoint; exact crossing "
+"steps and amplitudes are not universal pass criteria because EoS is "
+"sensitive to numerical perturbations. The paper uses a substantially larger "
+"setup and higher precision after instability, whereas this graph is "
+"deliberately small enough for local CPU execution."
+msgstr ""
+"这里的科学检查点是定性关系。由于 EoS "
+"对数值扰动敏感，越过阈值的确切步数和振幅并不是通用的通过标准。论文采用了规模大得多的配置，并在出现不稳定性后使用更高精度；本图则刻意保持较小规模，以便在本地"
+" CPU 上运行。"
+
+#: ../../en/get-started/first-graph.md:129
+msgid "Make one controlled change"
+msgstr "进行一次受控改动"
+
+#: ../../en/get-started/first-graph.md:131
+msgid ""
+"Change the SGD learning rate from `0.2` to `0.1`, but leave the other "
+"settings unchanged. Run the Trainer again and compare the curves: the cutoff"
+" becomes `2/η = 20`, which the top eigenvalue should not reach in this short"
+" CPU demo, and the loss should be more nearly monotonic. This is the "
+"negative control for the EoS interpretation."
+msgstr ""
+"将 SGD learning rate 从 `0.2` 改为 `0.1`，其他设置保持不变。再次运行 Trainer 并比较曲线：阈值会变为 `2/η "
+"= 20`；在这个简短的 CPU 演示中，最大特征值不应达到该阈值，loss 也应更接近单调下降。这是用于验证 EoS 解读的负对照。"
+
+#: ../../en/get-started/first-graph.md:137
+msgid "That small action is the core research loop:"
+msgstr "这一小步就是核心研究循环："
+
+#: ../../en/get-started/first-graph.md:139
+msgid "keep the experimental structure visible;"
+msgstr "保持实验结构可见；"
+
+#: ../../en/get-started/first-graph.md:140
+msgid "change one variable;"
+msgstr "修改一个变量；"
+
+#: ../../en/get-started/first-graph.md:141
+msgid "record the resulting dynamics;"
+msgstr "记录由此产生的动态；"
+
+#: ../../en/get-started/first-graph.md:142
+msgid "preserve enough context to explain the comparison."
+msgstr "保留足以解释比较的上下文。"
+
+#: ../../en/get-started/first-graph.md:144
+msgid ""
+"When the graph is useful, save a **Small** template. Small retains graph "
+"structure and settings while excluding plot histories and checkpoint bytes. "
+"The [Projects and artifacts](../user-guide/projects-and-artifacts.md) guide "
+"explains the larger save tiers and their costs."
+msgstr ""
+"当该图可复用时，保存为 **Small** 模板。Small 保留图结构和设置，但不包含绘图历史和检查点字节。[项目和产物](../user-guide"
+"/projects-and-artifacts.md)指南说明了更大保存层级及其成本。"
+
+#: ../../en/get-started/first-graph.md:149
+msgid ""
+"Next, learn how to [build and run graphs](../user-guide/build-and-run-"
+"graphs.md) without starting from a complete template."
+msgstr "接下来，学习如何在不从完整模板开始的情况下[构建并运行图](../user-guide/build-and-run-graphs.md)。"

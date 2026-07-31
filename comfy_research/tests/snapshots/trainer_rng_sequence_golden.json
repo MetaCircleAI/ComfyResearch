@@ -1,0 +1,1917 @@
+{
+ "diffusion_score": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 4]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 1]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 4]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 1]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "DiffusionScoreMLP",
+   "trainer_task": "diffusion_noise",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "6dff0900535d50a1",
+    "shape": [
+     8,
+     4
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "59fcbf96e5009ba4",
+    "shape": [
+     4,
+     4
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "a2493441195412e5",
+    "shape": [
+     8,
+     1
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "aa0d9cc52251fc17",
+    "shape": [
+     4,
+     1
+    ]
+   }
+  }
+ },
+ "err_mem_a_mse": {
+  "error": {
+   "detail": "memorization_a_dataset is a random-label classification benchmark: class labels are sampled independently of the input. Use cross_entropy_loss and set model outputDim to the number of classes (dataset outputDim, at least 2). MSE loss is not supported for this dataset type; use linear_dataset or random_noise_dataset for regression with MSE.",
+   "status": 400
+  }
+ },
+ "err_memb_vector_testsplit": {
+  "rng_calls": [
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[4]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[4]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[4]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[4]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "cross_entropy_dense",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "5f4dbafba2537955",
+    "shape": [
+     8,
+     4
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "a5041a1e1b3c0d2c",
+    "shape": [
+     4,
+     4
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "46ef1b6ebec6cfb0",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "4e7de98684a483af",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "err_mixer_dim_mismatch_atomic": {
+  "error": {
+   "detail": "dataset_mixer A/B mixed dimensions (2, 1) must match student chain dimensions (3, 1).",
+   "status": 400
+  }
+ },
+ "err_mixer_dim_mismatch_vec": {
+  "error": {
+   "detail": "dataset_mixer A/B mixed dimensions (2, 1) must match student model dimensions (3, 1).",
+   "status": 400
+  }
+ },
+ "err_residual_ln_mse": {
+  "error": {
+   "detail": "Token-classification models require cross_entropy_loss. Model node is NodeKind.residual_ln_model, but loss is NodeKind.mse_loss. Use cross_entropy_loss for token training, or switch to a vector-output model (mlp_model / gated_mlp_model / moe_mlp_model / kan_model / numeric_transformer_model / numeric_hyena_model / mpp_spatiotemporal_model / afno_lite_spatiotemporal_model) for mse_loss.",
+   "status": 400
+  }
+ },
+ "err_teacher_dim_mismatch_atomic": {
+  "error": {
+   "detail": "Student chain I/O (4, 2) must match the teacher (3, 2).",
+   "status": 400
+  }
+ },
+ "err_teacher_dim_mismatch_vec": {
+  "error": {
+   "detail": "Student model dimensions (4, 2) must match the teacher (3, 2).",
+   "status": 400
+  }
+ },
+ "err_token_model_mse": {
+  "error": {
+   "detail": "Token-classification models require cross_entropy_loss. Model node is NodeKind.transformer_token_model, but loss is NodeKind.mse_loss. Use cross_entropy_loss for token training, or switch to a vector-output model (mlp_model / gated_mlp_model / moe_mlp_model / kan_model / numeric_transformer_model / numeric_hyena_model / mpp_spatiotemporal_model / afno_lite_spatiotemporal_model) for mse_loss.",
+   "status": 400
+  }
+ },
+ "mem_a_ce": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 3]:float64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[3]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 3]:float64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[3]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "cross_entropy_dense",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "3f292be1977ba347",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "6d36c1762f8fbeb5",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "08a4f91a73c9264d",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "mem_a_ce_slotmask": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 4]:float64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[3]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 4]:float64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[3]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "cross_entropy_dense",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "6dff0900535d50a1",
+    "shape": [
+     8,
+     4
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "59fcbf96e5009ba4",
+    "shape": [
+     4,
+     4
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "6748cc89ed69617a",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "949565286ab35f07",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "teacher_atomic_student": {
+  "rng_calls": [],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 1
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "f30d75f591f8da31",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "f09d4ae7b3000ee1",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "2688a0771e2cf0d8",
+    "shape": [
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "teacher_mlp_student": {
+  "rng_calls": [],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 1
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "f30d75f591f8da31",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "f09d4ae7b3000ee1",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "2688a0771e2cf0d8",
+    "shape": [
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "tok_attention_only": {
+  "rng_calls": [
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[8, 3]:int64"
+   },
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[4, 3]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "AttentionTokenPredictBundle",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "39c492c5ae6b2e9d",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "773bf5e396aefbff",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "a0faba543dc70f30",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "239a3c63cd3e25eb",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "tok_circle_walk": {
+  "rng_calls": [
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[1]"
+    },
+    "method": "integers",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "random",
+    "result": "ndarray[8, 3]:float64"
+   },
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[1]"
+    },
+    "method": "integers",
+    "result": "ndarray[4]:int64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "random",
+    "result": "ndarray[4, 3]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "TokenTransformerModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "9668042243adb814",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "5800fb541b8b3d0e",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "409d7f7d1e708341",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "baf78f3c9ec36a2b",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "tok_linear_attention": {
+  "rng_calls": [
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[8, 3]:int64"
+   },
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[4, 3]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "LinearAttentionTokenPredictBundle",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "39c492c5ae6b2e9d",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "773bf5e396aefbff",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "a0faba543dc70f30",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "239a3c63cd3e25eb",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "tok_memb_fallthrough": {
+  "rng_calls": [
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[6]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[6]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[6]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[6]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MlpTokenModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "697ee7f35952f256",
+    "shape": [
+     8,
+     1
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "00147f6fe548b409",
+    "shape": [
+     4,
+     1
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "f31c23a1f7372a4d",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "38589bd7637ffd3d",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "tok_mlp": {
+  "rng_calls": [
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[8, 3]:int64"
+   },
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[4, 3]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MlpTokenModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "39c492c5ae6b2e9d",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "773bf5e396aefbff",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "a0faba543dc70f30",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "239a3c63cd3e25eb",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "tok_modular_addition": {
+  "rng_calls": [
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {},
+    "method": "permutation",
+    "result": "ndarray[49]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "TokenTransformerModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "d6883d9ba7194af6",
+    "shape": [
+     29,
+     2
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "c72ff9e4ff24cf5b",
+    "shape": [
+     20,
+     2
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "c707d33c1ab099e0",
+    "shape": [
+     29
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "541dfb4b201ff9af",
+    "shape": [
+     20
+    ]
+   }
+  }
+ },
+ "tok_test0": {
+  "rng_calls": [
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[8, 3]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MlpTokenModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "39c492c5ae6b2e9d",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": null,
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "a0faba543dc70f30",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": null
+  }
+ },
+ "tok_transformer": {
+  "rng_calls": [
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[8, 3]:int64"
+   },
+   {
+    "args": [
+     "int",
+     "int"
+    ],
+    "kwargs": {
+     "dtype": "type",
+     "size": "tuple[2]"
+    },
+    "method": "integers",
+    "result": "ndarray[4, 3]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "TokenTransformerModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "39c492c5ae6b2e9d",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "773bf5e396aefbff",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "a0faba543dc70f30",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "239a3c63cd3e25eb",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "tok_unigram_stream": {
+  "rng_calls": [
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[5]:float64",
+     "size": "tuple[2]"
+    },
+    "method": "choice",
+    "result": "ndarray[8, 1]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[5]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[8]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[5]:float64",
+     "size": "tuple[2]"
+    },
+    "method": "choice",
+    "result": "ndarray[4, 1]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {
+     "p": "ndarray[5]:float64",
+     "size": "tuple[1]"
+    },
+    "method": "choice",
+    "result": "ndarray[4]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MlpTokenModel",
+   "trainer_task": "token_classification",
+   "x_t": {
+    "dtype": "torch.int64",
+    "sha256": "279a190b34a2596e",
+    "shape": [
+     8,
+     1
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "e1e73d63680f3310",
+    "shape": [
+     4,
+     1
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "50c9d8c0410d2307",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "b89d82308d53e487",
+    "shape": [
+     4
+    ]
+   }
+  }
+ },
+ "vec_afno_pde": {
+  "rng_calls": [],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "AfnoLiteSpatiotemporalModel",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "aa08487a80a742e6",
+    "shape": [
+     8,
+     256
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "01cb79d4b3e82212",
+    "shape": [
+     4,
+     256
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "16d4e9bdf522d254",
+    "shape": [
+     8,
+     256
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "55cc61f0440bcdb8",
+    "shape": [
+     4,
+     256
+    ]
+   }
+  }
+ },
+ "vec_gated_mlp": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 3]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 3]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "GatedMlp",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "1dd5b460e8a1c871",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c77b1c5b2616d7b",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "28c74cbd4bb5a427",
+    "shape": [
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "vec_kan": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 3]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 3]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MultKAN",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "1dd5b460e8a1c871",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c77b1c5b2616d7b",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "28c74cbd4bb5a427",
+    "shape": [
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "vec_mlp": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 3]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 3]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "1dd5b460e8a1c871",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c77b1c5b2616d7b",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "28c74cbd4bb5a427",
+    "shape": [
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "vec_mlp_test0": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 3]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": null,
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c77b1c5b2616d7b",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": null
+  }
+ },
+ "vec_moe_mlp": {
+  "rng_calls": [
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[8, 3]:float64"
+   },
+   {
+    "args": [
+     "tuple[2]"
+    ],
+    "kwargs": {},
+    "method": "standard_normal",
+    "result": "ndarray[4, 3]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MoeMlp",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "384977ca1f260de8",
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "1dd5b460e8a1c871",
+    "shape": [
+     4,
+     3
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c77b1c5b2616d7b",
+    "shape": [
+     8,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "28c74cbd4bb5a427",
+    "shape": [
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "vec_mpp_pde": {
+  "rng_calls": [],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "MppSpatiotemporalModel",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "aa08487a80a742e6",
+    "shape": [
+     8,
+     256
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "01cb79d4b3e82212",
+    "shape": [
+     4,
+     256
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "16d4e9bdf522d254",
+    "shape": [
+     8,
+     256
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "55cc61f0440bcdb8",
+    "shape": [
+     4,
+     256
+    ]
+   }
+  }
+ },
+ "vec_numeric_hyena": {
+  "rng_calls": [
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "NumericHyenaModel",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c95eed15cdadd2d",
+    "shape": [
+     8,
+     4,
+     2
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "f1e6a8292452e873",
+    "shape": [
+     4,
+     4,
+     2
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "19a493131e7a42dd",
+    "shape": [
+     8,
+     4,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "64e9531f82ee66eb",
+    "shape": [
+     4,
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "vec_numeric_transformer": {
+  "rng_calls": [
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[8]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   },
+   {
+    "args": [
+     "float",
+     "float"
+    ],
+    "kwargs": {
+     "size": "tuple[1]"
+    },
+    "method": "uniform",
+    "result": "ndarray[4]:float64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "NumericTransformerModel",
+   "trainer_task": "mse_regression",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "7c95eed15cdadd2d",
+    "shape": [
+     8,
+     4,
+     2
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "f1e6a8292452e873",
+    "shape": [
+     4,
+     4,
+     2
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.float32",
+    "sha256": "19a493131e7a42dd",
+    "shape": [
+     8,
+     4,
+     2
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "64e9531f82ee66eb",
+    "shape": [
+     4,
+     4,
+     2
+    ]
+   }
+  }
+ },
+ "vision_flatten_mlp_ce": {
+  "rng_calls": [
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {},
+    "method": "permutation",
+    "result": "ndarray[60000]:int64"
+   },
+   {
+    "args": [
+     "int"
+    ],
+    "kwargs": {},
+    "method": "permutation",
+    "result": "ndarray[10000]:int64"
+   }
+  ],
+  "seed_events": [
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   },
+   {
+    "event": "torch.manual_seed",
+    "seed": 0
+   }
+  ],
+  "summary": {
+   "model_class": "Sequential",
+   "trainer_task": "cross_entropy_dense",
+   "x_t": {
+    "dtype": "torch.float32",
+    "sha256": "94a174c327bec051",
+    "shape": [
+     8,
+     784
+    ]
+   },
+   "x_test_t": {
+    "dtype": "torch.float32",
+    "sha256": "2e482e7c31ea644a",
+    "shape": [
+     4,
+     784
+    ]
+   },
+   "y_t": {
+    "dtype": "torch.int64",
+    "sha256": "290799154b641724",
+    "shape": [
+     8
+    ]
+   },
+   "y_test_t": {
+    "dtype": "torch.int64",
+    "sha256": "952e2d607a1740fa",
+    "shape": [
+     4
+    ]
+   }
+  }
+ }
+}

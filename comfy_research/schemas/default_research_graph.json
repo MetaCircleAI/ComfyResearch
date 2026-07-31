@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "linear_dataset-demo",
+      "type": "linear_dataset",
+      "position": { "x": 32, "y": 24 },
+      "data": {
+        "inputDistribution": "standard_normal",
+        "outputDistribution": "additive_gaussian",
+        "trainSize": 800,
+        "testSize": 200,
+        "noiseLevel": 1,
+        "seed": 0
+      }
+    },
+    {
+      "id": "lr_schedule-demo",
+      "type": "lr_schedule",
+      "position": { "x": -200, "y": 248 },
+      "data": {
+        "lrWarmupSteps": 0,
+        "lrSchedule": "constant",
+        "cosineLrMinFraction": 0
+      }
+    },
+    {
+      "id": "adam_optimizer-demo",
+      "type": "adam_optimizer",
+      "position": { "x": 32, "y": 248 },
+      "data": {
+        "learningRate": 0.001,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-8
+      }
+    },
+    {
+      "id": "mlp_model-demo",
+      "type": "mlp_model",
+      "position": { "x": 32, "y": 472 },
+      "data": {
+        "inputDim": 10,
+        "outputDim": 1,
+        "depth": 2,
+        "width": 64,
+        "activation": "relu"
+      }
+    },
+    {
+      "id": "mse_loss-demo",
+      "type": "mse_loss",
+      "position": { "x": 300, "y": 520 },
+      "data": {}
+    },
+    {
+      "id": "trainer-demo",
+      "type": "trainer",
+      "position": { "x": 480, "y": 180 },
+      "data": {
+        "trainingSteps": 1000,
+        "logFrequency": 10
+      }
+    },
+    {
+      "id": "model_checkpoint-demo",
+      "type": "model_checkpoint",
+      "position": { "x": 750, "y": 140 },
+      "data": {}
+    },
+    {
+      "id": "training_visualization-demo",
+      "type": "training_visualization",
+      "position": { "x": 820, "y": 280 },
+      "data": {}
+    },
+    {
+      "id": "activation-demo",
+      "type": "activation",
+      "position": { "x": 750, "y": 380 },
+      "data": {
+        "representationOptions": [
+          { "id": "input", "label": "input" },
+          { "id": "h1_preact", "label": "layer 1 preact" },
+          { "id": "h1_postact", "label": "layer 1 postact" },
+          { "id": "h2_preact", "label": "layer 2 preact" },
+          { "id": "h2_postact", "label": "layer 2 postact" },
+          { "id": "output", "label": "output" }
+        ],
+        "selectedRepresentationIds": [
+          "input",
+          "h1_preact",
+          "h1_postact",
+          "h2_preact",
+          "h2_postact",
+          "output"
+        ],
+        "activationWirePicks": [],
+        "scanMessage": null,
+        "collectedActivations": null,
+        "collectSummary": null
+      }
+    },
+    {
+      "id": "tensor_selector-demo",
+      "type": "tensor_selector",
+      "position": { "x": 1020, "y": 380 },
+      "data": {
+        "selectedTensorKey": "h2_preact",
+        "selectedTensorKeys": ["h2_preact"]
+      }
+    },
+    {
+      "id": "pca-demo",
+      "type": "pca",
+      "position": { "x": 1220, "y": 380 },
+      "data": {
+        "representationId": "h2_preact",
+        "nComponents": 2,
+        "principalComponents": null,
+        "explainedVarianceRatio": null,
+        "pcaSummary": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-linear_dataset-trainer-dataset",
+      "source": "linear_dataset-demo",
+      "target": "trainer-demo",
+      "sourceHandle": "dataset",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e-mlp-trainer-model",
+      "source": "mlp_model-demo",
+      "target": "trainer-demo",
+      "sourceHandle": "model",
+      "targetHandle": "model"
+    },
+    {
+      "id": "e-lr-schedule-adam",
+      "source": "lr_schedule-demo",
+      "target": "adam_optimizer-demo",
+      "sourceHandle": "lr_schedule",
+      "targetHandle": "lr_schedule"
+    },
+    {
+      "id": "e-adam-trainer-optimizer",
+      "source": "adam_optimizer-demo",
+      "target": "trainer-demo",
+      "sourceHandle": "optimizer",
+      "targetHandle": "optimizer"
+    },
+    {
+      "id": "e-mse-trainer-loss",
+      "source": "mse_loss-demo",
+      "target": "trainer-demo",
+      "sourceHandle": "loss",
+      "targetHandle": "loss"
+    },
+    {
+      "id": "e-trainer-checkpoint",
+      "source": "trainer-demo",
+      "target": "model_checkpoint-demo",
+      "sourceHandle": "checkpoint",
+      "targetHandle": "model_checkpoint"
+    },
+    {
+      "id": "e-trainer-viz-plot",
+      "source": "trainer-demo",
+      "target": "training_visualization-demo",
+      "sourceHandle": "loss_results",
+      "targetHandle": "plot"
+    },
+    {
+      "id": "e-checkpoint-activation-model",
+      "source": "model_checkpoint-demo",
+      "target": "activation-demo",
+      "sourceHandle": "model",
+      "targetHandle": "model"
+    },
+    {
+      "id": "e-linear_dataset-activation-dataset",
+      "source": "linear_dataset-demo",
+      "target": "activation-demo",
+      "sourceHandle": "dataset",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e-activation-tensor_selector",
+      "source": "activation-demo",
+      "target": "tensor_selector-demo",
+      "sourceHandle": "tensor",
+      "targetHandle": "tensors"
+    },
+    {
+      "id": "e-tensor_selector-pca",
+      "source": "tensor_selector-demo",
+      "target": "pca-demo",
+      "sourceHandle": "tensor_1",
+      "targetHandle": "tensor"
+    }
+  ],
+  "viewport": null
+}

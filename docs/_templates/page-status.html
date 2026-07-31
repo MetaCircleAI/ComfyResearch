@@ -1,0 +1,21 @@
+{% set doc_type = meta.get("doc_type", "") if meta else "" %}
+{% set doc_status = meta.get("doc_status", "") if meta else "" %}
+{% set type_labels = {
+  "overview": cr_ui.doc_type_overview,
+  "tutorial": cr_ui.doc_type_tutorial,
+  "how-to": cr_ui.doc_type_how_to,
+  "explanation": cr_ui.doc_type_explanation,
+  "reference": cr_ui.doc_type_reference,
+  "reproduction": cr_ui.doc_type_reproduction
+} %}
+{% set status_labels = {
+  "stable-core": cr_ui.doc_status_stable_core,
+  "phenomenon": cr_ui.doc_status_phenomenon
+} %}
+
+{% if doc_type in type_labels and doc_status in status_labels %}
+  <nav class="cr-page-identity" aria-label="{{ cr_ui.doc_status_aria_label }}">
+    <span class="cr-page-badge cr-page-badge--type">{{ type_labels[doc_type] }}</span>
+    <span class="cr-page-badge cr-page-badge--{{ doc_status }}">{{ status_labels[doc_status] }}</span>
+  </nav>
+{% endif %}

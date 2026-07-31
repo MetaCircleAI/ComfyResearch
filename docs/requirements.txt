@@ -1,0 +1,8 @@
+Sphinx==8.2.3
+myst-parser==5.1.0
+pydata-sphinx-theme==0.20.0
+sphinx-design==0.7.0
+sphinx-copybutton==0.5.2
+sphinx-intl==2.3.2
+Babel==2.17.0
+pytest==8.4.2

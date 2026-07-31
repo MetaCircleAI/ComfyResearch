@@ -1,0 +1,176 @@
+{
+  "id": "c71713d3-71b2-4cdd-a0c3-164d31fd4092",
+  "name": "Diffusion (DDPM) on a synthetic 2D mixture",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "ddpm_mix_comment",
+        "type": "comment",
+        "position": { "x": 40, "y": 20 },
+        "data": {
+          "instanceTitle": "How this graph works",
+          "text": "# DDPM-style denoising on a synthetic **p(x)** in ℝ²\n\n**What is being learned:** The trainer feeds **x₀** rows from the dataset’s **input** tensor into the diffusion objective (noise prediction MSE). Targets **y** are unused for this task.\n\n**Synthetic ground truth:** `dataset_mixer` concatenates batches from two `linear_dataset` children with the same **inputDim=2** but different **inputDistribution** (uniform on [−1,1]² vs standard normal). With **proportionA** between 0 and 1, **x₀** follows a **two-component mixture**—a simple closed-form toy where the score network must capture two modes.\n\n**Model:** `diffusion_score_model` is ε_θ(x_t, t) (see `comfy_research/engine/diffusion_score_model.py`). Pair it only with `diffusion_mse_loss`.\n\n**Try:** Adjust **proportionA**, **trainTotalSamples**, **diffusionTimesteps T**, or switch one branch to `random_noise_dataset` for a pure-noise mode."
+        }
+      },
+      {
+        "id": "ddpm_mix_lin_uniform",
+        "type": "linear_dataset",
+        "position": { "x": 40, "y": 220 },
+        "data": {
+          "instanceTitle": "Mode A: uniform x on [−1,1]²",
+          "inputDim": 2,
+          "outputDim": 1,
+          "inputDistribution": "uniform_neg1_1",
+          "outputDistribution": "deterministic",
+          "trainSize": 512,
+          "testSize": 0,
+          "noiseLevel": 0,
+          "alpha": 1,
+          "seed": 11,
+          "samplingMode": "fixed"
+        }
+      },
+      {
+        "id": "ddpm_mix_lin_gaussian",
+        "type": "linear_dataset",
+        "position": { "x": 40, "y": 420 },
+        "data": {
+          "instanceTitle": "Mode B: Gaussian x",
+          "inputDim": 2,
+          "outputDim": 1,
+          "inputDistribution": "standard_normal",
+          "outputDistribution": "deterministic",
+          "trainSize": 512,
+          "testSize": 0,
+          "noiseLevel": 0,
+          "alpha": 1,
+          "seed": 13,
+          "samplingMode": "fixed"
+        }
+      },
+      {
+        "id": "ddpm_mix_mixer",
+        "type": "dataset_mixer",
+        "position": { "x": 380, "y": 300 },
+        "data": {
+          "instanceTitle": "Mixture p(x) — concat batches",
+          "trainTotalSamples": 2048,
+          "testTotalSamples": 256,
+          "proportionA": 0.45,
+          "initSeed": 42,
+          "samplingMode": "fixed"
+        }
+      },
+      {
+        "id": "ddpm_mix_score",
+        "type": "diffusion_score_model",
+        "position": { "x": 720, "y": 240 },
+        "data": {
+          "instanceTitle": "Score net ε_θ(x_t, t)",
+          "inputDim": 2,
+          "hiddenDim": 192,
+          "depth": 4,
+          "timeEmbedDim": 64,
+          "diffusionTimesteps": 120,
+          "seed": 7
+        }
+      },
+      {
+        "id": "ddpm_mix_dloss",
+        "type": "diffusion_mse_loss",
+        "position": { "x": 720, "y": 440 },
+        "data": {
+          "instanceTitle": "DDPM noise MSE",
+          "lossScale": 1
+        }
+      },
+      {
+        "id": "ddpm_mix_adam",
+        "type": "adam_optimizer",
+        "position": { "x": 380, "y": 560 },
+        "data": {
+          "instanceTitle": "Adam",
+          "learningRate": 0.001,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08
+        }
+      },
+      {
+        "id": "ddpm_mix_trainer",
+        "type": "trainer",
+        "position": { "x": 1040, "y": 320 },
+        "data": {
+          "instanceTitle": "Trainer",
+          "trainingSteps": 3000,
+          "logFrequency": 50,
+          "batchSize": 128,
+          "computeDevice": "auto"
+        }
+      },
+      {
+        "id": "ddpm_mix_viz",
+        "type": "training_visualization",
+        "position": { "x": 1340, "y": 320 },
+        "data": {
+          "instanceTitle": "Noise-prediction loss"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_ddpm_uniform_to_mixer_a",
+        "source": "ddpm_mix_lin_uniform",
+        "target": "ddpm_mix_mixer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset_a"
+      },
+      {
+        "id": "e_ddpm_gaussian_to_mixer_b",
+        "source": "ddpm_mix_lin_gaussian",
+        "target": "ddpm_mix_mixer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset_b"
+      },
+      {
+        "id": "e_ddpm_mixer_to_trainer_dataset",
+        "source": "ddpm_mix_mixer",
+        "target": "ddpm_mix_trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e_ddpm_score_to_trainer_model",
+        "source": "ddpm_mix_score",
+        "target": "ddpm_mix_trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e_ddpm_adam_to_trainer",
+        "source": "ddpm_mix_adam",
+        "target": "ddpm_mix_trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e_ddpm_dloss_to_trainer",
+        "source": "ddpm_mix_dloss",
+        "target": "ddpm_mix_trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e_ddpm_trainer_to_viz",
+        "source": "ddpm_mix_trainer",
+        "target": "ddpm_mix_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      }
+    ],
+    "viewport": null
+  },
+  "savedAt": 1777636800000
+}

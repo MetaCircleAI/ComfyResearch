@@ -1,0 +1,251 @@
+{
+  "id": "repro-rank-collapse-tinyshakespeare-pretraining",
+  "name": "repro: Rank Collapse TinyShakespeare spectral audit",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "rct-note",
+        "type": "comment",
+        "position": {
+          "x": 20,
+          "y": 10
+        },
+        "data": {
+          "text": "Rank Collapse on real text · TinyShakespeare pretraining (final reproducible setting).\nPaper protocol: intermediate Pythia/OLMo checkpoints, real pretraining corpora, and RankMe/alphaReQ on last-token hidden states evaluated on FineWeb. This Template instead trains a small causal Transformer from scratch on real TinyShakespeare text so the entire pipeline remains editable and runnable in CR. It uses a corpus-derived top-252 word vocabulary plus PAD/BOS/EOS/UNK, 32-token contexts, 4000 windows, d=4, 4 layers, 4 heads, AdamW and next-token CE. RankMe and alphaReQ use every token position as a sample from the explicit final_hidden endpoint. The 20k default is the evidence horizon at which expansion and compression are both fully visible; the smoke test shortens only an in-memory copy.\n\nFinal setting: d_model=4, num_layers=4, num_heads=4, ff_dim=64, context=32, 4000 windows, batch=32, AdamW(lr=5e-3, beta1=.9, beta2=.99, wd=1e-3), 20k updates logged every 100 steps. Weight decay is the sensitive knob: at wd=1e-2 the decay term dominates the narrow d=4 representation and flattens the spectrum before the transient expansion can form, so the collapse never separates from noise; wd<=1e-3 with lr=5e-3 makes the warmup - expansion - compression trajectory unambiguous within 20k steps. Extending to 100k shows a partial rebound after the trough. The Template defaults to cpu for portability; use mps/cuda in the Trainer node if available.",
+          "instanceTitle": "Real-text audit - claim boundary",
+          "__collapsed": true
+        }
+      },
+      {
+        "id": "rct-dataset",
+        "type": "tinyshakespeare_lm_dataset",
+        "position": {
+          "x": 20,
+          "y": 90
+        },
+        "data": {
+          "vocabSize": 256,
+          "contextLength": 32,
+          "trainSize": 4000,
+          "testSize": 0,
+          "seed": 0,
+          "initSeed": 0,
+          "stride": 1,
+          "instanceTitle": "TinyShakespeare real-text LM corpus"
+        }
+      },
+      {
+        "id": "rct-model",
+        "type": "transformer_token_model",
+        "position": {
+          "x": 20,
+          "y": 390
+        },
+        "data": {
+          "vocabSize": 256,
+          "contextLength": 32,
+          "modelDim": 4,
+          "numHeads": 4,
+          "numLayers": 4,
+          "ffDim": 64,
+          "activation": "gelu",
+          "encoderBackend": "stable",
+          "encoderDropout": 0.0,
+          "tieEmbeddingLmHead": "yes",
+          "causalAttention": "yes",
+          "seed": 0,
+          "instanceTitle": "Small causal Transformer"
+        }
+      },
+      {
+        "id": "rct-optimizer",
+        "type": "adamw_optimizer",
+        "position": {
+          "x": 420,
+          "y": 90
+        },
+        "data": {
+          "learningRate": 0.005,
+          "beta1": 0.9,
+          "beta2": 0.99,
+          "epsilon": 1e-08,
+          "weightDecay": 0.001,
+          "instanceTitle": "AdamW"
+        }
+      },
+      {
+        "id": "rct-loss",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 420,
+          "y": 300
+        },
+        "data": {
+          "lossScale": 1.0,
+          "labelSmoothing": 0.0,
+          "instanceTitle": "Next-token cross entropy"
+        }
+      },
+      {
+        "id": "rct-rankme",
+        "type": "observable_representation_rankme",
+        "position": {
+          "x": 420,
+          "y": 500
+        },
+        "data": {
+          "representationId": "lm_head::input",
+          "tokenPositionsAsSamples": true,
+          "captureTrajectories": false,
+          "instanceTitle": "Final-hidden RankMe"
+        }
+      },
+      {
+        "id": "rct-alpha",
+        "type": "observable_representation_alpha_req",
+        "position": {
+          "x": 420,
+          "y": 700
+        },
+        "data": {
+          "representationId": "lm_head::input",
+          "tokenPositionsAsSamples": true,
+          "instanceTitle": "Final-hidden alphaReQ"
+        }
+      },
+      {
+        "id": "rct-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 800,
+          "y": 300
+        },
+        "data": {
+          "trainingSteps": 20000,
+          "logFrequency": 100,
+          "batchSize": 32,
+          "computeDevice": "cpu",
+          "gradClipMaxNorm": 1.0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Trainer"
+        }
+      },
+      {
+        "id": "rct-loss_viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1160,
+          "y": 20
+        },
+        "data": {
+          "instanceTitle": "Next-token CE"
+        }
+      },
+      {
+        "id": "rct-rankme_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1160,
+          "y": 280
+        },
+        "data": {
+          "pairedObservableId": "rct-rankme",
+          "pairedTrainerId": "rct-trainer",
+          "vizVariant": "user",
+          "observableName": "Representation RankMe",
+          "vizYAxisLabel": "rank",
+          "instanceTitle": "Final-hidden RankMe"
+        }
+      },
+      {
+        "id": "rct-alpha_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1160,
+          "y": 540
+        },
+        "data": {
+          "pairedObservableId": "rct-alpha",
+          "pairedTrainerId": "rct-trainer",
+          "vizVariant": "user",
+          "observableName": "Representation alphaReQ",
+          "vizYAxisLabel": "exponent",
+          "instanceTitle": "Final-hidden alphaReQ"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-rct-dataset-rct-trainer-dataset-dataset",
+        "source": "rct-dataset",
+        "target": "rct-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rct-model-rct-trainer-model-model",
+        "source": "rct-model",
+        "target": "rct-trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rct-optimizer-rct-trainer-optimizer-optimizer",
+        "source": "rct-optimizer",
+        "target": "rct-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rct-loss-rct-trainer-loss-loss",
+        "source": "rct-loss",
+        "target": "rct-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rct-rankme-rct-trainer-observables-observables",
+        "source": "rct-rankme",
+        "target": "rct-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rct-alpha-rct-trainer-observables-observables",
+        "source": "rct-alpha",
+        "target": "rct-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rct-trainer-rct-loss_viz-loss_results-tensor_list",
+        "source": "rct-trainer",
+        "target": "rct-loss_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rct-trainer-rct-rankme_viz-observable_results-tensor",
+        "source": "rct-trainer",
+        "target": "rct-rankme_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-rct-trainer-rct-alpha_viz-observable_results-tensor",
+        "source": "rct-trainer",
+        "target": "rct-alpha_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 70,
+      "zoom": 0.72
+    }
+  },
+  "savedAt": 1784706891427.006
+}

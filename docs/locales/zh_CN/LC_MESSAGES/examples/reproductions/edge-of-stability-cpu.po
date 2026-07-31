@@ -1,0 +1,402 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 12:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:7
+msgid "Optimization Stability and Sharpness · Phenomenon reproduction"
+msgstr "优化稳定性与尖锐度 · 现象复现"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:10
+msgid "Edge of Stability on a Small CPU MLP"
+msgstr "小型 CPU MLP 上的稳定性边缘"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:13
+msgid ""
+"Full-batch gradient descent drives the top Hessian eigenvalue toward $2 /"
+" \\eta = 10$, where it fluctuates while training loss falls overall but "
+"not at every update."
+msgstr "全批量梯度下降将最大 Hessian 特征值推向 $2 / \\eta = 10$；特征值在该处附近波动，训练损失虽总体下降，却不会在每次更新时都下降。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:23
+msgid "WJ"
+msgstr "金鑫"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:28
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:36
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:38
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:43
+msgid ""
+"This example is a small, local CPU demonstration of edge-of-stability "
+"dynamics from Damian, Nichani, and Lee. With full-batch gradient descent "
+"at $\\eta = 0.2$, the top Hessian eigenvalue rises toward $2 / \\eta = "
+"10$ and then fluctuates around that cutoff while loss continues to "
+"decrease non-monotonically. It is a qualitative reproduction, not a "
+"numeric replication of the paper's curves."
+msgstr ""
+"本示例在本地 CPU 上以一个小型运行演示 Damian、Nichani 和 Lee 提出的稳定性边缘动力学。全批量梯度下降取 $\\eta = 0.2$ 时，"
+"最大 Hessian 特征值会上升至 $2 / \\eta = 10$ 附近，随后围绕该阈值波动，而损失继续以非单调方式下降。"
+"这是定性复现，并非对论文曲线的数值复刻。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:51
+msgid ""
+"**Paper:** [Self-Stabilization: The Implicit Bias of Gradient Descent at "
+"the Edge of Stability](https://arxiv.org/abs/2209.15594), Damian, "
+"Nichani, and Lee (ICLR 2023)"
+msgstr ""
+"**论文：** [Self-Stabilization: The Implicit Bias of Gradient Descent at the Edge "
+"of Stability](https://arxiv.org/abs/2209.15594)，Damian、Nichani 和 Lee（ICLR 2023）"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:55
+msgid "**Template:** `Edge of Stability (CPU)`"
+msgstr "**模板：** `Edge of Stability (CPU)`"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:57
+msgid "**Template ID:** `edge-of-stability-cpu`"
+msgstr "**模板 ID：** `edge-of-stability-cpu`"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:59
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:61
+msgid ""
+"For gradient descent with learning rate $\\eta$, the classical local "
+"stability cutoff for the largest Hessian eigenvalue $\\lambda_1(\\theta)$"
+" is"
+msgstr "对于学习率为 $\\eta$ 的梯度下降，最大 Hessian 特征值 $\\lambda_1(\\theta)$ 的经典局部稳定性阈值是"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:64
+#, python-brace-format
+msgid ""
+"\n"
+"\\lambda_1(\\theta) \\leq \\frac{2}{\\eta}.\n"
+msgstr ""
+"\n"
+"\\lambda_1(\\theta) \\leq \\frac{2}{\\eta}.\n"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:68
+msgid ""
+"The paper reports two linked observations. First, sharpness progressively"
+" rises to this cutoff. Then, at the edge of stability, it hovers near the"
+" cutoff while training loss keeps decreasing without being monotonic."
+msgstr "论文报告了两个相互关联的观察。首先，尖锐度逐步上升至该阈值。随后，在稳定性边缘，尖锐度会在阈值附近波动，训练损失则持续下降但并不单调。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:72
+msgid ""
+"This graph records $\\lambda_1$, $\\lambda_2$, and loss at every update. "
+"The Hessian visualization draws the cutoff as a dashed line at 10."
+msgstr "该图在每次更新时记录 $\\lambda_1$、$\\lambda_2$ 和损失。Hessian 可视化以 10 处的虚线标出阈值。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:75
+msgid "Paper Experiment and Reproduction Boundary"
+msgstr "论文实验与复现边界"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:77
+msgid ""
+"The paper establishes edge-of-stability behavior across several standard "
+"neural-network settings and gives a self-stabilization explanation: an "
+"unstable excursion in the top-eigenvector direction can reduce local "
+"curvature and restore stability. This template retains the fixed-"
+"learning-rate, full-batch mechanism but reduces the task so that it runs "
+"quickly on a local CPU."
+msgstr ""
+"论文在多种标准神经网络设置中展示了稳定性边缘行为，并给出自稳定解释：沿最大特征向量方向的不稳定偏移可降低局部曲率、恢复稳定。"
+"该模板保留固定学习率的全批量机制，但缩小任务规模，使其能在本地 CPU 上快速运行。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Paper"
+msgstr "论文"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Current Comfy Research template"
+msgstr "当前 Comfy Research 模板"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Claim"
+msgstr "主张"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid ""
+"Sharpness reaches and hovers around $2 / \\eta$ while loss decreases non-"
+"monotonically"
+msgstr "尖锐度到达并在 $2 / \\eta$ 周围徘徊，而损失以非单调方式下降"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Same qualitative signature"
+msgstr "相同的定性特征模式"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Data and model"
+msgstr "数据与模型"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Multiple neural-network settings"
+msgstr "多种神经网络设置"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Fixed synthetic linear regression and a small ReLU MLP"
+msgstr "固定合成线性回归与小型 ReLU MLP"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Full-batch or large-batch gradient descent settings"
+msgstr "全批量或大批量梯度下降设置"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Full-batch SGD with zero momentum and weight decay"
+msgstr "动量和权重衰减均为零的全批量 SGD"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Sharpness measurement"
+msgstr "尖锐度测量"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Largest Hessian eigenvalue"
+msgstr "最大 Hessian 特征值"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Top two Hessian eigenvalues, $\\lambda_1$ and $\\lambda_2$"
+msgstr "前两个 Hessian 特征值 $\\lambda_1$ 与 $\\lambda_2$"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Runtime goal"
+msgstr "运行目标"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Empirical and theoretical study"
+msgstr "实证与理论研究"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Short CPU demonstration"
+msgstr "简短的 CPU 演示示例"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:92
+msgid ""
+"The graph therefore tests a mechanism-level pattern, not a point-by-point"
+" match to a paper figure. Its fixed seed makes the expected shape easy to"
+" inspect, but does not establish seed robustness or universality."
+msgstr "因此，该图检验的是机制层面的模式，而非逐点匹配论文图。固定 seed 使预期曲线形状易于查看，但并不能证明 seed 鲁棒性或普适性。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:96
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Template setting"
+msgstr "模板设置"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid ""
+"Fixed synthetic linear regression, 80 training samples, input dimension "
+"10, output dimension 1, noise 0.1, seed 0"
+msgstr "固定的合成线性回归：80 个训练样本，输入维度 10、输出维度 1、噪声 0.1、seed 0"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "ReLU MLP, depth 2, width 24, seed 0, 889 trainable parameters"
+msgstr "ReLU MLP，深度 2、宽度 24、seed 0、889 个可训练参数"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Objective"
+msgstr "目标"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Mean squared error"
+msgstr "均方误差"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "SGD, learning rate 0.2, momentum 0, weight decay 0"
+msgstr "SGD，学习率 0.2，动量 0，权重衰减 0"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Batch size"
+msgstr "批量大小"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Full batch (`batchSize = -1`)"
+msgstr "全批量（`batchSize = -1`）"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Device"
+msgstr "设备"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "CPU"
+msgstr "CPU"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Training"
+msgstr "训练"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "80 updates, log every update"
+msgstr "80 次更新，每次更新记录"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Observable"
+msgstr "observable"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Top two Hessian eigenvalues in descending order"
+msgstr "按降序排列的前两个 Hessian 特征值"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Reference line"
+msgstr "参考线"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:40
+msgid "Sharpness cutoff $2 / \\eta = 10$"
+msgstr "尖锐度阈值 $2 / \\eta = 10$"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:110
+msgid ""
+"With zero momentum and weight decay, the optimizer is full-batch gradient"
+" descent. The graph is intentionally small and fixed so the qualitative "
+"pattern can be inspected on a local CPU."
+msgstr "动量和权重衰减均为零时，该优化器即为全批量梯度下降。该图刻意保持小规模且固定，以便在本地 CPU 上查看这一定性模式。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:114
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:116
+msgid "Open **Templates** and load `Edge of Stability (CPU)`."
+msgstr "打开 **Templates**，并加载 `Edge of Stability (CPU)`。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:117
+msgid ""
+"Confirm that `Trainer` uses CPU, full batch, 80 updates, and log "
+"frequency 1."
+msgstr "确认 `Trainer` 使用 CPU、全批量、80 次更新和记录频率 1。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:119
+msgid "Run **Train** on `Trainer`."
+msgstr "在 `Trainer` 上运行 **Train**。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:120
+msgid "Inspect loss in `Training viz`."
+msgstr "在 `Training viz` 中检查损失。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:121
+msgid ""
+"Inspect $\\lambda_1$ and $\\lambda_2$ in `Hessian viz` against the dashed"
+" threshold at 10."
+msgstr "在 `Hessian viz` 中查看 $\\lambda_1$ 和 $\\lambda_2$，并与 10 处的虚线阈值对照。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:124
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:126
+msgid "The expected signature has three parts:"
+msgstr "预期特征包含三个部分："
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:128
+msgid "$\\lambda_1$ rises toward 10 in early training."
+msgstr "早期训练中，$\\lambda_1$ 上升至 10 附近。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:129
+msgid ""
+"After reaching the cutoff, $\\lambda_1$ fluctuates around it while "
+"$\\lambda_2$ remains lower."
+msgstr "达到阈值后，$\\lambda_1$ 在阈值周围波动，而 $\\lambda_2$ 保持较低。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:131
+msgid ""
+"Loss has local increases after the first cutoff crossing, but ends below "
+"its value at that crossing."
+msgstr "首次越过阈值后，损失会局部上升，但最终低于越过阈值时的值。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:134
+msgid ""
+"Comfy Research graph with an 80-step CPU MLP run, training loss, and the "
+"top two Hessian eigenvalues around the sharpness cutoff."
+msgstr "Comfy Research 图，展示一次 80 步 CPU MLP 运行、训练损失，以及尖锐度阈值附近的前两个 Hessian 特征值。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:139
+msgid "Interpretation"
+msgstr "解释"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:141
+msgid ""
+"The result is consistent with the paper's edge-of-stability account: "
+"leading curvature repeatedly approaches and crosses the cutoff while loss"
+" still makes net progress. The lower second eigenvalue confines the "
+"observed instability to the leading-curvature direction rather than "
+"showing an indiscriminate increase in all measured curvature."
+msgstr "结果与论文对稳定性边缘的解释一致：主导曲率反复接近并越过阈值，损失仍取得净进展。较低的第二特征值表明，观察到的不稳定性局限于主导曲率方向，而非所有测得曲率都无差别地上升。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:147
+msgid ""
+"This small run does not, by itself, verify the paper's cubic self-"
+"stabilization analysis or its projected-gradient-descent prediction. It "
+"only makes the reported qualitative behavior directly inspectable."
+msgstr "这次小型运行本身并不能验证论文的三次自稳定分析或其对投影梯度下降的预测；它只让所报告的定性行为可被直接查看。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:151
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:153
+msgid "The synthetic task and small MLP are not the paper's empirical settings."
+msgstr "合成任务和小型 MLP 并非论文的实证设置。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:154
+msgid "One fixed seed does not measure seed-to-seed variation."
+msgstr "单个固定 seed 无法衡量不同 seed 之间的变化。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:155
+msgid ""
+"The graph records only the top two Hessian eigenvalues, not the full "
+"local spectrum or the paper's projected-gradient-descent trajectory."
+msgstr "该图仅记录前两个 Hessian 特征值，未重建完整局部谱或论文中的投影梯度下降轨迹。"
+
+#: ../../en/examples/reproductions/edge-of-stability-cpu.md:158
+msgid ""
+"The result should therefore be read as a fast qualitative demonstration "
+"of edge-of-stability behavior, not as a paper-faithful benchmark."
+msgstr "因此，应将该结果视为稳定性边缘行为的快速定性演示，而非忠实复刻论文设置的基准。"

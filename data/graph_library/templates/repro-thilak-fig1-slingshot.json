@@ -1,0 +1,283 @@
+{
+  "id": "repro-thilak-fig1-slingshot",
+  "name": "repro: Thilak Fig 1 Slingshot Effect (MLP, 200 CIFAR-10)",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "ss-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -300
+        },
+        "data": {
+          "text": "Thilak et al. TMLR 2024 (Slingshot Effect) Fig 1 == Appendix A.3 MLP.\n6-layer ReLU MLP (width 200) on 200 CIFAR-10 samples, FULL-batch Adam: lr=0.001, \u03b21=0.9, \u03b22=0.95, \u03b5=1e-08, weight decay=0 (essential). 1 step = 1 epoch.\nExpected: train acc hits 100% early (~step 400); afterwards Slingshot cycles every ~600 steps \u2014 train loss spikes \u22658 orders of magnitude off a ~1e-8 floor, each riding a LAST-LAYER WEIGHT NORM growth phase (dashed boxes in Fig 1).\nThe paper's flat-plateau staircase (growth concentrated at spikes, flat between cycles) is the LATE-stage form \u2014 it emerges after ~7000 steps; the earlier cycles show continuous norm growth with rate modulation.\nFig-1 plot: curve series viz, dual axis \u2014 log train loss (left) + linear last-layer norm (right), x = step. 12000 steps \u2248 1\u20132 min on CPU/MPS.\nQuick look: set trainer steps to 1000 to confirm acc\u2192100% + first slingshot (~830).",
+          "instanceTitle": "Slingshot Fig 1"
+        }
+      },
+      {
+        "id": "ss-ds",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 120
+        },
+        "data": {
+          "trainSize": 200,
+          "testSize": 200,
+          "initSeed": 0,
+          "seed": 0,
+          "flattenOutput": true,
+          "samplingMode": "fixed",
+          "instanceTitle": "CIFAR-10 (200 samples)"
+        }
+      },
+      {
+        "id": "ss-model",
+        "type": "mlp_model",
+        "position": {
+          "x": 40,
+          "y": 320
+        },
+        "data": {
+          "inputDim": 3072,
+          "outputDim": 10,
+          "depth": 6,
+          "width": 200,
+          "activation": "relu",
+          "seed": 0,
+          "instanceTitle": "MLP d6\u00d7w200"
+        }
+      },
+      {
+        "id": "ss-adam",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 40,
+          "y": 520
+        },
+        "data": {
+          "learningRate": 0.001,
+          "beta1": 0.9,
+          "beta2": 0.95,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Adam (\u03b22=0.95, wd=0)"
+        }
+      },
+      {
+        "id": "ss-ce",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 40,
+          "y": 680
+        },
+        "data": {
+          "instanceTitle": "CE loss"
+        }
+      },
+      {
+        "id": "ss-obs_norm",
+        "type": "observable_last_layer_weight_norm",
+        "position": {
+          "x": 280,
+          "y": 560
+        },
+        "data": {
+          "instanceTitle": "Last layer \u2016W\u2016\u2082"
+        }
+      },
+      {
+        "id": "ss-obs_acc",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 280,
+          "y": 700
+        },
+        "data": {
+          "instanceTitle": "Train accuracy"
+        }
+      },
+      {
+        "id": "ss-tr",
+        "type": "trainer",
+        "position": {
+          "x": 560,
+          "y": 280
+        },
+        "data": {
+          "trainingSteps": 12000,
+          "logFrequency": 2,
+          "batchSize": 200,
+          "disableExtraObservables": false,
+          "computeDevice": "auto",
+          "remoteGpu": false,
+          "instanceTitle": "Trainer (full-batch Adam)"
+        }
+      },
+      {
+        "id": "ss-tviz",
+        "type": "training_visualization",
+        "position": {
+          "x": 860,
+          "y": 120
+        },
+        "data": {
+          "instanceTitle": "Train loss viz"
+        }
+      },
+      {
+        "id": "ss-oviz_norm",
+        "type": "observable_viz",
+        "position": {
+          "x": 860,
+          "y": 420
+        },
+        "data": {
+          "pairedObservableId": "ss-obs_norm",
+          "pairedTrainerId": "ss-tr",
+          "vizVariant": "user",
+          "instanceTitle": "Last layer norm viz"
+        }
+      },
+      {
+        "id": "ss-oviz_acc",
+        "type": "observable_viz",
+        "position": {
+          "x": 860,
+          "y": 620
+        },
+        "data": {
+          "pairedObservableId": "ss-obs_acc",
+          "pairedTrainerId": "ss-tr",
+          "vizVariant": "accuracy",
+          "instanceTitle": "Train acc viz"
+        }
+      },
+      {
+        "id": "ss-cstable",
+        "type": "curve_series_table",
+        "position": {
+          "x": 1120,
+          "y": 280
+        },
+        "data": {
+          "rows": [],
+          "captureMetrics": [
+            "train_loss",
+            "observable"
+          ],
+          "instanceTitle": "Fig 1 loss+norm curves"
+        }
+      },
+      {
+        "id": "ss-csviz",
+        "type": "curve_series_viz",
+        "position": {
+          "x": 1380,
+          "y": 280
+        },
+        "data": {
+          "instanceTitle": "Fig 1 slingshot plot",
+          "dualAxis": true,
+          "logScaleY": true,
+          "plotXMode": "step"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-ss-ds-ss-tr-dataset-dataset",
+        "source": "ss-ds",
+        "target": "ss-tr",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-ss-model-ss-tr-model-model",
+        "source": "ss-model",
+        "target": "ss-tr",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-ss-adam-ss-tr-optimizer-optimizer",
+        "source": "ss-adam",
+        "target": "ss-tr",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-ss-ce-ss-tr-loss-loss",
+        "source": "ss-ce",
+        "target": "ss-tr",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-ss-obs_norm-ss-tr-observables-observables",
+        "source": "ss-obs_norm",
+        "target": "ss-tr",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-ss-obs_acc-ss-tr-observables-observables",
+        "source": "ss-obs_acc",
+        "target": "ss-tr",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-ss-tr-ss-tviz-loss_results-tensor_list",
+        "source": "ss-tr",
+        "target": "ss-tviz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-ss-tr-ss-oviz_norm-observable_results-tensor",
+        "source": "ss-tr",
+        "target": "ss-oviz_norm",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-ss-tr-ss-oviz_acc-observable_results-tensor",
+        "source": "ss-tr",
+        "target": "ss-oviz_acc",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-ss-tviz-ss-cstable-out_tensor_list-stream",
+        "source": "ss-tviz",
+        "target": "ss-cstable",
+        "sourceHandle": "out_tensor_list",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-ss-oviz_norm-ss-cstable-out_tensor-stream",
+        "source": "ss-oviz_norm",
+        "target": "ss-cstable",
+        "sourceHandle": "out_tensor",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-ss-cstable-ss-csviz-series-curves",
+        "source": "ss-cstable",
+        "target": "ss-csviz",
+        "sourceHandle": "series",
+        "targetHandle": "curves"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.45
+    }
+  },
+  "savedAt": 1785221571237.5156
+}

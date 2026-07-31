@@ -1,0 +1,469 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-29 16:32+0800\n"
+"PO-Revision-Date: 2026-07-30 21:15+0800\n"
+"Last-Translator: Comfy Research contributors\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:7
+msgid "Learning Phases and Feature Formation · Phenomenon reproduction"
+msgstr "学习阶段与特征形成 · 现象复现"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:10
+msgid "Spectral Bias: Low Frequencies Are Learned First"
+msgstr "频谱偏置：低频成分优先学习"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:12
+msgid "Compute cost"
+msgstr "计算成本"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:15
+msgid ""
+"The paper-scale aggregate trains ten six-layer networks for 80,000 full-"
+"batch Adam updates each. The bundled graph is a single-phase interactive "
+"entry point."
+msgstr "论文规模的汇总实验训练了十个六层网络，每个网络进行 80,000 次 full-batch Adam 更新。随附的图提供单相位的交互式入口。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:20
+msgid ""
+"Ten equal-amplitude Fourier components are learned in frequency order: "
+"the lowest component crosses the 0.8 amplitude threshold at 400 updates; "
+"the highest crosses at 45,200."
+msgstr "十个等幅 Fourier 分量按频率由低到高依次学得：最低频分量在第 400 次更新时越过 0.8 的幅值阈值，最高频分量则在第 45,200 次更新时越过。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:30
+msgid "XC"
+msgstr "程宇"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:35
+msgid "Author"
+msgstr "作者"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:43
+msgid "Scope"
+msgstr "范围"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:45
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:50
+msgid ""
+"This example reproduces the equal-amplitude experiment in Figure 1(a) of "
+"Rahaman et al. Ten independently phased six-layer ReLU networks fit a "
+"one-dimensional target made from ten equal-amplitude sine waves. The "
+"aggregated DFT heatmap shows the same ordering as the paper: low-"
+"frequency components reach their target amplitude before high-frequency "
+"components. The layer-weight panel follows the public notebook's "
+"calculation. Its layer-to-layer shape differs from the target panel and "
+"is reported separately."
+msgstr ""
+"本示例复现 Rahaman 等人 Figure 1(a) 中的等幅实验。十个相位彼此独立的六层 ReLU 网络拟合由十个等幅正弦波构成的一维目标函数。汇总后的 "
+"DFT 热图呈现与论文相同的顺序：低频分量比高频分量更早达到目标幅值。逐层权重面板沿用公开 notebook "
+"中的计算方法；它在层间的形状与目标面板不同，故另行报告。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:59
+msgid ""
+"**Paper:** [On the Spectral Bias of Neural "
+"Networks](https://arxiv.org/abs/1806.08734)"
+msgstr "**论文：** [On the Spectral Bias of Neural Networks](https://arxiv.org/abs/1806.08734)"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:62
+msgid "**Template:** `repro: Rahaman Spectral Bias Figure 1(a)`"
+msgstr "**模板：** `repro: Rahaman Spectral Bias Figure 1(a)`"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:64
+msgid "**Template ID:** `repro-spectral-bias-fig1a`"
+msgstr "**模板 ID：** `repro-spectral-bias-fig1a`"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:66
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:68
+msgid "The equal-amplitude target is"
+msgstr "等幅目标为"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:70
+#, python-brace-format
+msgid ""
+"\n"
+"f(x) = \\sum_{i=1}^{10} \\sin(2\\pi k_i x + \\phi_i),\n"
+msgstr ""
+"\n"
+"f(x) = \\sum_{i=1}^{10} \\sin(2\\pi k_i x + \\phi_i),\n"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:74
+#, python-brace-format
+msgid ""
+"with $k_i \\in \\{5, 10, \\ldots, 50\\}$ and independently sampled phases"
+" $\\phi_i$. Equal amplitudes isolate frequency as the ordered variable."
+msgstr "其中 $k_i \\in \\{5, 10, \\ldots, 50\\}$，各相位 $\\phi_i$ 独立采样。等幅设置将频率单独作为排序变量。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:77
+msgid "The main observable is the normalized Fourier amplitude"
+msgstr "主要的 observable 是归一化的 Fourier 幅值"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:79
+msgid ""
+"\n"
+"\\frac{2\\left|\\operatorname{DFT}(f_\\theta)[k_i]\\right|}{A_i},\n"
+msgstr ""
+"\n"
+"\\frac{2\\left|\\operatorname{DFT}(f_\\theta)[k_i]\\right|}{A_i},\n"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:83
+msgid ""
+"recorded throughout training. Spectral bias predicts a visible low-to-"
+"high frequency progression in this heatmap."
+msgstr "并在整个训练过程中记录。频谱偏置预测热图会清晰呈现从低频到高频的学习进程。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:86
+msgid "Paper Experiment and Reproduction Boundary"
+msgstr "论文实验与本次复现的边界"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Item"
+msgstr "项目"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Current reproduction"
+msgstr "当前复现"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Input grid"
+msgstr "输入网格"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "200 uniformly spaced points on $[0,1)$"
+msgstr "$[0,1)$ 上均匀间隔的 200 个点"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Frequencies"
+msgstr "频率"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "5 through 50 in increments of 5"
+msgstr "5 至 50，步长为 5"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Amplitudes"
+msgstr "幅值"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "1 for all ten components"
+msgstr "十个分量均为 1"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Repetitions"
+msgstr "重复"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "10 independent phase draws"
+msgstr "10 次独立的相位抽样"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Model"
+msgstr "模型"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Six Linear layers, hidden width 256, ReLU between layers"
+msgstr "六个 Linear 层，隐藏层宽度为 256，层间使用 ReLU"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Objective"
+msgstr "目标函数"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Full-batch mean squared error"
+msgstr "full-batch 均方误差"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Adam, learning rate 0.0003"
+msgstr "Adam，学习率 0.0003"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Training"
+msgstr "训练"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "80,000 updates per phase"
+msgstr "每个相位进行 80,000 次更新"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Recording"
+msgstr "记录"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Every 100 updates, 800 points per run"
+msgstr "每 100 次更新记录一次；每次运行记录 800 个点"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "DFT display"
+msgstr "DFT 显示"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Normalized amplitude clipped to $[0,1]$"
+msgstr "归一化幅值裁剪到 $[0,1]$"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:101
+msgid ""
+"The paper and appendix specify 80,000 updates. The current public "
+"notebook defaults to 60,000. This reproduction follows the paper horizon "
+"and uses the notebook's endpoint-excluded input grid, network semantics, "
+"optimizer, DFT formula, and layer-weight expression."
+msgstr ""
+"论文及其附录规定进行 80,000 次更新，而当前公开 notebook 的默认值是 60,000。本次复现遵循论文的训练时长，并采用 notebook "
+"中不含端点的输入网格、网络设定、优化器、DFT 公式和逐层权重表达式。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:106
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:108
+msgid "Open **Templates** and load `On the Spectral Bias of Neural Networks`."
+msgstr "打开 **Templates**，加载 `On the Spectral Bias of Neural Networks`。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:109
+msgid ""
+"Confirm the ten-frequency equal-amplitude target and the endpoint-"
+"excluded 200-point grid."
+msgstr "确认十个频率、等幅的目标函数，以及不含端点的 200 点网格。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:111
+msgid "Inspect the six-layer ReLU MLP, Adam optimizer, and full-batch Trainer."
+msgstr "检查六层 ReLU MLP、Adam 优化器和 full-batch Trainer。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:112
+msgid "Run **Train** for one phase and inspect the ten Fourier observables."
+msgstr "针对一个相位运行 **Train**，查看十个 Fourier observable。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:113
+msgid "Compare when low-, middle-, and high-frequency amplitudes begin to rise."
+msgstr "比较低频、中频和高频分量的幅值何时开始上升。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:114
+msgid ""
+"Use the batch reproduction runner when a ten-phase mean and standard "
+"deviation are required."
+msgstr "若需要十个相位的均值和标准差，请使用批量复现运行器。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:117
+msgid ""
+"The template gives an inspectable single-phase run. The values below come"
+" from the completed ten-phase aggregate."
+msgstr "该模板提供可供查看的单相位运行。下列数值来自已完成的十相位汇总实验。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:120
+msgid "Results"
+msgstr "结果"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:122
+msgid ""
+"The mean iteration at which every normalized component first reached 0.8 "
+"increased with frequency:"
+msgstr "各归一化分量首次达到 0.8 所需的平均迭代次数随频率升高而增加："
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Frequency"
+msgstr "频率"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "5"
+msgstr "5"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "10"
+msgstr "10"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "15"
+msgstr "15"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "20"
+msgstr "20"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "25"
+msgstr "25"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "30"
+msgstr "30"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "35"
+msgstr "35"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "40"
+msgstr "40"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "45"
+msgstr "45"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "50"
+msgstr "50"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "Mean update"
+msgstr "平均更新次数"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "400"
+msgstr "400"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "3,500"
+msgstr "3,500 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "7,800"
+msgstr "7,800 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "12,600"
+msgstr "12,600 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "21,200"
+msgstr "21,200 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "25,700"
+msgstr "25,700 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "27,100"
+msgstr "27,100 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "33,300"
+msgstr "33,300 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "39,800"
+msgstr "39,800 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:47
+msgid "45,200"
+msgstr "45,200 次"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:129
+msgid ""
+"Comfy Research Fourier-component visualization nodes for the lowest and "
+"highest frequencies in the ten-phase aggregate."
+msgstr "Comfy Research 的 Fourier 分量可视化节点，展示十次相位聚合中的最低频和最高频。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:133
+msgid ""
+"**Frequency endpoints.** The $k=5$ component reaches its target near the "
+"start of training. The $k=50$ component rises across most of the "
+"80,000-update run."
+msgstr "**频率端点。** $k=5$ 分量在训练开始阶段达到目标；$k=50$ 分量在 80,000 次更新的大部分时间里持续上升。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:137
+msgid ""
+"Comfy Research visualization nodes for the middle-frequency component and"
+" the spectral norms of six layer-weight matrices."
+msgstr "Comfy Research 的中频分量和六个层权重矩阵谱范数可视化节点。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:141
+msgid ""
+"**Middle frequency and layer diagnostic.** The $k=25$ component reaches "
+"its target between the two endpoint frequencies. The adjacent node shows "
+"the six layer-weight spectral-norm series from the same ten-phase "
+"aggregate."
+msgstr "**中频和层诊断。** $k=25$ 分量在两个端点频率之间达到目标，旁边节点展示同一十次相位聚合中六个层权重的谱范数序列。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:146
+msgid ""
+"At the final recorded point, update 79,900, the ten mean amplitudes "
+"ranged from 0.9437 to 1.0069. All target components were nearly fitted by"
+" the end, and their learning onsets remained strongly ordered by "
+"frequency."
+msgstr ""
+"在最后一个记录点，即第 79,900 次更新时，十个平均幅值介于 0.9437 至 1.0069 "
+"之间。到训练结束时，所有目标分量都已接近拟合完成，且学习起始时刻仍明显按频率排序。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:150
+msgid ""
+"The public-notebook layer-weight calculation produced overall growth in "
+"the four square hidden layers. Its final means were 537.39, 337.99, "
+"455.25, and 660.57. The scale overlaps the paper. The stronger layer "
+"separation and Layer 5 dominance resemble the right panel of Figure 1(b) "
+"more than Figure 1(a). This difference is listed in the limitations."
+msgstr ""
+"公开 notebook 中的逐层权重计算显示，四个方形隐藏层的权重总体增长，最终均值分别为 537.39、337.99、455.25 和 "
+"660.57。其量级与论文结果相近。更明显的层间差异以及 Layer 5 的主导地位，与其说像 Figure 1(a)，不如说更接近 Figure "
+"1(b) 的右图。此差异列于局限性中。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:156
+msgid "Interpretation"
+msgstr "解释"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:158
+msgid ""
+"Across ten phase draws, the ReLU network fits the smooth, low-frequency "
+"structure before the rapidly varying, high-frequency structure. The "
+"aggregate reproduces the reported spectral ordering."
+msgstr "在十次相位抽样中，ReLU 网络先拟合平滑的低频结构，随后才拟合快速变化的高频结构。汇总结果复现了论文报告的频谱顺序。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:162
+msgid ""
+"High-frequency components are eventually fitted, with later threshold "
+"crossings under this configuration."
+msgstr "高频分量最终也会被拟合，但在这一配置下会更晚越过阈值。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:165
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:167
+msgid ""
+"The layer-weight panel differs visibly from the target Figure 1(a) panel,"
+" despite using the public notebook expression."
+msgstr "尽管采用公开 notebook 中的表达式，逐层权重面板仍与目标 Figure 1(a) 面板存在明显差异。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:169
+msgid ""
+"One source array contains a non-finite Layer 4 point at update 64,500. It"
+" is shown as missing, with no replacement or interpolation."
+msgstr "一个源数组在第 64,500 次更新处包含非有限的 Layer 4 值。图中将其显示为缺失值，未作替换或插值。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:171
+msgid ""
+"Figure 1(b), architecture and optimizer ablations, and the paper's real-"
+"dataset experiments are outside this reproduction."
+msgstr "Figure 1(b)、架构和优化器的消融实验，以及论文中的真实数据集实验，均不在本次复现范围内。"
+
+#: ../../docs/en/examples/reproductions/spectral-bias-figure1a.md:173
+msgid ""
+"Ten runs support the ordering for this controlled target. The causal "
+"mechanism for spectral bias remains outside the scope."
+msgstr "十次运行支持这一受控目标中的频率排序。频谱偏置背后的因果机制不在本次复现范围内。"

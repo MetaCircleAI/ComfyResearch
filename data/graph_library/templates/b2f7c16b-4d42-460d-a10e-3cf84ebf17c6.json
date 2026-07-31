@@ -1,0 +1,233 @@
+{
+  "id": "b2f7c16b-4d42-460d-a10e-3cf84ebf17c6",
+  "name": "AFNO-lite PDE forecasting (CPU)",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "afno_pde_comment",
+        "type": "comment",
+        "position": {
+          "x": -120.0,
+          "y": -40.0
+        },
+        "data": {
+          "instanceTitle": "AFNO-lite PDE forecasting (CPU)",
+          "text": "# AFNO-lite forecasting scaffold (CPU-friendly)\n\nThis template captures the core FourCastNet inductive bias in a simplified setup:\n- **Spectral token mixing over spatiotemporal fields** (`afno_lite_spatiotemporal_model`)\n- **Autoregressive next-step field prediction** on synthetic 2D PDE data\n- **Compact defaults** that train on CPU\n\nThe data source is `diffusion_pde_dataset` (not ERA5). For paper-level weather forecasting, add a real reanalysis dataset node later."
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_ds",
+        "type": "diffusion_pde_dataset",
+        "position": {
+          "x": 20.0,
+          "y": 230.0
+        },
+        "data": {
+          "instanceTitle": "2D heat equation (periodic)",
+          "contextFrames": 4,
+          "channels": 1,
+          "gridSize": 16,
+          "trainSize": 256,
+          "testSize": 64,
+          "warmupSteps": 40,
+          "dt": 0.05,
+          "diffusionCoeff": 0.2,
+          "reactionRate": 1.0,
+          "velocityX": 0.5,
+          "velocityY": 0.2,
+          "icScale": 0.5,
+          "initSeed": 42,
+          "samplingMode": "fixed"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_model",
+        "type": "afno_lite_spatiotemporal_model",
+        "position": {
+          "x": 360.0,
+          "y": 180.0
+        },
+        "data": {
+          "instanceTitle": "AFNO-lite spatiotemporal model",
+          "contextFrames": 4,
+          "channels": 1,
+          "gridSize": 16,
+          "inputDim": 1024,
+          "outputDim": 1024,
+          "patchSize": 4,
+          "embedDim": 64,
+          "depth": 2,
+          "numHeads": 4,
+          "ffRatio": 2.0,
+          "dropout": 0.0,
+          "numSpectralBlocks": 1,
+          "maxFrequencyModes": 4,
+          "spectralShrinkFactor": 1.0,
+          "seed": 7
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_mse",
+        "type": "mse_loss",
+        "position": {
+          "x": 330.0,
+          "y": 650.0
+        },
+        "data": {
+          "instanceTitle": "Field MSE",
+          "lossScale": 1.0,
+          "lossMaskContextLength": 1,
+          "lossMaskMode": "all",
+          "lossMaskCustom": ""
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_adam",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 30.0,
+          "y": 610.0
+        },
+        "data": {
+          "instanceTitle": "Adam",
+          "learningRate": 0.0003,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_trainer",
+        "type": "trainer",
+        "position": {
+          "x": 780.0,
+          "y": 330.0
+        },
+        "data": {
+          "instanceTitle": "Trainer",
+          "trainingSteps": 80,
+          "logFrequency": 4,
+          "computeDevice": "cpu",
+          "batchSize": 32,
+          "gradClipMaxNorm": 0
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_ckpt",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 1120.0,
+          "y": 320.0
+        },
+        "data": {
+          "instanceTitle": "Model checkpoint",
+          "checkpoint_b64": "",
+          "memoryCheckpoint_b64": "",
+          "checkpointSource": "memory",
+          "checkpointFileName": ""
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "afno_pde_viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1120.0,
+          "y": 510.0
+        },
+        "data": {
+          "instanceTitle": "Training viz",
+          "logScaleX": false,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_afno_ds_trainer",
+        "source": "afno_pde_ds",
+        "target": "afno_pde_trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e_afno_model_trainer",
+        "source": "afno_pde_model",
+        "target": "afno_pde_trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e_afno_adam_trainer",
+        "source": "afno_pde_adam",
+        "target": "afno_pde_trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e_afno_mse_trainer",
+        "source": "afno_pde_mse",
+        "target": "afno_pde_trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e_afno_trainer_ckpt",
+        "source": "afno_pde_trainer",
+        "target": "afno_pde_ckpt",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e_afno_trainer_viz",
+        "source": "afno_pde_trainer",
+        "target": "afno_pde_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      }
+    ],
+    "viewport": {
+      "x": 100.0,
+      "y": 120.0,
+      "zoom": 0.7
+    }
+  },
+  "savedAt": 1778620000000,
+  "libraryOrigin": null
+}

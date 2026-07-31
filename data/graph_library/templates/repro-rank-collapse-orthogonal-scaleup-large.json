@@ -1,0 +1,273 @@
+{
+  "id": "repro-rank-collapse-orthogonal-scaleup-large",
+  "name": "repro: Rank Collapse orthogonal scale-up (large, 256 samples)",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "rcs-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -350
+        },
+        "data": {
+          "text": "Rank Collapse \u00b7 large orthogonal scale-up (256 samples, 4 classes).\nMechanism: skewed class frequency + bottleneck d=2 + full-batch cross entropy + SGD.\nThis is a synthetic stress test on a larger orthogonal training set; it is not a natural-data reproduction.\nCalibrated (not paper-backed): SGD lr=0.20, rank_aligned_initialization scale=0.30, singularRatio=1.30, random_orthogonal basis. These parameters were selected by a small grid search to obtain a clear warmup -> entropy expansion -> terminal compression signature.\nClass counts: 137/68/34/17 (frequencyRatio=2.0 gives a geometric-like partition, not exact powers of two).\n\nLive generation: the dataset is generated on the fly from the node parameters. You can change inputDim to any value \u2265 4 (e.g., I6, I256, I1024) and trainSize to match it, or switch to rank_orthogonal_scaleup_mse, and the materializer will rebuild the orthogonal sample matrix at runtime; no precomputed artifact is required.",
+          "instanceTitle": "Large orthogonal scale-up \u00b7 256 samples"
+        }
+      },
+      {
+        "id": "rcs-dataset",
+        "type": "paper_classification_dataset",
+        "position": {
+          "x": 40,
+          "y": 20
+        },
+        "data": {
+          "experimentMode": "rank_orthogonal_scaleup_ce",
+          "inputDim": 256,
+          "outputDim": 4,
+          "trainSize": 256,
+          "testSize": 0,
+          "frequencyRatio": 2.0,
+          "classSeparation": 1.0,
+          "seed": 0,
+          "samplingMode": "fixed",
+          "instanceTitle": "Orthogonal full train set \u00b7 X=I256 \u00b7 counts 137/68/34/17"
+        }
+      },
+      {
+        "id": "rcs-model",
+        "type": "mlp_model",
+        "position": {
+          "x": 40,
+          "y": 250
+        },
+        "data": {
+          "inputDim": 256,
+          "outputDim": 4,
+          "depth": 1,
+          "width": 2,
+          "activation": "identity",
+          "outputScale": 1.0,
+          "seed": 0,
+          "instanceTitle": "Bias-free linear bottleneck \u00b7 256\u21922\u21924"
+        }
+      },
+      {
+        "id": "rcs-init",
+        "type": "rank_aligned_initialization",
+        "position": {
+          "x": 40,
+          "y": 480
+        },
+        "data": {
+          "basisMode": "random_orthogonal",
+          "structuredProfile": "robust_v1",
+          "scale": 0.3,
+          "singularRatio": 1.3,
+          "frequencyRatio": 2.0,
+          "perturbationScale": 0.05,
+          "inputRotationAngleRadians": 3.0,
+          "inputRotationPlane": 1,
+          "outputRotationAngleRadians": 1.7,
+          "outputRotationPlane": 2,
+          "seed": 0,
+          "instanceTitle": "Random orthogonal F\u1d40F=WW\u1d40 init"
+        }
+      },
+      {
+        "id": "rcs-optimizer",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 350,
+          "y": 20
+        },
+        "data": {
+          "learningRate": 0.2,
+          "momentum": 0.0,
+          "weightDecay": 0.0,
+          "instanceTitle": "Full-batch SGD (lr=0.20)"
+        }
+      },
+      {
+        "id": "rcs-loss",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 350,
+          "y": 210
+        },
+        "data": {
+          "lossScale": 1.0,
+          "labelSmoothing": 0.0,
+          "instanceTitle": "Cross entropy"
+        }
+      },
+      {
+        "id": "rcs-rankme",
+        "type": "observable_representation_rankme",
+        "position": {
+          "x": 350,
+          "y": 390
+        },
+        "data": {
+          "representationId": "0::output",
+          "captureTrajectories": true,
+          "instanceTitle": "RankMe, spectrum and F/W trajectories"
+        }
+      },
+      {
+        "id": "rcs-accuracy",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 350,
+          "y": 560
+        },
+        "data": {
+          "instanceTitle": "Full-training accuracy"
+        }
+      },
+      {
+        "id": "rcs-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 670,
+          "y": 180
+        },
+        "data": {
+          "trainingSteps": 500,
+          "logFrequency": 1,
+          "batchSize": -1,
+          "computeDevice": "cpu",
+          "gradClipMaxNorm": 0.0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Large scale-up Trainer \u00b7 500 steps"
+        }
+      },
+      {
+        "id": "rcs-loss_viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1000,
+          "y": 20
+        },
+        "data": {
+          "instanceTitle": "Full-batch CE"
+        }
+      },
+      {
+        "id": "rcs-rankme_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1000,
+          "y": 260
+        },
+        "style": {
+          "width": 580,
+          "height": 500
+        },
+        "data": {
+          "pairedObservableId": "rcs-rankme",
+          "pairedTrainerId": "rcs-trainer",
+          "vizVariant": "user",
+          "instanceTitle": "Three-phase RankMe \u00b7 large scale-up",
+          "rankCollapsePhases": true
+        }
+      },
+      {
+        "id": "rcs-accuracy_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1000,
+          "y": 820
+        },
+        "data": {
+          "pairedObservableId": "rcs-accuracy",
+          "pairedTrainerId": "rcs-trainer",
+          "vizVariant": "accuracy",
+          "instanceTitle": "Full-training accuracy"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-rcs-dataset-rcs-trainer-dataset-dataset",
+        "source": "rcs-dataset",
+        "target": "rcs-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rcs-model-rcs-trainer-model-model",
+        "source": "rcs-model",
+        "target": "rcs-trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rcs-init-rcs-model-initialization-initialization",
+        "source": "rcs-init",
+        "target": "rcs-model",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-rcs-optimizer-rcs-trainer-optimizer-optimizer",
+        "source": "rcs-optimizer",
+        "target": "rcs-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rcs-loss-rcs-trainer-loss-loss",
+        "source": "rcs-loss",
+        "target": "rcs-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rcs-rankme-rcs-trainer-observables-observables",
+        "source": "rcs-rankme",
+        "target": "rcs-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rcs-accuracy-rcs-trainer-observables-observables",
+        "source": "rcs-accuracy",
+        "target": "rcs-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rcs-trainer-rcs-loss_viz-loss_results-tensor_list",
+        "source": "rcs-trainer",
+        "target": "rcs-loss_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rcs-trainer-rcs-rankme_viz-observable_results-tensor",
+        "source": "rcs-trainer",
+        "target": "rcs-rankme_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-rcs-trainer-rcs-accuracy_viz-observable_results-tensor",
+        "source": "rcs-trainer",
+        "target": "rcs-accuracy_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.45
+    }
+  },
+  "libraryOrigin": null,
+  "savedAt": 1784531034729.4421
+}

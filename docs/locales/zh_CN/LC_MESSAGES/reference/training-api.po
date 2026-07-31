@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/reference/training-api.md:7
+msgid "Reference"
+msgstr "参考"
+
+#: ../../en/reference/training-api.md:10
+msgid "Training API"
+msgstr "训练 API"
+
+#: ../../en/reference/training-api.md:12
+msgid ""
+"The FastAPI development schema is available at `/docs`. The routes below are the "
+"supported stable workflow surface documented here."
+msgstr "FastAPI 开发 schema 位于 `/docs`。以下路由是本文档说明的受支持稳定工作流接口。"
+
+#: ../../en/reference/training-api.md:15
+msgid "Service and catalog routes"
+msgstr "服务与目录路由"
+
+#: ../../en/reference/training-api.md:6
+msgid "Method and path"
+msgstr "方法和路径"
+
+#: ../../en/reference/training-api.md:6
+msgid "Response or effect"
+msgstr "响应或作用"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/health`"
+msgstr "`GET /api/health`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Health, effective local or remote mode, remote source, and last validation state"
+msgstr "健康状态、实际本地或远程模式、远程来源和上次验证状态"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/node-definitions`"
+msgstr "`GET /api/node-definitions`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Version-1 generated node manifest"
+msgstr "版本 1 生成的节点 manifest"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/node-categories`"
+msgstr "`GET /api/node-categories`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Version-1 library categories plus dynamic user entries"
+msgstr "版本 1 的库类别加上动态用户条目"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/workspace`"
+msgstr "`GET /api/workspace`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Load the version-3 workspace snapshot"
+msgstr "加载版本 3 工作区快照"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/workspace`"
+msgstr "`POST /api/workspace`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Validate and replace the workspace snapshot"
+msgstr "验证并替换工作区快照"
+
+#: ../../en/reference/training-api.md:6
+#, python-brace-format
+msgid "`GET /api/graph-library/{kind}`"
+msgstr "`GET /api/graph-library/{kind}`"
+
+#: ../../en/reference/training-api.md:6
+msgid "List `workflows` and `templates`"
+msgstr "列出 `workflows` 和 `templates`"
+
+#: ../../en/reference/training-api.md:6
+#, python-brace-format
+msgid "`POST /api/graph-library/{kind}`"
+msgstr "`POST /api/graph-library/{kind}`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Add or replace one validated saved-graph entry"
+msgstr "添加或替换一个已验证的已保存图条目"
+
+#: ../../en/reference/training-api.md:6
+#, python-brace-format
+msgid "`DELETE /api/graph-library/{kind}/{entry_id}`"
+msgstr "`DELETE /api/graph-library/{kind}/{entry_id}`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Delete an entry and return the remaining list"
+msgstr "删除一个条目并返回剩余列表"
+
+#: ../../en/reference/training-api.md:28
+msgid "Single-run routes"
+msgstr "单次运行路由"
+
+#: ../../en/reference/training-api.md:6
+msgid "Contract"
+msgstr "契约"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train`"
+msgstr "`POST /api/train`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Validate a `TrainRequest` and stream local or selected remote training"
+msgstr "验证 `TrainRequest`，并流式传输本地或选定远程训练"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/control`"
+msgstr "`POST /api/train/control`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Request `pause` or `abort` for a Trainer ID"
+msgstr "为 Trainer ID 请求 `pause` 或 `abort`"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/train/cuda-devices`"
+msgstr "`GET /api/train/cuda-devices`"
+
+#: ../../en/reference/training-api.md:6
+msgid "List detected local CUDA devices"
+msgstr "列出检测到的本地 CUDA 设备"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/train/remote/status`"
+msgstr "`GET /api/train/remote/status`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Report effective remote mode and last validation state"
+msgstr "报告实际远程模式和上次验证状态"
+
+#: ../../en/reference/training-api.md:6
+msgid "`GET /api/train/remote/config`"
+msgstr "`GET /api/train/remote/config`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Return the stored remote configuration"
+msgstr "返回已保存的远程配置"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/remote/config`"
+msgstr "`POST /api/train/remote/config`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Replace the stored remote configuration"
+msgstr "替换已保存的远程配置"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/remote/validate`"
+msgstr "`POST /api/train/remote/validate`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Validate a supplied or effective remote connection"
+msgstr "验证提供的或实际生效的远程连接"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/remote/bootstrap`"
+msgstr "`POST /api/train/remote/bootstrap`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Synchronize and verify the remote runtime outside a train request"
+msgstr "在训练请求之外同步并验证远程运行时"
+
+#: ../../en/reference/training-api.md:41
+msgid ""
+"`TrainRequest` contains `trainer_node_id`, `nodes`, `edges`, optional `resume` state,"
+" and optional `hessian_oversized_policy` (`skip` or `force`). Nodes and edges are "
+"validated using the graph schema before the run is prepared."
+msgstr ""
+"`TrainRequest` 包含 `trainer_node_id`、`nodes`、`edges`、可选的 `resume` 状态和可选的 "
+"`hessian_oversized_policy`（`skip` 或 `force`）。准备运行前，节点和边会使用图 schema 验证。"
+
+#: ../../en/reference/training-api.md:45
+msgid "NDJSON response"
+msgstr "NDJSON 响应"
+
+#: ../../en/reference/training-api.md:47
+msgid ""
+"`POST /api/train` returns `application/x-ndjson`. Each line is a complete JSON "
+"object. Clients must process the stream incrementally and must not parse the response"
+" as one JSON document."
+msgstr ""
+"`POST /api/train` 返回 `application/x-ndjson`。每行都是一个完整 JSON 对象。客户端必须增量处理该流，不得将响应解析为一个 "
+"JSON 文档。"
+
+#: ../../en/reference/training-api.md:6
+msgid "Event type"
+msgstr "事件类型"
+
+#: ../../en/reference/training-api.md:6
+msgid "Meaning and stable fields"
+msgstr "含义和稳定字段"
+
+#: ../../en/reference/training-api.md:6
+msgid "`progress`"
+msgstr "`progress`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Run position with `step` and `total`"
+msgstr "包含 `step` 和 `total` 的运行位置"
+
+#: ../../en/reference/training-api.md:6
+msgid "`phase`"
+msgstr "`phase`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Remote bootstrap or execution phase with `phase` and `message`"
+msgstr "包含 `phase` 和 `message` 的远程引导或执行阶段"
+
+#: ../../en/reference/training-api.md:6
+msgid "`complete`"
+msgstr "`complete`"
+
+#: ../../en/reference/training-api.md:6
+msgid ""
+"Terminal success with checkpoint, loss histories, ticks, visualization targets, and "
+"Observable updates"
+msgstr "终止成功，包含检查点、损失历史、ticks、可视化目标和 Observable 更新"
+
+#: ../../en/reference/training-api.md:6
+msgid "`paused`"
+msgstr "`paused`"
+
+#: ../../en/reference/training-api.md:6
+msgid ""
+"Terminal pause for this stream with `next_step` plus resumable checkpoint and "
+"histories"
+msgstr "此流终止暂停，包含 `next_step` 以及可恢复的检查点和历史"
+
+#: ../../en/reference/training-api.md:6
+msgid "`aborted`"
+msgstr "`aborted`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Terminal cooperative abort"
+msgstr "终止的协作式中止"
+
+#: ../../en/reference/training-api.md:6
+msgid "`error`"
+msgstr "`error`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Terminal remote-stream error with `detail`"
+msgstr "包含 `detail` 的终止远程流错误"
+
+#: ../../en/reference/training-api.md:60
+msgid ""
+"Non-finite numeric values are converted to JSON `null` before encoding so each line "
+"remains valid RFC 8259 JSON."
+msgstr "编码前会将非有限数值转换为 JSON `null`，以确保每行仍是有效的 RFC 8259 JSON。"
+
+#: ../../en/reference/training-api.md:63
+msgid ""
+"For a normal local run the documented sequence begins with one or more `progress` "
+"events and ends in `complete`, `paused`, or `aborted`. Remote runs can emit `phase` "
+"before training and can terminate with `error` if the SSH process fails without "
+"another terminal event."
+msgstr ""
+"正常本地运行的文档化序列以一个或多个 `progress` 事件开始，并以 `complete`、`paused` 或 `aborted` 结束。远程运行可在训练前发出 "
+"`phase`，若 SSH 进程失败且没有其他终止事件，则可以 `error` 结束。"
+
+#: ../../en/reference/training-api.md:68
+msgid "Sweep routes"
+msgstr "扫参路由"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/sweep`"
+msgstr "`POST /api/train/sweep`"
+
+#: ../../en/reference/training-api.md:6
+msgid ""
+"Stream `sweep_started`, `sweep_progress`, `sweep_row`, then `sweep_complete` or "
+"`sweep_aborted`"
+msgstr ""
+"依次流式传输 `sweep_started`、`sweep_progress`、`sweep_row`，然后是 `sweep_complete` 或 "
+"`sweep_aborted`"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/sweep/control`"
+msgstr "`POST /api/train/sweep/control`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Request sweep abort between single-run iterations"
+msgstr "在单次运行迭代之间请求中止扫参"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/coordinate-descent`"
+msgstr "`POST /api/train/coordinate-descent`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Stream coordinate-descent tuning events"
+msgstr "流式传输坐标下降调优事件"
+
+#: ../../en/reference/training-api.md:6
+msgid "`POST /api/train/coordinate-descent/control`"
+msgstr "`POST /api/train/coordinate-descent/control`"
+
+#: ../../en/reference/training-api.md:6
+msgid "Request coordinate-descent abort by session ID"
+msgstr "按会话 ID 请求中止坐标下降"
+
+#: ../../en/reference/training-api.md:77
+msgid ""
+"These route contracts do not define a scientific acceptance threshold. The client or "
+"experiment protocol must decide what result counts as success."
+msgstr "这些路由契约不定义科学验收阈值。客户端或实验协议必须决定何种结果算作成功。"

@@ -1,0 +1,295 @@
+"""Synthetic Physics-of-LLM-style token LM datasets (biography, tuples, multi-hop, playground presets)."""
+
+from __future__ import annotations
+
+from typing import Any
+
+import numpy as np
+
+from comfy_research.engine.datasets.toy_language_common import dataset_rng_seed, resize_sequence, scalar_float, scalar_int, scalar_str, slice_shifted_window_lm
+
+
+def _num_special_reserve() -> int:
+    """Reserve low token ids for structure markers."""
+    return 24
+
+
+def _sample_entity_tok(rng: np.random.Generator, v: int, lo: int) -> int:
+    return int(rng.integers(lo, max(lo + 1, v)))
+
+
+def _biography_sequence(
+    rng: np.random.Generator,
+    v: int,
+    aug: str,
+    noise_prob: float,
+) -> list[int]:
+    """One biography block as token ids; specials in [0, S), entities in [S, v)."""
+    s0 = _num_special_reserve()
+    # specials (fixed meanings)
+    BOS, EOS = 1, 2
+    T_NAME, T_BORN, T_CITY = 3, 4, 5
+    SEP = 6
+
+    name_t = _sample_entity_tok(rng, v, s0)
+    year_t = _sample_entity_tok(rng, v, s0)
+    city_t = _sample_entity_tok(rng, v, s0)
+    blocks = [
+        [T_NAME, name_t],
+        [T_BORN, year_t],
+        [T_CITY, city_t],
+    ]
+    if aug.strip().lower() in ("shuffle_fields", "shuffle", "permute"):
+        rng.shuffle(blocks)
+    seq = [BOS]
+    for b in blocks:
+        seq.extend(b)
+        seq.append(SEP)
+    if aug.strip().lower() in ("noise_slots", "noise") and float(noise_prob) > 0.0:
+        for i in range(len(seq)):
+            if seq[i] >= s0 and float(rng.random()) < float(noise_prob):
+                seq[i] = _sample_entity_tok(rng, v, s0)
+    seq.append(EOS)
+    return seq
+
+
+def build_biography_lm_arrays_from_seed(
+    data: dict[str, Any],
+    train_n: int,
+    test_n: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    v = max(_num_special_reserve() + 2, scalar_int(data.get("vocabSize"), 64))
+    ctx = max(1, scalar_int(data.get("contextLength"), 32))
+    aug = scalar_str(data.get("biographyAugmentation"), "template")
+    noise_p = float(np.clip(scalar_float(data.get("slotNoiseProb"), 0.0), 0.0, 1.0))
+    target_len = ctx + 1
+    seed = dataset_rng_seed(data)
+
+    def split(n: int, rng: np.random.Generator) -> tuple[np.ndarray, np.ndarray]:
+        if n <= 0:
+            z = np.zeros((0, ctx), dtype=np.int64)
+            return z, np.zeros((0, ctx), dtype=np.int64)
+        rows = np.empty((n, target_len), dtype=np.int64)
+        for i in range(n):
+            toks: list[int] = []
+            while len(toks) < target_len:
+                toks.extend(_biography_sequence(rng, v, aug, noise_p))
+            rows[i] = resize_sequence(toks, target_len, rng, v)
+        return slice_shifted_window_lm(rows, ctx)
+
+    r0 = np.random.default_rng(seed)
+    r1 = np.random.default_rng(seed + 1)
+    x_tr, y_tr = split(train_n, r0)
+    x_te, y_te = split(test_n, r1)
+    return x_tr, y_tr, x_te, y_te
+
+
+def _relation_sequence_forward(rng: np.random.Generator, v: int) -> list[int]:
+    s0 = _num_special_reserve()
+    BOS, EOS = 1, 2
+    T_SUB, T_REL, T_OBJ = 7, 8, 9
+    SEP = 6
+    sub = _sample_entity_tok(rng, v, s0)
+    rel = _sample_entity_tok(rng, v, s0)
+    obj = _sample_entity_tok(rng, v, s0)
+    return [BOS, T_SUB, sub, T_REL, rel, T_OBJ, obj, SEP, EOS]
+
+
+def _relation_sequence_inverse(rng: np.random.Generator, v: int) -> list[int]:
+    """Query gives OBJ and REL; answer SUB at end (next-token LM learns to emit SUB)."""
+    s0 = _num_special_reserve()
+    BOS, EOS = 1, 2
+    T_SUB, T_REL, T_OBJ = 7, 8, 9
+    T_Q = 10
+    SEP = 6
+    sub = _sample_entity_tok(rng, v, s0)
+    rel = _sample_entity_tok(rng, v, s0)
+    obj = _sample_entity_tok(rng, v, s0)
+    return [BOS, T_Q, T_OBJ, obj, T_REL, rel, T_SUB, sub, SEP, EOS]
+
+
+def build_relation_tuple_lm_arrays_from_seed(
+    data: dict[str, Any],
+    train_n: int,
+    test_n: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    v = max(_num_special_reserve() + 2, scalar_int(data.get("vocabSize"), 64))
+    ctx = max(1, scalar_int(data.get("contextLength"), 24))
+    mode = scalar_str(data.get("relationMode"), "forward").strip().lower()
+    target_len = ctx + 1
+    seed = dataset_rng_seed(data)
+
+    def one_seq(rng: np.random.Generator) -> list[int]:
+        if mode in ("inverse", "inv"):
+            return _relation_sequence_inverse(rng, v)
+        return _relation_sequence_forward(rng, v)
+
+    def split(n: int, rng: np.random.Generator) -> tuple[np.ndarray, np.ndarray]:
+        if n <= 0:
+            z = np.zeros((0, ctx), dtype=np.int64)
+            return z, np.zeros((0, ctx), dtype=np.int64)
+        rows = np.empty((n, target_len), dtype=np.int64)
+        for i in range(n):
+            toks: list[int] = []
+            while len(toks) < target_len:
+                toks.extend(one_seq(rng))
+            rows[i] = resize_sequence(toks, target_len, rng, v)
+        return slice_shifted_window_lm(rows, ctx)
+
+    r0 = np.random.default_rng(seed)
+    r1 = np.random.default_rng(seed + 1)
+    x_tr, y_tr = split(train_n, r0)
+    x_te, y_te = split(test_n, r1)
+    return x_tr, y_tr, x_te, y_te
+
+
+def build_multi_hop_fact_chain_lm_arrays_from_seed(
+    data: dict[str, Any],
+    train_n: int,
+    test_n: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Linear chain of binary facts + query; target token is final entity."""
+    v = max(_num_special_reserve() + 2, scalar_int(data.get("vocabSize"), 96))
+    ctx = max(1, scalar_int(data.get("contextLength"), 48))
+    hops = max(1, scalar_int(data.get("chainHops"), 3))
+    target_len = ctx + 1
+    seed = dataset_rng_seed(data)
+    s0 = _num_special_reserve()
+    BOS, EOS = 1, 2
+    T_ENT, T_REL, T_Q, T_ANS = 11, 12, 13, 14
+    SEP = 6
+
+    def one_chain(rng: np.random.Generator) -> list[int]:
+        ents = [_sample_entity_tok(rng, v, s0) for _ in range(hops + 1)]
+        seq: list[int] = [BOS]
+        for i in range(hops):
+            seq.extend([T_ENT, ents[i], T_REL, _sample_entity_tok(rng, v, s0), T_ENT, ents[i + 1], SEP])
+        seq.extend([T_Q, T_ENT, ents[0], T_ANS, ents[-1], EOS])
+        return seq
+
+    def split(n: int, rng: np.random.Generator) -> tuple[np.ndarray, np.ndarray]:
+        if n <= 0:
+            z = np.zeros((0, ctx), dtype=np.int64)
+            return z, np.zeros((0, ctx), dtype=np.int64)
+        rows = np.empty((n, target_len), dtype=np.int64)
+        for i in range(n):
+            toks: list[int] = []
+            while len(toks) < target_len:
+                toks.extend(one_chain(rng))
+            rows[i] = resize_sequence(toks, target_len, rng, v)
+        return slice_shifted_window_lm(rows, ctx)
+
+    r0 = np.random.default_rng(seed)
+    r1 = np.random.default_rng(seed + 1)
+    x_tr, y_tr = split(train_n, r0)
+    x_te, y_te = split(test_n, r1)
+    return x_tr, y_tr, x_te, y_te
+
+
+def _playground_depo(rng: np.random.Generator, v: int, window: int, length: int) -> list[int]:
+    """Parity of previous ``window`` tokens (binary core) mapped into vocab."""
+    w = max(2, min(window, 12))
+    bits = [int(rng.integers(0, 2)) for _ in range(w)]
+    tok_lo = max(16, min(v // 2, v - 2))
+    out = [tok_lo + b for b in bits]
+    for _ in range(length - w):
+        nb = sum(bits[-w:]) % 2
+        bits.append(nb)
+        out.append(tok_lo + nb)
+    return out[:length]
+
+
+def _playground_brevo(rng: np.random.Generator, v: int, length: int) -> list[int]:
+    """Keyed copy: marker then filler then repeat segment from early positions."""
+    marker = 3
+    gap = int(rng.integers(2, max(3, min(length // 4, 16))))
+    seg_len = max(2, min(8, length // 4))
+    head = [int(rng.integers(16, max(17, v))) for _ in range(seg_len)]
+    seq = head + [marker] + [int(rng.integers(16, max(17, v))) for _ in range(gap)]
+    # copy head after gap region
+    seq.extend(head[: min(seg_len, length - len(seq))])
+    while len(seq) < length:
+        seq.append(int(rng.integers(0, max(1, v))))
+    return seq[:length]
+
+
+def _playground_mano(rng: np.random.Generator, v: int, mod: int, length: int) -> list[int]:
+    """Reveal counter state + symbol; deterministic transitions."""
+    m = max(2, min(mod, 64))
+    sym_lo = 16
+    state = int(rng.integers(0, m))
+    seq: list[int] = []
+    for _ in range(length):
+        sym = int(rng.integers(sym_lo, max(sym_lo + 1, v)))
+        seq.append((state * 7 + sym) % v)
+        state = (state + sym + 1) % m
+    return seq
+
+
+def _playground_capo(rng: np.random.Generator, v: int, length: int) -> list[int]:
+    """Short biography-like snippets concatenated."""
+    toks: list[int] = []
+    while len(toks) < length:
+        toks.extend(_biography_sequence(rng, v, "template", 0.0))
+    return toks[:length]
+
+
+def _playground_lano(rng: np.random.Generator, v: int, depth: int, length: int) -> list[int]:
+    """Nested brackets: multiple bracket types in Dyck-like fashion."""
+    k = max(1, min(depth, 8))
+    lo = 16
+    pairs = [(lo + 2 * i, lo + 2 * i + 1) for i in range(k)]
+
+    def gen(d: int) -> list[int]:
+        if d <= 0 or float(rng.random()) < 0.45:
+            return []
+        inner = gen(d - 1)
+        open_c, close_c = pairs[int(rng.integers(0, k))]
+        return [open_c] + inner + [close_c]
+
+    out = gen(max(2, min(depth, 6)))
+    while len(out) < length:
+        out.extend(gen(max(2, min(depth, 6))))
+    return resize_sequence(out, length, rng, v).tolist()
+
+
+def build_synthetic_playground_lm_arrays_from_seed(
+    data: dict[str, Any],
+    train_n: int,
+    test_n: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    v = max(32, scalar_int(data.get("vocabSize"), 64))
+    ctx = max(1, scalar_int(data.get("contextLength"), 32))
+    family = scalar_str(data.get("playgroundFamily"), "depo").strip().lower()
+    target_len = ctx + 1
+    seed = dataset_rng_seed(data)
+    depo_w = max(2, scalar_int(data.get("depoWindow"), 4))
+    mano_mod = max(2, scalar_int(data.get("manoModulus"), 17))
+    lano_depth = max(2, scalar_int(data.get("lanoNestingDepth"), 4))
+
+    def gen_tokens(rng: np.random.Generator) -> list[int]:
+        if family in ("brevo", "long_range", "copy"):
+            return _playground_brevo(rng, v, target_len)
+        if family in ("mano", "state", "fsa"):
+            return _playground_mano(rng, v, mano_mod, target_len)
+        if family in ("capo", "facts", "knowledge"):
+            return _playground_capo(rng, v, target_len)
+        if family in ("lano", "nested", "hier"):
+            return _playground_lano(rng, v, lano_depth, target_len)
+        # depo default
+        return _playground_depo(rng, v, depo_w, target_len)
+
+    def split(n: int, rng: np.random.Generator) -> tuple[np.ndarray, np.ndarray]:
+        if n <= 0:
+            z = np.zeros((0, ctx), dtype=np.int64)
+            return z, np.zeros((0, ctx), dtype=np.int64)
+        rows = np.empty((n, target_len), dtype=np.int64)
+        for i in range(n):
+            rows[i] = np.asarray(gen_tokens(rng), dtype=np.int64)
+        return slice_shifted_window_lm(rows, ctx)
+
+    r0 = np.random.default_rng(seed)
+    r1 = np.random.default_rng(seed + 1)
+    x_tr, y_tr = split(train_n, r0)
+    x_te, y_te = split(test_n, r1)
+    return x_tr, y_tr, x_te, y_te

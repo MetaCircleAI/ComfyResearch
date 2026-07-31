@@ -1,0 +1,953 @@
+{
+  "diffusion_score": {
+    "criterion_class": "MSELoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "DiffusionScoreMLP",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "diffusion_noise",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        1
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        1
+      ]
+    }
+  },
+  "err_mem_a_mse": {
+    "error": {
+      "detail": "memorization_a_dataset is a random-label classification benchmark: class labels are sampled independently of the input. Use cross_entropy_loss and set model outputDim to the number of classes (dataset outputDim, at least 2). MSE loss is not supported for this dataset type; use linear_dataset or random_noise_dataset for regression with MSE.",
+      "status": 400
+    }
+  },
+  "err_memb_vector_testsplit": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "cross_entropy_dense",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "err_mixer_dim_mismatch_atomic": {
+    "error": {
+      "detail": "dataset_mixer A/B mixed dimensions (2, 1) must match student chain dimensions (3, 1).",
+      "status": 400
+    }
+  },
+  "err_mixer_dim_mismatch_vec": {
+    "error": {
+      "detail": "dataset_mixer A/B mixed dimensions (2, 1) must match student model dimensions (3, 1).",
+      "status": 400
+    }
+  },
+  "err_residual_ln_mse": {
+    "error": {
+      "detail": "Token-classification models require cross_entropy_loss. Model node is NodeKind.residual_ln_model, but loss is NodeKind.mse_loss. Use cross_entropy_loss for token training, or switch to a vector-output model (mlp_model / gated_mlp_model / moe_mlp_model / kan_model / numeric_transformer_model / numeric_hyena_model / mpp_spatiotemporal_model / afno_lite_spatiotemporal_model) for mse_loss.",
+      "status": 400
+    }
+  },
+  "err_teacher_dim_mismatch_atomic": {
+    "error": {
+      "detail": "Student chain I/O (4, 2) must match the teacher (3, 2).",
+      "status": 400
+    }
+  },
+  "err_teacher_dim_mismatch_vec": {
+    "error": {
+      "detail": "Student model dimensions (4, 2) must match the teacher (3, 2).",
+      "status": 400
+    }
+  },
+  "err_token_model_mse": {
+    "error": {
+      "detail": "Token-classification models require cross_entropy_loss. Model node is NodeKind.transformer_token_model, but loss is NodeKind.mse_loss. Use cross_entropy_loss for token training, or switch to a vector-output model (mlp_model / gated_mlp_model / moe_mlp_model / kan_model / numeric_transformer_model / numeric_hyena_model / mpp_spatiotemporal_model / afno_lite_spatiotemporal_model) for mse_loss.",
+      "status": 400
+    }
+  },
+  "mem_a_ce": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "cross_entropy_dense",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "mem_a_ce_slotmask": {
+    "criterion_class": "WeightedSameLabelMultiSlotCrossEntropyLoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "cross_entropy_dense",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "teacher_atomic_student": {
+    "criterion_class": "MSELoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        2
+      ]
+    }
+  },
+  "teacher_mlp_student": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        2
+      ]
+    }
+  },
+  "tok_attention_only": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "AttentionTokenPredictBundle",
+    "test_size": 4,
+    "token_lm_seq_len": 3,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "tok_circle_walk": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "TokenTransformerModel",
+    "test_size": 4,
+    "token_lm_seq_len": 3,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "tok_linear_attention": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "LinearAttentionTokenPredictBundle",
+    "test_size": 4,
+    "token_lm_seq_len": 3,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "tok_memb_fallthrough": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "MlpTokenModel",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        1
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        1
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "tok_mlp": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "MlpTokenModel",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "tok_modular_addition": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "TokenTransformerModel",
+    "test_size": 20,
+    "token_lm_seq_len": 2,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        29,
+        2
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        20,
+        2
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        29
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        20
+      ]
+    }
+  },
+  "tok_test0": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "MlpTokenModel",
+    "test_size": 0,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": null,
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": null
+  },
+  "tok_transformer": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "TokenTransformerModel",
+    "test_size": 4,
+    "token_lm_seq_len": 3,
+    "train_streaming": false,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "tok_unigram_stream": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "MlpTokenModel",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": true,
+    "trainer_task": "token_classification",
+    "x": {
+      "dtype": "torch.int64",
+      "shape": [
+        8,
+        1
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        1
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  },
+  "vec_afno_pde": {
+    "criterion_class": "MSELoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "AfnoLiteSpatiotemporalModel",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        256
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        256
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        256
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        256
+      ]
+    }
+  },
+  "vec_gated_mlp": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "GatedMlp",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        2
+      ]
+    }
+  },
+  "vec_kan": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "MultKAN",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        2
+      ]
+    }
+  },
+  "vec_mlp": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        2
+      ]
+    }
+  },
+  "vec_mlp_test0": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 0,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": null,
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": null
+  },
+  "vec_moe_mlp": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "MoeMlp",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        3
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        2
+      ]
+    }
+  },
+  "vec_mpp_pde": {
+    "criterion_class": "MSELoss",
+    "depth": 1,
+    "hessian_oversized_mode": "off",
+    "model_class": "MppSpatiotemporalModel",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        256
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        256
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        256
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        256
+      ]
+    }
+  },
+  "vec_numeric_hyena": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "NumericHyenaModel",
+    "test_size": 4,
+    "token_lm_seq_len": 4,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4,
+        2
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4,
+        2
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4,
+        2
+      ]
+    }
+  },
+  "vec_numeric_transformer": {
+    "criterion_class": "MSELoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "NumericTransformerModel",
+    "test_size": 4,
+    "token_lm_seq_len": 4,
+    "train_streaming": false,
+    "trainer_task": "mse_regression",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4,
+        2
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4,
+        2
+      ]
+    },
+    "y": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        4,
+        2
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        4,
+        2
+      ]
+    }
+  },
+  "vision_flatten_mlp_ce": {
+    "criterion_class": "CrossEntropyLoss",
+    "depth": 2,
+    "hessian_oversized_mode": "off",
+    "model_class": "Sequential",
+    "test_size": 4,
+    "token_lm_seq_len": 0,
+    "train_streaming": false,
+    "trainer_task": "cross_entropy_dense",
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        8,
+        784
+      ]
+    },
+    "x_test": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        784
+      ]
+    },
+    "y": {
+      "dtype": "torch.int64",
+      "shape": [
+        8
+      ]
+    },
+    "y_test": {
+      "dtype": "torch.int64",
+      "shape": [
+        4
+      ]
+    }
+  }
+}

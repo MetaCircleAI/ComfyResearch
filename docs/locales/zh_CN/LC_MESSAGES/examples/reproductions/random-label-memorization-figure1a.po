@@ -1,0 +1,482 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-31 10:12+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:7
+msgid ""
+"Generalization, Memorization, and Reproducibility · Phenomenon "
+"reproduction"
+msgstr "泛化、记忆与可复现性 · 现象复现"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:10
+msgid "Memorizing Random Labels on CIFAR-10"
+msgstr "在 CIFAR-10 上记忆随机标签"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:12
+msgid "Compute cost"
+msgstr "计算开销"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:15
+msgid ""
+"The complete comparison trains five Small Inception models for 25,000 "
+"steps each on CIFAR-10. A CUDA device is strongly recommended."
+msgstr "完整比较需要在 CIFAR-10 上训练五个 Small Inception 模型，每个模型各训练 25,000 步。强烈建议使用 CUDA 设备。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:20
+msgid ""
+"A Small Inception network reaches 100% training accuracy on true labels, "
+"fixed random labels, and heavily randomized inputs."
+msgstr "Small Inception 网络在真实标签、固定随机标签和高度随机化的输入上均可达到 100% 训练准确率。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:29
+msgid "XC"
+msgstr "程宇"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:34
+msgid "Author"
+msgstr "作者"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:42
+msgid "Scope"
+msgstr "范围"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:44
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:49
+msgid ""
+"This example reproduces the learning-curve experiment in Figure 1(a) of "
+"Zhang et al. Five Small Inception models are trained on true labels, "
+"fixed random labels, globally shuffled pixels, independently shuffled "
+"pixels, and Gaussian inputs. Every condition reaches 100% training "
+"accuracy and a final interval loss below 0.0014. The overall convergence "
+"order matches the paper. The random-pixel and random-label curves fall "
+"later than their visual positions in the original figure."
+msgstr ""
+"本示例复现 Zhang 等人 Figure 1(a) 的学习曲线实验。五个 Small Inception "
+"模型分别使用真实标签、固定随机标签、全局打乱的像素、逐图独立打乱的像素和高斯输入进行训练。所有条件均达到 100% 训练准确率，最终区间损失低于 "
+"0.0014。整体收敛顺序与论文一致，但随机像素和随机标签曲线下降的时间晚于原图的视觉位置。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:58
+msgid ""
+"**Paper:** [Understanding Deep Learning Requires Rethinking "
+"Generalization](https://arxiv.org/abs/1611.03530)"
+msgstr "**论文：** [理解深度学习需要重新思考泛化](https://arxiv.org/abs/1611.03530)"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:61
+msgid "**Template:** `repro: Zhang et al. Figure 1(a) random-label memorization`"
+msgstr "**模板：** `repro: Zhang et al. Figure 1(a) random-label memorization`"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:63
+msgid "**Template ID:** `repro-random-label-memorization-fig1a`"
+msgstr "**模板 ID：** `repro-random-label-memorization-fig1a`"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:65
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:67
+msgid ""
+"The experiment asks whether conventional neural networks fit only "
+"meaningful input-label relationships or whether they can also memorize "
+"arbitrary assignments. Figure 1(a) compares training loss under five "
+"fixed data conditions:"
+msgstr "该实验考察传统神经网络是只能拟合有意义的输入—标签关系，还是也能记住任意映射。Figure 1(a) 比较五种固定数据条件下的训练损失："
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:72
+msgid "**true labels:** unchanged CIFAR-10 images and labels;"
+msgstr "**真实标签：** CIFAR-10 图像和标签保持不变；"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:73
+msgid ""
+"**random labels:** every training label is replaced by a fixed uniform "
+"random class;"
+msgstr "**随机标签：** 每个训练标签均替换为固定的、均匀采样的随机类别；"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:75
+msgid "**shuffled pixels:** one fixed pixel permutation is shared by all images;"
+msgstr "**打乱像素：** 所有图像共享同一个固定的像素置换；"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:76
+msgid ""
+"**random pixels:** every image receives its own fixed pixel permutation; "
+"and"
+msgstr "**随机像素：** 每张图像各自使用一个固定的像素置换；以及"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:77
+msgid ""
+"**gaussian:** image values are replaced by fixed Gaussian inputs with "
+"matched statistics."
+msgstr "**高斯输入：** 图像像素值替换为统计量匹配的固定高斯输入。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:80
+msgid ""
+"The target phenomenon is complete training-set fitting in all five "
+"conditions, with the true-label curve dropping first and the random-label"
+" curve last."
+msgstr "目标现象是五种条件下都能完全拟合训练集，其中真实标签曲线最先下降，随机标签曲线最后下降。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:83
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Item"
+msgstr "项目"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Current reproduction"
+msgstr "本次复现"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "CIFAR-10, 50,000 training and 10,000 test examples"
+msgstr "CIFAR-10，50,000 个训练样本和 10,000 个测试样本"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Preprocessing"
+msgstr "预处理"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Divide by 255, center crop to 28x28, per-image whitening"
+msgstr "除以 255、中心裁剪至 28x28、逐图白化"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Model"
+msgstr "模型"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Small Inception, 1,649,402 trainable parameters"
+msgstr "Small Inception，1,649,402 个可训练参数"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Objective"
+msgstr "目标函数"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Cross-entropy"
+msgstr "交叉熵"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "SGD, momentum 0.9, weight decay 0"
+msgstr "SGD，动量 0.9，权重衰减 0"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Learning rate"
+msgstr "学习率"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "0.1 initially, multiplied by 0.95 each epoch"
+msgstr "初始为 0.1，每个 epoch 乘以 0.95"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Batch size"
+msgstr "Batch size"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "128"
+msgstr "128"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Training"
+msgstr "训练"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "25,000 steps per condition"
+msgstr "每种条件 25,000 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Main curve"
+msgstr "主曲线"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Sample-weighted online cross-entropy, aggregated every 100 steps"
+msgstr "按样本加权的在线交叉熵，每 100 步聚合一次"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "Repetition"
+msgstr "重复"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:46
+msgid "One fixed seed per condition"
+msgstr "每种条件使用一个固定 seed"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:98
+msgid ""
+"Batch size, initialization, minibatch order, and the exact averaging "
+"window are unspecified for Figure 1(a). The reproduction records "
+"deterministic values for these settings because they can shift the "
+"horizontal location and local smoothness of the curves."
+msgstr "Figure 1(a) 未说明 Batch size、初始化、小 batch 顺序和准确的平均窗口。本次复现为这些设置记录了确定的取值，因为它们会改变曲线的横向位置和局部平滑程度。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:103
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:105
+msgid ""
+"Open **Templates** and load `Understanding Deep Learning Requires "
+"Rethinking Generalization`."
+msgstr ""
+"打开 **Templates**，加载 `Understanding Deep Learning Requires Rethinking "
+"Generalization`。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:107
+msgid ""
+"Inspect the five dataset conditions and confirm that each connects to an "
+"independent Trainer."
+msgstr "检查五种数据条件，确认每种条件都连接到独立的 Trainer。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:109
+msgid "Run the true-label Trainer as the ordinary CIFAR-10 baseline."
+msgstr "运行真实标签的 Trainer，作为常规 CIFAR-10 基线。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:110
+msgid "Run the random-label, shuffled-pixel, random-pixel, and Gaussian Trainers."
+msgstr "运行随机标签、打乱像素、随机像素和高斯输入对应的 Trainer。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:111
+msgid "Compare the five loss histories in the curve-series visualization."
+msgstr "在曲线序列可视化中比较五条损失曲线。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:112
+msgid ""
+"Use the full-training-set diagnostic to confirm that low interval loss "
+"also corresponds to complete memorization."
+msgstr "使用完整训练集诊断，确认较低的区间损失确实对应完全记忆。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:115
+msgid "The five runs are independent and may be executed sequentially."
+msgstr "五次运行彼此独立，可以依次执行。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:117
+msgid "Results"
+msgstr "结果"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:119
+msgid ""
+"All five runs reached 100% full-training-set accuracy. Their final losses"
+" and threshold-crossing times were:"
+msgstr "五次运行的完整训练集准确率均达到 100%。其最终损失和达到阈值所需的时间如下："
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid ""
+"Comfy Research curve-series table and loss visualization for true labels,"
+" random labels, shuffled pixels, random pixels, and Gaussian inputs."
+msgstr "Comfy Research 的曲线序列表和损失可视化，包含真实标签、随机标签、打乱像素、随机像素和高斯输入。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:126
+msgid ""
+"**Five-condition result view.** The Comfy Research table identifies the "
+"five captured series. The adjacent visualization shows true labels "
+"converging first and fixed random labels converging last."
+msgstr "**五条件结果视图。** Comfy Research 表格列出五条已捕获序列，旁边的可视化显示真实标签最先收敛，固定随机标签最后收敛。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Condition"
+msgstr "条件"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Loss $\\leq 0.1$"
+msgstr "损失 $\\leq 0.1$"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Loss $\\leq 0.01$"
+msgstr "损失 $\\leq 0.01$"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Final interval loss"
+msgstr "最终区间损失"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Full-train loss"
+msgstr "完整训练集损失"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "True labels"
+msgstr "真实标签"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "4.0k steps"
+msgstr "4.0k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "5.7k steps"
+msgstr "5.7k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000270"
+msgstr "0.000270"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000111"
+msgstr "0.000111"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Shuffled pixels"
+msgstr "打乱像素"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "5.6k steps"
+msgstr "5.6k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "6.7k steps"
+msgstr "6.7k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000170"
+msgstr "0.000170"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000083"
+msgstr "0.000083"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Gaussian"
+msgstr "高斯输入"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "8.8k steps"
+msgstr "8.8k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "9.9k steps"
+msgstr "9.9k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000257"
+msgstr "0.000257"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000154"
+msgstr "0.000154"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Random pixels"
+msgstr "随机像素"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "11.9k steps"
+msgstr "11.9k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "13.0k steps"
+msgstr "13.0k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000803"
+msgstr "0.000803"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000405"
+msgstr "0.000405"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "Random labels"
+msgstr "随机标签"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "16.6k steps"
+msgstr "16.6k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "17.7k steps"
+msgstr "17.7k 步"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.001383"
+msgstr "0.001383"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:122
+msgid "0.000765"
+msgstr "0.000765"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:139
+msgid ""
+"The threshold times preserve the paper's overall ordering: meaningful "
+"labels are fitted first, shared input structure helps, and arbitrary "
+"labels require the longest high-loss phase. Random pixels and random "
+"labels converge later than in a visual reading of the original Figure "
+"1(a). The comparison metrics are ordering and threshold times."
+msgstr ""
+"达到阈值的时间保留了论文中的整体顺序：有意义的标签最先被拟合，共享的输入结构有助于训练，而任意标签需要经历最长的高损失阶段。随机像素和随机标签的收敛时间晚于从原始 "
+"Figure 1(a) 图中直观看到的位置。比较指标是顺序和达到阈值的时间。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:145
+msgid "Interpretation"
+msgstr "解释"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:147
+msgid ""
+"Training accuracy alone does not distinguish meaningful input-label "
+"structure from memorization. The same architecture and optimizer drive "
+"training error to zero even when labels contain no information about the "
+"inputs."
+msgstr "仅凭训练准确率无法区分有意义的输入—标签结构和记忆。即使标签不含任何输入信息，相同的架构和优化器仍会将训练误差降至零。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:151
+msgid ""
+"The true-label model reached 86.71% test accuracy. The random-label model"
+" reached 10.31%, close to chance on CIFAR-10. These supplementary values "
+"are outside Figure 1(a)'s learning-curve comparison."
+msgstr ""
+"真实标签模型的测试准确率达到 86.71%，随机标签模型为 10.31%，接近 CIFAR-10 的随机猜测水平。这些补充数值不属于 Figure "
+"1(a) 的学习曲线比较。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:155
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:157
+msgid ""
+"One deterministic seed is used per condition, so seed-to-seed uncertainty"
+" is unmeasured."
+msgstr "每种条件仅使用一个确定的 seed，因此未衡量不同 seed 之间的不确定性。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:159
+msgid ""
+"Unreported implementation choices can explain part of the horizontal "
+"difference from the original curves."
+msgstr "未报告的实现选择可能解释其与原始曲线之间的部分横向差异。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:161
+msgid ""
+"Coverage is limited to Figure 1(a) and the Small Inception CIFAR-10 "
+"setting."
+msgstr "实验仅覆盖 Figure 1(a) 和 Small Inception 的 CIFAR-10 设置。"
+
+#: ../../docs/en/examples/reproductions/random-label-memorization-figure1a.md:162
+msgid ""
+"The experiment measures memorization capacity. The generalization "
+"mechanism of stochastic gradient methods remains outside the scope."
+msgstr "本实验测量的是记忆能力；随机梯度方法的泛化机制不在讨论范围内。"

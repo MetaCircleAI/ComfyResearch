@@ -1,0 +1,289 @@
+{
+  "id": "a04f21b3-e31c-4ba3-b8b9-d3af752f77d4",
+  "name": "staggered sv dynamics",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "comment-title",
+        "type": "comment",
+        "position": {
+          "x": -360.0,
+          "y": -180.0
+        },
+        "data": {
+          "text": "# Staggered singular-value learning in deep linear networks\n\nSaxe, McClelland & Ganguli (2013) show that gradient descent on a deep linear network learns the modes of the input-output cross-covariance **one at a time**, from the largest singular value down.\n\n**Key claims to test:**\n- W_eff = W_3 W_2 W_1 starts near zero (small init).\n- σ₁(W_eff) rises first, then σ₂, then σ₃ — each after the previous saturates.\n- The time to learn mode k scales roughly as 1/σ_k(W*).\n- Effective rank of W_eff grows in discrete steps.\n\n**Setup:** 3-layer deep linear network (identity activations) trained with SGD on a noiseless linear dataset (8 → 8)."
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "comment-notes",
+        "type": "comment",
+        "position": {
+          "x": -360.0,
+          "y": 160.0
+        },
+        "data": {
+          "text": "**Notes:**\n- `activation = identity` makes `mlp_model` a deep linear network.\n- `noiseLevel = 0` removes additive Gaussian noise so the oracle W* is exactly learned.\n- `depth = 2` gives three weight matrices (W₁, W₂, W₃).\n- `saxe_initialization` (ε = 0.01) sets each Wᵢ = 0.01·Q (Q orthogonal). This is the key condition for the theory: W_eff(0) ≈ 0 so modes are learned sequentially.\n- `learningRate = 0.005` is in the gradient-flow (small-step) regime.\n- The observable tracks **σ₁ … σ₄** of W₃ W₂ W₁ at each log step.\n- Watch the curves rise sequentially in the viz below the trainer."
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ds-linear",
+        "type": "linear_dataset",
+        "position": {
+          "x": 80.0,
+          "y": -120.0
+        },
+        "data": {
+          "inputDim": 8,
+          "outputDim": 8,
+          "inputDistribution": "standard_normal",
+          "outputDistribution": "additive_gaussian",
+          "noiseLevel": 0,
+          "trainSize": 2000,
+          "testSize": 400,
+          "seed": 42
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "model-deep-linear",
+        "type": "mlp_model",
+        "position": {
+          "x": 80.0,
+          "y": 80.0
+        },
+        "data": {
+          "inputDim": 8,
+          "outputDim": 8,
+          "depth": 2,
+          "width": 8,
+          "activation": "identity",
+          "seed": 7
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "sgd-opt",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 80.0,
+          "y": 280.0
+        },
+        "data": {
+          "learningRate": 0.005,
+          "momentum": 0,
+          "weightDecay": 0
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "mse-loss",
+        "type": "mse_loss",
+        "position": {
+          "x": 340.0,
+          "y": 280.0
+        },
+        "data": {},
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "saxe-init",
+        "type": "saxe_initialization",
+        "position": {
+          "x": 340.0,
+          "y": 80.0
+        },
+        "data": {
+          "amplitude": 0.2
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "obs-sv",
+        "type": "observable_weight_product_sv",
+        "position": {
+          "x": 80.0,
+          "y": 440.0
+        },
+        "data": {
+          "topK": 4
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "trainer-main",
+        "type": "trainer",
+        "position": {
+          "x": 560.0,
+          "y": 80.0
+        },
+        "data": {
+          "trainingSteps": 8000,
+          "logFrequency": 40,
+          "computeDevice": "cpu",
+          "batchSize": 256,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "lastTrainLoopSeconds": 5.087228754535317
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ckpt-main",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 820.0,
+          "y": 0.0
+        },
+        "data": {},
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "tviz-loss",
+        "type": "training_visualization",
+        "position": {
+          "x": 820.0,
+          "y": 160.0
+        },
+        "data": {},
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "oviz-sv",
+        "type": "observable_viz",
+        "position": {
+          "x": 820.0,
+          "y": 360.0
+        },
+        "data": {
+          "pairedObservableId": "obs-sv",
+          "pairedTrainerId": "trainer-main",
+          "observableName": "Weight product SVs",
+          "vizVariant": "weight_product_sv",
+          "topK": 4,
+          "order": "descending",
+          "logScaleX": false,
+          "logScaleY": false,
+          "seriesLabels": [
+            "σ1",
+            "σ2",
+            "σ3",
+            "σ4"
+          ]
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-ds-trainer",
+        "source": "ds-linear",
+        "target": "trainer-main",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-model-trainer",
+        "source": "model-deep-linear",
+        "target": "trainer-main",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-saxe-model",
+        "source": "saxe-init",
+        "target": "model-deep-linear",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-opt-trainer",
+        "source": "sgd-opt",
+        "target": "trainer-main",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-loss-trainer",
+        "source": "mse-loss",
+        "target": "trainer-main",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-obs-trainer",
+        "source": "obs-sv",
+        "target": "trainer-main",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-trainer-ckpt",
+        "source": "trainer-main",
+        "target": "ckpt-main",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e-trainer-tviz",
+        "source": "trainer-main",
+        "target": "tviz-loss",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-trainer-oviz",
+        "source": "trainer-main",
+        "target": "oviz-sv",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": -27.070774109553213,
+      "y": -5.845389397018039,
+      "zoom": 1.0108059318271672
+    }
+  },
+  "savedAt": 1782653079260.0,
+  "libraryOrigin": null
+}

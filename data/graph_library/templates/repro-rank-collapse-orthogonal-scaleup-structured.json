@@ -1,0 +1,272 @@
+{
+  "id": "repro-rank-collapse-orthogonal-scaleup-structured",
+  "name": "repro: Rank Collapse orthogonal scale-up (structured)",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "rcs-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -350
+        },
+        "data": {
+          "text": "Rank Collapse \u00b7 structured orthogonal scale-up of the Figure-5 mechanism.\nPhenomenon: this graph makes warmup \u2192 entropy expansion \u2192 terminal compression much larger and stable inside a disclosed local initialization neighborhood. It is a mechanism-focused stress test, not a second claim of exact Figure-5 numerical recovery.\nPaper setting: Figure 5 uses six orthogonal samples, labels [0,0,1,1,2,3], four classes, d=2, full-batch cross entropy and 300 plotted updates. The paper does not publish its learning rate, numerical initialization, seed or toy source.\nTemplate setting: the complete training set is X=I60 with grouped class counts [32,16,8,4], a bias-free linear 60\u21922\u21924 factorization, full-batch SGD(lr=0.06), and 400 updates. The balanced singular values are [0.90,0.50]. The robust_v1 functional input/head bases are label-aware: they are constructed from the grouped class partition, class mass and log-frequency contrasts. The evidence-locked input rotation angle/plane is 3.0 rad / 1 and the output rotation angle/plane is 1.7 rad / 2; these were selected by the disclosed search, not supplied by the paper. Gaussian perturbations use coefficient 0.05 before canonical QR (not a hard 5% radius); initialization still satisfies F\u1d40F=WW\u1d40.\nResult boundary: scripts/phenomena/rank_collapse_scaleup.py runs the canonical graph, all 200 disclosed perturbation seeds (0\u2013199), a global-random orientation robustness probe, uniform-frequency / d=3 no-bottleneck / MSE controls, plus longer horizons. Robustness means the neighborhood around this structured basis, not arbitrary random initialization. The late decline is finite-window and later re-expands, so persistent/asymptotic collapse is not claimed. This Template validates the Panel-D-style RankMe/spectrum signature, not the paper's classwise primacy ordering or complete Figure-5 B/C trajectories. CI only performs an in-memory short smoke and does not assert the phenomenon. No Grokking task is used.",
+          "instanceTitle": "Structured scale-up \u00b7 claim boundary"
+        }
+      },
+      {
+        "id": "rcs-dataset",
+        "type": "paper_classification_dataset",
+        "position": {
+          "x": 40,
+          "y": 20
+        },
+        "data": {
+          "experimentMode": "rank_orthogonal_scaleup_ce",
+          "inputDim": 60,
+          "outputDim": 4,
+          "trainSize": 60,
+          "testSize": 0,
+          "frequencyRatio": 2.0,
+          "classSeparation": 1.0,
+          "seed": 0,
+          "samplingMode": "fixed",
+          "instanceTitle": "Orthogonal full train set \u00b7 X=I60 \u00b7 counts 32/16/8/4"
+        }
+      },
+      {
+        "id": "rcs-model",
+        "type": "mlp_model",
+        "position": {
+          "x": 40,
+          "y": 250
+        },
+        "data": {
+          "inputDim": 60,
+          "outputDim": 4,
+          "depth": 1,
+          "width": 2,
+          "activation": "identity",
+          "outputScale": 1.0,
+          "seed": 0,
+          "instanceTitle": "Bias-free linear bottleneck \u00b7 60\u21922\u21924"
+        }
+      },
+      {
+        "id": "rcs-init",
+        "type": "rank_aligned_initialization",
+        "position": {
+          "x": 40,
+          "y": 480
+        },
+        "data": {
+          "basisMode": "frequency_structured",
+          "structuredProfile": "robust_v1",
+          "scale": 0.5,
+          "singularRatio": 1.8,
+          "frequencyRatio": 2.0,
+          "perturbationScale": 0.05,
+          "inputRotationAngleRadians": 3.0,
+          "inputRotationPlane": 1,
+          "outputRotationAngleRadians": 1.7,
+          "outputRotationPlane": 2,
+          "seed": 0,
+          "instanceTitle": "robust_v1 \u00b7 in 3.0/1 \u00b7 out 1.7/2 \u00b7 \u03b5=.05"
+        }
+      },
+      {
+        "id": "rcs-optimizer",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 350,
+          "y": 20
+        },
+        "data": {
+          "learningRate": 0.06,
+          "momentum": 0.0,
+          "weightDecay": 0.0,
+          "instanceTitle": "Full-batch SGD (lr=0.06)"
+        }
+      },
+      {
+        "id": "rcs-loss",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 350,
+          "y": 210
+        },
+        "data": {
+          "lossScale": 1.0,
+          "labelSmoothing": 0.0,
+          "instanceTitle": "Cross entropy"
+        }
+      },
+      {
+        "id": "rcs-rankme",
+        "type": "observable_representation_rankme",
+        "position": {
+          "x": 350,
+          "y": 390
+        },
+        "data": {
+          "representationId": "0::output",
+          "captureTrajectories": true,
+          "instanceTitle": "RankMe, spectrum and F/W trajectories"
+        }
+      },
+      {
+        "id": "rcs-accuracy",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 350,
+          "y": 560
+        },
+        "data": {
+          "instanceTitle": "Full-training accuracy"
+        }
+      },
+      {
+        "id": "rcs-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 670,
+          "y": 180
+        },
+        "data": {
+          "trainingSteps": 400,
+          "logFrequency": 1,
+          "batchSize": -1,
+          "computeDevice": "cpu",
+          "gradClipMaxNorm": 0.0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Structured scale-up Trainer \u00b7 400 steps"
+        }
+      },
+      {
+        "id": "rcs-loss_viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1000,
+          "y": 20
+        },
+        "data": {
+          "instanceTitle": "Full-batch CE"
+        }
+      },
+      {
+        "id": "rcs-rankme_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1000,
+          "y": 260
+        },
+        "style": {
+          "width": 580,
+          "height": 500
+        },
+        "data": {
+          "pairedObservableId": "rcs-rankme",
+          "pairedTrainerId": "rcs-trainer",
+          "vizVariant": "user",
+          "instanceTitle": "Three-phase RankMe \u00b7 structured scale-up",
+          "rankCollapsePhases": true
+        }
+      },
+      {
+        "id": "rcs-accuracy_viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1000,
+          "y": 820
+        },
+        "data": {
+          "pairedObservableId": "rcs-accuracy",
+          "pairedTrainerId": "rcs-trainer",
+          "vizVariant": "accuracy",
+          "instanceTitle": "Full-training accuracy"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-rcs-dataset-rcs-trainer-dataset-dataset",
+        "source": "rcs-dataset",
+        "target": "rcs-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-rcs-model-rcs-trainer-model-model",
+        "source": "rcs-model",
+        "target": "rcs-trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-rcs-init-rcs-model-initialization-initialization",
+        "source": "rcs-init",
+        "target": "rcs-model",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-rcs-optimizer-rcs-trainer-optimizer-optimizer",
+        "source": "rcs-optimizer",
+        "target": "rcs-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-rcs-loss-rcs-trainer-loss-loss",
+        "source": "rcs-loss",
+        "target": "rcs-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-rcs-rankme-rcs-trainer-observables-observables",
+        "source": "rcs-rankme",
+        "target": "rcs-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rcs-accuracy-rcs-trainer-observables-observables",
+        "source": "rcs-accuracy",
+        "target": "rcs-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-rcs-trainer-rcs-loss_viz-loss_results-tensor_list",
+        "source": "rcs-trainer",
+        "target": "rcs-loss_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-rcs-trainer-rcs-rankme_viz-observable_results-tensor",
+        "source": "rcs-trainer",
+        "target": "rcs-rankme_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-rcs-trainer-rcs-accuracy_viz-observable_results-tensor",
+        "source": "rcs-trainer",
+        "target": "rcs-accuracy_viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.45
+    }
+  },
+  "savedAt": 1784114567292.649
+}

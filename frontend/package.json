@@ -1,0 +1,51 @@
+{
+  "name": "comfy-research-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run verify:research-codegen && npm run verify:codegen-golden && npm run verify:node-manifest && npm run verify:css-tokens",
+    "verify:css-tokens": "esbuild scripts/verify-css-tokens.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-css-tokens.mjs && node node_modules/.cache/cr-verify-css-tokens.mjs",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "generate:codegen-golden": "esbuild scripts/generate-codegen-golden.ts --bundle --platform=node --format=esm --loader:.css=empty --loader:.svg=text --outfile=node_modules/.cache/cr-generate-codegen-golden.mjs && node node_modules/.cache/cr-generate-codegen-golden.mjs",
+    "verify:codegen-golden": "esbuild scripts/generate-codegen-golden.ts --bundle --platform=node --format=esm --loader:.css=empty --loader:.svg=text --outfile=node_modules/.cache/cr-generate-codegen-golden.mjs && node node_modules/.cache/cr-generate-codegen-golden.mjs --check",
+    "generate:node-manifest": "python3 ../comfy_research/nodes/generate.py",
+    "verify:node-manifest": "python3 ../comfy_research/nodes/generate.py --check",
+    "verify:node-registry": "esbuild scripts/verify-node-registry.ts --bundle --platform=node --format=esm --loader:.css=empty --loader:.svg=text --outfile=node_modules/.cache/cr-verify-node-registry.mjs && node node_modules/.cache/cr-verify-node-registry.mjs",
+    "verify:research-codegen": "esbuild scripts/verify-research-node-codegen-entry.ts --bundle --platform=node --format=esm --loader:.css=empty --loader:.svg=text --outfile=node_modules/.cache/cr-verify-codegen.mjs && node node_modules/.cache/cr-verify-codegen.mjs",
+    "verify:sweep-param-extract": "esbuild scripts/verify-sweep-param-extract.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-sweep-param-extract.mjs && node node_modules/.cache/cr-verify-sweep-param-extract.mjs",
+    "verify:collapsed-node-io": "esbuild scripts/verify-collapsed-node-io.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-collapsed-node-io.mjs && node node_modules/.cache/cr-verify-collapsed-node-io.mjs",
+    "verify:trainer-batch-sweep": "esbuild scripts/verify-trainer-batch-sweep.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-trainer-batch-sweep.mjs && node node_modules/.cache/cr-verify-trainer-batch-sweep.mjs",
+    "verify:trainer-train-ui-resolve": "esbuild scripts/verify-trainer-train-ui-resolve.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-trainer-train-ui-resolve.mjs && node node_modules/.cache/cr-verify-trainer-train-ui-resolve.mjs",
+    "verify:project-train-activity": "esbuild scripts/verify-project-train-activity.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-project-train-activity.mjs && node node_modules/.cache/cr-verify-project-train-activity.mjs",
+    "verify:graph-auto-layout": "esbuild scripts/verify-graph-auto-layout.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/cr-verify-graph-auto-layout.mjs && node node_modules/.cache/cr-verify-graph-auto-layout.mjs",
+    "generate:connection-golden": "esbuild scripts/generate-connection-golden.ts --bundle --platform=node --format=esm --loader:.css=empty --loader:.svg=text --outfile=node_modules/.cache/cr-gen-conn-golden.mjs && node --input-type=module -e \"import('./node_modules/.cache/cr-gen-conn-golden.mjs').then((m) => m.writeGolden())\"",
+    "generate:hint-golden": "esbuild scripts/generate-hint-golden.ts --bundle --platform=node --format=esm --loader:.css=empty --loader:.svg=text --outfile=node_modules/.cache/cr-gen-hint-golden.mjs && node node_modules/.cache/cr-gen-hint-golden.mjs"
+  },
+  "dependencies": {
+    "@xyflow/react": "^12.10.2",
+    "html-to-image": "1.11.11",
+    "jspdf": "^4.2.1",
+    "katex": "^0.16.45",
+    "mathjs": "^14.2.1",
+    "prismjs": "^1.30.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-simple-code-editor": "^0.14.1",
+    "react-syntax-highlighter": "^16.1.1"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.6",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.25.0",
+    "jsdom": "^29.1.1",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.11",
+    "vitest": "^4.1.9"
+  }
+}

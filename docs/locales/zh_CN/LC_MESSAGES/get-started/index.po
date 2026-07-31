@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 19:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/get-started/index.md:88 ../../en/get-started/index.md:117
+msgid "Run your first graph"
+msgstr "运行第一个图"
+
+#: ../../en/get-started/index.md:95 ../../en/get-started/index.md:117
+msgid "Development mode"
+msgstr "开发模式"
+
+#: ../../en/get-started/index.md:7
+msgid "Get Started"
+msgstr "快速开始"
+
+#: ../../en/get-started/index.md:10
+msgid "Install and run"
+msgstr "安装并运行"
+
+#: ../../en/get-started/index.md:13
+msgid ""
+"Build Comfy Research from source, verify the local service, and then "
+"complete a small CPU experiment."
+msgstr "从源码构建 Comfy Research，验证本地服务，然后完成一个小型 CPU 实验。"
+
+#: ../../en/get-started/index.md:17
+msgid ""
+"The repository currently provides a source installation rather than a "
+"prebuilt package. A first run needs Python, Node.js, and Git:"
+msgstr "该仓库目前提供源码安装，而非预构建包。首次运行需要 Python、Node.js 和 Git："
+
+#: ../../en/get-started/index.md:12
+msgid "Tool"
+msgstr "工具"
+
+#: ../../en/get-started/index.md:12
+msgid "Requirement"
+msgstr "要求"
+
+#: ../../en/get-started/index.md:12
+msgid "Used for"
+msgstr "用途"
+
+#: ../../en/get-started/index.md:12
+msgid "Python"
+msgstr "Python"
+
+#: ../../en/get-started/index.md:12
+msgid "3.10 or newer; docs CI uses 3.11"
+msgstr "3.10 或更高版本；文档 CI 使用 3.11"
+
+#: ../../en/get-started/index.md:12
+msgid "FastAPI backend and research runtime"
+msgstr "FastAPI 后端和研究运行时"
+
+#: ../../en/get-started/index.md:12
+msgid "Node.js"
+msgstr "Node.js"
+
+#: ../../en/get-started/index.md:12
+msgid "Current LTS; Node 20 or newer recommended"
+msgstr "当前 LTS；建议 Node 20 或更高版本"
+
+#: ../../en/get-started/index.md:12
+msgid "React/Vite frontend build"
+msgstr "React/Vite 前端构建"
+
+#: ../../en/get-started/index.md:12
+msgid "Git"
+msgstr "Git"
+
+#: ../../en/get-started/index.md:12
+msgid "Any maintained version"
+msgstr "任一受维护版本"
+
+#: ../../en/get-started/index.md:12
+msgid "Source checkout and updates"
+msgstr "源码检出与更新"
+
+#: ../../en/get-started/index.md:26
+msgid ""
+"CPU is enough for the tutorial. CUDA, Apple MPS, and remote GPU execution "
+"can be configured after the local path works."
+msgstr "CPU 足以完成教程。本地路径正常后，可以配置 CUDA、Apple MPS 和远程 GPU 执行。"
+
+#: ../../en/get-started/index.md:29
+msgid "Build from source"
+msgstr "从源码构建"
+
+#: ../../en/get-started/index.md:31
+msgid "Clone the repository and enter it:"
+msgstr "克隆仓库并进入目录："
+
+#: ../../en/get-started/index.md:38
+msgid "Create an isolated Python environment and install the backend dependencies:"
+msgstr "创建隔离的 Python 环境并安装后端依赖："
+
+#: ../../en/get-started/index.md:47
+msgid "On Windows PowerShell, activate the environment with:"
+msgstr "在 Windows PowerShell 中，使用以下命令激活环境："
+
+#: ../../en/get-started/index.md:53
+msgid "Install the pinned frontend dependencies and build the static application:"
+msgstr "安装锁定版本的前端依赖并构建静态应用："
+
+#: ../../en/get-started/index.md:60
+msgid ""
+"The frontend build also checks the generated Node metadata. If it reports a "
+"mismatch, regenerate the checked-in Node artifacts before rebuilding."
+msgstr "前端构建还会检查生成的 Node 元数据。若报告不匹配，请先重新生成已提交的 Node 产物，再重新构建。"
+
+#: ../../en/get-started/index.md:63
+msgid "Start the application"
+msgstr "启动应用"
+
+#: ../../en/get-started/index.md:65
+msgid "From the repository root, bind the first local run to the loopback interface:"
+msgstr "从仓库根目录将首次本地运行绑定到回环接口："
+
+#: ../../en/get-started/index.md:71
+msgid ""
+"If the browser does not open, visit `http://127.0.0.1:8042/`. Keep this "
+"terminal running while you use the application."
+msgstr "若浏览器没有打开，请访问 `http://127.0.0.1:8042/`。使用应用期间请保持此终端运行。"
+
+#: ../../en/get-started/index.md:74
+msgid "In a second terminal, verify the backend:"
+msgstr "在第二个终端中验证后端："
+
+#: ../../en/get-started/index.md:80
+msgid ""
+"A successful response contains `\"ok\": true`. Fix startup or dependency "
+"errors before creating a graph; the tutorial assumes this health check "
+"passes."
+msgstr "成功响应包含 `\"ok\": true`。创建图前请修复启动或依赖错误；本教程假定此健康检查已通过。"
+
+#: ../../en/get-started/index.md:92
+msgid ""
+"Load the bundled Edge of Stability (CPU) graph, run 80 CPU steps, and make "
+"one controlled change."
+msgstr "加载内置的 Edge of Stability (CPU) 图，在 CPU 上运行 80 步，并进行一次受控修改。"
+
+#: ../../en/get-started/index.md:99
+msgid "Run the backend with the Vite frontend and return to a verified static build."
+msgstr "使用 Vite 前端运行后端，然后回到已验证的静态构建。"
+
+#: ../../en/get-started/index.md:103
+msgid "If startup fails"
+msgstr "如果启动失败"
+
+#: ../../en/get-started/index.md:105
+msgid ""
+"**The backend reports that `frontend/dist` is stale** : Run `npm --prefix "
+"frontend run build`, then restart the server."
+msgstr "**后端报告 `frontend/dist` 已过期**：运行 `npm --prefix frontend run build`，然后重启服务。"
+
+#: ../../en/get-started/index.md:108
+msgid ""
+"**Port 8042 is already in use** : Choose another port, such as 8842, in both"
+" the start command and health URL."
+msgstr "**端口 8042 已被占用**：在启动命令和健康检查 URL 中都选择另一个端口，例如 8842。"
+
+#: ../../en/get-started/index.md:111
+msgid ""
+"**A compute device is unavailable** : Use CPU for the first run. Configure "
+"accelerators only after the local smoke   test succeeds."
+msgstr "**计算设备不可用**：首次运行请使用 CPU。仅在本地 smoke test 成功后再配置加速器。"
+
+#: ../../en/get-started/index.md:115
+msgid ""
+"For additional symptoms, see [Troubleshooting](../user-"
+"guide/troubleshooting.md)."
+msgstr "如有其他症状，请参阅[故障排查](../user-guide/troubleshooting.md)。"

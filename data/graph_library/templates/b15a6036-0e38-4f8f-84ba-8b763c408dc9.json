@@ -1,0 +1,269 @@
+{
+  "id": "b15a6036-0e38-4f8f-84ba-8b763c408dc9",
+  "name": "Neural_mechanics",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "comment",
+        "type": "comment",
+        "position": {
+          "x": -550.0,
+          "y": -220.0
+        },
+        "data": {
+          "text": "Kunin et al. (2021) — Symmetry & Broken Conservation Laws\nVGG-11 + CIFAR-10 (Conv+BN+ReLU → all 3 symmetries)\n\nPaper observables:\n  Eq 18 Translation: FC classifier column sums (no sum op available)\n  Eq 19 Scale: BN parameter L2 norms → wl2(global) tracks all BN layers\n  Eq 20 Rescale: Conv layer norm differences (needs per-layer tracking)\n\nwl2: weight L2 norm — Eq 19 scale symmetry proxy\ngnorm: gradient norm — drives Eq 19/20 integral terms\n\nChange SGD lr/wd, Train, compare curves.\nη=0.1 λ=0 (baseline) → λ=5e-4 → λ=0.01",
+          "instanceTitle": "Guide"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "cifar",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": -465.0,
+          "y": 234.0
+        },
+        "data": {
+          "seed": 0,
+          "trainSize": 40000,
+          "testSize": 10000
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "vgg",
+        "type": "vgg11_cifar_model",
+        "position": {
+          "x": -156.0,
+          "y": 309.0
+        },
+        "data": {
+          "seed": 42
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "celoss",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": -180.0,
+          "y": 608.0
+        },
+        "data": {},
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "sgd",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": -184.0,
+          "y": 461.0
+        },
+        "data": {
+          "learningRate": 0.1,
+          "momentum": 0,
+          "weightDecay": 0,
+          "instanceTitle": "SGD η=0.1 λ=0 (CHANGE lr/wd)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "trainer",
+        "type": "trainer",
+        "position": {
+          "x": 120.0,
+          "y": 200.0
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingEpochs": 100,
+          "trainingSteps": 8000,
+          "logFrequency": 50,
+          "computeDevice": "cpu",
+          "batchSize": 256,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "remoteGpu": false
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "viz_loss",
+        "type": "training_visualization",
+        "position": {
+          "x": 520.0,
+          "y": 120.0
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "wl2",
+        "type": "observable_weight_l2",
+        "position": {
+          "x": 420.0,
+          "y": 360.0
+        },
+        "data": {
+          "normAggregation": "global"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "oviz_wl2",
+        "type": "observable_viz",
+        "position": {
+          "x": 720.0,
+          "y": 300.0
+        },
+        "data": {
+          "pairedObservableId": "wl2",
+          "pairedTrainerId": "trainer",
+          "vizVariant": "weight_l2",
+          "topK": 1,
+          "order": "descending",
+          "instanceTitle": "Weight L2 (Eq 19 scale)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "gnorm",
+        "type": "observable_gradient_norm",
+        "position": {
+          "x": 420.0,
+          "y": 520.0
+        },
+        "data": {
+          "normAggregation": "global",
+          "gradientNormNormalized": true
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "oviz_gnorm",
+        "type": "observable_viz",
+        "position": {
+          "x": 720.0,
+          "y": 460.0
+        },
+        "data": {
+          "pairedObservableId": "gnorm",
+          "pairedTrainerId": "trainer",
+          "vizVariant": "gradient_norm",
+          "instanceTitle": "Gradient norm (Eq 19/20 driver)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "cifar",
+        "target": "trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e2",
+        "source": "vgg",
+        "target": "trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e3",
+        "source": "celoss",
+        "target": "trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e4",
+        "source": "sgd",
+        "target": "trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e5",
+        "source": "trainer",
+        "target": "viz_loss",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e6",
+        "source": "wl2",
+        "target": "trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e7",
+        "source": "trainer",
+        "target": "oviz_wl2",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e8",
+        "source": "gnorm",
+        "target": "trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e9",
+        "source": "trainer",
+        "target": "oviz_gnorm",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": null
+  },
+  "savedAt": 1785218390029.0,
+  "libraryOrigin": null
+}

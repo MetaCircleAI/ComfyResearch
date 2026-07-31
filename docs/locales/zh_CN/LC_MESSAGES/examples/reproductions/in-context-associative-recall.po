@@ -1,0 +1,223 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-30 20:52+0800\n"
+"PO-Revision-Date: 2026-07-30 00:00+0800\n"
+"Last-Translator: Comfy Research Docs Team\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:7
+msgid "In-Context Learning · Phenomenon reproduction"
+msgstr "上下文学习 · 现象复现"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:10
+msgid "In-Context Associative Recall"
+msgstr "上下文关联回忆（In-Context Associative Recall）"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:13
+msgid ""
+"A small causal Transformer learns to retrieve the value paired with a "
+"queried key from the current token sequence."
+msgstr "一个小型因果 Transformer 学会从当前 token 序列中找回与查询键配对的值。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:22
+msgid "QQ"
+msgstr "清宇"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:27
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:35
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:37
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:42
+msgid ""
+"This graph trains a token Transformer on synthetic key-value sequences "
+"and exposes accuracy, attention maps, and attention-relation scores. It "
+"is a controlled demonstration of in-context associative recall, not a "
+"claim about general-purpose language-model reasoning."
+msgstr ""
+"本图在合成键值序列上训练 token Transformer，展示准确率、attention map 和 attention 关系分数。"
+"它在受控条件下演示上下文关联回忆，并不主张通用语言模型具有相应的推理能力。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:48
+msgid "**Template:** `in context associative recall`"
+msgstr "**模板：** `in context associative recall`"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:50
+msgid "**Template ID:** `5d1a2ab4-825d-4251-8a5a-d7b83b42c1d7`"
+msgstr "**模板 ID：** `5d1a2ab4-825d-4251-8a5a-d7b83b42c1d7`"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:52
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:54
+msgid ""
+"Each example has four key-value pairs followed by a query key; the target"
+" is the paired value from the same context. The attention views make it "
+"possible to inspect whether query positions attend to relevant key or "
+"value positions as accuracy improves."
+msgstr "每个样本包含四个键值对，随后给出一个查询键；目标是同一上下文中与其配对的值。随着准确率提高，可通过 attention 视图查看查询位置是否关注相关的键或值位置。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:59
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Template setting"
+msgstr "模板设置"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Data"
+msgstr "数据"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid ""
+"Fixed synthetic recall sequences; vocabulary size 8 and four pairs per "
+"context"
+msgstr "固定的合成回忆序列；词表大小为 8，每个上下文含四个键值对"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Data size"
+msgstr "数据规模"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "10,000 train and 2,000 test sequences, seed 0"
+msgstr "10,000 个训练序列和 2,000 个测试序列，seed 为 0"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid ""
+"Causal Transformer: dimension 6, two heads, two layers, feed-forward "
+"dimension 24"
+msgstr "因果 Transformer：维度为 6，两个 attention head、两层，前馈维度为 24"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Objective and optimizer"
+msgstr "目标函数与优化器"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Cross-entropy; Adam at learning rate 0.001"
+msgstr "交叉熵；Adam，学习率为 0.001"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Training"
+msgstr "训练"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "CPU, batch size 256; primary Trainer runs 4,000 updates and logs every 200"
+msgstr "CPU，批量大小为 256；主 Trainer 运行 4,000 次更新，每 200 次更新记录一次"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid "Observables"
+msgstr "observables"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:39
+msgid ""
+"Accuracy, attention maps, attention-relation scores, and metric "
+"comparisons"
+msgstr "准确率、attention map、attention 关系分数和指标比较"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:70
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:72
+msgid "Open **Templates** and load `in context associative recall`."
+msgstr "打开 **模板** 并加载 `in context associative recall`。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:73
+msgid "Run the primary Trainer and inspect training and accuracy views."
+msgstr "运行主 Trainer，查看训练过程和准确率视图。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:74
+msgid ""
+"Run the separate attention-diagnostics Trainer, then inspect its "
+"attention maps and relation scores."
+msgstr "运行单独的 attention 诊断 Trainer，然后查看其 attention map 和关系分数。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:76
+msgid ""
+"Compare the two runs qualitatively: the diagnostic Trainer is an "
+"independent training run, not a checkpoint restored from the primary "
+"Trainer."
+msgstr "定性比较两次运行：诊断 Trainer 是独立训练得到的结果，并非从主 Trainer 的 checkpoint 恢复。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:80
+msgid ""
+"Loaded in-context associative recall template showing the synthetic token"
+" dataset, causal Transformer, accuracy Trainer, and attention-diagnostics"
+" Trainer."
+msgstr "已载入上下文关联回忆模板，其中包含合成 token 数据集、因果 Transformer、准确率 Trainer 和 attention 诊断 Trainer。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:85
+msgid "Results and Interpretation"
+msgstr "结果与解释"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:87
+msgid ""
+"The expected outcome is rising held-out recall accuracy accompanied by "
+"attention patterns that connect a query to relevant context items. These "
+"are diagnostic probes for this synthetic task; they do not alone prove a "
+"unique causal role for a particular attention head."
+msgstr "预期结果是留出集回忆准确率上升，并出现将查询与相关上下文项相连的 attention 模式。这些只是该合成任务的诊断探针，不能单凭它们证明某个特定 attention head 具有唯一的因果作用。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:92
+msgid ""
+"Metric comparison visualization showing held-out accuracy alongside "
+"attention-relation scores during in-context associative recall training."
+msgstr "指标比较可视化：展示上下文关联回忆训练期间的留出集准确率和 attention 关系分数。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:97
+msgid ""
+"Attention relation score visualization for the previous token relation, "
+"with scores for the two selected layer-head pairs."
+msgstr "前一个 token 关系的 attention 关系分数可视化，展示所选两组 layer-head 的分数。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:102
+msgid ""
+"Attention relation score visualization for the induction relation, with "
+"scores for the two selected layer-head pairs."
+msgstr "归纳关系的 attention 关系分数可视化，展示所选两组 layer-head 的分数。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:107
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:109
+msgid "Vocabulary, context length, and model size are intentionally tiny."
+msgstr "词表、上下文长度和模型规模都刻意设得很小。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:110
+msgid "Synthetic recall does not cover natural-language understanding."
+msgstr "合成回忆任务并不涵盖自然语言理解。"
+
+#: ../../en/examples/reproductions/in-context-associative-recall.md:111
+msgid "Attention scores are useful probes, not a complete causal explanation."
+msgstr "attention 分数是有用的探针，但不能构成完整的因果解释。"

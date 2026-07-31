@@ -1,0 +1,213 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-30 20:45+0800\n"
+"PO-Revision-Date: 2026-07-30 20:51+0800\n"
+"Last-Translator: Comfy Research contributors\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:7
+msgid "Learning Phases and Feature Formation · Phenomenon reproduction"
+msgstr "学习阶段与特征形成 · 现象复现"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:10
+msgid "Staggered Singular-Value Dynamics"
+msgstr "错峰奇异值学习动态"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:13
+msgid ""
+"A small deep linear network learns the strongest modes of a linear "
+"mapping before weaker modes, making effective rank grow in stages."
+msgstr "一个小型 deep linear network 会先学习线性映射中较强的模态，再学习较弱的模态，因此有效秩会分阶段增长。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:22
+msgid "QQ"
+msgstr "清宇"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:27
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:35
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:37
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:42
+msgid ""
+"This graph makes the sequential mode-learning dynamics of deep linear "
+"networks inspectable. It is a qualitative reproduction of the mechanism "
+"analyzed by Saxe, McClelland, and Ganguli."
+msgstr "该图让 deep linear network 中按顺序学习模态的动态过程可供查看。这是对 Saxe、McClelland 和 Ganguli 所分析机制的定性复现。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:47
+msgid ""
+"**Paper:** [Exact Solutions to the Nonlinear Dynamics of Learning in Deep"
+" Linear Neural Networks](https://arxiv.org/abs/1312.6120), Saxe, "
+"McClelland, and Ganguli (ICLR 2014)"
+msgstr ""
+"**论文：** [Exact Solutions to the Nonlinear Dynamics of Learning in Deep"
+" Linear Neural Networks](https://arxiv.org/abs/1312.6120)，Saxe、"
+"McClelland 和 Ganguli（ICLR 2014）"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:49
+msgid "**Template:** `staggered sv dynamics`"
+msgstr "**模板：** `staggered sv dynamics`"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:51
+msgid "**Template ID:** `a04f21b3-e31c-4ba3-b8b9-d3af752f77d4`"
+msgstr "**模板 ID：** `a04f21b3-e31c-4ba3-b8b9-d3af752f77d4`"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:53
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:55
+msgid ""
+"The effective map of a deep linear model is the product of its layer "
+"matrices. With a small orthogonal initialization, directions with larger "
+"target singular values should emerge first. The graph records leading "
+"singular values of the effective map so their staggered rises can be "
+"compared directly."
+msgstr "deep linear model 的有效映射由各层矩阵相乘得到。采用较小尺度的正交初始化时，对应较大目标奇异值的方向应更早显现。该图记录有效映射的前几个奇异值，以便直接比较它们错峰上升的过程。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:60
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Template setting"
+msgstr "模板设置"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Data"
+msgstr "数据"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid ""
+"Noiseless 8-to-8 synthetic linear regression; 2,000 train and 400 test "
+"examples"
+msgstr "无噪声的 8 输入至 8 输出合成线性回归；2,000 个训练样本和 400 个测试样本"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Three-matrix deep linear MLP: depth 2, width 8, identity activation"
+msgstr "由三个矩阵组成的 deep linear MLP：深度为 2，宽度为 8，使用恒等激活函数"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Initialization"
+msgstr "初始化"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Saxe initialization with scale $\\epsilon = 0.2$"
+msgstr "尺度为 $\\epsilon = 0.2$ 的 Saxe 初始化"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Objective and optimizer"
+msgstr "目标函数与优化器"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "MSE; SGD at learning rate 0.005"
+msgstr "MSE；SGD 的学习率为 0.005"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Training"
+msgstr "训练"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "8,000 CPU updates, batch size 256, log every 40 updates"
+msgstr "在 CPU 上进行 8,000 次更新，batch size 为 256，每 40 次更新记录一次"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Observable"
+msgstr "observable"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:39
+msgid "Leading singular values of the product of learned weight matrices"
+msgstr "已学习权重矩阵乘积的前几个奇异值"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:71
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:73
+msgid "Open **Templates** and load `staggered sv dynamics`."
+msgstr "打开 **Templates** 并加载 `staggered sv dynamics`。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:74
+msgid "Run **Train** on the main Trainer."
+msgstr "在主 Trainer 上运行 **Train**。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:75
+msgid "Inspect leading singular values against training loss and checkpoints."
+msgstr "结合训练损失和 checkpoint 查看前几个奇异值。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:77
+msgid ""
+"Loaded Staggered Singular-Value Dynamics template with the linear "
+"dataset, deep linear MLP, Saxe initialization, Trainer, and weight-"
+"product singular-value observable."
+msgstr ""
+"已加载 Staggered Singular-Value Dynamics 模板，其中包括线性数据集、deep linear MLP、Saxe 初始化、Trainer "
+"以及权重乘积奇异值 observable。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:82
+msgid "Results and Interpretation"
+msgstr "结果与解释"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:84
+msgid ""
+"The expected trajectory is staged: the leading singular value rises and "
+"levels off before later values make their main transition. This is a "
+"finite-step, finite-data signature of mode-wise learning, not evidence "
+"that every network learns features one at a time."
+msgstr "预期轨迹具有阶段性：最大的奇异值先上升并趋于平稳，随后其他奇异值才进入主要变化阶段。这是在有限步数和有限数据下逐模态学习的特征，并不意味着所有网络都会逐一学习特征。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:89
+msgid ""
+"Weight product singular-value visualization from the completed staggered "
+"dynamics run, showing four modes emerging at different times."
+msgstr "完成错峰动态运行后的权重乘积奇异值可视化，展示四个模态在不同时间显现。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:94
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:96
+msgid "The theory is for deep linear models; nonlinear models can couple modes."
+msgstr "该理论针对 deep linear model；非线性模型可能会耦合不同模态。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:97
+msgid "Mini-batch noise and a finite learning rate can blur the stages."
+msgstr "mini-batch 噪声和有限的学习率可能会模糊这些阶段。"
+
+#: ../../en/examples/reproductions/staggered-singular-value-dynamics.md:98
+msgid "Only the leading part of the spectrum is visualized."
+msgstr "仅展示频谱的前段部分。"

@@ -1,0 +1,539 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-29 15:57+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:7
+msgid "Loss Geometry and Parameter Symmetry · Phenomenon reproduction"
+msgstr "损失几何与参数对称性 · 现象复现"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:10
+msgid "Linear and Curve Mode Connectivity"
+msgstr "线性与曲线 mode connectivity"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:13
+msgid ""
+"As two same-init SGD runs train longer, their direct parameter interpolation develops"
+" a larger loss barrier, while a learned quadratic Bezier path remains low-loss at 50k"
+" steps."
+msgstr "两个采用相同初始化的 SGD 训练运行得越久，其参数的直接插值产生的损失屏障就越高；而在 50k 步时，经过学习的二次 Bezier 路径仍能保持低损失。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:23
+msgid "WX"
+msgstr "星运"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:28
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:36
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:38
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:43
+msgid ""
+"This example studies a minimal mode-connectivity contrast on CIFAR-10. Two ResNet "
+"classifiers share an initialization and differ only in training-seed randomness. "
+"Direct interpolation between their parameters becomes increasingly unfavorable during"
+" training, but a quadratic Bezier path optimized at 50k steps removes most of the "
+"barrier. This is a controlled phenomenon reproduction, not the original paper's "
+"multi-architecture, independently initialized benchmark."
+msgstr ""
+"本示例在 CIFAR-10 上考察一个最简的 mode connectivity 对比。两个 ResNet "
+"分类器使用相同初始化，只在训练 seed 的随机性上不同。随着训练进行，两者参数之间的直接插值越来越不利；但在 50k "
+"步时优化得到的二次 Bezier 路径能消除大部分屏障。这是一次受控的现象复现，并非原论文涵盖多种架构和独立初始化的基准实验。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:51
+msgid ""
+"**Paper:** [Loss Surfaces, Mode Connectivity, and Fast Ensembling of "
+"DNNs](https://arxiv.org/abs/1802.10026), Timur Garipov, Pavel Izmailov, Dmitrii "
+"Podoprikhin, Dmitry Vetrov, and Andrew Gordon Wilson (NeurIPS 2018)"
+msgstr ""
+"**论文：** [DNN 的损失曲面、模式连通性和快速集成](https://arxiv.org/abs/1802.10026)，Timur Garipov、Pavel "
+"Izmailov、Dmitrii Podoprikhin、Dmitry Vetrov 和 Andrew Gordon Wilson (NeurIPS 2018)"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:55
+msgid "**Template:** `repro: Linear Mode Connectivity (CIFAR-10, same init)`"
+msgstr "**模板：** `repro: Linear Mode Connectivity (CIFAR-10, same init)`"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:57
+msgid "**Template ID:** `repro-linear-mode-connectivity-cifar10`"
+msgstr "**模板 ID：** `repro-linear-mode-connectivity-cifar10`"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:59
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:61
+msgid ""
+"Garipov et al. show that low-loss neural-network solutions can be connected by simple"
+" curves with nearly constant accuracy. This template tests the most direct visual "
+"consequence: a poor straight parameter path need not mean that the two endpoints are "
+"disconnected."
+msgstr "Garipov 等人表明，低损失神经网络解可以由准确率近乎不变的简单曲线连接。本模板检验最直接的可视化结论：一条表现不佳的直线参数路径，并不意味着两个端点彼此断开。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:66
+msgid "For endpoint checkpoints $\\theta_A$ and $\\theta_B$, the linear evaluator measures"
+msgstr "对于两个端点 checkpoint $\\theta_A$ 和 $\\theta_B$，线性评估器计算"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:69
+msgid ""
+"\n"
+"\\theta(\\alpha) = (1-\\alpha)\\theta_A + \\alpha\\theta_B.\n"
+msgstr ""
+"\n"
+"\\theta(\\alpha) = (1-\\alpha)\\theta_A + \\alpha\\theta_B.\n"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:73
+msgid ""
+"At 50k steps, the curve evaluator keeps the endpoints fixed and optimizes one "
+"quadratic Bezier control point $\\theta_C$:"
+msgstr "在 50k 步时，曲线评估器固定两个端点，并优化一个二次 Bezier 控制点 $\\theta_C$："
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:76
+msgid ""
+"\n"
+"\\theta(t) = (1-t)^2\\theta_A + 2t(1-t)\\theta_C + t^2\\theta_B.\n"
+msgstr ""
+"\n"
+"\\theta(t) = (1-t)^2\\theta_A + 2t(1-t)\\theta_C + t^2\\theta_B.\n"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:80
+msgid ""
+"The phenomenon is a large linear loss barrier paired with a much smaller Bezier "
+"barrier."
+msgstr "要复现的现象是：线性路径存在较高的损失屏障，而 Bezier 路径的屏障小得多。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:83
+msgid "Paper Experiment and Reproduction Boundary"
+msgstr "论文实验与复现边界"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Paper"
+msgstr "论文"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Current Comfy Research template"
+msgstr "当前 Comfy Research 模板"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Data"
+msgstr "数据"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "CIFAR-10, CIFAR-100, and ImageNet"
+msgstr "CIFAR-10、CIFAR-100 和 ImageNet"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "CIFAR-10 only, fixed full split"
+msgstr "仅限 CIFAR-10，固定全分割"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Architectures"
+msgstr "架构"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "VGG, Wide ResNet, and ResNet families"
+msgstr "VGG、Wide ResNet 和 ResNet 系列"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "One small self-defined ResNet"
+msgstr "一个小型自定义 ResNet"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Endpoints"
+msgstr "端点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Independently initialized minima"
+msgstr "独立初始化得到的极小值"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Same initialization seed 0; trainer seeds 0 and 1"
+msgstr "相同的初始化 seed 0；Trainer seed 为 0 和 1"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Paths"
+msgstr "路径"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Quadratic Bezier and polygonal chains"
+msgstr "二次 Bezier 曲线和折线路径"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Quadratic Bezier only, plus a 21-point linear baseline"
+msgstr "仅二次 Bezier 曲线，另设 21 点线性基线"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Evaluation"
+msgstr "评估"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Accuracy along curves and fast ensembling"
+msgstr "沿路径的准确率与快速集成"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Train/test cross-entropy and accuracy; loss barrier and accuracy drop"
+msgstr "训练/测试交叉熵与准确率；损失屏障与准确率降幅"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Broad geometry and ensembling study"
+msgstr "对几何性质和集成的广泛研究"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "One endpoint pair and a training-time trajectory"
+msgstr "一对端点及其训练过程中的轨迹"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:94
+msgid ""
+"A low Bezier barrier is evidence for the particular curve family and optimization "
+"budget used here. It does not establish a globally optimal path or a general theorem "
+"about all neural-network minima."
+msgstr "较低的 Bezier 屏障只能说明：在这里所用的曲线路径族和优化预算下，这条路径有效。它并不能证明存在全局最优路径，也不能推出关于所有神经网络极小值的一般定理。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:98
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Setting"
+msgstr "设置"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "CIFAR-10, 50,000 train / 10,000 test, fixed `subsetSeed = 0`"
+msgstr "CIFAR-10，50,000 个训练样本 / 10,000 个测试样本，固定 `subsetSeed = 0`"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Small ResNet, base channels 16, one block in each of four stages"
+msgstr "小型 ResNet，基本通道 16，四个阶段各一个块"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Initialization"
+msgstr "初始化"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Shared model seed 0"
+msgstr "共享模型 seed 0"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Optimizer and loss"
+msgstr "优化器和损失"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Adam, learning rate `1e-3`, cross-entropy"
+msgstr "Adam，学习率 `1e-3`，交叉熵"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Endpoint A / B"
+msgstr "端点 A / B"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Trainer seed 0 / 1, batch size 128"
+msgstr "Trainer seed 0 / 1，Batch size 128"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Checkpoint pairs"
+msgstr "checkpoint 对"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "1k, 5k, 10k, 20k, and 50k steps"
+msgstr "1k、5k、10k、20k 和 50k 步"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Linear evaluator"
+msgstr "线性评估器"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "21 points from $\\alpha=0$ to $1$, evaluation batch size 256"
+msgstr "从 $\\alpha=0$ 到 $1$ 共 21 个点，评估批量大小 256"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "BatchNorm"
+msgstr "BatchNorm"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Recompute running statistics with 100 train batches for reported results"
+msgstr "为得到报告中的结果，用 100 个训练 batch 重新计算运行统计量"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Bezier evaluator"
+msgstr "Bezier 评估器"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "500 Adam updates, 4 path samples/update, learning rate `0.01`"
+msgstr "500 Adam 更新，4 个路径样本/更新，学习率 `0.01`"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:112
+msgid ""
+"The test-loss barrier is the maximum path loss minus the worse endpoint loss. The "
+"test-accuracy drop is the minimum path accuracy minus the worse endpoint accuracy, so"
+" negative values are losses in percentage points."
+msgstr "测试损失屏障等于路径上的最大损失减去两个端点中较差者的损失。测试准确率降幅等于路径上的最低准确率减去较差端点的准确率，因此负值表示以百分点计的下降。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:116
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:118
+msgid "Open **Templates** and load `repro: Linear Mode Connectivity (CIFAR-10, same init)`."
+msgstr "打开 **Templates**，加载 `repro: Linear Mode Connectivity (CIFAR-10, same init)`。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:120
+msgid ""
+"Keep the dataset, ResNet seed, optimizer, and loss shared. Confirm that endpoint A "
+"uses trainer seed 0 and endpoint B uses trainer seed 1."
+msgstr "保持数据集、ResNet seed、优化器和损失一致。确认端点 A 使用 Trainer seed 0，端点 B 使用 Trainer seed 1。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:122
+msgid ""
+"Train both endpoints to a matching checkpoint budget and save both model checkpoints."
+" The default graph targets 50k steps."
+msgstr "将两个端点训练到相同的 checkpoint 预算，并保存两份模型 checkpoint。默认图的目标为 50k 步。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:124
+msgid ""
+"Connect the matching pair to **Interpolation loss barrier**, enable **Recompute BN "
+"stats**, set 100 calibration batches, and click **Run**."
+msgstr "将对应的一对端点连接至 **Interpolation loss barrier**，启用 **Recompute BN stats**，设为 100 个校准 batch，然后点击 **Run**。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:126
+msgid ""
+"At 50k, run **Bezier mode connectivity**. Compare its reported linear and Bezier "
+"barriers, then inspect the train/test loss and accuracy curves."
+msgstr "在 50k 步时运行 **Bezier mode connectivity**。比较报告中的线性屏障和 Bezier 屏障，再查看训练/测试损失与准确率曲线。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:129
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:131
+msgid "The direct path worsens as the two SGD trajectories progress."
+msgstr "两条 SGD 轨迹继续训练时，直接路径的表现会逐渐变差。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Training step"
+msgstr "训练步骤"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Linear test-loss barrier"
+msgstr "线性测试损失屏障"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Linear test-accuracy drop"
+msgstr "线性测试准确率下降"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "1,000"
+msgstr "1,000"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "0.2377"
+msgstr "0.2377"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "-8.11 pp"
+msgstr "-8.11 个百分点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "5,000"
+msgstr "5,000"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "0.7414"
+msgstr "0.7414"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "-14.16 pp"
+msgstr "-14.16 个百分点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "10,000"
+msgstr "10,000"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "1.0473"
+msgstr "1.0473"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "-13.96 pp"
+msgstr "-13.96 个百分点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "20,000"
+msgstr "20,000"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "1.3301"
+msgstr "1.3301"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "-13.66 pp"
+msgstr "-13.66 个百分点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "50,000"
+msgstr "50,000"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "1.8985"
+msgstr "1.8985"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "-15.86 pp"
+msgstr "-15.86 个百分点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:141
+msgid ""
+"At 50k, optimizing one Bezier control point changes the conclusion about the "
+"endpoints' connectivity."
+msgstr "在 50k 步时，优化一个 Bezier 控制点会改变我们对端点连通性的判断。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Path"
+msgstr "路径"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Test-loss barrier"
+msgstr "测试损失障碍"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Test-accuracy drop"
+msgstr "测试准确率下降"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Direct linear interpolation"
+msgstr "直接线性插值"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "1.89855"
+msgstr "1.89855"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "Optimized quadratic Bezier"
+msgstr "优化后的二次 Bezier 曲线"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "0.06864"
+msgstr "0.06864"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:40
+msgid "-3.28 pp"
+msgstr "-3.28 个百分点"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:149
+msgid ""
+"Comfy Research canvas for the 50k-step CIFAR-10 linear mode connectivity run, "
+"including the two endpoint trainers, linear interpolation barrier, and optimized "
+"quadratic Bezier path."
+msgstr "用于 50k 步 CIFAR-10 线性 mode connectivity 运行的 Comfy Research 画布，包含两个端点 Trainer、线性插值屏障和优化后的二次 Bezier 路径。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:153
+msgid ""
+"**50k endpoint pair.** The direct linear path crosses a pronounced loss barrier, "
+"whereas the optimized quadratic Bezier curve preserves low loss and accuracy along "
+"most of the path."
+msgstr "**50k 端点对。** 直接线性路径跨越明显的损失屏障；优化后的二次 Bezier 曲线则在大部分路径上保持低损失和较高准确率。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:158
+msgid "Interpretation"
+msgstr "解释"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:160
+msgid ""
+"**Linear disconnection emerges during training.** The near-monotonic growth from "
+"0.2377 at 1k to 1.8985 at 50k is consistent with two trajectories progressively "
+"specializing into parameter configurations that are poorly combined by direct "
+"averaging."
+msgstr ""
+"**训练过程中出现线性不连通。** 屏障从 1k 时的 0.2377 增至 50k 时的 1.8985，近乎单调。这与两条轨迹逐渐形成难以通过直接平均组合的参数配置相符。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:164
+msgid ""
+"**Loss retains information after accuracy saturates.** From 5k onward, the accuracy "
+"drop stays near 14--16 points while the cross-entropy barrier keeps increasing. The "
+"interpolated model therefore loses predictive confidence and margin even when top-1 "
+"error changes less."
+msgstr ""
+"**准确率饱和后，损失仍提供信息。** 从 5k 开始，准确率降幅维持在约 14--16 个百分点，而交叉熵屏障持续增大。因此，即使 top-1 "
+"误差变化不大，插值模型的预测置信度和分类间隔仍在下降。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:168
+msgid ""
+"**The barrier belongs to the straight path.** At 50k, the quadratic Bezier path "
+"lowers the loss barrier by about 96%. In this setting, the low-loss region is "
+"connected but strongly non-convex: the Euclidean segment leaves it, while a simple "
+"curved route remains."
+msgstr ""
+"**屏障属于直线路径。** 在 50k 步时，二次 Bezier 路径将损失屏障降低约 "
+"96%。在此设置下，低损失区域彼此连通但高度非凸：欧几里得线段会离开该区域，而一条简单的曲线路径仍可留在其中。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:173
+msgid ""
+"The result is consistent with parameter specialization or misalignment across the SGD"
+" runs, such as incompatible internal feature bases, channel organizations, or "
+"normalization scales. This experiment does not identify the precise mechanism because"
+" it does not include permutation alignment or representation analysis."
+msgstr "这一结果与两次 SGD 训练中的参数专化或错位相符，例如内部特征基、通道组织或归一化尺度彼此不兼容。由于实验未进行置换对齐或表征分析，无法确定确切机制。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:179
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:181
+msgid ""
+"The endpoints share an initialization; the paper also studies independently "
+"initialized solutions and more architectures."
+msgstr "两个端点共享同一初始化；论文还研究了独立初始化的解及更多架构。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:183
+msgid "One CIFAR-10 ResNet pair does not establish seed robustness or universality."
+msgstr "单独一对 CIFAR-10 ResNet 不足以证明对 seed 的稳健性或结果的普适性。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:184
+msgid ""
+"The Bezier result depends on its control-point parameterization and finite "
+"optimization budget."
+msgstr "Bezier 结果依赖其控制点参数化及有限的优化预算。"
+
+#: ../../en/examples/reproductions/linear-mode-connectivity.md:186
+msgid ""
+"No polygonal path, fast geometric ensemble, weight-distance, or feature analysis is "
+"included."
+msgstr "不包括多边形路径、快速几何集成、权重距离或特征分析。"

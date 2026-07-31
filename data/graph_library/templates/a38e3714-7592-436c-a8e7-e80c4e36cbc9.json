@@ -1,0 +1,138 @@
+{
+  "id": "a38e3714-7592-436c-a8e7-e80c4e36cbc9",
+  "name": "Deep CRL",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "deep_crl_comment",
+        "type": "comment",
+        "position": { "x": 40, "y": 24 },
+        "data": {
+          "instanceTitle": "Deep CRL — notes",
+          "text": "# Deep CRL — residual MLP for contrastive RL\n\nThis graph shows how **`crl_residual_mlp`** plugs into **`crl_trainer`** with the CPU **`crl_env_config`** (point U4 maze, same topology as scaling-crl).\n\n- **Depth**: `actorDepth` / `criticDepth` count **Dense** layers; each **4** layers form one **residual** block (4× Linear→LayerNorm→Swish/ReLU, then skip). Use **multiples of 4** only. This template uses **16** (four blocks) per tower — deeper than the default **4**.\n- **Widths**: wider hidden layers (`actorWidth` / `criticWidth`) trade compute for capacity; tune together with depth.\n- **Code**: `comfy_research/engine/crl_networks.py` (agent + encoders), `crl_run.py` (loop).\n- **Upstream**: [wang-kevin3290/scaling-crl](https://github.com/wang-kevin3290/scaling-crl)"
+        }
+      },
+      {
+        "id": "deep_crl_env",
+        "type": "crl_env_config",
+        "position": { "x": 40, "y": 280 },
+        "data": {
+          "instanceTitle": "CRL env (U4 point)",
+          "preset": "point_u4_maze",
+          "numEnvs": 8,
+          "episodeLength": 200,
+          "mazeSizeScaling": 4,
+          "seed": 0
+        }
+      },
+      {
+        "id": "deep_crl_model",
+        "type": "crl_residual_mlp",
+        "position": { "x": 400, "y": 280 },
+        "data": {
+          "instanceTitle": "Deep CRL residual MLP",
+          "stateDim": 4,
+          "actionDim": 2,
+          "goalDim": 2,
+          "actorWidth": 192,
+          "criticWidth": 192,
+          "actorDepth": 16,
+          "criticDepth": 16,
+          "embedDim": 64,
+          "useReLU": false,
+          "seed": 42
+        }
+      },
+      {
+        "id": "deep_crl_adam",
+        "type": "adam_optimizer",
+        "position": { "x": 40, "y": 560 },
+        "data": {
+          "instanceTitle": "Adam (CRL)",
+          "learningRate": 0.0003,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0
+        }
+      },
+      {
+        "id": "deep_crl_obs_l2",
+        "type": "observable_weight_l2",
+        "position": { "x": 400, "y": 560 },
+        "data": {
+          "instanceTitle": "Weight L2"
+        }
+      },
+      {
+        "id": "deep_crl_trainer",
+        "type": "crl_trainer",
+        "position": { "x": 800, "y": 320 },
+        "data": {
+          "instanceTitle": "CRL trainer",
+          "trainingSteps": 50,
+          "logFrequency": 5,
+          "computeDevice": "cpu",
+          "batchSize": 32,
+          "unrollLength": 24,
+          "sgdStepsPerTrainStep": 4,
+          "gamma": 0.99,
+          "logsumexpPenaltyCoeff": 0.1,
+          "entropyParam": 0.5,
+          "disableEntropy": false,
+          "maxReplayChunks": 200,
+          "seed": 0
+        }
+      },
+      {
+        "id": "deep_crl_viz",
+        "type": "training_visualization",
+        "position": { "x": 1120, "y": 320 },
+        "data": {
+          "instanceTitle": "Training viz"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_deep_crl_env_trainer",
+        "source": "deep_crl_env",
+        "target": "deep_crl_trainer",
+        "sourceHandle": "env",
+        "targetHandle": "env"
+      },
+      {
+        "id": "e_deep_crl_model_trainer",
+        "source": "deep_crl_model",
+        "target": "deep_crl_trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e_deep_crl_adam_trainer",
+        "source": "deep_crl_adam",
+        "target": "deep_crl_trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e_deep_crl_obs_trainer",
+        "source": "deep_crl_obs_l2",
+        "target": "deep_crl_trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e_deep_crl_trainer_viz",
+        "source": "deep_crl_trainer",
+        "target": "deep_crl_viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      }
+    ],
+    "viewport": null
+  },
+  "savedAt": 1777628313649
+}

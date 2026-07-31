@@ -1,0 +1,1526 @@
+{
+  "id": "dafb8339-a932-4b10-b3b6-185fc53a5a4f",
+  "name": "repro: Information-plane interactive approximation (Figure 3 protocol)",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "ib-protocol-note",
+        "type": "comment",
+        "position": {
+          "x": 0.0,
+          "y": -260.0
+        },
+        "data": {
+          "instanceTitle": "Shwartz-Ziv and Tishby Figure 3 protocol",
+          "text": "Executable single-seed companion to Figure 3: verified local var_u table; random 5%, 45%, and 85% subsets; released 12-10-8-6-4-2-1 tanh network; single-logit BCE; IDNNs fan-in truncated-normal initialization; Adam at 4e-4; and IDNNs 30-point information-plane binning. The published panel is a 50-repeat mean; run each trainer independently."
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-dataset",
+        "type": "information_bottleneck_dataset",
+        "position": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "data": {
+          "inputDim": 12,
+          "outputDim": 2,
+          "trainSize": 205,
+          "testSize": 4096,
+          "seed": 1708,
+          "rule": "verified_local_var_u",
+          "samplingMode": "fixed",
+          "instanceTitle": "Official var_u - 5% subset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-linear-1",
+        "type": "linear_layer",
+        "position": {
+          "x": 0.0,
+          "y": 260.0
+        },
+        "data": {
+          "inFeatures": 12,
+          "outFeatures": 10,
+          "bias": 1,
+          "seed": 1706,
+          "ioMode": "input-output",
+          "instanceTitle": "L1: 12 -> 10"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-tanh-1",
+        "type": "activation_layer",
+        "position": {
+          "x": 310.0,
+          "y": 260.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-linear-2",
+        "type": "linear_layer",
+        "position": {
+          "x": 0.0,
+          "y": 510.0
+        },
+        "data": {
+          "inFeatures": 10,
+          "outFeatures": 8,
+          "bias": 1,
+          "seed": 1707,
+          "ioMode": "input-output",
+          "instanceTitle": "L2: 10 -> 8"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-tanh-2",
+        "type": "activation_layer",
+        "position": {
+          "x": 310.0,
+          "y": 510.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 2"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-linear-3",
+        "type": "linear_layer",
+        "position": {
+          "x": 0.0,
+          "y": 760.0
+        },
+        "data": {
+          "inFeatures": 8,
+          "outFeatures": 6,
+          "bias": 1,
+          "seed": 1708,
+          "ioMode": "input-output",
+          "instanceTitle": "L3: 8 -> 6"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-tanh-3",
+        "type": "activation_layer",
+        "position": {
+          "x": 310.0,
+          "y": 760.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 3"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-linear-4",
+        "type": "linear_layer",
+        "position": {
+          "x": 0.0,
+          "y": 1010.0
+        },
+        "data": {
+          "inFeatures": 6,
+          "outFeatures": 4,
+          "bias": 1,
+          "seed": 1709,
+          "ioMode": "input-output",
+          "instanceTitle": "L4: 6 -> 4"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-tanh-4",
+        "type": "activation_layer",
+        "position": {
+          "x": 310.0,
+          "y": 1010.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 4"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-linear-5",
+        "type": "linear_layer",
+        "position": {
+          "x": 0.0,
+          "y": 1260.0
+        },
+        "data": {
+          "inFeatures": 4,
+          "outFeatures": 2,
+          "bias": 1,
+          "seed": 1710,
+          "ioMode": "input-output",
+          "instanceTitle": "L5: 4 -> 2"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-tanh-5",
+        "type": "activation_layer",
+        "position": {
+          "x": 310.0,
+          "y": 1260.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 5"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-linear-6",
+        "type": "linear_layer",
+        "position": {
+          "x": 0.0,
+          "y": 1510.0
+        },
+        "data": {
+          "inFeatures": 2,
+          "outFeatures": 1,
+          "bias": 1,
+          "seed": 1711,
+          "ioMode": "input-output",
+          "instanceTitle": "L6: 2 -> 1 logit"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-loss",
+        "type": "binary_cross_entropy_with_logits_loss",
+        "position": {
+          "x": 0.0,
+          "y": 1760.0
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "Released-code binary BCE (logits)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-initialization",
+        "type": "idnns_initialization",
+        "position": {
+          "x": 620.0,
+          "y": 1510.0
+        },
+        "data": {
+          "seed": 1708,
+          "instanceTitle": "Released IDNNs fan-in init"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-optimizer",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 310.0,
+          "y": 1760.0
+        },
+        "data": {
+          "learningRate": 0.0004,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Released-code Adam (lr=4e-4)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-observable",
+        "type": "observable_information_plane",
+        "position": {
+          "x": 594.8015790021025,
+          "y": 1752.4404737006307
+        },
+        "data": {
+          "bins": 30,
+          "maxSamples": 4096,
+          "includeOutput": true,
+          "binning": "idnns_equal_points",
+          "outputMapping": "probability",
+          "instanceTitle": "Figure 3 - 5% information plane"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 310.0,
+          "y": 2040.0
+        },
+        "data": {
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 10000,
+          "trainingSteps": 10000,
+          "logFrequency": 20,
+          "logSchedule": "idnns_logspace",
+          "logSamples": 1800,
+          "computeDevice": "cuda",
+          "batchSize": 205,
+          "minibatchSampling": "affine_epoch",
+          "minibatchSeed": 1708,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "remoteGpu": true,
+          "instanceTitle": "Trainer - 5% subset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-loss-viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 0.0,
+          "y": 2340.0
+        },
+        "data": {
+          "logScaleX": true,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "instanceTitle": "5% train loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-05-info-viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 620.0,
+          "y": 2040.0
+        },
+        "data": {
+          "pairedObservableId": "ib-05-observable",
+          "pairedTrainerId": "ib-05-trainer",
+          "vizVariant": "information_plane",
+          "instanceTitle": "Figure 3 - 5% information plane"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-dataset",
+        "type": "information_bottleneck_dataset",
+        "position": {
+          "x": 1120.0,
+          "y": 0.0
+        },
+        "data": {
+          "inputDim": 12,
+          "outputDim": 2,
+          "trainSize": 1843,
+          "testSize": 4096,
+          "seed": 1748,
+          "rule": "verified_local_var_u",
+          "samplingMode": "fixed",
+          "instanceTitle": "Official var_u - 45% subset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-linear-1",
+        "type": "linear_layer",
+        "position": {
+          "x": 1120.0,
+          "y": 260.0
+        },
+        "data": {
+          "inFeatures": 12,
+          "outFeatures": 10,
+          "bias": 1,
+          "seed": 1746,
+          "ioMode": "input-output",
+          "instanceTitle": "L1: 12 -> 10"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-tanh-1",
+        "type": "activation_layer",
+        "position": {
+          "x": 1430.0,
+          "y": 260.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-linear-2",
+        "type": "linear_layer",
+        "position": {
+          "x": 1120.0,
+          "y": 510.0
+        },
+        "data": {
+          "inFeatures": 10,
+          "outFeatures": 8,
+          "bias": 1,
+          "seed": 1747,
+          "ioMode": "input-output",
+          "instanceTitle": "L2: 10 -> 8"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-tanh-2",
+        "type": "activation_layer",
+        "position": {
+          "x": 1430.0,
+          "y": 510.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 2"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-linear-3",
+        "type": "linear_layer",
+        "position": {
+          "x": 1120.0,
+          "y": 760.0
+        },
+        "data": {
+          "inFeatures": 8,
+          "outFeatures": 6,
+          "bias": 1,
+          "seed": 1748,
+          "ioMode": "input-output",
+          "instanceTitle": "L3: 8 -> 6"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-tanh-3",
+        "type": "activation_layer",
+        "position": {
+          "x": 1430.0,
+          "y": 760.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 3"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-linear-4",
+        "type": "linear_layer",
+        "position": {
+          "x": 1120.0,
+          "y": 1010.0
+        },
+        "data": {
+          "inFeatures": 6,
+          "outFeatures": 4,
+          "bias": 1,
+          "seed": 1749,
+          "ioMode": "input-output",
+          "instanceTitle": "L4: 6 -> 4"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-tanh-4",
+        "type": "activation_layer",
+        "position": {
+          "x": 1430.0,
+          "y": 1010.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 4"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-linear-5",
+        "type": "linear_layer",
+        "position": {
+          "x": 1120.0,
+          "y": 1260.0
+        },
+        "data": {
+          "inFeatures": 4,
+          "outFeatures": 2,
+          "bias": 1,
+          "seed": 1750,
+          "ioMode": "input-output",
+          "instanceTitle": "L5: 4 -> 2"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-tanh-5",
+        "type": "activation_layer",
+        "position": {
+          "x": 1430.0,
+          "y": 1260.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 5"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-linear-6",
+        "type": "linear_layer",
+        "position": {
+          "x": 1120.0,
+          "y": 1510.0
+        },
+        "data": {
+          "inFeatures": 2,
+          "outFeatures": 1,
+          "bias": 1,
+          "seed": 1751,
+          "ioMode": "input-output",
+          "instanceTitle": "L6: 2 -> 1 logit"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-loss",
+        "type": "binary_cross_entropy_with_logits_loss",
+        "position": {
+          "x": 1120.0,
+          "y": 1760.0
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "Released-code binary BCE (logits)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-initialization",
+        "type": "idnns_initialization",
+        "position": {
+          "x": 1740.0,
+          "y": 1510.0
+        },
+        "data": {
+          "seed": 1748,
+          "instanceTitle": "Released IDNNs fan-in init"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-optimizer",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 1430.0,
+          "y": 1760.0
+        },
+        "data": {
+          "learningRate": 0.0004,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Released-code Adam (lr=4e-4)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-observable",
+        "type": "observable_information_plane",
+        "position": {
+          "x": 1740.0,
+          "y": 1760.0
+        },
+        "data": {
+          "bins": 30,
+          "maxSamples": 4096,
+          "includeOutput": true,
+          "binning": "idnns_equal_points",
+          "outputMapping": "probability",
+          "instanceTitle": "Figure 3 - 45% information plane"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 1430.0,
+          "y": 2040.0
+        },
+        "data": {
+          "trainingSteps": 10000,
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 10000,
+          "logFrequency": 20,
+          "logSchedule": "idnns_logspace",
+          "logSamples": 1800,
+          "computeDevice": "cuda",
+          "batchSize": 256,
+          "minibatchSampling": "affine_epoch",
+          "minibatchSeed": 1748,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "remoteGpu": true,
+          "instanceTitle": "Trainer - 45% subset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-loss-viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1120.0,
+          "y": 2340.0
+        },
+        "data": {
+          "logScaleX": true,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "instanceTitle": "45% train loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-45-info-viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 1740.0,
+          "y": 2040.0
+        },
+        "data": {
+          "pairedObservableId": "ib-45-observable",
+          "pairedTrainerId": "ib-45-trainer",
+          "vizVariant": "information_plane",
+          "instanceTitle": "Figure 3 - 45% information plane"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-dataset",
+        "type": "information_bottleneck_dataset",
+        "position": {
+          "x": 2240.0,
+          "y": 0.0
+        },
+        "data": {
+          "inputDim": 12,
+          "outputDim": 2,
+          "trainSize": 3482,
+          "testSize": 4096,
+          "seed": 1788,
+          "rule": "verified_local_var_u",
+          "samplingMode": "fixed",
+          "instanceTitle": "Official var_u - 85% subset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-linear-1",
+        "type": "linear_layer",
+        "position": {
+          "x": 2240.0,
+          "y": 260.0
+        },
+        "data": {
+          "inFeatures": 12,
+          "outFeatures": 10,
+          "bias": 1,
+          "seed": 1786,
+          "ioMode": "input-output",
+          "instanceTitle": "L1: 12 -> 10"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-tanh-1",
+        "type": "activation_layer",
+        "position": {
+          "x": 2550.0,
+          "y": 260.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-linear-2",
+        "type": "linear_layer",
+        "position": {
+          "x": 2240.0,
+          "y": 510.0
+        },
+        "data": {
+          "inFeatures": 10,
+          "outFeatures": 8,
+          "bias": 1,
+          "seed": 1787,
+          "ioMode": "input-output",
+          "instanceTitle": "L2: 10 -> 8"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-tanh-2",
+        "type": "activation_layer",
+        "position": {
+          "x": 2550.0,
+          "y": 510.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 2"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-linear-3",
+        "type": "linear_layer",
+        "position": {
+          "x": 2240.0,
+          "y": 760.0
+        },
+        "data": {
+          "inFeatures": 8,
+          "outFeatures": 6,
+          "bias": 1,
+          "seed": 1788,
+          "ioMode": "input-output",
+          "instanceTitle": "L3: 8 -> 6"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-tanh-3",
+        "type": "activation_layer",
+        "position": {
+          "x": 2550.0,
+          "y": 760.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 3"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-linear-4",
+        "type": "linear_layer",
+        "position": {
+          "x": 2240.0,
+          "y": 1010.0
+        },
+        "data": {
+          "inFeatures": 6,
+          "outFeatures": 4,
+          "bias": 1,
+          "seed": 1789,
+          "ioMode": "input-output",
+          "instanceTitle": "L4: 6 -> 4"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-tanh-4",
+        "type": "activation_layer",
+        "position": {
+          "x": 2550.0,
+          "y": 1010.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 4"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-linear-5",
+        "type": "linear_layer",
+        "position": {
+          "x": 2240.0,
+          "y": 1260.0
+        },
+        "data": {
+          "inFeatures": 4,
+          "outFeatures": 2,
+          "bias": 1,
+          "seed": 1790,
+          "ioMode": "input-output",
+          "instanceTitle": "L5: 4 -> 2"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-tanh-5",
+        "type": "activation_layer",
+        "position": {
+          "x": 2550.0,
+          "y": 1260.0
+        },
+        "data": {
+          "activation": "tanh",
+          "leakyP": 0,
+          "ioMode": "input-output",
+          "instanceTitle": "Tanh 5"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-linear-6",
+        "type": "linear_layer",
+        "position": {
+          "x": 2240.0,
+          "y": 1510.0
+        },
+        "data": {
+          "inFeatures": 2,
+          "outFeatures": 1,
+          "bias": 1,
+          "seed": 1791,
+          "ioMode": "input-output",
+          "instanceTitle": "L6: 2 -> 1 logit"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-loss",
+        "type": "binary_cross_entropy_with_logits_loss",
+        "position": {
+          "x": 2240.0,
+          "y": 1760.0
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "Released-code binary BCE (logits)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-initialization",
+        "type": "idnns_initialization",
+        "position": {
+          "x": 2860.0,
+          "y": 1510.0
+        },
+        "data": {
+          "seed": 1788,
+          "instanceTitle": "Released IDNNs fan-in init"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-optimizer",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 2550.0,
+          "y": 1760.0
+        },
+        "data": {
+          "learningRate": 0.0004,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Released-code Adam (lr=4e-4)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-observable",
+        "type": "observable_information_plane",
+        "position": {
+          "x": 2860.0,
+          "y": 1760.0
+        },
+        "data": {
+          "bins": 30,
+          "maxSamples": 4096,
+          "includeOutput": true,
+          "binning": "idnns_equal_points",
+          "outputMapping": "probability",
+          "instanceTitle": "Figure 3 - 85% information plane"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 2550.0,
+          "y": 2040.0
+        },
+        "data": {
+          "trainingSteps": 10000,
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 10000,
+          "logFrequency": 20,
+          "logSchedule": "idnns_logspace",
+          "logSamples": 1800,
+          "computeDevice": "cuda",
+          "batchSize": 256,
+          "minibatchSampling": "affine_epoch",
+          "minibatchSeed": 1788,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "remoteGpu": true,
+          "instanceTitle": "Trainer - 85% subset"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-loss-viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 2240.0,
+          "y": 2340.0
+        },
+        "data": {
+          "logScaleX": true,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "instanceTitle": "85% train loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "ib-85-info-viz",
+        "type": "observable_viz",
+        "position": {
+          "x": 2860.0,
+          "y": 2040.0
+        },
+        "data": {
+          "pairedObservableId": "ib-85-observable",
+          "pairedTrainerId": "ib-85-trainer",
+          "vizVariant": "information_plane",
+          "instanceTitle": "Figure 3 - 85% information plane"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-ib-05-linear-1-ib-05-tanh-1-tensor_out-tensor_in",
+        "source": "ib-05-linear-1",
+        "target": "ib-05-tanh-1",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-tanh-1-ib-05-linear-2-tensor_out-tensor_in",
+        "source": "ib-05-tanh-1",
+        "target": "ib-05-linear-2",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-linear-2-ib-05-tanh-2-tensor_out-tensor_in",
+        "source": "ib-05-linear-2",
+        "target": "ib-05-tanh-2",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-tanh-2-ib-05-linear-3-tensor_out-tensor_in",
+        "source": "ib-05-tanh-2",
+        "target": "ib-05-linear-3",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-linear-3-ib-05-tanh-3-tensor_out-tensor_in",
+        "source": "ib-05-linear-3",
+        "target": "ib-05-tanh-3",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-tanh-3-ib-05-linear-4-tensor_out-tensor_in",
+        "source": "ib-05-tanh-3",
+        "target": "ib-05-linear-4",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-linear-4-ib-05-tanh-4-tensor_out-tensor_in",
+        "source": "ib-05-linear-4",
+        "target": "ib-05-tanh-4",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-tanh-4-ib-05-linear-5-tensor_out-tensor_in",
+        "source": "ib-05-tanh-4",
+        "target": "ib-05-linear-5",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-linear-5-ib-05-tanh-5-tensor_out-tensor_in",
+        "source": "ib-05-linear-5",
+        "target": "ib-05-tanh-5",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-tanh-5-ib-05-linear-6-tensor_out-tensor_in",
+        "source": "ib-05-tanh-5",
+        "target": "ib-05-linear-6",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-05-dataset-ib-05-trainer-dataset-dataset",
+        "source": "ib-05-dataset",
+        "target": "ib-05-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-ib-05-linear-6-ib-05-trainer-tensor_out-model",
+        "source": "ib-05-linear-6",
+        "target": "ib-05-trainer",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-ib-05-initialization-ib-05-linear-6-initialization-initialization",
+        "source": "ib-05-initialization",
+        "target": "ib-05-linear-6",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-ib-05-loss-ib-05-trainer-loss-loss",
+        "source": "ib-05-loss",
+        "target": "ib-05-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-ib-05-optimizer-ib-05-trainer-optimizer-optimizer",
+        "source": "ib-05-optimizer",
+        "target": "ib-05-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-ib-05-observable-ib-05-trainer-observables-observables",
+        "source": "ib-05-observable",
+        "target": "ib-05-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-ib-05-trainer-ib-05-loss-viz-loss_results-tensor_list",
+        "source": "ib-05-trainer",
+        "target": "ib-05-loss-viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-ib-05-trainer-ib-05-info-viz-observable_results-tensor",
+        "source": "ib-05-trainer",
+        "target": "ib-05-info-viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-ib-45-linear-1-ib-45-tanh-1-tensor_out-tensor_in",
+        "source": "ib-45-linear-1",
+        "target": "ib-45-tanh-1",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-tanh-1-ib-45-linear-2-tensor_out-tensor_in",
+        "source": "ib-45-tanh-1",
+        "target": "ib-45-linear-2",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-linear-2-ib-45-tanh-2-tensor_out-tensor_in",
+        "source": "ib-45-linear-2",
+        "target": "ib-45-tanh-2",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-tanh-2-ib-45-linear-3-tensor_out-tensor_in",
+        "source": "ib-45-tanh-2",
+        "target": "ib-45-linear-3",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-linear-3-ib-45-tanh-3-tensor_out-tensor_in",
+        "source": "ib-45-linear-3",
+        "target": "ib-45-tanh-3",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-tanh-3-ib-45-linear-4-tensor_out-tensor_in",
+        "source": "ib-45-tanh-3",
+        "target": "ib-45-linear-4",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-linear-4-ib-45-tanh-4-tensor_out-tensor_in",
+        "source": "ib-45-linear-4",
+        "target": "ib-45-tanh-4",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-tanh-4-ib-45-linear-5-tensor_out-tensor_in",
+        "source": "ib-45-tanh-4",
+        "target": "ib-45-linear-5",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-linear-5-ib-45-tanh-5-tensor_out-tensor_in",
+        "source": "ib-45-linear-5",
+        "target": "ib-45-tanh-5",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-tanh-5-ib-45-linear-6-tensor_out-tensor_in",
+        "source": "ib-45-tanh-5",
+        "target": "ib-45-linear-6",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-45-dataset-ib-45-trainer-dataset-dataset",
+        "source": "ib-45-dataset",
+        "target": "ib-45-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-ib-45-linear-6-ib-45-trainer-tensor_out-model",
+        "source": "ib-45-linear-6",
+        "target": "ib-45-trainer",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-ib-45-initialization-ib-45-linear-6-initialization-initialization",
+        "source": "ib-45-initialization",
+        "target": "ib-45-linear-6",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-ib-45-loss-ib-45-trainer-loss-loss",
+        "source": "ib-45-loss",
+        "target": "ib-45-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-ib-45-optimizer-ib-45-trainer-optimizer-optimizer",
+        "source": "ib-45-optimizer",
+        "target": "ib-45-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-ib-45-observable-ib-45-trainer-observables-observables",
+        "source": "ib-45-observable",
+        "target": "ib-45-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-ib-45-trainer-ib-45-loss-viz-loss_results-tensor_list",
+        "source": "ib-45-trainer",
+        "target": "ib-45-loss-viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-ib-45-trainer-ib-45-info-viz-observable_results-tensor",
+        "source": "ib-45-trainer",
+        "target": "ib-45-info-viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-ib-85-linear-1-ib-85-tanh-1-tensor_out-tensor_in",
+        "source": "ib-85-linear-1",
+        "target": "ib-85-tanh-1",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-tanh-1-ib-85-linear-2-tensor_out-tensor_in",
+        "source": "ib-85-tanh-1",
+        "target": "ib-85-linear-2",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-linear-2-ib-85-tanh-2-tensor_out-tensor_in",
+        "source": "ib-85-linear-2",
+        "target": "ib-85-tanh-2",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-tanh-2-ib-85-linear-3-tensor_out-tensor_in",
+        "source": "ib-85-tanh-2",
+        "target": "ib-85-linear-3",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-linear-3-ib-85-tanh-3-tensor_out-tensor_in",
+        "source": "ib-85-linear-3",
+        "target": "ib-85-tanh-3",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-tanh-3-ib-85-linear-4-tensor_out-tensor_in",
+        "source": "ib-85-tanh-3",
+        "target": "ib-85-linear-4",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-linear-4-ib-85-tanh-4-tensor_out-tensor_in",
+        "source": "ib-85-linear-4",
+        "target": "ib-85-tanh-4",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-tanh-4-ib-85-linear-5-tensor_out-tensor_in",
+        "source": "ib-85-tanh-4",
+        "target": "ib-85-linear-5",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-linear-5-ib-85-tanh-5-tensor_out-tensor_in",
+        "source": "ib-85-linear-5",
+        "target": "ib-85-tanh-5",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-tanh-5-ib-85-linear-6-tensor_out-tensor_in",
+        "source": "ib-85-tanh-5",
+        "target": "ib-85-linear-6",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "tensor_in"
+      },
+      {
+        "id": "e-ib-85-dataset-ib-85-trainer-dataset-dataset",
+        "source": "ib-85-dataset",
+        "target": "ib-85-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-ib-85-linear-6-ib-85-trainer-tensor_out-model",
+        "source": "ib-85-linear-6",
+        "target": "ib-85-trainer",
+        "sourceHandle": "tensor_out",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-ib-85-initialization-ib-85-linear-6-initialization-initialization",
+        "source": "ib-85-initialization",
+        "target": "ib-85-linear-6",
+        "sourceHandle": "initialization",
+        "targetHandle": "initialization"
+      },
+      {
+        "id": "e-ib-85-loss-ib-85-trainer-loss-loss",
+        "source": "ib-85-loss",
+        "target": "ib-85-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-ib-85-optimizer-ib-85-trainer-optimizer-optimizer",
+        "source": "ib-85-optimizer",
+        "target": "ib-85-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-ib-85-observable-ib-85-trainer-observables-observables",
+        "source": "ib-85-observable",
+        "target": "ib-85-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-ib-85-trainer-ib-85-loss-viz-loss_results-tensor_list",
+        "source": "ib-85-trainer",
+        "target": "ib-85-loss-viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-ib-85-trainer-ib-85-info-viz-observable_results-tensor",
+        "source": "ib-85-trainer",
+        "target": "ib-85-info-viz",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 506.3964403484855,
+      "y": -795.9965748369675,
+      "zoom": 0.7937005259840998
+    }
+  },
+  "savedAt": 1784778713028.0,
+  "libraryOrigin": null
+}

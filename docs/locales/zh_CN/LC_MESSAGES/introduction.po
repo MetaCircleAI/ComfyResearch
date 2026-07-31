@@ -1,0 +1,274 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-27 19:58+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/introduction.md:7
+msgid "Introduction"
+msgstr "简介"
+
+#: ../../en/introduction.md:10
+msgid "Comfy Research"
+msgstr "Comfy Research"
+
+#: ../../en/introduction.md:13
+msgid ""
+"Compose an experiment as a node graph. Run it, inspect how learning "
+"changes, and keep the complete experimental structure reproducible."
+msgstr "将实验组织为 Node 图。运行实验、观察学习如何变化，并让完整的实验结构保持可复现。"
+
+#: ../../en/introduction.md:19
+msgid "Start on CPU · 10–15 min"
+msgstr "[在 CPU 上开始 · 10–15 分钟](get-started/index.md)"
+
+#: ../../en/introduction.md:26
+msgid "Already installed? Run the first graph"
+msgstr "[已经安装？运行第一个图](get-started/first-graph.md)"
+
+#: ../../en/introduction.md:34
+msgid "Try online ↗"
+msgstr "[在线体验 ↗](https://online.comfy-research.com/)"
+
+#: ../../en/introduction.md:34
+msgid ""
+"Comfy Research is a local visual environment for AI/ML research. A graph "
+"connects the parts of an experiment: data, model, objective, optimizer, "
+"and training procedure, with Observables that measure what happens during"
+" learning."
+msgstr ""
+"Comfy Research 是面向 AI/ML "
+"研究的本地可视化环境。一张图连接实验的各个部分：数据、模型、目标、优化器和训练过程，以及用于测量学习过程的 Observables。"
+
+#: ../../en/introduction.md:38
+msgid ""
+"The graph is more than a picture. It is the experiment specification sent"
+" to the backend: node settings become parameters, edges determine "
+"dependencies, and the Trainer validates the connected graph before "
+"starting a run."
+msgstr "图不只是图片。它是发送到后端的实验规格：Node 设置会成为参数，边决定依赖关系，Trainer 会在运行开始前验证已连接的图。"
+
+#: ../../en/introduction.md:42
+msgid ""
+"Comfy Research workbench showing a project, a connected training graph, "
+"Trainer controls, and an Observable result."
+msgstr "Comfy Research 工作台，展示项目、已连接的训练图、Trainer 控件和 Observable 结果。"
+
+#: ../../en/introduction.md:46
+msgid ""
+"One graph keeps the experiment structure, execution controls, "
+"measurements, and recorded result visible in the same workbench."
+msgstr "一张图在同一工作台中同时呈现实验结构、执行控件、测量和已记录结果。"
+
+#: ../../en/introduction.md:50
+msgid "Why experiments are graphs"
+msgstr "为什么实验要用图来表达"
+
+#: ../../en/introduction.md:52
+msgid "Research code usually mixes three different concerns in one script:"
+msgstr "研究代码通常会在一个脚本中混合三类关注点："
+
+#: ../../en/introduction.md:54
+msgid "**What is being trained**: the dataset, model, loss, and optimizer."
+msgstr "**训练什么**：数据集、模型、损失和优化器。"
+
+#: ../../en/introduction.md:55
+msgid ""
+"**How it is being measured**: loss curves, accuracy, norms, spectra, or "
+"representations."
+msgstr "**如何测量**：损失曲线、准确率、范数、谱或表征。"
+
+#: ../../en/introduction.md:57
+msgid ""
+"**What must be retained**: configuration, results, checkpoints, and the "
+"relationship between them."
+msgstr "**必须保留什么**：配置、结果、检查点以及它们之间的关系。"
+
+#: ../../en/introduction.md:60
+msgid ""
+"Comfy Research keeps those concerns visible and composable. Changing a "
+"model or attaching a new measurement becomes a graph edit rather than a "
+"rewrite of the whole training script."
+msgstr "Comfy Research 让这些关注点保持可见且可组合。更换模型或添加新的测量变成一次图编辑，而不必重写整个训练脚本。"
+
+#: ../../en/introduction.md:64
+msgid "The product model"
+msgstr "产品模型"
+
+#: ../../en/introduction.md:66
+msgid "Every standard training graph has the same center of gravity:"
+msgstr "每张标准训练图都围绕同一个核心组织："
+
+#: ../../en/introduction.md:42
+msgid "Part"
+msgstr "组成部分"
+
+#: ../../en/introduction.md:42
+msgid "Responsibility"
+msgstr "职责"
+
+#: ../../en/introduction.md:42
+msgid "Dataset"
+msgstr "Dataset"
+
+#: ../../en/introduction.md:42
+msgid "Produces the train and optional test data."
+msgstr "生成训练数据及可选的测试数据。"
+
+#: ../../en/introduction.md:42
+msgid "Model"
+msgstr "Model"
+
+#: ../../en/introduction.md:42
+msgid "Defines the trainable computation."
+msgstr "定义可训练计算。"
+
+#: ../../en/introduction.md:42
+msgid "Loss"
+msgstr "Loss"
+
+#: ../../en/introduction.md:42
+msgid "Defines the primary optimization objective."
+msgstr "定义主要优化目标。"
+
+#: ../../en/introduction.md:42
+msgid "Optimizer"
+msgstr "Optimizer"
+
+#: ../../en/introduction.md:42
+msgid "Updates model parameters; schedules can be connected separately."
+msgstr "更新模型参数；调度器可单独连接。"
+
+#: ../../en/introduction.md:42
+msgid "Trainer"
+msgstr "Trainer"
+
+#: ../../en/introduction.md:42
+msgid "Validates the graph, runs training, and streams progress and results."
+msgstr "验证图、执行训练，并流式输出进度和结果。"
+
+#: ../../en/introduction.md:42
+msgid "Observable"
+msgstr "Observable"
+
+#: ../../en/introduction.md:42
+msgid ""
+"Reads training state at log steps without changing the optimization "
+"objective."
+msgstr "在记录步读取训练状态，不改变正在优化的目标。"
+
+#: ../../en/introduction.md:42
+msgid "Visualization"
+msgstr "可视化"
+
+#: ../../en/introduction.md:42
+msgid "Displays loss or Observable histories produced by the Trainer."
+msgstr "显示 Trainer 生成的损失或 Observable 历史。"
+
+#: ../../en/introduction.md:78
+msgid ""
+"This separation matters experimentally. An Observable can be added to "
+"inspect a hypothesis without silently changing the loss being optimized."
+msgstr "这种分离对实验很重要。可以添加 Observable 来检查假设，而不会悄然改变正在优化的损失。"
+
+#: ../../en/introduction.md:81
+msgid "From question to reproducible artifact"
+msgstr "从问题到可复现实验产物"
+
+#: ../../en/introduction.md:83
+msgid "A normal workflow is:"
+msgstr "典型工作流如下："
+
+#: ../../en/introduction.md:85
+msgid "Start from a small graph or a bundled template."
+msgstr "从一张小图或随附模板开始。"
+
+#: ../../en/introduction.md:86
+msgid "Change one controlled part of the experiment."
+msgstr "修改实验中的一个受控部分。"
+
+#: ../../en/introduction.md:87
+msgid "Run locally on CPU, MPS, or CUDA, or use the configured remote GPU path."
+msgstr "在本地 CPU、MPS 或 CUDA 上运行，或使用已配置的远程 GPU 路径。"
+
+#: ../../en/introduction.md:88
+msgid "Read the Trainer and Observable outputs."
+msgstr "查看 Trainer 和 Observable 输出。"
+
+#: ../../en/introduction.md:89
+msgid "Save the graph at the level needed for reproduction."
+msgstr "按复现所需层级保存图。"
+
+#: ../../en/introduction.md:91
+msgid "Comfy Research supports reusable **Templates** as starting points."
+msgstr "Comfy Research 支持将可复用的 **Templates** 作为起点。"
+
+#: ../../en/introduction.md:93
+msgid ""
+"Graph files and library entries can be saved as structure only, with "
+"plots, or with model checkpoint data. The [User Guide](user-"
+"guide/index.md) explains the trade-offs."
+msgstr "图文件和库条目可以仅保存结构，也可以包含绘图或模型检查点数据。[用户指南](user-guide/index.md)说明了其中的权衡。"
+
+#: ../../en/introduction.md:97
+msgid "Documentation scope"
+msgstr "文档范围"
+
+#: ../../en/introduction.md:99
+msgid ""
+"This documentation covers the stable research path in the current source "
+"tree: the canvas, node graph, Trainer, Observables, saved graphs, and the"
+" in-repository Node extension system. Experimental product areas are "
+"intentionally outside this first documentation release."
+msgstr ""
+"本文档覆盖当前源代码树中的稳定研究路径：画布、Node 图、Trainer、Observables、已保存图以及仓库内的 Node "
+"扩展系统。实验性产品领域有意不纳入首个文档版本。"
+
+#: ../../en/introduction.md:109
+msgid "Get Started"
+msgstr "快速开始"
+
+#: ../../en/introduction.md:113
+msgid "Build from source, open the canvas, and complete a CPU training run."
+msgstr "从源码构建，打开画布并完成一次 CPU 训练运行。"
+
+#: ../../en/introduction.md:116
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/introduction.md:120
+msgid ""
+"Understand graph wiring, runs, Observables, persistence, and "
+"reproducibility."
+msgstr "了解图连线、运行、Observables、持久化和可复现性。"
+
+#: ../../en/introduction.md:123
+msgid "Examples"
+msgstr "示例"
+
+#: ../../en/introduction.md:127
+msgid "Reproductions of classic learning-mechanics and physics-of-AI phenomena."
+msgstr "复现经典学习机制和 AI 物理学现象。"
+
+#: ../../en/introduction.md:130
+msgid "Extend"
+msgstr "扩展"
+
+#: ../../en/introduction.md:134
+msgid "Define and register custom Nodes and Observables in the repository."
+msgstr "在仓库中定义并注册自定义 Nodes 和 Observables。"

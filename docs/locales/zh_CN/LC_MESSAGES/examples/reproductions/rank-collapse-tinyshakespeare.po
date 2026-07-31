@@ -1,0 +1,459 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 12:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:7
+msgid "Representation Compression and Information Flow · Spectral audit"
+msgstr "表征压缩与信息流 · 谱审计"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:10
+msgid "Rank Collapse on Real Text (TinyShakespeare)"
+msgstr "真实文本上的秩坍塌（TinyShakespeare）"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:13
+msgid ""
+"A small causal Transformer trained from scratch on real TinyShakespeare "
+"text reveals the same warmup → expansion → compression RankMe signature "
+"that the paper measures on intermediate Pythia/OLMo checkpoints."
+msgstr ""
+"在真实 TinyShakespeare 文本上从头训练的小型因果 Transformer，呈现出与论文在中间 Pythia/OLMo "
+"checkpoint 中测得相同的预热 → 扩张 → 压缩 RankMe 特征。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:23
+msgid "GS"
+msgstr "绍阳"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:28
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:36
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:38
+msgid "**Phenomenon reproduction (spectral audit)**"
+msgstr "**现象复现（谱审计）**"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:43
+msgid ""
+"This template trains a small causal Transformer from scratch on real "
+"TinyShakespeare text so the entire rank-collapse pipeline remains "
+"editable and runnable inside Comfy Research. RankMe and alphaReQ are "
+"computed on the final-hidden representation of every token position at "
+"each logged step. This is a spectral audit, not the paper's full "
+"intermediate-checkpoint experiment on real pretraining corpora."
+msgstr ""
+"此模板在真实 TinyShakespeare 文本上从头训练一个小型因果 Transformer，让整个秩坍塌流程都能在 Comfy "
+"Research 中编辑和运行。每次记录时，均在每个 token 位置的 final-hidden 表征上计算 RankMe 和 alphaReQ。"
+"这是一次谱审计，不是论文基于真实 pretraining 语料进行的完整中间 checkpoint 实验。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:51
+msgid ""
+"**Paper:** [Tracing the Representation Geometry of Language Models from "
+"Pretraining to Post-training](https://arxiv.org/abs/2509.23024)"
+msgstr "**论文：** [Tracing the Representation Geometry of Language Models from Pretraining to Post-training](https://arxiv.org/abs/2509.23024)"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:53
+msgid "**Template:** `repro: Rank Collapse TinyShakespeare spectral audit`"
+msgstr "**模板：** `repro: Rank Collapse TinyShakespeare spectral audit`"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:55
+msgid "**Template ID:** `repro-rank-collapse-tinyshakespeare-pretraining`"
+msgstr "**模板 ID：** `repro-rank-collapse-tinyshakespeare-pretraining`"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:57
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:59
+msgid ""
+"The paper's main experiment measures RankMe and alphaReQ on last-token "
+"hidden states of intermediate Pythia/OLMo checkpoints evaluated on "
+"FineWeb. That protocol requires downloading multi-terabyte checkpoint "
+"series and a real pretraining corpus, which is not feasible inside an "
+"editable Comfy Research graph."
+msgstr ""
+"论文的主要实验是在 FineWeb 上评估中间 Pythia/OLMo checkpoint 的末 token 隐藏状态，并在其上测量 RankMe 和 "
+"alphaReQ。该方案需要下载数 TB 的 checkpoint 序列和真实 pretraining 语料，无法在可编辑的 Comfy Research 图中实现。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:65
+msgid "This template instead asks a narrower question:"
+msgstr "此模板转而提出一个更窄的问题："
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:67
+msgid ""
+"Does the same spectral signature (warmup → expansion → compression) "
+"appear when a small causal Transformer is trained from scratch on real "
+"text, with RankMe/alphaReQ measured on every token position of the final "
+"hidden state?"
+msgstr ""
+"当一个小型因果 Transformer 在真实文本上从头训练，并在最终隐藏状态的每个 token 位置测量 RankMe/alphaReQ "
+"时，是否会出现相同的谱特征（预热 → 扩张 → 压缩）？"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:72
+msgid ""
+"If yes, the mechanism is not an artifact of the paper's checkpoint "
+"protocol; it is a property of the learning dynamics themselves."
+msgstr "如果会出现，这一机制便不是论文 checkpoint 协议造成的产物，而是学习动态本身的属性。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:75
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:77
+msgid "Paper vs. template settings"
+msgstr "论文与模板设置"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Paper (main experiment)"
+msgstr "论文（主要实验）"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Template (spectral audit)"
+msgstr "模板（谱审计）"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Corpus"
+msgstr "语料"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "real pretraining corpora (FineWeb eval)"
+msgstr "真实 pretraining 语料（在 FineWeb 上评估）"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "real TinyShakespeare word-level corpus"
+msgstr "真实的 TinyShakespeare 词级语料"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Pythia / OLMo (intermediate checkpoints)"
+msgstr "Pythia / OLMo（中间 checkpoint）"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "small causal Transformer trained from scratch"
+msgstr "从头训练的小型因果 Transformer"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Vocab"
+msgstr "词表"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "large subword BPE"
+msgstr "大型子词 BPE"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "corpus-derived top-256 words + PAD/BOS/EOS/UNK"
+msgstr "从语料中得到的前 256 个词 + PAD/BOS/EOS/UNK"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Context"
+msgstr "上下文"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "long-context eval"
+msgstr "长上下文评估"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "32-token windows"
+msgstr "32-token 窗口"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "RankMe/alphaReQ"
+msgstr "RankMe/alphaReQ 指标"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "last-token hidden state"
+msgstr "末 token 隐藏状态"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "every token position as a sample from `lm_head::input`"
+msgstr "每个 token 位置都作为 `lm_head::input` 的一个样本"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "Horizon"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "full pretraining"
+msgstr "完整 pretraining"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:40
+msgid "100,000 steps (evidence horizon, not CI)"
+msgstr "100,000 步（证据时域，而非 CI）"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:88
+msgid "Node graph"
+msgstr "节点图"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:102
+msgid "Key parameters"
+msgstr "关键参数"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:104
+msgid ""
+"**Dataset** (`tinyshakespeare_lm_dataset`): `vocabSize = 256`, "
+"`contextLength = 32`, `trainSize = 4000`, `testSize = 0`, `seed = 0`, "
+"`initSeed = 0`, `stride = 1`."
+msgstr ""
+"**数据集**（`tinyshakespeare_lm_dataset`）：`vocabSize = 256`、`contextLength = "
+"32`、`trainSize = 4000`、`testSize = 0`、`seed = 0`、`initSeed = 0`、`stride ="
+" 1`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:107
+msgid ""
+"**Model** (`transformer_token_model`): `vocabSize = 256`, `contextLength "
+"= 32`, `modelDim = 16`, `numHeads = 4`, `numLayers = 3`, `ffDim = 64`, "
+"`activation = \"gelu\"`, `encoderBackend = \"stable\"`, `encoderDropout ="
+" 0.0`, `tieEmbeddingLmHead = \"yes\"`, `causalAttention = \"yes\"`, `seed"
+" = 0`."
+msgstr ""
+"**模型**（`transformer_token_model`）：`vocabSize = 256`、`contextLength = "
+"32`、`modelDim = 16`、`numHeads = 4`、`numLayers = 3`、`ffDim = "
+"64`、`activation = \"gelu\"`、`encoderBackend = \"stable\"`、`encoderDropout"
+" = 0.0`、`tieEmbeddingLmHead = \"yes\"`、`causalAttention = \"yes\"`、`seed "
+"= 0`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:112
+msgid ""
+"**Optimizer** (`adamw_optimizer`): `learningRate = 0.002`, `beta1 = 0.9`,"
+" `beta2 = 0.999`, `epsilon = 1e-8`, `weightDecay = 0.01`."
+msgstr ""
+"**优化器**（`adamw_optimizer`）：`learningRate = 0.002`、`beta1 = 0.9`、`beta2 = "
+"0.999`、`epsilon = 1e-8`、`weightDecay = 0.01`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:115
+msgid ""
+"**Loss** (`cross_entropy_loss`): `lossScale = 1.0`, `labelSmoothing = "
+"0.0`."
+msgstr "**损失**（`cross_entropy_loss`）：`lossScale = 1.0`、`labelSmoothing = 0.0`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:116
+msgid ""
+"**Trainer**: `trainingSteps = 100000`, `logFrequency = 500`, `batchSize ="
+" 32`, `computeDevice = \"cpu\"`, `gradClipMaxNorm = 1.0`."
+msgstr ""
+"**Trainer**：`trainingSteps = 100000`、`logFrequency = 500`、`batchSize = "
+"32`、`computeDevice = \"cpu\"`、`gradClipMaxNorm = 1.0`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:118
+msgid "**Observables**:"
+msgstr "**Observables**："
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:119
+msgid ""
+"`observable_representation_rankme`: `representationId = "
+"\"lm_head::input\"`, `tokenPositionsAsSamples = true`, "
+"`captureTrajectories = false`."
+msgstr ""
+"`observable_representation_rankme`：`representationId = "
+"\"lm_head::input\"`、`tokenPositionsAsSamples = true`、`captureTrajectories"
+" = false`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:122
+msgid ""
+"`observable_representation_alpha_req`: `representationId = "
+"\"lm_head::input\"`, `tokenPositionsAsSamples = true`."
+msgstr ""
+"`observable_representation_alpha_req`：`representationId = "
+"\"lm_head::input\"`、`tokenPositionsAsSamples = true`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:125
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:127
+msgid ""
+"Open **Templates** and load `repro: Rank Collapse TinyShakespeare "
+"spectral audit`."
+msgstr "打开 **Templates**，加载 `repro: Rank Collapse TinyShakespeare spectral audit`。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:128
+msgid ""
+"Click **Train** on the `Trainer` node. The first run will download the "
+"TinyShakespeare corpus if it is not already cached locally."
+msgstr "在 `Trainer` 节点上点击 **Train**。如果本地尚未缓存，首次运行会下载 TinyShakespeare 语料。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:130
+msgid ""
+"Inspect the `Final-hidden RankMe` panel for the warmup → expansion → "
+"compression signature over the 100,000-step horizon."
+msgstr "在 `Final-hidden RankMe` 面板中查看 100,000 步证据时域内的预热 → 扩张 → 压缩特征。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:132
+msgid ""
+"Cross-check `Final-hidden alphaReQ` for the power-law tail exponent; it "
+"should track the RankMe curve inversely during compression."
+msgstr "对照查看 `Final-hidden alphaReQ` 的幂律尾部指数；在压缩期间，它应与 RankMe 曲线反向变化。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:135
+msgid "Data is downloaded, not synthesized"
+msgstr "数据下载而来，并非合成"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:137
+msgid ""
+"The `tinyshakespeare_lm_dataset` node downloads the real TinyShakespeare "
+"corpus. **Download failure is an error, never a synthetic fallback** - "
+"this preserves the \"real text\" claim of the audit."
+msgstr ""
+"`tinyshakespeare_lm_dataset` 节点会下载真实 TinyShakespeare "
+"语料。**下载失败就是错误，绝不回退到合成数据**——这保证了本审计中“真实文本”的主张。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:141
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:143
+msgid "RankMe trajectory"
+msgstr "RankMe 轨迹"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:145
+msgid ""
+"Over the 100,000-step horizon the RankMe curve exhibits the three-phase "
+"signature:"
+msgstr "在 100,000 步证据时域内，RankMe 曲线呈现出三阶段特征："
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:148
+msgid ""
+"**Warmup (early steps):** RankMe starts near the initialization ceiling "
+"because the tied embedding + LM head still produce near-uniform logits."
+msgstr ""
+"**预热（训练早期）：** RankMe 起始时接近初始化上限，因为绑定的 embedding 与 LM head 仍会产生近似均匀的 "
+"logits。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:151
+msgid ""
+"**Entropy expansion (mid training):** as the model begins to fit real-"
+"word co-occurrence, the final-hidden representation differentiates and "
+"RankMe rises."
+msgstr "**熵扩张（训练中期）：** 模型开始拟合真实词语的共现关系时，final-hidden 表征随之分化，RankMe 上升。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:154
+msgid ""
+"**Terminal compression (late training):** the leading singular values "
+"separate and RankMe compresses toward the bottleneck imposed by `modelDim"
+" = 16` and the tied embedding."
+msgstr "**末端压缩（训练后期）：** 前导奇异值逐渐分离，RankMe 向 `modelDim = 16` 和绑定 embedding 所施加的瓶颈收缩。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:158
+msgid "alphaReQ"
+msgstr "alphaReQ 指数"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:160
+msgid ""
+"The alphaReQ exponent (power-law tail index of the singular-value "
+"spectrum) moves inversely to RankMe during compression: as RankMe drops, "
+"alphaReQ rises, confirming that the spectrum steepens - exactly the "
+"signature the paper reports on real pretraining checkpoints."
+msgstr ""
+"压缩期间，alphaReQ 指数（奇异值谱的幂律尾部指数）与 RankMe 反向变化：RankMe 下降时，alphaReQ "
+"上升，表明谱变得更陡——这正是论文在真实 pretraining checkpoint 中报告的特征。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:165
+msgid "Boundary of the audit"
+msgstr "审计边界"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:167
+msgid ""
+"This is a spectral audit of a *trained-from-scratch* small model, not the"
+" paper's intermediate-checkpoint protocol on Pythia/OLMo."
+msgstr "这是对一个*从头训练*的小型模型进行的谱审计，而非论文针对 Pythia/OLMo 的中间 checkpoint 协议。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:169
+msgid ""
+"The 100,000-step default is an **evidence horizon, not CI**. The smoke "
+"test shortens only an in-memory copy of the template and does not assert "
+"the phenomenon."
+msgstr "默认的 100,000 步是**证据时域，而非 CI**。冒烟测试只会缩短模板的内存副本，不会对该现象作断言。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:172
+msgid ""
+"No prior exploratory curve is inherited as PASS; download failure is an "
+"error rather than a synthetic fallback."
+msgstr "不会把既有的探索曲线直接作为 PASS 继承；下载失败就是错误，不会回退到合成数据。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:175
+msgid "Interpretation"
+msgstr "解读"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:177
+msgid ""
+"The run qualitatively supports the paper's central mechanism on real "
+"text: even when a causal Transformer is trained from scratch (rather than"
+" measured across pretraining checkpoints), the final-hidden "
+"representation exhibits the same warmup → expansion → compression RankMe "
+"signature. This suggests the phenomenon is a property of the learning "
+"dynamics under cross-entropy on real language, not an artifact of the "
+"checkpoint-sampling protocol."
+msgstr ""
+"这次运行从定性上支持论文在真实文本上的核心机制：即使因果 Transformer 是从头训练的（而非在多个 pretraining checkpoint 上测量），"
+"其 final-hidden 表征也呈现相同的预热 → 扩张 → 压缩 RankMe "
+"特征。这表明，在真实语言上采用交叉熵时，该现象源于学习动态本身，而非 checkpoint 采样协议。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:185
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:187
+msgid ""
+"Small model (`d = 16`, 3 layers, 4 heads) on a tiny corpus "
+"(TinyShakespeare); this is not a claim about large-scale pretraining."
+msgstr "小型模型（`d = 16`、3 层、4 个 heads）在小型语料 TinyShakespeare 上运行；这并不主张适用于大规模 pretraining。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:189
+msgid ""
+"The audit measures every token position as a sample from "
+"`lm_head::input`, whereas the paper evaluates last-token hidden states on"
+" FineWeb."
+msgstr "审计将每个 token 位置视为 `lm_head::input` 的样本来测量，而论文是在 FineWeb 上评估末 token 隐藏状态。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:192
+msgid ""
+"100,000 steps is an evidence horizon; the smoke test does not assert the "
+"phenomenon and CI only verifies the pipeline runs."
+msgstr "100,000 步是证据时域；冒烟测试不对该现象作断言，CI 仅验证流程能够运行。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:194
+msgid ""
+"No test split is used; the audit is about representation geometry, not "
+"generalization."
+msgstr "不使用测试集划分；本审计关注表征几何，而非泛化。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:196
+msgid "No Grokking task is used."
+msgstr "未使用 Grokking 任务。"
+
+#: ../../en/examples/reproductions/rank-collapse-tinyshakespeare.md:198
+msgid ""
+"These limitations mean the result should be read as a small-scale "
+"spectral audit that corroborates the mechanism, not as a replication of "
+"the paper's full main experiment."
+msgstr "这些局限意味着，应将结果视为印证该机制的小规模谱审计，而非论文完整主要实验的复现。"

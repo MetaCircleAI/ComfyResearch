@@ -1,0 +1,225 @@
+/**
+ * Design tokens — single source of color/typography/radius/shadow truth.
+ * :root carries the default "studio" palette plus theme-independent tokens;
+ * [data-cr-theme="classic"] overrides colors with the pre-redesign palette.
+ * Components must reference semantic tokens (or legacy aliases), never raw hex.
+ */
+:root {
+  color-scheme: dark;
+
+  /* surfaces & lines */
+  --cr-canvas: #171512;
+  --cr-canvas-dot: #26231e;
+  --cr-surface-1: #201d19;
+  --cr-surface-2: #26221c;
+  --cr-surface-3: #2a2620;
+  --cr-hairline: #332e26;
+  --cr-hairline-2: #2c2822;
+  --cr-hairline-strong: #453d30;
+
+  /* text */
+  --cr-text-1: #f3ede2;
+  --cr-text-2: #e6ddcd;
+  --cr-text-3: #a89f8f;
+  --cr-text-4: #6d6558;
+
+  /* accent & status */
+  --cr-accent: #d97742;
+  --cr-accent-hover: #e8895a;
+  --cr-danger: #cf6f5f;
+  --cr-success: #7fb69a;
+
+  /* node-type accents (warm-recalibrated) */
+  --cr-accent-dataset: #63c297;
+  --cr-accent-model: #6d9ee8;
+  --cr-accent-optimizer: #e3a93a;
+  --cr-accent-loss: #e0796a;
+  --cr-accent-trainer: #e5793d;
+  --cr-accent-checkpoint: #a09a90;
+  --cr-accent-where: #e0c455;
+  --cr-accent-tensor: #5cbcb2;
+  --cr-accent-observable: #cf7fc0;
+  --cr-accent-hypothesis: #9ec463;
+  --cr-accent-comment: #a89f8f;
+
+  /* chart series (semantic order: series 1..8) */
+  --cr-chart-1: #d97742;
+  --cr-chart-2: #63c297;
+  --cr-chart-3: #6d9ee8;
+  --cr-chart-4: #cf7fc0;
+  --cr-chart-5: #e3a93a;
+  --cr-chart-6: #5cbcb2;
+  --cr-chart-7: #e0796a;
+  --cr-chart-8: #9ec463;
+  --cr-chart-9: #d98a9b;
+
+  /* typography (theme-independent) */
+  --cr-font-ui: "Inter", system-ui, -apple-system, sans-serif;
+  --cr-font-display: "Lora", Georgia, "Times New Roman", serif;
+  --cr-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --cr-mono: var(--cr-font-mono);
+
+  /* machined node face (per-theme gradient endpoints) */
+  --cr-node-face-hi: color-mix(in srgb, var(--cr-surface-1) 96%, var(--cr-text-1));
+  --cr-node-face-lo: color-mix(in srgb, var(--cr-surface-1) 84%, black);
+  /* recessed wells (progress tracks) and elevated overlays (palette) */
+  --cr-well: color-mix(in srgb, var(--cr-canvas) 80%, black);
+  --cr-elevated: color-mix(in srgb, var(--cr-canvas) 62%, black);
+
+  /* radius & elevation (theme-independent) */
+  --cr-r-sm: 5px;
+  --cr-r-md: 8px;
+  --cr-r-lg: 12px;
+  --cr-shadow-rest: 0 2px 6px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.3);
+  --cr-shadow-float: 0 4px 10px rgba(0, 0, 0, 0.45), 0 18px 48px rgba(0, 0, 0, 0.42);
+
+  /* legacy aliases — keep all pre-redesign variable names working */
+  --cr-bg: var(--cr-canvas);
+  --cr-panel: var(--cr-surface-1);
+  --cr-border: var(--cr-hairline);
+  --cr-text: var(--cr-text-2);
+  --cr-muted: var(--cr-text-3);
+  --cr-fg: var(--cr-text-1);
+  --cr-text-muted: var(--cr-text-3);
+  --cr-btn: var(--cr-surface-3);
+  --cr-btn-primary: var(--cr-accent);
+  --cr-library-accent: var(--cr-accent);
+}
+
+:root[data-cr-theme="classic"] {
+  /* surfaces & lines (pre-redesign values) */
+  --cr-canvas: #1a1a1f;
+  --cr-canvas-dot: #3d3d47;
+  /*
+   * Pixel-fidelity rule: variables that existed only as var() fallbacks
+   * before the redesign are reset to `initial` here so every legacy call
+   * site keeps rendering its own historical fallback (some had different
+   * fallbacks per site, some had none and resolved to inherit/initial).
+   * PR-2/PR-3 migrate those sites explicitly (spec §6).
+   */
+  --cr-surface-1: initial;
+  --cr-surface-2: initial;
+  --cr-surface-3: initial;
+  --cr-hairline: #3a3a44;
+  --cr-hairline-2: #2a2a32;
+  --cr-hairline-strong: #4a4a56;
+
+  /* text */
+  --cr-text-1: #f1f1f6;
+  --cr-text-2: #e8e8ee;
+  --cr-text-3: #9a9aa8;
+  --cr-text-4: #71717e;
+
+  /* accent & status */
+  --cr-accent: #3b82f6;
+  --cr-accent-hover: #60a5fa;
+  --cr-danger: #f87171;
+  --cr-success: #4ade80;
+
+  /* node-type accents (pre-redesign values) */
+  --cr-accent-dataset: #2dd4bf;
+  --cr-accent-model: #60a5fa;
+  --cr-accent-optimizer: #fb923c;
+  --cr-accent-loss: #f87171;
+  --cr-accent-trainer: #a78bfa;
+  --cr-accent-checkpoint: #64748b;
+  --cr-accent-where: #fbbf24;
+  --cr-accent-tensor: #22d3ee;
+  --cr-accent-observable: #f472b6;
+  --cr-accent-hypothesis: #4ade80;
+  --cr-accent-comment: #94a3b8;
+
+  /* chart series: EXACT legacy SERIES_COLORS order (pixel fidelity — the
+   * plot modules now reference these tokens instead of hex arrays) */
+  --cr-chart-1: #c084fc;
+  --cr-chart-2: #60a5fa;
+  --cr-chart-3: #34d399;
+  --cr-chart-4: #fbbf24;
+  --cr-chart-5: #f472b6;
+  --cr-chart-6: #a78bfa;
+  --cr-chart-7: #2dd4bf;
+  --cr-chart-8: #fb923c;
+  --cr-chart-9: #fb7185;
+
+  /* legacy aliases with classic-exact values */
+  --cr-bg: #1a1a1f;
+  --cr-panel: #24242c;
+  --cr-border: #3a3a44;
+  --cr-text: #e8e8ee;
+  --cr-muted: #9a9aa8;
+  --cr-btn: #2f2f38;
+  --cr-btn-primary: #3b82f6;
+  /* previously fallback-only vars — see pixel-fidelity rule above */
+  --cr-fg: initial;
+  --cr-text-muted: initial;
+  --cr-library-accent: initial;
+  --cr-mono: initial;
+}
+
+:root[data-cr-theme="paper"] {
+  color-scheme: light;
+
+  /* surfaces & lines (warm paper) */
+  --cr-canvas: #efe9dc;
+  --cr-canvas-dot: #d9d0bd;
+  --cr-surface-1: #faf6ec;
+  --cr-surface-2: #f0eadb;
+  --cr-surface-3: #e7dfcd;
+  --cr-hairline: #d8cdb7;
+  --cr-hairline-2: #e2d9c6;
+  --cr-hairline-strong: #bfb098;
+
+  /* text (warm ink) */
+  --cr-text-1: #2e2517;
+  --cr-text-2: #453a28;
+  --cr-text-3: #675c48;
+  --cr-text-4: #9c9182;
+
+  /* accent & status (darkened for light ground) */
+  --cr-accent: #c75f2a;
+  --cr-accent-hover: #b25423;
+  --cr-danger: #b6472f;
+  --cr-success: #3f7d5f;
+
+  /* node-type accents: gem hues, darkened for contrast on paper */
+  --cr-accent-dataset: #23885d;
+  --cr-accent-model: #3565c9;
+  --cr-accent-optimizer: #9c6e10;
+  --cr-accent-loss: #bb4a36;
+  --cr-accent-trainer: #c75f2a;
+  --cr-accent-checkpoint: #7d7466;
+  --cr-accent-where: #8f7a1e;
+  --cr-accent-tensor: #1f8d81;
+  --cr-accent-observable: #a8478f;
+  --cr-accent-hypothesis: #5f8628;
+  --cr-accent-comment: #7d7466;
+
+  /* chart series (darkened gems) */
+  --cr-chart-1: #c75f2a;
+  --cr-chart-2: #23885d;
+  --cr-chart-3: #3565c9;
+  --cr-chart-4: #a8478f;
+  --cr-chart-5: #9c6e10;
+  --cr-chart-6: #1f8d81;
+  --cr-chart-7: #bb4a36;
+  --cr-chart-8: #5f8628;
+  --cr-chart-9: #b65a70;
+
+  /* machined face: near-flat on light ground */
+  --cr-node-face-hi: #fdfaf2;
+  --cr-node-face-lo: #f4eede;
+  --cr-well: #e6ddc9;
+  --cr-elevated: #fdfaf2;
+
+  /* legacy aliases follow semantics (paper is token-native like studio) */
+  --cr-bg: var(--cr-canvas);
+  --cr-panel: var(--cr-surface-1);
+  --cr-border: var(--cr-hairline);
+  --cr-text: var(--cr-text-2);
+  --cr-muted: var(--cr-text-3);
+  --cr-fg: var(--cr-text-1);
+  --cr-text-muted: var(--cr-text-3);
+  --cr-btn: var(--cr-surface-3);
+  --cr-btn-primary: var(--cr-accent);
+  --cr-library-accent: var(--cr-accent);
+}

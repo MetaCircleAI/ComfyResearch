@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/remote-gpu.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/remote-gpu.md:10
+msgid "Use a remote GPU"
+msgstr "使用远程 GPU"
+
+#: ../../en/user-guide/remote-gpu.md:13
+msgid ""
+"Keep the application local, send a validated training graph to an existing "
+"SSH host, and stream progress back to the same Trainer."
+msgstr "保持应用在本地，将经过验证的训练图发送到现有 SSH 主机，并将进度流式返回同一个 Trainer。"
+
+#: ../../en/user-guide/remote-gpu.md:17
+msgid "Before configuring remote execution"
+msgstr "配置远程执行前"
+
+#: ../../en/user-guide/remote-gpu.md:19
+msgid ""
+"First complete a CPU run with the local service bound to `127.0.0.1`. Remote"
+" execution adds SSH, environment, dependency, and data-transfer failure "
+"modes; it should not be the first test of graph correctness."
+msgstr ""
+"请先在绑定到 `127.0.0.1` 的本地服务上完成一次 CPU 运行。远程执行增加了 "
+"SSH、环境、依赖和数据传输故障模式；它不应成为图正确性的首次测试。"
+
+#: ../../en/user-guide/remote-gpu.md:23
+msgid ""
+"The remote machine must already be running and reachable over SSH. Comfy "
+"Research does not provision or stop the instance."
+msgstr "远程机器必须已经运行且可通过 SSH 访问。Comfy Research 不会创建或停止该实例。"
+
+#: ../../en/user-guide/remote-gpu.md:26
+msgid "Configure the Trainer"
+msgstr "配置 Trainer"
+
+#: ../../en/user-guide/remote-gpu.md:28
+msgid "In the Trainer, choose **AutoDL GPU** as the compute device."
+msgstr "在 Trainer 中选择 **AutoDL GPU** 作为计算设备。"
+
+#: ../../en/user-guide/remote-gpu.md:29
+msgid "Enter the SSH host and user, remote repository path, and remote Python."
+msgstr "输入 SSH 主机和用户、远程仓库路径以及远程 Python。"
+
+#: ../../en/user-guide/remote-gpu.md:30
+msgid ""
+"Prefer an SSH identity file. Leave the password field empty when key-based "
+"authentication is available."
+msgstr "优先使用 SSH 身份文件。可使用密钥认证时请保持密码字段为空。"
+
+#: ../../en/user-guide/remote-gpu.md:32
+msgid ""
+"Enable dataset upload only when the graph needs local data that is absent on"
+" the remote host."
+msgstr "仅当图需要远程主机上没有的本地数据时才启用数据集上传。"
+
+#: ../../en/user-guide/remote-gpu.md:34
+msgid ""
+"Run the Trainer. The first request bootstraps the remote runtime, validates "
+"the graph, and then starts streamed training."
+msgstr "运行 Trainer。首个请求会引导远程运行时、验证图，然后开始流式训练。"
+
+#: ../../en/user-guide/remote-gpu.md:37
+msgid "Product screenshot pending · IMG-10"
+msgstr "产品截图待补 · IMG-10"
+
+#: ../../en/user-guide/remote-gpu.md:40
+msgid ""
+"**Purpose:** Show which remote connection fields belong together without "
+"exposing credentials."
+msgstr "**目的：** 展示哪些远程连接字段属于同一组，同时不暴露凭据。"
+
+#: ../../en/user-guide/remote-gpu.md
+msgid "Capture specification"
+msgstr "截图说明"
+
+#: ../../en/user-guide/remote-gpu.md:46
+msgid ""
+"**Capture:** Use `gpu.example.invalid`, user `researcher`, a fake remote "
+"path, and an empty password field."
+msgstr "**截图：** 使用 `gpu.example.invalid`、用户 `researcher`、虚构远程路径和空密码字段。"
+
+#: ../../en/user-guide/remote-gpu.md:49
+msgid "**Final file:** `docs/en/_images/app/remote-gpu-configuration.png`"
+msgstr "**最终文件：** `docs/en/_images/app/remote-gpu-configuration.png`"
+
+#: ../../en/user-guide/remote-gpu.md:53
+msgid "Protect credentials"
+msgstr "保护凭据"
+
+#: ../../en/user-guide/remote-gpu.md:55
+msgid ""
+"Trainer remote settings are saved under "
+"`.comfyresearch/remote_train_config.json`. This file is Git-ignored, but any"
+" entered password is stored as plain JSON on the local machine. Git ignore "
+"does not encrypt it or protect copies made by backups and support bundles."
+msgstr ""
+"Trainer 远程设置保存在 `.comfyresearch/remote_train_config.json` 下。该文件被 Git "
+"忽略，但任何输入的密码都会以明文 JSON 保存在本机。Git 忽略不会加密它，也不会保护备份和支持包中的副本。"
+
+#: ../../en/user-guide/remote-gpu.md:60
+msgid "Prefer, in order:"
+msgstr "按以下顺序优先选择："
+
+#: ../../en/user-guide/remote-gpu.md:62
+msgid "SSH key authentication with a restricted identity file;"
+msgstr "使用受限身份文件的 SSH 密钥认证；"
+
+#: ../../en/user-guide/remote-gpu.md:63
+msgid "environment variables supplied by a local secret manager;"
+msgstr "由本地密钥管理器提供的环境变量；"
+
+#: ../../en/user-guide/remote-gpu.md:64
+msgid ""
+"a saved password only on a controlled workstation when the other methods are"
+" unavailable."
+msgstr "仅在其他方法不可用时，于受控工作站保存密码。"
+
+#: ../../en/user-guide/remote-gpu.md:67
+msgid ""
+"Never place real credentials in a graph, screenshot, issue, committed "
+"config, or documentation example. Remove the saved config before sharing a "
+"repository archive."
+msgstr "绝不要将真实凭据放入图、截图、Issue、已提交配置或文档示例中。共享仓库归档前请移除已保存的配置。"
+
+#: ../../en/user-guide/remote-gpu.md:71
+msgid "Verify the run boundary"
+msgstr "验证运行边界"
+
+#: ../../en/user-guide/remote-gpu.md:73
+msgid ""
+"At the start of remote training, the backend synchronizes the required "
+"source bundle when its digest changed, checks dependencies, validates the "
+"graph, and streams NDJSON events over SSH. Pause and abort are cooperative "
+"remote control requests; loss of SSH can interrupt control even if the "
+"remote process still exists."
+msgstr ""
+"远程训练开始时，后端会在摘要发生变化时同步所需源代码包，检查依赖、验证图，并通过 SSH 流式传输 NDJSON "
+"事件。暂停和中止是协作式远程控制请求；即使远程进程仍在，SSH 断开也可能中断控制。"
+
+#: ../../en/user-guide/remote-gpu.md:79
+msgid ""
+"Treat the result like any other reproduction: record the remote Python and "
+"package environment, accelerator type, graph artifact, seeds, and dataset "
+"provenance. A successful remote stream proves transport and execution, not "
+"equivalence with a local numeric result."
+msgstr ""
+"将该结果视为任何其他复现：记录远程 Python "
+"和包环境、加速器类型、图产物、种子和数据集来源。成功的远程流只能证明传输和执行成功，不能证明与本地数值结果等价。"
+
+#: ../../en/user-guide/remote-gpu.md:84
+msgid ""
+"See [Application reference](../reference/application.md) for the remote "
+"environment variables and precedence rules."
+msgstr "远程环境变量和优先级规则请参阅[应用参考](../reference/application.md)。"

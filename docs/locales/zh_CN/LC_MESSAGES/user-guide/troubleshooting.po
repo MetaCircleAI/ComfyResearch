@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/troubleshooting.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/troubleshooting.md:10
+msgid "Troubleshoot a run"
+msgstr "排查一次运行"
+
+#: ../../en/user-guide/troubleshooting.md:13
+msgid ""
+"Start from the visible symptom, reduce the graph to the smallest failing "
+"path, and separate graph correctness from device and measurement cost."
+msgstr "从可见症状开始，将图缩减到最小失败路径，并将图正确性与设备和测量成本分开。"
+
+#: ../../en/user-guide/troubleshooting.md:17
+msgid "The application does not start"
+msgstr "应用无法启动"
+
+#: ../../en/user-guide/troubleshooting.md:19
+msgid "Activate the expected Python environment."
+msgstr "激活预期的 Python 环境。"
+
+#: ../../en/user-guide/troubleshooting.md:20
+msgid "Rebuild stale frontend output with `npm --prefix frontend run build`."
+msgstr "使用 `npm --prefix frontend run build` 重新构建过期的前端输出。"
+
+#: ../../en/user-guide/troubleshooting.md:21
+msgid "Start on an unused loopback port:"
+msgstr "在未使用的回环端口上启动："
+
+#: ../../en/user-guide/troubleshooting.md:27
+msgid "Request `http://127.0.0.1:8042/api/health` before opening the workbench."
+msgstr "打开工作台前，请请求 `http://127.0.0.1:8042/api/health`。"
+
+#: ../../en/user-guide/troubleshooting.md:29
+msgid ""
+"If Vite renders but data does not load, confirm that the backend is running "
+"and that `COMFYRESEARCH_PORT` matches its port."
+msgstr "若 Vite 已渲染但数据未加载，请确认后端正在运行且 `COMFYRESEARCH_PORT` 与其端口一致。"
+
+#: ../../en/user-guide/troubleshooting.md:32
+msgid "The Trainer rejects the graph"
+msgstr "Trainer 拒绝该图"
+
+#: ../../en/user-guide/troubleshooting.md:34
+msgid "Work upstream from the Trainer:"
+msgstr "从 Trainer 向上游排查："
+
+#: ../../en/user-guide/troubleshooting.md:36
+msgid "Confirm every required socket has one intended source."
+msgstr "确认每个必需 socket 都有一个预期源。"
+
+#: ../../en/user-guide/troubleshooting.md:37
+msgid "Check dataset and model dimensions."
+msgstr "检查数据集和模型维度。"
+
+#: ../../en/user-guide/troubleshooting.md:38
+msgid "Check that the loss accepts the model output and target type."
+msgstr "检查损失是否接受模型输出和目标类型。"
+
+#: ../../en/user-guide/troubleshooting.md:39
+msgid "Check batch size against the training set."
+msgstr "根据训练集检查批量大小。"
+
+#: ../../en/user-guide/troubleshooting.md:40
+msgid "Remove optional schedules and Observables until the core graph validates."
+msgstr "移除可选调度器和 Observables，直到核心图通过验证。"
+
+#: ../../en/user-guide/troubleshooting.md:42
+msgid ""
+"Do not reconnect edges by appearance alone. The source and target handles "
+"are part of the executable graph contract."
+msgstr "不要仅凭外观重新连接边。源和目标 handle 是可执行图契约的一部分。"
+
+#: ../../en/user-guide/troubleshooting.md:45
+msgid "Training is unexpectedly slow or runs out of memory"
+msgstr "训练异常缓慢或内存不足"
+
+#: ../../en/user-guide/troubleshooting.md:47
+msgid ""
+"switch to CPU for a tiny correctness test or to the intended accelerator for"
+" the real workload;"
+msgstr "小型正确性测试切换到 CPU，真实工作负载切换到预期加速器；"
+
+#: ../../en/user-guide/troubleshooting.md:49
+msgid "increase log frequency to record expensive measurements less often;"
+msgstr "提高 log frequency 以降低昂贵测量的记录次数；"
+
+#: ../../en/user-guide/troubleshooting.md:50
+msgid "disable Hessian, spectral, representation, or attention Observables;"
+msgstr "禁用 Hessian、谱、表征或注意力 Observables；"
+
+#: ../../en/user-guide/troubleshooting.md:51
+msgid "reduce model, dataset, and batch size independently;"
+msgstr "分别减小模型、数据集和批量大小；"
+
+#: ../../en/user-guide/troubleshooting.md:52
+msgid "check whether comma-separated fields expanded into a Cartesian product."
+msgstr "检查逗号分隔字段是否扩展为笛卡尔积。"
+
+#: ../../en/user-guide/troubleshooting.md:54
+msgid "A visualization is empty"
+msgstr "可视化为空"
+
+#: ../../en/user-guide/troubleshooting.md:56
+msgid ""
+"Confirm that the run reached a logged step, the Trainer output is connected "
+"to the intended visualization, and the Observable has a paired result "
+"consumer. An empty chart can be a routing or logging issue even when "
+"training completed."
+msgstr ""
+"确认运行到达了已记录步骤，Trainer 输出已连接到预期可视化，并且 Observable "
+"有配套的结果消费者。即使训练已完成，空图表也可能是路由或记录问题。"
+
+#: ../../en/user-guide/troubleshooting.md:60
+msgid "Remote execution fails"
+msgstr "远程执行失败"
+
+#: ../../en/user-guide/troubleshooting.md:62
+msgid ""
+"Verify ordinary SSH access outside the application, then check host, user, "
+"remote path, remote Python, and authentication. Use the local CPU graph "
+"first. Never paste the contents of `.comfyresearch/remote_train_config.json`"
+" into a public report because it may contain a plain-text password."
+msgstr ""
+"先在应用外验证普通 SSH 访问，然后检查主机、用户、远程路径、远程 Python 和认证。请先使用本地 CPU 图。绝不要将 "
+"`.comfyresearch/remote_train_config.json` 的内容粘贴到公开报告中，因为它可能包含明文密码。"
+
+#: ../../en/user-guide/troubleshooting.md:67
+msgid "For exact routes and event types, use the [Reference](../reference/index.md)."
+msgstr "精确路由和事件类型请参阅[参考](../reference/index.md)。"

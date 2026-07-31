@@ -1,0 +1,395 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 12:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:7
+msgid "Optimization Stability and Sharpness · Phenomenon reproduction"
+msgstr "优化稳定性与尖锐度 · 现象复现"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:10
+msgid "Small-Batch vs. Large-Batch Training"
+msgstr "小 batch 与大 batch 训练"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:13
+msgid ""
+"Both regimes fit the training set, but the large-batch solution "
+"generalizes worse and is sharper along the sampled parameter path."
+msgstr "两种训练都能拟合训练集，但大 batch 解的泛化能力较差，且在采样的参数路径上更为尖锐。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:22
+msgid "WJ"
+msgstr "金鑫"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:27
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:35
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:37
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:42
+msgid ""
+"This example uses Comfy Research to reproduce the central experiments "
+"from Keskar et al. on the large-batch training generalization gap and "
+"sharp minima. This is a qualitative reproduction; it does not claim "
+"point-by-point or numeric replication of the paper's curves."
+msgstr ""
+"本示例使用 Comfy Research 复现 Keskar 等人关于大 batch 训练泛化差距与尖锐极小值的核心实验。"
+"这是一项定性复现，并不声称逐点或在数值上复刻论文中的曲线。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:48
+msgid ""
+"**Paper:** [On Large-Batch Training for Deep "
+"Learning](https://arxiv.org/abs/1609.04836)"
+msgstr ""
+"**论文：** [On Large-Batch Training for Deep "
+"Learning](https://arxiv.org/abs/1609.04836)"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:50
+msgid "**Template:** `repro: Keskar Fig 2+3 SB/LB`"
+msgstr "**模板：** `repro: Keskar Fig 2+3 SB/LB`"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:52
+msgid "**Template ID:** `repro-keskar-fig23-sb-lb`"
+msgstr "**模板 ID：** `repro-keskar-fig23-sb-lb`"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:54
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:56
+msgid ""
+"Keskar et al. compare small-batch (SB) and large-batch (LB) training. "
+"Both can reach very high training accuracy, but LB commonly shows lower "
+"test accuracy, creating a generalization gap. The paper relates this "
+"phenomenon to LB being more likely to converge to a sharp minimum that is"
+" sensitive to parameter perturbations."
+msgstr ""
+"Keskar 等人比较小 batch（SB）与大 batch（LB）训练。两者都能获得很高的训练准确率，"
+"但 LB 的测试准确率通常更低，因而产生泛化差距。论文将这一现象与 LB 更容易收敛到尖锐极小值联系起来："
+"这类极小值对参数扰动更敏感。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:62
+msgid ""
+"The current template follows the CIFAR-10 with C1 path and contains two "
+"parts:"
+msgstr "当前模板沿用 CIFAR-10 上的 C1 设置，包含两部分："
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:64
+msgid "**Figure 2:** Compare SB and LB train/test accuracy."
+msgstr "**图 2：** 比较 SB 和 LB 的训练/测试准确率。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:65
+msgid ""
+"**Figure 3:** Interpolate parameters between the SB and LB checkpoints, "
+"then evaluate loss and accuracy along the one-dimensional path."
+msgstr "**图 3：** 在 SB 与 LB 的 checkpoint 之间插值参数，再沿这条一维路径评估损失和准确率。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:68
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:70
+msgid ""
+"The two Trainers share the same data, model architecture, initialization "
+"seed, optimizer, and objective. Only the batch size and corresponding "
+"number of optimizer steps differ."
+msgstr "两个 Trainer 使用相同的数据、模型架构、初始化 seed、优化器和目标函数；仅 batch size 与相应的优化器步数不同。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "SB"
+msgstr "SB"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "LB"
+msgstr "LB"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "CIFAR-10: 50,000 train / 10,000 test"
+msgstr "CIFAR-10：50,000 个训练样本 / 10,000 个测试样本"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Same as SB"
+msgstr "与 SB 相同"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Keskar C1 CNN, seed 0"
+msgstr "Keskar C1 CNN，seed 0"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Same as SB, seed 0"
+msgstr "与 SB 相同，seed 0"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Adam, lr=0.001, $\\beta_1=0.9$, $\\beta_2=0.999$, weight decay=0"
+msgstr "Adam，lr=0.001，$\\beta_1=0.9$，$\\beta_2=0.999$，weight decay=0"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Objective"
+msgstr "目标函数"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Cross-entropy"
+msgstr "交叉熵"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Batch size"
+msgstr "batch size"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "256"
+msgstr "256"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "5,000 (10% of the training set)"
+msgstr "5,000（训练集的 10%）"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Training length"
+msgstr "训练轮数"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "100 epochs, 19,600 steps"
+msgstr "100 个 epoch，19,600 步"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "100 epochs, 1,000 steps"
+msgstr "100 个 epoch，1,000 步"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "Log frequency"
+msgstr "日志频率"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "196 steps"
+msgstr "196 步"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:39
+msgid "10 steps"
+msgstr "10 步"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:84
+msgid ""
+"Figure 3 uses the checkpoint produced by each Trainer. The parameter path"
+" is:"
+msgstr "图 3 使用各 Trainer 生成的 checkpoint。参数路径为："
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:86
+#, python-brace-format
+msgid ""
+"\n"
+"\\theta(\\alpha) = \\theta_{SB} + \\alpha(\\theta_{LB} - \\theta_{SB})\n"
+msgstr ""
+"\n"
+"\\theta(\\alpha) = \\theta_{SB} + \\alpha(\\theta_{LB} - \\theta_{SB})\n"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:90
+msgid ""
+"Here, $\\alpha=0$ corresponds to SB and $\\alpha=1$ corresponds to LB. "
+"The template samples 25 points over $[-1, 2]$. Along this path, trainable"
+" parameters are interpolated; evaluation uses per-batch BatchNorm "
+"statistics."
+msgstr ""
+"其中 $\\alpha=0$ 对应 SB，$\\alpha=1$ 对应 LB。模板在 $[-1, 2]$ 区间采样 25 个点。"
+"沿该路径对可训练参数进行插值；评估时使用每个 batch 的 BatchNorm 统计量。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:94
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:96
+msgid "Open Templates and load `repro: Keskar Fig 2+3 SB/LB`."
+msgstr "打开 Templates，加载 `repro: Keskar Fig 2+3 SB/LB`。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:97
+msgid ""
+"Run **Train** on `Trainer SB (B=256)` to produce the SB checkpoint and "
+"train/test accuracy curves."
+msgstr "在 `Trainer SB (B=256)` 上运行 **Train**，生成 SB checkpoint 及训练/测试准确率曲线。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:99
+msgid ""
+"Run **Train** on `Trainer LB (B=5000)` to produce the LB checkpoint and "
+"its curves."
+msgstr "在 `Trainer LB (B=5000)` 上运行 **Train**，生成 LB checkpoint 及相应曲线。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:101
+msgid ""
+"Compare the two sets of train/test accuracy curves in `Fig 2 accuracy "
+"plot`."
+msgstr "在 `Fig 2 accuracy plot` 中比较两组训练/测试准确率曲线。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:103
+msgid ""
+"After confirming that both checkpoints are ready, run **Run** on `Fig 3 "
+"parametric path`."
+msgstr "确认两个 checkpoint 都已就绪后，在 `Fig 3 parametric path` 上运行 **Run**。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:105
+msgid ""
+"In `Fig 3 path plot`, inspect how train/test loss and accuracy change "
+"with $\\alpha$."
+msgstr "在 `Fig 3 path plot` 中查看训练/测试损失和准确率如何随 $\\alpha$ 变化。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:108
+msgid ""
+"The two Trainers are independent; no manual rewiring is needed. They "
+"write separate SB and LB checkpoints and append their curves to the "
+"Figure 2 series table."
+msgstr "两个 Trainer 相互独立，无需手动重新连线。它们分别写入 SB 和 LB checkpoint，并将曲线追加到图 2 的序列表。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:112
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:114
+msgid "Figure 2: A Generalization Gap Appears"
+msgstr "图 2：出现泛化差距"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:116
+msgid ""
+"Both runs eventually reach train accuracy close to 1.0, indicating that "
+"SB and LB both fit the training set well. In the completed run, SB test "
+"accuracy is generally higher and stabilizes at approximately 0.77-0.78, "
+"while LB test accuracy stabilizes at approximately 0.74-0.76."
+msgstr ""
+"两次运行最终的训练准确率都接近 1.0，表明 SB 和 LB 都很好地拟合了训练集。完成运行后，"
+"SB 的测试准确率通常更高，稳定在约 0.77–0.78；LB 的测试准确率则稳定在约 0.74–0.76。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:121
+msgid ""
+"This result qualitatively reproduces the main observation from Figure 2: "
+"LB does not perform worse because it failed to fit the training data. Its"
+" training accuracy is also high, but its test performance is slightly "
+"lower."
+msgstr "这一结果定性复现了图 2 的主要观察：LB 表现较差并非因为未能拟合训练数据。它的训练准确率同样很高，"
+"但测试表现略低。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:125
+msgid ""
+"Comfy Research graph and result plots showing small-batch and large-batch"
+" accuracy, plus the Figure 3 parameter path."
+msgstr "Comfy Research 的图与结果图，展示小 batch 和大 batch 的准确率，以及图 3 的参数路径。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:130
+msgid "Figure 3: The LB Endpoint Is Sharper Along the Parameter Path"
+msgstr "图 3：参数路径上的 LB 端点更尖锐"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:132
+msgid ""
+"The parameter-path run produces four series: train/test loss and "
+"accuracy. Near $\\alpha=0$ (SB), loss remains low and accuracy is "
+"relatively stable. As the path approaches $\\alpha=1$ (LB), both loss and"
+" accuracy change more abruptly. Extrapolating farther to $\\alpha>1$ "
+"produces a clear rise in loss and a rapid drop in accuracy."
+msgstr ""
+"参数路径运行生成四条序列：训练/测试损失和准确率。在 $\\alpha=0$（SB）附近，损失保持较低，"
+"准确率也相对稳定。路径接近 $\\alpha=1$（LB）时，损失和准确率的变化更为剧烈。继续外推至 "
+"$\\alpha>1$，损失会明显上升，准确率则快速下降。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:138
+msgid ""
+"This asymmetric one-dimensional slice qualitatively reproduces the visual"
+" feature in Figure 3: the low-loss region near the SB solution is wider, "
+"while the LB solution is more sensitive to parameter perturbations along "
+"this path. It supports the interpretation that the LB solution is "
+"sharper, but one linear path cannot represent the complete high-"
+"dimensional loss landscape or replace the paper's sharpness metric."
+msgstr ""
+"这一非对称的一维切片定性复现了图 3 的视觉特征：SB 解附近的低损失区域更宽，"
+"而 LB 解沿此路径对参数扰动更敏感。这支持 LB 解更尖锐的解释；但单条线性路径无法代表完整的高维损失景观，"
+"也不能取代论文的 sharpness 指标。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:145
+msgid "Interpretation"
+msgstr "结果解读"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:147
+msgid ""
+"This run completes two independent SB/LB training paths, two checkpoints,"
+" the Figure 2 accuracy comparison, and the Figure 3 parameter-"
+"interpolation workflow. The results qualitatively support the paper's two"
+" main observations: LB can fit the training set well while obtaining "
+"lower test accuracy than SB, and the LB solution is sharper than the SB "
+"solution along the sampled parameter path."
+msgstr ""
+"本次运行完成了两条独立的 SB/LB 训练路径、两个 checkpoint、图 2 的准确率比较和图 3 的参数插值流程。"
+"结果定性支持论文的两项主要观察：LB 能很好地拟合训练集，但测试准确率低于 SB；沿采样参数路径，"
+"LB 解也比 SB 解更尖锐。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:154
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:156
+msgid ""
+"The current result uses only the C1 network and a single initialization, "
+"seed 0; it does not report variance across seeds."
+msgstr "当前结果仅使用 C1 网络与单个初始化（seed 0），未报告不同 seed 之间的方差。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:158
+msgid ""
+"The paper also includes F1/F2 and C2-C4; the current template covers only"
+" CIFAR-10 with C1."
+msgstr "论文还包括 F1/F2 与 C2–C4；当前模板仅覆盖 CIFAR-10 的 C1 设置。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:160
+msgid ""
+"Figure 3 examines only one linear path between SB and LB. This is not "
+"equivalent to the complete high-dimensional loss landscape."
+msgstr "图 3 仅考察 SB 与 LB 之间的一条线性路径，并不等同于完整的高维损失景观。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:162
+msgid ""
+"The result verifies the reported qualitative phenomena. It provides no "
+"point-by-point error or numeric alignment with the paper's original "
+"figures."
+msgstr "该结果验证了文中报告的定性现象，但未提供逐点误差，也未与论文原图作数值对齐。"
+
+#: ../../en/examples/reproductions/keskar-fig2-3-sb-lb.md:165
+msgid ""
+"These limitations mean the result should not be presented as a strict "
+"numeric replication or a universal causal conclusion."
+msgstr "因此，这一结果不应被表述为严格的数值复现，也不能据此得出普适的因果结论。"

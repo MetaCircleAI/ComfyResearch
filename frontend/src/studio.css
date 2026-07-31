@@ -1,0 +1,1611 @@
+/**
+ * Studio-theme visual overrides (UI redesign PR-2). Every rule is scoped
+ * :is([data-cr-theme="studio"], [data-cr-theme="paper"]) and ordered after index.css (import order in
+ * main.tsx), so the classic theme renders the legacy rules untouched.
+ * Token-only: no raw hex in this file (hex ratchet enforces it).
+ */
+
+/* ===== node card ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node {
+  /* machined construction: lit-to-shaded face, top ridge highlight, and a
+   * contact + ambient dual shadow (approved node-construction demo) */
+  background: linear-gradient(var(--cr-node-face-hi), var(--cr-node-face-lo));
+  border-color: var(--cr-hairline);
+  border-radius: var(--cr-r-lg);
+  max-width: min(340px, 92vw);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 232, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node--selected {
+  border-color: var(--accent, var(--cr-accent));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 232, 0.05),
+    0 0 0 1px var(--accent, var(--cr-accent)),
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
+/* Tinted header band: type accent at 13% over the node surface, title in a
+ * light accent-tinted serif. Replaces the legacy 35% gradient + uppercase. */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header {
+  background: color-mix(in srgb, var(--accent, var(--cr-accent-comment)) 13%, transparent);
+  border-bottom: 1px solid var(--cr-hairline-2);
+  border-radius: calc(var(--cr-r-lg) - 1px) calc(var(--cr-r-lg) - 1px) 0 0;
+  font-family: var(--cr-font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: color-mix(in srgb, var(--accent, var(--cr-accent-comment)) 45%, var(--cr-text-1));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__hint {
+  color: var(--cr-text-4);
+}
+
+/* ===== param control language (spec §5, hybrid "C") ===== */
+
+/* Quiet rows: labels muted, row highlights on hover. */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comfy-widget {
+  border-radius: var(--cr-r-sm);
+  transition: background 0.1s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comfy-widget:hover {
+  background: var(--cr-surface-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comfy-widget__label {
+  color: color-mix(in srgb, var(--cr-text-2) 42%, var(--cr-text-3));
+  font-size: 0.75rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comfy-widget__control--num,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Controls sit quiet at rest; the editable box surfaces on row hover/focus. */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-select,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-textarea {
+  background: transparent;
+  border-color: transparent;
+  border-radius: var(--cr-r-sm);
+  color: var(--cr-text-2);
+  transition: background 0.1s, border-color 0.1s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-comfy-widget:hover .cr-input,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-comfy-widget:hover .cr-select,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-comfy-widget:hover .cr-textarea,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input:hover,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-select:hover,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-textarea:hover,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input:focus,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-select:focus,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-textarea:focus {
+  background: var(--cr-surface-2);
+  border-color: var(--cr-hairline-strong);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input:focus,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-select:focus,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--cr-accent) 40%, transparent);
+  outline-offset: 0;
+}
+
+/* Booleans become toggle switches (narrow scope: labeled checkbox fields
+ * only — dropdown rows, tables and chart toggles keep their checkboxes). */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox > input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 26px;
+  height: 15px;
+  border-radius: 999px;
+  background: var(--cr-surface-3);
+  border: 1px solid var(--cr-hairline-strong);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  margin: 0;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox > input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--cr-text-3);
+  transition: left 0.15s, background 0.15s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox > input[type="checkbox"]:checked {
+  background: var(--cr-accent);
+  border-color: var(--cr-accent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox > input[type="checkbox"]:checked::after {
+  left: 12px;
+  background: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox > input[type="checkbox"]:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--cr-accent) 40%, transparent);
+  outline-offset: 1px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox {
+  color: var(--cr-text-3);
+}
+
+/* Dropdown popup */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-discrete-multi-dd__panel {
+  background: var(--cr-surface-1);
+  border: 1px solid var(--cr-hairline);
+  border-radius: var(--cr-r-md);
+  box-shadow: var(--cr-shadow-float);
+}
+
+/* ===== number steppers (hover-revealed, ComfyIntField studio DOM) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-num-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-num-step {
+  width: 15px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--cr-r-sm);
+  background: transparent;
+  color: var(--cr-text-4);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s, color 0.1s, background 0.1s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comfy-widget:hover .cr-num-step,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-num-wrap:focus-within .cr-num-step {
+  opacity: 1;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-num-step:hover {
+  color: var(--cr-accent-hover);
+  background: var(--cr-surface-2);
+}
+
+/* ===== handles & edges ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__handle {
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  background: color-mix(in srgb, var(--accent, var(--cr-accent-comment)) 82%, var(--cr-text-1));
+  border: 1px solid color-mix(in srgb, var(--accent, var(--cr-accent-comment)) 40%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .react-flow__edge-path {
+  stroke: var(--cr-hairline-strong);
+  stroke-width: 1.5;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--cr-accent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__connection-path {
+  stroke: var(--cr-accent);
+}
+
+/* ===== chart chrome ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__plot-bg {
+  fill: var(--cr-surface-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__grid {
+  stroke: var(--cr-hairline-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__axis {
+  fill: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__tick {
+  stroke: var(--cr-hairline-strong);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__tick-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__axis-title {
+  fill: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart__legend-text {
+  fill: var(--cr-text-3);
+}
+
+/* ===== minimap ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-minimap {
+  border: 1px solid var(--cr-hairline);
+  border-radius: var(--cr-r-md);
+  overflow: hidden;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__minimap-mask {
+  fill: color-mix(in srgb, var(--cr-canvas) 78%, transparent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__minimap-node {
+  fill: var(--cr-surface-3);
+  stroke: none;
+}
+
+/* Preserve semantic states that the quiet-row rules
+ * would otherwise mask, and keep header-embedded controls in UI font ===== */
+
+/* Header title typography must not leak into controls rendered inside
+ * multi-row headers (io-mode selects etc.). */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header .cr-select,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header .cr-input,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header button {
+  font-family: var(--cr-font-ui);
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+/* Multi-value sweep state keeps its alert border (legacy index.css rule is
+ * lower-specificity than the quiet-input rule above). */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-comfy-field--multi-choice .cr-input,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-comfy-field--multi-choice .cr-discrete-multi-dd__btn {
+  border-color: var(--cr-danger);
+  background: color-mix(in srgb, var(--cr-danger) 8%, transparent);
+}
+
+/* Derived read-only numerics stay muted. */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input.cr-comfy-widget__control--derived-readonly {
+  color: var(--cr-text-4);
+}
+
+/* ===== periphery (PR-3 A): color/radius/shadow ONLY — no layout,
+ * position, overflow or z-index changes; semantic state colors are
+ * explicitly re-declared where a base override could mask them ===== */
+
+/* project tab bar */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs {
+  background: var(--cr-canvas);
+  border-bottom-color: var(--cr-hairline);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__tab--active {
+  background: var(--cr-surface-1);
+  border-color: var(--cr-hairline-strong);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__tab--train-active {
+  border-color: color-mix(in srgb, var(--cr-accent-trainer) 55%, var(--cr-hairline));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__tab--train-paused {
+  border-color: color-mix(in srgb, var(--cr-accent-optimizer) 55%, var(--cr-hairline));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__tab--train-paused .cr-project-tabs__train-bar-fill {
+  background: var(--cr-accent-optimizer);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__title {
+  color: var(--cr-text-2);
+}
+
+/* rail */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail {
+  background: var(--cr-canvas);
+  border-right-color: var(--cr-hairline);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn {
+  color: var(--cr-text-3);
+  border-radius: var(--cr-r-md);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn--active {
+  color: var(--cr-accent);
+  background: color-mix(in srgb, var(--cr-accent) 12%, transparent);
+}
+
+/* side panels */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-workbench-rail-panel {
+  background: var(--cr-surface-1);
+  border-color: var(--cr-hairline);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__header {
+  font-family: var(--cr-font-display);
+  color: var(--cr-text-1);
+}
+
+/* floating toolbar */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-toolbar--panel {
+  background: var(--cr-surface-1);
+  border-color: var(--cr-hairline);
+  border-radius: var(--cr-r-lg);
+  box-shadow: var(--cr-shadow-float);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-toolbar__canvas-btn {
+  color: var(--cr-text-3);
+  border-radius: var(--cr-r-sm);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-toolbar__canvas-btn:hover {
+  color: var(--cr-text-1);
+  background: var(--cr-surface-3);
+}
+
+/* modal chrome (generic; variant sizing/z-index untouched) */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-modal {
+  border-color: var(--cr-hairline);
+  border-radius: var(--cr-r-lg);
+  box-shadow: var(--cr-shadow-float);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-modal__title {
+  font-family: var(--cr-font-display);
+  color: var(--cr-text-1);
+}
+
+/* generic buttons outside nodes pick up token chrome */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-btn {
+  border-radius: var(--cr-r-md);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-btn--primary {
+  background: var(--cr-accent);
+  border-color: var(--cr-accent);
+}
+
+/* ===== param rhythm (PR-3 B): simple inline rows only — stacked widgets,
+ * warnings, socket rows and chart controls keep their own geometry ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comfy-widget--flush:not(.cr-comfy-widget--stack) {
+  min-height: 33px;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* ===== header chips (PR-3 C): TRAIN / CONTINUE / DISMISS etc. ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header button {
+  border-radius: var(--cr-r-sm);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--cr-accent)) 35%, transparent);
+  background: color-mix(in srgb, var(--accent, var(--cr-accent)) 14%, transparent);
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header button:hover {
+  background: color-mix(in srgb, var(--accent, var(--cr-accent)) 26%, transparent);
+}
+
+/* ===== chart hierarchy (PR-3 D): quiet the control strip, keep forms ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart-controls {
+  color: var(--cr-text-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-chart-controls label {
+  color: var(--cr-text-3);
+}
+
+/* ===== segmented control (studio-only DOM from DiscreteMultiSelect) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--cr-surface-2);
+  border: 1px solid var(--cr-hairline);
+  border-radius: var(--cr-r-md);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented__seg {
+  border: 0;
+  background: transparent;
+  color: var(--cr-text-3);
+  font-size: 0.68rem;
+  padding: 3px 9px;
+  border-radius: var(--cr-r-sm);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented__seg:hover {
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented__seg--on {
+  background: var(--cr-surface-3);
+  color: var(--cr-text-1);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--cr-canvas) 60%, transparent);
+}
+
+/* ===== panel internals: search, tabs, chips, node pills, section heads ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__search {
+  background: var(--cr-surface-2);
+  border: 1px solid var(--cr-hairline);
+  border-radius: var(--cr-r-md);
+  color: var(--cr-text-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__search:focus {
+  border-color: var(--cr-hairline-strong);
+  outline: 2px solid color-mix(in srgb, var(--cr-accent) 30%, transparent);
+  outline-offset: 0;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__library-tabs {
+  background: var(--cr-surface-2);
+  border: 1px solid var(--cr-hairline);
+  border-radius: var(--cr-r-md);
+  padding: 2px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__library-tab {
+  border-radius: var(--cr-r-sm);
+  color: var(--cr-text-3);
+  border-color: transparent;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__library-tab--active {
+  background: var(--cr-surface-3);
+  color: var(--cr-text-1);
+  border-color: transparent;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__node-pill {
+  background: var(--cr-surface-2);
+  border: 1px solid var(--cr-hairline);
+  border-radius: var(--cr-r-md);
+  color: var(--cr-text-2);
+  box-shadow: none;
+  transition: border-color 0.12s, background 0.12s, transform 0.12s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__node-pill:hover {
+  border-color: var(--cr-hairline-strong);
+  background: var(--cr-surface-3);
+  transform: translateY(-1px);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__folder {
+  color: var(--cr-text-4);
+  letter-spacing: 0.08em;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-library-panel__row {
+  border-radius: var(--cr-r-md);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-library-panel__row:hover {
+  background: var(--cr-surface-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-library-panel__name {
+  color: var(--cr-text-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-library-panel__meta {
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__section-title {
+  color: var(--cr-text-4);
+  letter-spacing: 0.09em;
+  font-size: 0.62rem;
+}
+
+/* ===== reference-design pass: chip weight, node-row icon + drag affordance ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__library-tab--active {
+  background: var(--cr-accent);
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__node-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 22px;
+  position: relative;
+  min-height: 30px;
+}
+
+/* leading per-category glyph (SVG rendered by LibraryNodeGlyph) */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-pill-glyph {
+  flex: none;
+  color: var(--cr-library-accent);
+  opacity: 0.9;
+}
+[data-cr-theme="classic"] .cr-node-pill-glyph {
+  color: var(--cr-library-accent, var(--cr-accent-dataset));
+  margin-right: 6px;
+  vertical-align: -2px;
+}
+
+/* trailing drag handle, revealed on hover */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__node-pill::after {
+  content: "⠿";
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--cr-text-4);
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__node-pill:hover::after {
+  opacity: 1;
+}
+
+/* ===== trainer decongestion pass ===== */
+
+/* segmented must never overflow the node: segments share width and shrink */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented {
+  display: flex;
+  max-width: 100%;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented__seg {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 3px 5px;
+  font-size: 0.64rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* tighter port strip */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-io-row {
+  min-height: 22px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  font-size: 0.66rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-io {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* consistent right-anchored values, tighter rows */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node--trainer .cr-comfy-widget--flush:not(.cr-comfy-widget--stack) {
+  min-height: 33px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node--trainer .cr-comfy-widget__control-col {
+  margin-left: auto;
+  align-items: flex-end;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node--trainer .cr-comfy-widget__control--num {
+  text-align: right;
+}
+
+/* checkbox captions: lighter, single-line feel */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node--trainer .cr-node__field--checkbox {
+  font-size: 0.64rem;
+  line-height: 1.25;
+}
+
+/* ===== collapsible param sections (ParamSection, studio-only DOM) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section {
+  margin: 6px 0 2px;
+  border-top: 1px solid var(--cr-hairline-2);
+  padding-top: 2px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: var(--cr-r-sm);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section__head:hover {
+  background: var(--cr-surface-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section__title {
+  font-size: 0.6rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section__head:hover .cr-param-section__title {
+  color: var(--cr-text-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section__chevron {
+  font-size: 0.6rem;
+  color: var(--cr-text-4);
+}
+
+/* ===== typed wire tints (class set by ResearchDefaultEdge; classic has no
+ * rules for these classes and keeps the uniform stroke) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .cr-edge-t-dataset {
+  stroke: color-mix(in srgb, var(--cr-accent-dataset) 62%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .cr-edge-t-model {
+  stroke: color-mix(in srgb, var(--cr-accent-model) 62%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .cr-edge-t-optimizer {
+  stroke: color-mix(in srgb, var(--cr-accent-optimizer) 62%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .cr-edge-t-loss {
+  stroke: color-mix(in srgb, var(--cr-accent-loss) 62%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .cr-edge-t-observable {
+  stroke: color-mix(in srgb, var(--cr-accent-observable) 62%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge .cr-edge-t-tensor {
+  stroke: color-mix(in srgb, var(--cr-accent-tensor) 62%, var(--cr-canvas));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-dataset,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-model,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-optimizer,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-loss,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-observable,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-tensor,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__edge.selected .cr-edge-t-default {
+  stroke: var(--cr-accent);
+}
+
+/* ===== rail refinement: brand mark, tile buttons, footer separator ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__brand {
+  display: grid;
+  place-items: center;
+  padding: 12px 0 6px;
+  color: var(--cr-accent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__main {
+  gap: 8px;
+  padding-top: 8px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn {
+  min-height: 50px;
+  gap: 4px;
+  transition: background 0.12s, color 0.12s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 30px;
+  border-radius: var(--cr-r-md);
+  transition: background 0.12s, box-shadow 0.12s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn:hover .cr-rail__btn-icon {
+  background: var(--cr-surface-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn--active {
+  background: transparent;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn--active .cr-rail__btn-icon {
+  background: color-mix(in srgb, var(--cr-accent) 18%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cr-accent) 35%, transparent);
+  color: var(--cr-accent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__label {
+  font-size: 0.56rem;
+  letter-spacing: 0.02em;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__footer {
+  border-top: 1px solid var(--cr-hairline-2);
+  margin-top: 6px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail {
+  justify-content: flex-start;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail .cr-rail__footer {
+  margin-top: auto;
+}
+
+/* ===== toolbar wordmark: display serif, matching node/panel titles ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-brand {
+  font-family: var(--cr-font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.015em;
+  color: var(--cr-text-1);
+}
+
+/* ===== motion & ambience pass (demos 1, 2, 4, 9) ===== */
+
+/* 1 · popover / dropdown / section enter transitions */
+@keyframes cr-rise {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-theme-menu,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-discrete-multi-dd__panel,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-library-panel__ctx-menu {
+  animation: cr-rise 0.16s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-param-section__body {
+  animation: cr-rise 0.14s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-btn:active,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-rail__btn:active,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-toolbar__canvas-btn:active,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-segmented__seg:active {
+  transform: scale(0.97);
+}
+
+/* 2 · node hover micro-lift (suppressed while dragging/selected-drag) */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__node:not(.dragging):hover .cr-node {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 232, 0.05),
+    0 3px 6px rgba(0, 0, 0, 0.5),
+    0 24px 52px rgba(0, 0, 0, 0.44);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow__node .cr-node {
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.3, 1.05), box-shadow 0.16s;
+}
+
+/* 4 · thin warm scrollbars */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) ::-webkit-scrollbar-thumb {
+  background: var(--cr-hairline-strong);
+  border-radius: 999px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) ::-webkit-scrollbar-thumb:hover {
+  background: var(--cr-accent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) ::-webkit-scrollbar-track,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 9 · canvas ambient glow (behind the dot pattern) */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .react-flow {
+  background:
+    radial-gradient(700px 380px at 108% 112%, color-mix(in srgb, var(--cr-accent) 7%, transparent), transparent 62%),
+    radial-gradient(520px 300px at -6% -8%, color-mix(in srgb, var(--cr-accent-observable) 4%, transparent), transparent 60%);
+}
+
+/* ===== observable/viz node typography (curve tables, tviz controls) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-check {
+  font-size: 0.66rem;
+  color: var(--cr-text-3);
+  gap: 0.3rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-check input[type="checkbox"] {
+  accent-color: var(--cr-accent);
+  width: 12px;
+  height: 12px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-check-row {
+  gap: 6px 12px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-sweep-viz__plot-x-label {
+  font-size: 0.6rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--cr-text-4);
+}
+
+/* hints: quiet guidance instead of alarm-salmon */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tensor-viz__hint,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-sweep-viz__hint {
+  color: var(--cr-text-4);
+  font-size: 0.6rem;
+  line-height: 1.5;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tensor-viz__hint strong,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-sweep-viz__hint strong {
+  color: var(--cr-text-3);
+  font-weight: 600;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tensor-viz__hint code,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-sweep-viz__hint code {
+  font-family: var(--cr-font-mono);
+  font-size: 0.58rem;
+  color: var(--cr-text-3);
+  background: var(--cr-surface-2);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+/* ===== node information panel typography ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel {
+  background: var(--cr-surface-1);
+  border-left-color: var(--cr-hairline);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel h3 {
+  font-family: var(--cr-font-display);
+  font-weight: 600;
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel h4 {
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel__about p,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel__hint {
+  color: var(--cr-text-3);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel__field > span {
+  color: var(--cr-text-3);
+  font-size: 0.68rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel__meta dt {
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel__rich strong {
+  color: var(--cr-text-2);
+  font-weight: 600;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node-information-panel__rich code {
+  font-family: var(--cr-font-mono);
+  font-size: 0.66rem;
+  color: var(--cr-text-3);
+  background: var(--cr-surface-2);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.cr-node-information-panel__math--display {
+  display: block;
+  margin: 0.3rem 0;
+  overflow-x: auto;
+}
+
+/* main's Trainer <details> Advanced fold, matched to the section language */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-advanced {
+  margin: 6px 0 2px;
+  border-top: 1px solid var(--cr-hairline-2);
+  padding-top: 2px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-advanced__summary {
+  font-size: 0.6rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--cr-text-4);
+  padding: 4px 6px;
+  border-radius: var(--cr-r-sm);
+  cursor: pointer;
+  list-style: none;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-advanced__summary:hover {
+  background: var(--cr-surface-3);
+  color: var(--cr-text-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-advanced[open] .cr-trainer-advanced__body {
+  animation: cr-rise 0.14s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* ===== signature: data flowing along wires while training ===== */
+
+@keyframes cr-flow {
+  to { stroke-dashoffset: -17; }
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 3 14;
+  animation: cr-flow 1.1s linear infinite;
+  pointer-events: none;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-dataset { stroke: var(--cr-accent-dataset); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-model { stroke: var(--cr-accent-model); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-optimizer { stroke: var(--cr-accent-optimizer); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-loss { stroke: var(--cr-accent-loss); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-observable { stroke: var(--cr-accent-observable); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-tensor { stroke: var(--cr-accent-tensor); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-flow.cr-edge-t-default { stroke: var(--cr-accent); }
+
+/* ===== training-state ambience (user-selected: tab breathe, LED progress,
+ * arrival ripple) ===== */
+
+/* 1 · project tab breathing while its trainer runs; paused stays static */
+@keyframes cr-tab-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--cr-accent-trainer) 0%, transparent); }
+  50% { box-shadow: 0 0 10px 1px color-mix(in srgb, var(--cr-accent-trainer) 38%, transparent); }
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__tab--train-active {
+  animation: cr-tab-breathe 2.1s ease-in-out infinite;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-project-tabs__tab--train-paused {
+  animation: none;
+}
+
+/* 2 · LED segment progress (VU meter) on the trainer bar */
+@keyframes cr-led-blink {
+  0% { opacity: 1; }
+  100% { opacity: 0.25; }
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header--trainer > .cr-trainer-header-progress-with-grip > .cr-trainer-progress,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header--trainer > .cr-trainer-header-progress-with-grip > .cr-trainer-progress-stack .cr-trainer-progress,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress {
+  background: var(--cr-well) repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cr-accent) 14%, transparent) 0 7px,
+    transparent 7px 10px
+  );
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header--trainer > .cr-trainer-header-progress-with-grip > .cr-trainer-progress .cr-trainer-progress__fill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__header--trainer > .cr-trainer-header-progress-with-grip > .cr-trainer-progress-stack .cr-trainer-progress__fill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress__fill {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cr-accent-hover) 0 7px,
+    transparent 7px 10px
+  );
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--cr-accent-hover) 75%, transparent));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress__fill::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  background: var(--cr-accent-hover);
+  animation: cr-led-blink 0.5s steps(2, jump-none) infinite;
+}
+
+/* 4 · arrival ripple where a flowing wire meets its target port */
+@keyframes cr-arrival {
+  0% { r: 3; opacity: 0.9; }
+  70% { r: 11; opacity: 0; }
+  100% { r: 11; opacity: 0; }
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival {
+  fill: none;
+  stroke-width: 1.5;
+  animation: cr-arrival 1.2s ease-out infinite;
+  pointer-events: none;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-dataset { stroke: var(--cr-accent-dataset); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-model { stroke: var(--cr-accent-model); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-optimizer { stroke: var(--cr-accent-optimizer); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-loss { stroke: var(--cr-accent-loss); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-observable { stroke: var(--cr-accent-observable); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-tensor { stroke: var(--cr-accent-tensor); }
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-edge-arrival.cr-edge-t-default { stroke: var(--cr-accent); }
+
+/* ===== port labels: lowercase mono (user-selected B) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-socket-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-output-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-socket-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-io-row {
+  font-family: var(--cr-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--cr-text-3);
+}
+
+/* ===== calm scale (approved param-scale demo): value typography ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-comfy-widget__control--num,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node input.cr-comfy-widget__control--num {
+  font-family: var(--cr-font-mono);
+  font-size: 0.78rem;
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-input,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node .cr-select {
+  font-size: 0.75rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-node__field--checkbox {
+  font-size: 0.72rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-socket-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-output-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-socket-label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-io-row {
+  font-size: 0.68rem;
+}
+
+/* ===== add-node search modal (double-click canvas) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal-backdrop {
+  background: color-mix(in srgb, black 45%, transparent);
+  backdrop-filter: blur(7px);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal {
+  /* command-palette language: deep flat panel, crisp hairline, huge soft
+   * shadow — Raycast/Linear ⌘K family */
+  background: var(--cr-elevated);
+  border: 1px solid color-mix(in srgb, var(--cr-text-1) 12%, transparent);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 232, 0.06),
+    0 40px 110px rgba(0, 0, 0, 0.7);
+  animation: cr-rise 0.16s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__search {
+  /* borderless palette input: big quiet type over the panel itself */
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--cr-text-1) 8%, transparent);
+  border-radius: 0;
+  color: var(--cr-text-1);
+  font-size: 1.02rem;
+  padding: 14px 6px 13px;
+  letter-spacing: 0.005em;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__search::placeholder {
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__search:focus {
+  outline: none;
+  border-bottom-color: color-mix(in srgb, var(--cr-accent) 55%, transparent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__side-heading {
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__folder {
+  border-radius: var(--cr-r-sm);
+  color: var(--cr-text-3);
+  font-size: 0.75rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__folder:hover {
+  background: var(--cr-surface-3);
+  color: var(--cr-text-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__folder--active {
+  background: color-mix(in srgb, var(--cr-accent) 14%, transparent);
+  color: var(--cr-accent-hover);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 35px;
+  border-radius: var(--cr-r-md);
+  color: var(--cr-text-2);
+  font-size: 0.82rem;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row:hover,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row--active {
+  background: var(--cr-surface-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row--active {
+  box-shadow: inset 2px 0 0 var(--cr-accent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row .cr-node-pill-glyph {
+  flex: none;
+  color: var(--cr-library-accent, var(--cr-text-4));
+  opacity: 0.9;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row-tag {
+  margin-left: auto;
+  font-family: var(--cr-font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__detail-title {
+  font-family: var(--cr-font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__detail-desc {
+  color: var(--cr-text-3);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-info-rich strong {
+  color: var(--cr-text-2);
+  font-weight: 600;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-info-rich code {
+  font-family: var(--cr-font-mono);
+  font-size: 0.9em;
+  color: var(--cr-text-3);
+  background: var(--cr-surface-2);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.cr-info-rich__math--display {
+  display: block;
+  margin: 0.3rem 0;
+  overflow-x: auto;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__detail-k {
+  color: var(--cr-text-4);
+  font-size: 0.68rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__detail-v {
+  font-family: var(--cr-font-mono);
+  font-size: 0.7rem;
+  color: var(--cr-text-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__hint,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__foot {
+  color: var(--cr-text-4);
+  font-size: 0.66rem;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__empty,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__detail-placeholder {
+  color: var(--cr-text-4);
+}
+
+/* legacy dark remnants surfaced by the paper theme */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-toolbar__canvas-btn {
+  background: transparent;
+  border-color: transparent;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tab {
+  background: transparent;
+  color: var(--cr-text-3);
+  border-radius: var(--cr-r-md);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tab--active {
+  background: var(--cr-surface-3);
+  color: var(--cr-text-1);
+}
+
+
+/* legacy near-black progress container joins the tokens (paper exposed it) */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-header-progress-with-grip {
+  background: var(--cr-well);
+}
+
+
+/* remaining legacy dark strips exposed by paper (tokens for both themes) */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-length-segment {
+  background: var(--cr-well);
+  border: 1px solid var(--cr-hairline);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-length-segment-btn {
+  color: var(--cr-text-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-length-segment-btn--active {
+  background: var(--cr-surface-1);
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-detect-btn {
+  background: var(--cr-surface-2);
+  border: 1px solid var(--cr-hairline-strong);
+  color: var(--cr-text-2);
+  border-radius: var(--cr-r-md);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-detect-btn:hover {
+  border-color: color-mix(in srgb, var(--cr-accent) 55%, transparent);
+  color: var(--cr-accent-hover);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-detect-input,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-tviz-sweep-line {
+  background: var(--cr-surface-2);
+  border: 1px solid var(--cr-hairline);
+  color: var(--cr-text-2);
+  border-radius: var(--cr-r-sm);
+}
+
+/* ===== library pill drag/hover emphasis (legacy mixed accent onto a
+ * near-black ground — black blocks under paper); token grounds ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(> .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:hover) .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(> .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:focus-visible) .cr-nodes-panel__node-pill {
+  background: color-mix(in srgb, var(--cr-library-accent, var(--cr-accent)) 24%, var(--cr-surface-1));
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(+ li > .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:hover) .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(+ li > .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:focus-visible) .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(> .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:hover) + li .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(> .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:focus-visible) + li .cr-nodes-panel__node-pill {
+  background: color-mix(in srgb, var(--cr-library-accent, var(--cr-accent)) 12%, var(--cr-surface-1));
+  color: var(--cr-text-2);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(+ li + li > .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:hover) .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(+ li + li > .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:focus-visible) .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(> .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:hover) + li + li .cr-nodes-panel__node-pill,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-nodes-panel__tree li:has(> .cr-nodes-panel__node-row > .cr-nodes-panel__node-pill:focus-visible) + li + li .cr-nodes-panel__node-pill {
+  background: color-mix(in srgb, var(--cr-library-accent, var(--cr-accent)) 6%, var(--cr-surface-1));
+  color: var(--cr-text-3);
+}
+
+/* comment node dark strips */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comment-textarea,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comment-url-input {
+  background: var(--cr-surface-2);
+  color: var(--cr-text-1);
+  border: 1px solid var(--cr-hairline);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-comment-textarea::placeholder {
+  color: var(--cr-text-4);
+}
+
+
+/* ===== trainer progress: series bar, labels, placeholder (paper exposed) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress__fill--series {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cr-accent-trainer) 35%, var(--cr-well)),
+    color-mix(in srgb, var(--cr-accent-trainer) 72%, var(--cr-surface-1))
+  );
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress__label,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress__line {
+  color: var(--cr-text-1);
+  text-shadow:
+    0 0 2px var(--cr-surface-1),
+    0 1px 2px var(--cr-surface-1),
+    0 0 6px var(--cr-surface-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-trainer-progress__line--placeholder {
+  background: color-mix(in srgb, var(--cr-accent-trainer) 12%, var(--cr-well));
+  color: var(--cr-text-3);
+}
+
+/* paper: soften scrollbar thumbs against the light ground */
+[data-cr-theme="paper"] ::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--cr-hairline-strong) 55%, var(--cr-surface-1));
+}
+
+[data-cr-theme="paper"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--cr-accent);
+}
+
+/* ===== add-node palette V1 (archive drawer) ===== */
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__tabs {
+  gap: 6px;
+  padding: 10px 14px;
+  overflow-x: auto;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: var(--cr-text-3);
+  background: transparent;
+  border: 1px solid var(--cr-hairline-2);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__chip:hover {
+  border-color: var(--cr-hairline-strong);
+  color: var(--cr-text-1);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__chip--active {
+  background: color-mix(in srgb, var(--cr-accent) 14%, transparent);
+  border-color: color-mix(in srgb, var(--cr-accent) 40%, transparent);
+  color: var(--cr-accent-hover);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__chip-n {
+  font-family: var(--cr-font-mono);
+  font-size: 0.55rem;
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row-tid {
+  margin-left: auto;
+  font-family: var(--cr-font-mono);
+  font-size: 0.6rem;
+  color: color-mix(in srgb, var(--cr-text-4) 60%, transparent);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row--active .cr-add-node-modal__row-tid {
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row--active {
+  outline: none;
+  border-color: transparent;
+}
+
+/* preview card */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__preview {
+  border-radius: var(--cr-r-md);
+  background: linear-gradient(var(--cr-node-face-hi), var(--cr-node-face-lo));
+  border: 1px solid var(--cr-hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 246, 232, 0.05), 0 8px 22px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__preview-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: color-mix(in srgb, var(--accent, var(--cr-accent)) 13%, transparent);
+  border-bottom: 1px solid var(--cr-hairline-2);
+  font-family: var(--cr-font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--accent, var(--cr-accent)) 45%, var(--cr-text-1));
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__preview-body {
+  padding: 5px 0 7px;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__preview-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 11px;
+  font-size: 0.62rem;
+  color: var(--cr-text-3);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__preview-v {
+  font-family: var(--cr-font-mono);
+  color: var(--cr-text-1);
+}
+
+/* keycap footer */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 14px;
+  font-size: 0.64rem;
+  color: var(--cr-text-4);
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__key kbd {
+  font-family: var(--cr-font-mono);
+  font-size: 0.58rem;
+  color: var(--cr-text-3);
+  border: 1px solid var(--cr-hairline);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 1px 5px;
+  background: transparent;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__count {
+  margin-left: auto;
+  font-family: var(--cr-font-mono);
+  font-size: 0.62rem;
+  color: color-mix(in srgb, var(--cr-text-4) 70%, transparent);
+}
+
+
+/* V1 layout corrections: two-pane body, no ghost third column */
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__body {
+  display: flex;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__main {
+  flex: 1.25;
+  min-width: 0;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__detail {
+  flex: 1;
+  min-width: 0;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) .cr-add-node-modal__row-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) input.cr-add-node-modal__search,
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) input.cr-add-node-modal__search:focus {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--cr-text-1) 8%, transparent);
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+:is([data-cr-theme="studio"], [data-cr-theme="paper"]) input.cr-add-node-modal__search:focus {
+  border-bottom-color: color-mix(in srgb, var(--cr-accent) 55%, transparent);
+}
+
+
+/* Structural rules for the V1 palette follow the DOM change into every
+ * theme (classic keeps its own colors but must not break layout): */
+.cr-add-node-modal__body {
+  display: flex;
+}
+
+.cr-add-node-modal__main,
+.cr-add-node-modal__detail {
+  flex: 1;
+  min-width: 0;
+}
+
+.cr-add-node-modal__main {
+  flex: 1.25;
+}
+
+.cr-add-node-modal__row-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cr-add-node-modal__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cr-add-node-modal__chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.cr-add-node-modal__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 14px;
+}
+
+.cr-add-node-modal__count {
+  margin-left: auto;
+}
+
+.cr-add-node-modal__preview {
+  overflow: hidden;
+  margin-bottom: 12px;
+}

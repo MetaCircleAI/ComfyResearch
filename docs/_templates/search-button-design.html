@@ -1,0 +1,34 @@
+<div class="cr-header-search pst-js-only"
+     role="search"
+     data-search-empty="{{ (cr_ui | default({})).search_empty | default('Type to search documentation.', true) | e }}"
+     data-search-loading="{{ (cr_ui | default({})).search_loading | default('Searching documentation...', true) | e }}"
+     data-search-ready="{{ (cr_ui | default({})).search_ready | default('Search results are ready.', true) | e }}"
+     data-search-unavailable="{{ (cr_ui | default({})).search_unavailable | default('Search is unavailable. Press Enter to open the full search page.', true) | e }}"
+     data-search-no-results="{{ (cr_ui | default({})).search_no_results | default('No results for “%(query)s”.', true) | e }}"
+     data-copy-code="{{ (cr_ui | default({})).copy_code | default('Copy code', true) | e }}"
+     data-copied-label="{{ (cr_ui | default({})).copied_label | default('Copied to clipboard', true) | e }}"
+     data-copied-status="{{ (cr_ui | default({})).copied_status | default('Copied to clipboard.', true) | e }}">
+  <form class="cr-search-form" action="{{ pathto('search') }}" method="get">
+    <input class="cr-search-input"
+           type="search"
+           name="q"
+           placeholder="{{ (cr_ui | default({})).search_placeholder | default('Search the docs', true) | e }}"
+           aria-label="{{ (cr_ui | default({})).search_aria_label | default('Search the documentation', true) | e }}"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false">
+    <button class="cr-search-submit"
+            type="submit"
+            aria-label="{{ (cr_ui | default({})).search_button_aria_label | default('Search documentation', true) | e }}">
+      <span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span>
+    </button>
+    <span class="search-button__kbd-shortcut" aria-hidden="true">
+      <kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd>
+    </span>
+  </form>
+  <div class="cr-search-panel" hidden>
+    <p class="cr-search-status" role="status" aria-live="polite" hidden></p>
+    <section class="cr-search-results" tabindex="-1"></section>
+  </div>
+</div>

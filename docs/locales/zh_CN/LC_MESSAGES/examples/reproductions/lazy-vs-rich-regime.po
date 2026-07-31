@@ -1,0 +1,223 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-30 20:52+0800\n"
+"PO-Revision-Date: 2026-07-30 00:00+0800\n"
+"Last-Translator: Comfy Research Contributors\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:7
+msgid "Learning Phases and Feature Formation · Phenomenon reproduction"
+msgstr "学习阶段与特征形成 · 现象复现"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:10
+msgid "Lazy vs. Rich Training Regimes"
+msgstr "lazy regime 与 rich regime"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:13
+msgid ""
+"Output scaling controls whether a wide ReLU network learns moving "
+"features or stays close to its initialization."
+msgstr "输出缩放决定宽 ReLU 网络是学习不断变化的特征，还是始终接近初始化状态。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:22
+msgid "QQ"
+msgstr "清宇"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:27
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:35
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:37
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:42
+msgid ""
+"This runnable graph contrasts feature learning with lazy, kernel-like "
+"training on a two-dimensional teacher-student problem. It is a "
+"qualitative exploration of the scaling mechanism described by Chizat, "
+"Oyallon, and Bach."
+msgstr "这个可运行图在二维 teacher-student 问题上，对比特征学习与 lazy regime（近似 kernel 方法的训练）。"
+"它定性探索了 Chizat、Oyallon 与 Bach 所描述的缩放机制。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:47
+msgid ""
+"**Paper:** [On Lazy Training in Differentiable "
+"Programming](https://arxiv.org/abs/1812.07956), Chizat, Oyallon, and Bach"
+" (NeurIPS 2019)"
+msgstr ""
+"**论文：** [On Lazy Training in Differentiable Programming](https://arxiv.org/abs/1812.07956)，"
+"Chizat、Oyallon 与 Bach（NeurIPS 2019）"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:49
+msgid "**Template:** `lazy vs rich regime`"
+msgstr "**模板：** `lazy vs rich regime`"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:51
+msgid "**Template ID:** `d2e8cdd7-d14c-42c3-94dc-ba2b419c07f9`"
+msgstr "**模板 ID：** `d2e8cdd7-d14c-42c3-94dc-ba2b419c07f9`"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:53
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:55
+msgid ""
+"The output multiplier $\\alpha$ controls the size of the network output "
+"at initialization. Small $\\alpha$ permits substantial feature motion "
+"(the rich regime); large $\\alpha$ keeps weights close to their starting "
+"point (the lazy or tangent-kernel regime). The graph makes that "
+"distinction visible through loss, weight displacement, and hidden-neuron "
+"trajectories."
+msgstr ""
+"输出乘子 $\\alpha$ 控制网络初始化时的输出尺度。较小的 $\\alpha$ 允许特征显著移动（rich regime）；"
+"较大的 $\\alpha$ 则使权重保持在初始位置附近（lazy regime 或 tangent-kernel regime）。"
+"该图通过损失、权重位移和隐藏神经元轨迹，将两者的差异直观呈现出来。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:61
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Template setting"
+msgstr "模板设置"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Data"
+msgstr "数据"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Deterministic two-dimensional teacher data; 200 train and 500 test points"
+msgstr "确定性的二维 teacher 数据；200 个训练点与 500 个测试点"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Teacher and student"
+msgstr "teacher 与 student"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "ReLU MLPs with 3 and 200 hidden neurons respectively"
+msgstr "ReLU MLP，分别含 3 个与 200 个隐藏神经元"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Controlled parameter"
+msgstr "控制参数"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Student `outputScale` $\\alpha$ (initially 0.01; suitable for a sweep)"
+msgstr "student 的 `outputScale` $\\alpha$（初始值为 0.01；适合用于 sweep）"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Full-batch SGD, learning rate 0.01"
+msgstr "full-batch SGD，学习率 0.01"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Training"
+msgstr "训练"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "10,000 CPU updates; log every 100 updates"
+msgstr "CPU 上更新 10,000 次；每 100 次记录一次"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid "Observables"
+msgstr "observables"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:39
+msgid ""
+"Weight norm, train/test gap, relative displacement, and 2-D neuron "
+"trajectories"
+msgstr "权重范数、训练/测试差距、相对位移与二维神经元轨迹"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:72
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:74
+msgid "Open **Templates** and load `lazy vs rich regime`."
+msgstr "打开 **Templates**，加载 `lazy vs rich regime`。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:75
+msgid ""
+"Run at a small `outputScale`, such as 0.01, and inspect displacement and "
+"neuron trajectories."
+msgstr "以较小的 `outputScale`（例如 0.01）运行，并查看位移与神经元轨迹。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:77
+msgid ""
+"Repeat with larger values and compare final loss and relative weight "
+"motion."
+msgstr "改用更大的取值重复运行，并比较最终损失与相对权重位移。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:79
+msgid ""
+"Loaded Lazy vs. Rich template in the Comfy Research canvas, showing "
+"teacher data, the scaled student MLP, Trainer, and observables."
+msgstr "Comfy Research 画布中已加载 lazy vs rich regime 模板，显示 teacher 数据、经过缩放的 student MLP、Trainer 与 observables。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:84
+msgid "Results and Interpretation"
+msgstr "结果与解释"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:86
+msgid ""
+"Small $\\alpha$ should produce visible hidden-feature motion; at larger "
+"$\\alpha$, relative displacement should be small and learning should "
+"resemble a fixed-feature model. The transition is not a universal "
+"threshold: it depends on width, initialization, optimizer, and time "
+"scaling."
+msgstr ""
+"较小的 $\\alpha$ 应带来可见的隐藏特征移动；当 $\\alpha$ 较大时，相对位移应较小，"
+"学习过程更接近固定特征模型。这种转变没有普适阈值，取决于宽度、初始化、优化器和时间缩放。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:91
+msgid ""
+"Neuron trajectory visualization after a Lazy vs. Rich run with a small "
+"output scale, showing compact hidden-feature motion."
+msgstr "以较小输出尺度运行 lazy vs rich regime 后的神经元轨迹图，显示紧凑的隐藏特征移动。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:96
+msgid ""
+"Neuron trajectory visualization after a Lazy vs. Rich run with a large "
+"output scale, showing a wider feature trajectory."
+msgstr "以较大输出尺度运行 lazy vs rich regime 后的神经元轨迹图，显示更宽的特征轨迹。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:101
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:103
+msgid "This is a synthetic two-dimensional teaching setting."
+msgstr "这是一个合成的二维教学场景。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:104
+msgid "A sweep does not establish asymptotic scaling laws."
+msgstr "一次 sweep 不能确立渐近缩放定律。"
+
+#: ../../en/examples/reproductions/lazy-vs-rich-regime.md:105
+msgid "Fair comparisons across $\\alpha$ can require time and loss rescaling."
+msgstr "要公平比较不同的 $\\alpha$，可能需要重新缩放时间与损失。"

@@ -1,0 +1,583 @@
+{
+ "matrix": {
+  "sha256": "ead075601a91684e190235c049121a64eba086239190c22884caeaaf1ff25b2a",
+  "total": 5560542,
+  "trueCount": 3459132,
+  "buckets": {
+   "absolute_pos_embed_layer": 19798,
+   "activation": 123,
+   "activation_layer": 19798,
+   "adam_optimizer": 10522,
+   "adamw_optimizer": 10522,
+   "advection_dataset": 1900,
+   "afno_encoder_block_layer": 19798,
+   "afno_lite_spatiotemporal_model": 19796,
+   "afno_patch_decode_layer": 19798,
+   "afno_patch_embed_layer": 19798,
+   "afno_spectral_mixer_layer": 19798,
+   "agent_trace_viz": 1900,
+   "attention_only_model": 19796,
+   "basic_calculator": 240,
+   "bigram_low_rank_dataset": 1900,
+   "binary_cross_entropy_with_logits_loss": 1900,
+   "biography_lm_dataset": 1900,
+   "causal_mask": 12425,
+   "cifar10_dataset": 1900,
+   "circle_random_walk_dataset": 1900,
+   "circular_motion_dataset": 1900,
+   "cogs_dataset": 1900,
+   "combined_model": 19461,
+   "comment": 14,
+   "crl_env_config": 1900,
+   "crl_residual_mlp": 1900,
+   "crl_trainer": 2457,
+   "cross_entropy_loss": 1900,
+   "curve_annotator": 3,
+   "curve_series_table": 4,
+   "curve_series_viz": 1,
+   "cyclic_batch_schedule": 1900,
+   "cyclic_lr_schedule": 1900,
+   "dataset_mixer": 246,
+   "dataset_mixer_b": 246,
+   "derivative_curve": 150,
+   "deterministic_diffusion_sampler": 0,
+   "diagonal_ssm_token_model": 19796,
+   "diffusion_mse_loss": 1900,
+   "diffusion_pde_dataset": 1900,
+   "diffusion_score_model": 19796,
+   "dimension_permutator": 141,
+   "distance_contact_layer": 19798,
+   "docking_pose_viz": 1900,
+   "dyck_dataset": 1900,
+   "effective_rank": 154,
+   "einsum": 3800,
+   "elementwise_transform": 372,
+   "embedding_layer": 19798,
+   "energy_readout_layer": 19798,
+   "equivariant_message_layer": 19798,
+   "fake_tensor": 1900,
+   "flatten": 12425,
+   "formal_language_suite_dataset": 1900,
+   "gated_mlp_model": 19796,
+   "gated_mlp_token_model": 19796,
+   "gaussian_blob_dataset": 1900,
+   "graph_assist_failure_overlay": 1900,
+   "hole_counting_dataset": 1900,
+   "hyena_like_conv_model": 19796,
+   "hypothesis": 1900,
+   "idnns_initialization": 1900,
+   "image_dataset_displayer": 5,
+   "in_context_associative_recall_dataset": 1900,
+   "information_bottleneck_dataset": 1900,
+   "input_sampler": 1,
+   "interatomic_eval_viz": 1900,
+   "kan_model": 19796,
+   "kan_reg": 1900,
+   "kepler_2d_dataset": 1900,
+   "keskar_c1_c2_cnn_model": 19796,
+   "l1_reg": 1900,
+   "l2_projection": 1900,
+   "l2_reg": 1900,
+   "layer_norm_layer": 19798,
+   "linear_attention_model": 19796,
+   "linear_dataset": 1900,
+   "linear_layer": 19798,
+   "listops_dataset": 1900,
+   "local_mixing_layer": 19798,
+   "lr_schedule": 1900,
+   "memorization_a_dataset": 1900,
+   "memorization_b_dataset": 1900,
+   "metric_compare": 0,
+   "mlp_model": 19796,
+   "mlp_token_model": 19796,
+   "mnist_dataset": 1900,
+   "model_checkpoint": 2,
+   "model_weight_tensors": 125,
+   "modular_addition_dataset": 1900,
+   "moe_mlp_model": 19796,
+   "moe_mlp_token_model": 19796,
+   "mpp_spatiotemporal_model": 19796,
+   "mse_loss": 1900,
+   "multi_hop_fact_chain_dataset": 1900,
+   "muon_optimizer": 10522,
+   "mup_initialization": 1900,
+   "mup_lr_schedule": 1900,
+   "ngram_language_dataset": 1900,
+   "numeric_hyena_model": 19796,
+   "numeric_transformer_model": 19796,
+   "observable_accuracy": 1900,
+   "observable_activation_norm_mean": 1900,
+   "observable_activation_outlier_ratio": 1900,
+   "observable_activation_stats": 1900,
+   "observable_attention_entropy_mean": 1900,
+   "observable_attention_head_sink_max": 1900,
+   "observable_attention_map": 1900,
+   "observable_attention_max_weight_mean": 1900,
+   "observable_attention_position_bias_ratio": 1900,
+   "observable_attention_relation_score": 1900,
+   "observable_bezier_mode_connectivity": 29,
+   "observable_capacity": 1900,
+   "observable_embedding_effective_rank": 1900,
+   "observable_embedding_evolution": 1900,
+   "observable_embedding_feature_drift": 1900,
+   "observable_embedding_trajectory": 1900,
+   "observable_fourier_component": 1900,
+   "observable_gradient_norm": 1900,
+   "observable_hessian_eigenvalues": 1900,
+   "observable_information_plane": 1900,
+   "observable_last_layer_weight_norm": 1900,
+   "observable_layer_spectral_norm": 1900,
+   "observable_linear_interpolation_barrier": 29,
+   "observable_nearest_train_gl": 1,
+   "observable_neuron_trajectory_2d": 1900,
+   "observable_paired_generation_similarity": 0,
+   "observable_relu_nonlinear_count": 1900,
+   "observable_representation_alpha_req": 1900,
+   "observable_representation_rankme": 1900,
+   "observable_rp_score_sscd": 0,
+   "observable_sink_attention_mass": 1900,
+   "observable_train_test_gap": 1900,
+   "observable_user": 1,
+   "observable_viz": 186,
+   "observable_viz_neuron_trajectory_2d": 186,
+   "observable_weight_displacement": 1900,
+   "observable_weight_l1": 1900,
+   "observable_weight_l2": 1900,
+   "observable_weight_product_sv": 1900,
+   "pairwise_rbf_layer": 19798,
+   "paper_classification_dataset": 1900,
+   "parametric_path_sampler": 73,
+   "pca": 139,
+   "pcfg_dataset": 1900,
+   "phi1_style_dataset": 1900,
+   "prediction": 263,
+   "protein_structure_comparison_viz": 488,
+   "protein_structure_displayer": 244,
+   "random_input_distribution": 1900,
+   "random_noise_dataset": 1900,
+   "rank_aligned_initialization": 1900,
+   "reaction_diffusion_dataset": 1900,
+   "regressor": 144,
+   "relation_tuple_dataset": 1900,
+   "relative_pose_encoder_layer": 19798,
+   "reshape": 12425,
+   "residual_ln_model": 19796,
+   "resnet_model": 19796,
+   "rms_norm_layer": 19798,
+   "rotary_embed_layer": 19798,
+   "rwkv_time_mix_token_model": 19796,
+   "saxe_initialization": 1900,
+   "scan_dataset": 1900,
+   "series_endpoint_gap": 154,
+   "sgd_optimizer": 10522,
+   "shampoo_optimizer": 10522,
+   "shape_checker": 186,
+   "shape_world_dataset": 1900,
+   "signsgd_optimizer": 10522,
+   "slot_attention_token_model": 19796,
+   "small_inception_cifar_model": 19796,
+   "smoothing_curve": 150,
+   "soap_optimizer": 10522,
+   "softmax": 12425,
+   "statistics": 151,
+   "statistics2": 228,
+   "svd": 139,
+   "sweep_data_table": 1,
+   "symbolic_func_dataset": 1900,
+   "symmetrized_mlp_init": 1900,
+   "synthetic_playground_dataset": 1900,
+   "table_viz": 1,
+   "teacher_dataset": 85,
+   "tensor_add": 236,
+   "tensor_concat": 236,
+   "tensor_constant": 1900,
+   "tensor_linspace": 1900,
+   "tensor_reader": 186,
+   "tensor_selector": 5,
+   "tensor_slicing": 372,
+   "tensor_splitter": 12425,
+   "tensor_stack": 236,
+   "tensor_viz_0d": 183,
+   "tensor_viz_1d": 183,
+   "tensor_viz_2d": 183,
+   "tensor_viz_general": 183,
+   "tensor_viz_scatter": 236,
+   "tinyshakespeare_lm_dataset": 1900,
+   "tinystories_dataset": 1900,
+   "token_prediction_dataset": 1900,
+   "trainer": 2549,
+   "training_visualization": 2,
+   "transformer_multi_token_model": 19796,
+   "transformer_token_model": 19796,
+   "unembedding_layer": 19798,
+   "unet_ddpm_model": 19796,
+   "uniform_linear_motion_dataset": 1900,
+   "unigram_dataset": 1900,
+   "url_node": 1900,
+   "vgg11_cifar_model": 19796,
+   "visualize_kan": 43,
+   "vit_model": 19796
+  }
+ },
+ "cases": {
+  "obsVizSingleFanIn": {
+   "nodes": [
+    {
+     "id": "v",
+     "type": "observable_viz",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "a",
+     "type": "tensor_viz_0d",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "b",
+     "type": "tensor_viz_0d",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "t",
+     "type": "trainer",
+     "dataKeys": [],
+     "data": {}
+    }
+   ],
+   "edges": [
+    {
+     "source": "b",
+     "target": "v",
+     "sourceHandle": "out_tensor",
+     "targetHandle": "tensor"
+    }
+   ]
+  },
+  "lossSpawn": {
+   "nodes": [
+    {
+     "id": "l",
+     "type": "mse_loss",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "t",
+     "type": "trainer",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "$new0",
+     "type": "training_visualization",
+     "dataKeys": [
+      "instanceTitle",
+      "logScaleX",
+      "logScaleY",
+      "lossView",
+      "showTestCurve",
+      "showTrainCurve",
+      "yPlotMetric"
+     ],
+     "data": {}
+    }
+   ],
+   "edges": [
+    {
+     "source": "l",
+     "target": "t",
+     "sourceHandle": "loss",
+     "targetHandle": "loss"
+    },
+    {
+     "source": "t",
+     "target": "$new0",
+     "sourceHandle": "loss_results",
+     "targetHandle": "tensor_list"
+    }
+   ]
+  },
+  "lossSpawnDedup": {
+   "nodeCount": 3,
+   "edgeCount": 2
+  },
+  "observableSpawn": {
+   "nodes": [
+    {
+     "id": "o",
+     "type": "kan_reg",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "t",
+     "type": "trainer",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "$new0",
+     "type": "observable_viz",
+     "dataKeys": [
+      "instanceTitle",
+      "logScaleX",
+      "logScaleY",
+      "pairedObservableId",
+      "pairedTrainerId",
+      "showSeries",
+      "vizVariant"
+     ],
+     "data": {
+      "pairedObservableId": "o",
+      "pairedTrainerId": "t",
+      "vizVariant": "kan_reg"
+     }
+    }
+   ],
+   "edges": [
+    {
+     "source": "o",
+     "target": "t",
+     "sourceHandle": "observables",
+     "targetHandle": "observables"
+    },
+    {
+     "source": "t",
+     "target": "$new0",
+     "sourceHandle": "observable_results",
+     "targetHandle": "tensor"
+    }
+   ]
+  },
+  "observableSpawnDedup": {
+   "nodeCount": 3,
+   "edgeCount": 2
+  },
+  "generatedObservableSpawn": {
+   "nodes": [
+    {
+     "id": "o",
+     "type": "observable_accuracy",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "t",
+     "type": "trainer",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "$new0",
+     "type": "observable_viz",
+     "dataKeys": [
+      "instanceTitle",
+      "logScaleX",
+      "logScaleY",
+      "observableName",
+      "pairedObservableId",
+      "pairedTrainerId",
+      "showSeries",
+      "showTestCurve",
+      "showTrainCurve",
+      "vizVariant"
+     ],
+     "data": {
+      "pairedObservableId": "o",
+      "pairedTrainerId": "t",
+      "vizVariant": "accuracy"
+     }
+    }
+   ],
+   "edges": [
+    {
+     "source": "o",
+     "target": "t",
+     "sourceHandle": "observables",
+     "targetHandle": "observables"
+    },
+    {
+     "source": "t",
+     "target": "$new0",
+     "sourceHandle": "observable_results",
+     "targetHandle": "tensor"
+    }
+   ]
+  },
+  "generatedObservableSpawnDedup": {
+   "nodeCount": 3,
+   "edgeCount": 2
+  },
+  "ioModeFlips": {
+   "mlpModelSocketModelMode": true,
+   "mlpStripOutIoMode": true,
+   "mlpStripOutModelMode": false,
+   "linearLayerIoTarget": true,
+   "linearLayerModelModeTarget": false,
+   "combinedBoundaryIo": true,
+   "combinedBoundaryModelMode": false
+  },
+  "lrHandleRemap": {
+   "nodes": [
+    {
+     "id": "ls",
+     "type": "lr_schedule",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "op",
+     "type": "adam_optimizer",
+     "dataKeys": [],
+     "data": {}
+    }
+   ],
+   "edges": [
+    {
+     "source": "ls",
+     "target": "op",
+     "sourceHandle": "lr_schedule",
+     "targetHandle": "lr_schedule"
+    }
+   ]
+  },
+  "tensorSelectorSpawn": {
+   "nodes": [
+    {
+     "id": "tv",
+     "type": "training_visualization",
+     "dataKeys": [
+      "testCurve",
+      "trainCurve"
+     ],
+     "data": {}
+    },
+    {
+     "id": "st",
+     "type": "statistics",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "tr",
+     "type": "trainer",
+     "dataKeys": [],
+     "data": {}
+    },
+    {
+     "id": "$new0",
+     "type": "tensor_selector",
+     "dataKeys": [
+      "activationTensorCache",
+      "activationTensorCaches",
+      "instanceTitle",
+      "selectedTensorKey",
+      "selectedTensorKeys",
+      "tensorSelectorSweepSeq",
+      "tensorSelectorSweeping"
+     ],
+     "data": {
+      "selectedTensorKey": "train_loss"
+     }
+    }
+   ],
+   "edges": [
+    {
+     "source": "tr",
+     "target": "tv",
+     "sourceHandle": "loss_results",
+     "targetHandle": "tensor_list"
+    },
+    {
+     "source": "tv",
+     "target": "$new0",
+     "sourceHandle": "out_tensor_list",
+     "targetHandle": "tensor_list"
+    },
+    {
+     "source": "$new0",
+     "target": "st",
+     "sourceHandle": "tensor_1",
+     "targetHandle": "tensor"
+    }
+   ]
+  },
+  "tableVizEmptyUpstream": false,
+  "tableVizWithUpstream": true,
+  "autoConnectPlan": [
+   {
+    "source": "m",
+    "target": "t",
+    "sourceHandle": "model",
+    "targetHandle": "model"
+   },
+   {
+    "source": "op",
+    "target": "t",
+    "sourceHandle": "optimizer",
+    "targetHandle": "optimizer"
+   },
+   {
+    "source": "l",
+    "target": "t",
+    "sourceHandle": "loss",
+    "targetHandle": "loss"
+   },
+   {
+    "source": "d",
+    "target": "t",
+    "sourceHandle": "dataset",
+    "targetHandle": "dataset"
+   },
+   {
+    "source": "l2",
+    "target": "t",
+    "sourceHandle": "loss",
+    "targetHandle": "loss"
+   },
+   {
+    "source": "ob",
+    "target": "t",
+    "sourceHandle": "observables",
+    "targetHandle": "observables"
+   }
+  ],
+  "autoConnectPlanWithExisting": [
+   {
+    "source": "op",
+    "target": "t",
+    "sourceHandle": "optimizer",
+    "targetHandle": "optimizer"
+   },
+   {
+    "source": "l",
+    "target": "t",
+    "sourceHandle": "loss",
+    "targetHandle": "loss"
+   },
+   {
+    "source": "d",
+    "target": "t",
+    "sourceHandle": "dataset",
+    "targetHandle": "dataset"
+   },
+   {
+    "source": "l2",
+    "target": "t",
+    "sourceHandle": "loss",
+    "targetHandle": "loss"
+   },
+   {
+    "source": "ob",
+    "target": "t",
+    "sourceHandle": "observables",
+    "targetHandle": "observables"
+   }
+  ],
+  "missingTarget": true,
+  "unknownType": true
+ }
+}

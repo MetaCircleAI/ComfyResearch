@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 20:46+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/reference/support-status.md:7
+msgid "Reference"
+msgstr "参考"
+
+#: ../../en/reference/support-status.md:10
+msgid "Support status"
+msgstr "支持状态"
+
+#: ../../en/reference/support-status.md:12
+msgid "Documented stable workflow"
+msgstr "已文档化的稳定工作流"
+
+#: ../../en/reference/support-status.md:14
+msgid ""
+"This documentation treats the following path as the stable core for the "
+"current source tree:"
+msgstr "本文档将以下路径视为当前源码树的稳定核心："
+
+#: ../../en/reference/support-status.md:17
+msgid "projects and the graph workbench;"
+msgstr "项目和图工作台；"
+
+#: ../../en/reference/support-status.md:18
+msgid "Dataset, Model, Loss, Optimizer, Trainer, and their typed connections;"
+msgstr "Dataset、Model、Loss、Optimizer、Trainer 及其带类型的连接；"
+
+#: ../../en/reference/support-status.md:19
+msgid "local CPU, MPS, and detected CUDA execution;"
+msgstr "本地 CPU、MPS 和检测到的 CUDA 执行；"
+
+#: ../../en/reference/support-status.md:20
+msgid "configured SSH remote GPU execution;"
+msgstr "已配置的 SSH 远程 GPU 执行；"
+
+#: ../../en/reference/support-status.md:21
+msgid "Observables and their result visualizations;"
+msgstr "Observable 及其结果可视化；"
+
+#: ../../en/reference/support-status.md:22
+msgid "Templates, graph files, and export tiers;"
+msgstr "Template、图文件和导出层级；"
+
+#: ../../en/reference/support-status.md:23
+msgid "in-repository Node and Observable definition generation."
+msgstr "仓库内 Node 和 Observable 定义生成。"
+
+#: ../../en/reference/support-status.md:25
+msgid ""
+"Stable here means the docs provide a supported learning and reference "
+"path. It does not create a semantic-version compatibility promise for an "
+"untagged development build."
+msgstr "此处的稳定意味着文档提供受支持的学习和参考路径。它并不为未打标签的开发构建作出语义版本兼容性承诺。"
+
+#: ../../en/reference/support-status.md:29
+msgid ""
+"PVI, LMech, Test, and Architecture IQ were removed ahead of the first "
+"release; the pre-removal tree is preserved under the "
+"`archive/pre-v1-trim` tag. Apps, Workflows, and the assistant chat were "
+"removed later in the same pre-release window: Apps never shipped a panel,"
+" chat was already unreachable from the workbench, and the Workflows rail "
+"carried a multi-canvas experiment tree whose parameter sweeps are "
+"expressed as list-valued node fields on a single canvas instead. The "
+"Jekyll blog export hung off that tree and described a sweep as a grid of "
+"canvases, so it was removed with it. The LPD curve-phase algorithms "
+"remain in the source tree because CurveStarer analysis uses them via "
+"`/api/curve-lpd/predict`, and `scripts/graph_report_pdf.py` remains a "
+"standalone graph-to-PDF command."
+msgstr ""
+"PVI、LMech、Test 和 Architecture IQ 已在首次发布前移除；移除前的代码树保存在 "
+"`archive/pre-v1-trim` 标签下。Apps、Workflows 和助手 chat 在同一发布前窗口内稍后移除：Apps "
+"从未提供面板，chat 已无法从工作台进入，而 Workflows 侧栏承载的是多画布实验树，其参数 sweep "
+"现改为在单张画布上用列表值节点字段表达。Jekyll 博客导出依附于该树，并把一次 sweep 描述为画布网格，因此随之一并移除。LPD "
+"曲线阶段算法仍保留在源码中，因为 CurveStarer 分析会通过 `/api/curve-lpd/predict` 使用它们；"
+"`scripts/graph_report_pdf.py` 仍是独立的图到 PDF 命令。"
+
+#: ../../en/reference/support-status.md:41
+msgid "Version path"
+msgstr "版本路径"
+
+#: ../../en/reference/support-status.md:43
+msgid ""
+"This site is published under `/en/dev/` and describes the development "
+"source used to build it. It should not retroactively describe older "
+"releases. A tagged release should build documentation from that tag and "
+"publish it under a distinct version path."
+msgstr "本站发布于 `/en/dev/`，描述用于构建它的开发源码。它不应追溯描述旧版本。带标签的发布应从该标签构建文档，并发布到独立的版本路径。"
+
+#: ../../en/reference/support-status.md:48
+msgid ""
+"When documentation and source disagree, the validated source contract "
+"wins for the development build and the documentation should be corrected."
+msgstr "当文档与源码不一致时，开发构建以经过验证的源码契约为准，且应修正文档。"

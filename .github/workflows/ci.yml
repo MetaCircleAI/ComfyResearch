@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Frontend lane: unit tests (vitest) + build (which runs the codegen-golden
+  # and node-manifest drift guards). Fast, no GPU.
+  # ---------------------------------------------------------------------------
+  frontend:
+    name: frontend (vitest + build + drift guard)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - name: Unit tests (registry invariants, codegen golden, manifest emit)
+        run: npm test
+      - name: Build + verify gates (research-codegen, codegen-golden, node-manifest drift)
+        run: npm run build
+
+  # ---------------------------------------------------------------------------
+  # Backend lane: pytest (unit builders + NodeKind/manifest drift guard +
+  # capability alignment + CPU train smoke golden). CPU-only torch.
+  # ---------------------------------------------------------------------------
+  backend:
+    name: backend (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install CPU torch first, then project and docs deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+          pip install -r docs/requirements.txt
+          pip install pytest ruff==0.15.15
+      - name: Reject undefined Python names
+        run: python -m ruff check comfy_research scripts tests --select F821,F822,F823
+      - name: Run backend test suites
+        # `python -m pytest` (not bare `pytest`) so the repo root is on sys.path
+        # and `comfy_research` is importable — the project ships no packaging.
+        run: python -m pytest -q comfy_research/tests tests
+
+  # ---------------------------------------------------------------------------
+  # E2E lane (non-blocking): start the real backend + built frontend and drive
+  # a browser with Playwright. Marked continue-on-error until the drag→train
+  # flow is filled in and confirmed green in CI (see frontend/e2e/README.md).
+  # ---------------------------------------------------------------------------
+  e2e:
+    name: e2e (playwright smoke, non-blocking)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install backend deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - name: Install frontend deps + build
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+      - name: Install Playwright (chromium)
+        working-directory: frontend
+        run: |
+          npm i -D --no-save @playwright/test
+          npx playwright install --with-deps chromium
+      - name: Run Playwright smoke
+        working-directory: frontend
+        run: npx playwright test -c e2e/playwright.config.ts
+      - name: Upload Playwright artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/e2e/playwright-report
+          if-no-files-found: ignore

@@ -1,0 +1,485 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-31 10:12+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:7
+msgid "Representation Compression and Information Flow · Phenomenon reproduction"
+msgstr "表征压缩与信息流 · 现象复现"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:10
+msgid "Information Bottleneck Dynamics Across Training-Set Sizes"
+msgstr "不同训练集规模下的信息瓶颈动力学"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:12
+msgid "Compute cost"
+msgstr "计算成本"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:15
+msgid ""
+"The interactive graph exposes one run for each training-set size. The "
+"reported paper-scale result averages 50 independent runs per panel and is"
+" substantially more expensive."
+msgstr "交互图为每种训练集规模提供一次运行。论文规模的结果则对每个面板的 50 次独立运行取平均，计算成本显著更高。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:21
+msgid ""
+"Across 5%, 45%, and 85% training subsets, hidden representations first "
+"gain label information and later move toward lower input information; the"
+" final deep-layer label information increases with the amount of training"
+" data."
+msgstr "在 5%、45% 和 85% 的训练子集上，隐藏表示先获得标签信息，随后向较低的输入信息移动；最终深层的标签信息随训练数据量增加而增多。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:31
+msgid "XC"
+msgstr "程宇"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:36
+msgid "Author"
+msgstr "作者"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:44
+msgid "Scope"
+msgstr "范围"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:46
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:51
+#, python-format
+msgid ""
+"This example reproduces the three information-plane panels in Figure 3 of"
+" Shwartz-Ziv and Tishby. A 12-10-8-6-4-2-1 network is trained on 5%, 45%,"
+" and 85% of the paper's 4,096 binary input patterns. The completed 50-run"
+" aggregate recovers the early increase in $I(T;Y)$, the later leftward "
+"movement of several hidden layers, and the ordering of the final deep-"
+"layer $I(T;Y)$ values. The reported values are diagnostics tied to the "
+"selected discretized estimator."
+msgstr ""
+"本示例复现 Shwartz-Ziv 和 Tishby 的 Figure 3 中三个信息平面面板。使用 12-10-8-6-4-2-1 网络，分别以论文 "
+"4,096 个二进制输入模式的 5%、45% 和 85% 进行训练。完成的 50 次运行汇总重现了 $I(T;Y)$ 的早期上升、若干隐藏层在后期向左移动，以及最终深层 $I(T;Y)$ 的排序。报告数值是针对所选离散估计器的诊断结果。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:59
+msgid ""
+"**Paper:** [Opening the Black Box of Deep Neural Networks via "
+"Information](https://arxiv.org/abs/1703.00810)"
+msgstr "**论文：** [通过信息揭开深度神经网络的黑箱](https://arxiv.org/abs/1703.00810)"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:62
+msgid ""
+"**Template:** `repro: Information-plane interactive approximation (Figure"
+" 3 protocol)`"
+msgstr ""
+"**模板：** `repro: Information-plane interactive approximation (Figure 3 "
+"protocol)`"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:64
+msgid "**Template ID:** `dafb8339-a932-4b10-b3b6-185fc53a5a4f`"
+msgstr "**模板 ID：** `dafb8339-a932-4b10-b3b6-185fc53a5a4f`"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:66
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:68
+msgid ""
+"The information plane represents every hidden layer $T$ with two "
+"coordinates:"
+msgstr "信息平面用两个坐标表示每个隐藏层 $T$："
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:70
+msgid ""
+"\n"
+"\\bigl(I(X;T), I(T;Y)\\bigr).\n"
+msgstr ""
+"\n"
+"\\bigl(I(X;T), I(T;Y)\\bigr).\n"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:74
+msgid ""
+"The paper describes two broad stages. During early training, layers "
+"primarily move upward as they acquire label information. Later, several "
+"intermediate and deep layers move left as the binned estimate of input "
+"information decreases. Figure 3 also compares how the amount of training "
+"data changes the final position of the deepest representation."
+msgstr ""
+"论文描述了两个大致阶段。训练早期，各层在获得标签信息时主要向上移动。随后，若干中间层和深层会随分箱输入信息估计值下降而向左移动。Figure 3 "
+"还比较了训练数据量如何改变最深层表示的最终位置。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:80
+msgid "This reproduction checks three observable claims:"
+msgstr "本复现检验三个可观测主张："
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:82
+msgid "the three training fractions produce the same broad trajectory direction;"
+msgstr "三种训练比例是否产生相同的大致轨迹方向；"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:83
+msgid "later layers exhibit a measurable decrease in binned $I(X;T)$; and"
+msgstr "后续层的分箱 $I(X;T)$ 是否出现可测量的下降；以及"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:84
+msgid "final deep-layer $I(T;Y)$ rises from the 5% panel to the 85% panel."
+msgstr "最终深层的 $I(T;Y)$ 是否从 5% 面板到 85% 面板逐步上升。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:86
+msgid "Paper Experiment and Reproduction Boundary"
+msgstr "论文实验与复现边界"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:88
+msgid ""
+"The formal batch run follows the target figure's architecture, three "
+"sample fractions, 10,000-epoch horizon, 50 independent initializations "
+"and training subsets, and the released IDNNs binning convention. Where "
+"the paper prose, figure caption, and public code differ, the architecture"
+" and training horizon follow the target figure. Optimizer and "
+"initialization details follow the executable public implementation."
+msgstr ""
+"正式批量运行遵循目标图的架构、三种样本比例、10,000 个 epoch 的训练周期、50 次独立初始化与训练子集，以及公开 IDNNs "
+"的分箱约定。论文正文、图注和公开代码不一致时，架构与训练周期以目标图为准；优化器和初始化细节则以可执行的公开实现为准。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Item"
+msgstr "项目"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Current reproduction"
+msgstr "当前复现"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Data"
+msgstr "数据"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Verified `var_u.mat`: 4,096 binary 12-dimensional inputs"
+msgstr "已校验的 `var_u.mat`：4,096 个 12 维二进制输入"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Training subsets"
+msgstr "训练子集"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "205 (5%), 1,843 (45%), and 3,482 (85%) examples"
+msgstr "205（5%）、1,843（45%）和 3,482（85%）个样本"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Model"
+msgstr "模型"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "12-10-8-6-4-2-1 MLP, tanh hidden layers, binary sigmoid output"
+msgstr "12-10-8-6-4-2-1 MLP，tanh 隐藏层，二元 sigmoid 输出"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Initialization"
+msgstr "初始化"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Released IDNNs fan-in truncated-normal initialization"
+msgstr "公开 IDNNs 实现的 fan-in 截断正态初始化"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Objective"
+msgstr "目标函数"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Binary cross-entropy"
+msgstr "二元交叉熵"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Adam, learning rate 0.0004"
+msgstr "Adam，学习率 0.0004"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Training"
+msgstr "训练"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "10,000 epochs, IDNNs logarithmic recording schedule"
+msgstr "10,000 个 epoch，IDNNs 对数记录计划"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Information estimate"
+msgstr "信息估计"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "30-anchor released-IDNNs discretization"
+msgstr "公开 IDNNs 的 30 锚点离散化"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "Formal aggregation"
+msgstr "正式聚合"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:48
+msgid "50 independent parameter initializations and subsets per panel"
+msgstr "每个面板各进行 50 次独立参数初始化与子集抽样"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:107
+msgid ""
+"Each graph Trainer runs one seed. The reported aggregate was produced "
+"separately by the reproduction batch runner over 50 seeds."
+msgstr "图中的每个 Trainer 运行一个 seed。报告中的汇总结果由复现批量运行器针对 50 个 seed 另行生成。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:110
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:112
+msgid ""
+"Open **Templates** and load `Opening the Black Box of Deep Neural "
+"Networks via Information`."
+msgstr ""
+"打开 **Templates**，加载 `Opening the Black Box of Deep Neural Networks via "
+"Information`。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:114
+#, python-format
+msgid "Choose one of the 5%, 45%, or 85% columns."
+msgstr "选择 5%、45% 或 85% 三列之一。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:115
+msgid ""
+"Confirm the dataset size, 12-10-8-6-4-2-1 network, Adam configuration, "
+"and information-plane observable."
+msgstr "确认数据集大小、12-10-8-6-4-2-1 网络、Adam 配置和信息平面 observable。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:117
+msgid "Run **Train** on that column's Trainer."
+msgstr "在该列的 Trainer 上运行 **Train**。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:118
+msgid "Inspect the corresponding information-plane visualization."
+msgstr "检查对应的信息平面可视化。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:119
+msgid "Repeat for the other columns if a three-panel comparison is needed."
+msgstr "如需三面板比较，对其他列重复以上操作。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:121
+msgid ""
+"Use the reproduction batch runner to obtain the 50-repeat aggregate. Each"
+" interactive Trainer produces one run."
+msgstr "使用复现批量运行器获得 50 次重复的汇总结果。每个交互式 Trainer 只生成一次运行。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:124
+msgid "Results"
+msgstr "结果"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:126
+msgid ""
+"All three formal panels completed 50 independent runs. The final values "
+"below are means with one standard deviation across runs."
+msgstr "三个正式面板均已完成 50 次独立运行。下列最终值为跨运行的均值及一个标准差。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:129
+msgid ""
+"Comfy Research information-plane visualization for the 5 percent training"
+" subset, showing six hidden-layer trajectories."
+msgstr "Comfy Research 的 5% 训练子集信息平面可视化，展示六个隐藏层的轨迹。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:133
+msgid ""
+"**5% training subset.** The Comfy Research result node shows the six "
+"hidden-layer trajectories from the 50-run aggregate."
+msgstr "**5% 训练子集。** Comfy Research 结果节点展示 50 次运行聚合得到的六个隐藏层轨迹。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:137
+msgid ""
+"Comfy Research information-plane visualization for the 45 percent "
+"training subset, showing six hidden-layer trajectories."
+msgstr "Comfy Research 的 45% 训练子集信息平面可视化，展示六个隐藏层的轨迹。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:141
+#, python-format
+msgid ""
+"**45% training subset.** The trajectories finish with more label "
+"information than in the 5% condition."
+msgstr "**45% 训练子集。** 轨迹终点的标签信息高于 5% 条件。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid ""
+"Comfy Research information-plane visualization for the 85 percent "
+"training subset, showing six hidden-layer trajectories."
+msgstr "Comfy Research 的 85% 训练子集信息平面可视化，展示六个隐藏层的轨迹。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:149
+msgid ""
+"**85% training subset.** The deepest layer finishes near one bit of label"
+" information while the later epochs move toward lower input information."
+msgstr "**85% 训练子集。** 最深层最终接近 1 bit 的标签信息，训练后期向更低的输入信息移动。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "Training fraction"
+msgstr "训练比例"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "Final deep $I(X;T)$"
+msgstr "最终深层 $I(X;T)$"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "Final deep $I(T;Y)$"
+msgstr "最终深层 $I(T;Y)$"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "Final train accuracy"
+msgstr "最终训练准确率"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "5%"
+msgstr "5％"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$1.152 \\pm 0.023$ bits"
+msgstr "$1.152 \\pm 0.023$ bits"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$0.452 \\pm 0.032$ bits"
+msgstr "$0.452 \\pm 0.032$ bits"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$0.9978 \\pm 0.0043$"
+msgstr "$0.9978 \\pm 0.0043$"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "45%"
+msgstr "45％"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$1.080 \\pm 0.101$ bits"
+msgstr "$1.080 \\pm 0.101$ bits"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$0.824 \\pm 0.033$ bits"
+msgstr "$0.824 \\pm 0.033$ bits"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$0.9981 \\pm 0.0027$"
+msgstr "$0.9981 \\pm 0.0027$"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "85%"
+msgstr "85％"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$1.112 \\pm 0.108$ bits"
+msgstr "$1.112 \\pm 0.108$ bits"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$0.964 \\pm 0.019$ bits"
+msgstr "$0.964 \\pm 0.019$ bits"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:145
+msgid "$0.9991 \\pm 0.0026$"
+msgstr "$0.9991 \\pm 0.0026$"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:159
+msgid ""
+"The most direct cross-panel result is the monotonic rise in final deep-"
+"layer label information:"
+msgstr "最直接的跨面板结果是最终深层标签信息单调上升："
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:162
+#, python-brace-format
+msgid ""
+"\n"
+"0.452 \\rightarrow 0.824 \\rightarrow 0.964\\ \\text{bits}.\n"
+msgstr ""
+"\n"
+"0.452 \\rightarrow 0.824 \\rightarrow 0.964\\ \\text{bits}.\n"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:166
+msgid ""
+"The trajectory geometry also matches the target phenomenon. Early points "
+"move mainly upward; middle and deep layers later move left. Using the "
+"maximum recorded value minus the endpoint as a compression diagnostic, "
+"the largest decreases were 6.637 bits for the 5% panel, 4.710 bits for "
+"the 45% panel, and 4.249 bits for the 85% panel."
+msgstr ""
+"轨迹形态也符合目标现象：早期数据点主要向上移动，中间层和深层随后向左移动。以记录的最大值减去终点值作为压缩诊断量，5%、45% 和 85% "
+"面板的最大下降分别为 6.637、4.710 和 4.249 bits。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:172
+msgid "Interpretation"
+msgstr "解释"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:174
+msgid ""
+"Under this data-generation rule, network, optimizer, and discretized "
+"estimator, representations first acquire label information and later show"
+" lower estimated input information. More training samples leave the "
+"deepest representation with more estimated label information."
+msgstr "在此数据生成规则、网络、优化器和离散估计器下，表示先获得标签信息，随后呈现出较低的输入信息估计值。训练样本更多时，最深层表示的标签信息估计值也更高。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:179
+msgid ""
+"This run measures representation trajectories. It does not test whether "
+"compression causes generalization."
+msgstr "本次运行测量的是表示轨迹，并未检验压缩是否导致泛化。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:182
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:184
+msgid ""
+"The reported coordinates depend on activation, binning, and optimizer "
+"choices."
+msgstr "报告坐标取决于激活函数、分箱和优化器选择。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:186
+msgid ""
+"The interactive template is a single-seed entry point; the reported "
+"result comes from a separate 50-repeat aggregate."
+msgstr "交互式模板是单 seed 的入口；报告结果来自另行进行的 50 次重复汇总。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:188
+msgid ""
+"The paper's drift-diffusion analysis, information-bottleneck bound, and "
+"critical-point claims are outside this reproduction."
+msgstr "论文中的漂移-扩散分析、信息瓶颈界和临界点主张不在本次复现范围内。"
+
+#: ../../docs/en/examples/reproductions/information-bottleneck-figure3.md:190
+msgid ""
+"Point-by-point digitization of the original figure's green transition "
+"markers was outside the scope."
+msgstr "原图绿色转折标记的逐点数字化不在本次范围内。"
+
+#~ msgid "WJ"
+#~ msgstr "WJ"
+
+#~ msgid ""
+#~ "**Comfy Research 50-run aggregate.** Each "
+#~ "panel traces the six hidden layers "
+#~ "through the information plane. Later "
+#~ "epochs move toward the upper-left "
+#~ "region, and the final deep-layer "
+#~ "label information increases with training-"
+#~ "set size."
+#~ msgstr ""
+#~ "**Comfy Research 50 次运行聚合。** "
+#~ "每个面板展示六个隐藏层的信息平面轨迹。训练后期的点向左上区域移动，最深层最终的标签信息随训练集增大而增加。"

@@ -1,0 +1,8 @@
+<a class="cr-language-switch"
+   href="{{ alternate_language_url }}"
+   hreflang="{{ 'zh-CN' if current_locale == 'en' else 'en' }}"
+   lang="{{ 'zh-CN' if current_locale == 'en' else 'en' }}"
+   aria-label="{{ cr_ui.language_switch_aria_label }}">
+  <span class="fa-solid fa-globe cr-language-switch__icon" aria-hidden="true"></span>
+  <span class="cr-language-switch__label">{{ alternate_language_label }}</span>
+</a>

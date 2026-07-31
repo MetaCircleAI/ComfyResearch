@@ -1,0 +1,339 @@
+{
+  "id": "97ff01a8-1724-43ec-8c38-fdb62bbe5faf",
+  "name": "Edge of stability(EOS)",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "comment-title",
+        "type": "comment",
+        "position": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "data": {
+          "text": "## Edge of Stability — Catapult Dynamics\n\n**Paper:** Cohen et al. 2021, *Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability* ([arXiv:2103.00065](https://arxiv.org/abs/2103.00065))\n\n**Reproduced phenomenon:** With a fixed learning rate η, full-batch GD on a neural network:\n1. Initially reduces loss while sharpness λ_max *progressively rises*\n2. Once λ_max reaches **2/η** (the Edge-of-Stability threshold), sharpness *self-stabilises*\n3. Loss continues to decrease *non-monotonically* — periodic spikes (catapult oscillations)\n\n**Setup (easy / clean):**\n- Dataset: Synthetic regression — `linear_dataset`, inputDim=20, outputDim=1, 200 train samples, deterministic (no noise)\n- Model: 2-layer tanh MLP, width=32 (~1761 params) — small enough for **exact** Hessian\n- Optimizer: Pure SGD η=0.2, no momentum → **2/η = 10.0** (orange dashed line)\n- Loss: MSE — Hessian is always PSD, so power iteration reliably tracks the true λ_max\n- Full batch, every step logged (logFrequency=1) to capture each catapult oscillation\n\n**Why this setting is cleaner than MNIST + cross-entropy:**\n- MSE regression Hessian is positive semi-definite → no large negative eigenvalues\n- Exact Hessian (≤2048 params) gives ground-truth λ_max, no approximation artefacts\n- Deterministic targets → loss landscape is smooth and reproducible\n- 200 samples × 1761 params means the model is overparameterised but converges in ~500 steps"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "hypothesis-eos",
+        "type": "hypothesis",
+        "position": {
+          "x": 0.0,
+          "y": 390.0
+        },
+        "data": {
+          "text": "**Prediction (EoS):** λ_max rises progressively under full-batch GD, then self-stabilises at 2/η = 10.0. Loss decreases non-monotonically: once λ_max ≈ 10 the loss shows upward spikes (catapult oscillations). Gradient norm oscillates in sync. EoS holds universally for fixed LR + full-batch GD + no momentum.",
+          "instanceTitle": "EoS / catapult hypothesis"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "linear_dataset-eos",
+        "type": "linear_dataset",
+        "position": {
+          "x": 0.0,
+          "y": 570.0
+        },
+        "data": {
+          "inputDim": 20,
+          "outputDim": 1,
+          "inputDistribution": "standard_normal",
+          "outputDistribution": "deterministic",
+          "trainSize": 200,
+          "testSize": 50,
+          "noiseLevel": 0,
+          "alpha": 1,
+          "seed": 0,
+          "samplingMode": "fixed",
+          "instanceTitle": "Synthetic regression (20→1, 200 train, deterministic)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "mlp_model-eos",
+        "type": "mlp_model",
+        "position": {
+          "x": 2.9106792149402025,
+          "y": 862.8439989278874
+        },
+        "data": {
+          "inputDim": 20,
+          "outputDim": 1,
+          "depth": 2,
+          "width": 32,
+          "activation": "tanh",
+          "seed": 0,
+          "instanceTitle": "MLP tanh (20→32×2→1, ~1761 params, exact Hessian)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "sgd_optimizer-eos",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 489.02057978561095,
+          "y": 771.6138902982594
+        },
+        "data": {
+          "learningRate": 0.2,
+          "momentum": 0,
+          "weightDecay": 0,
+          "instanceTitle": "SGD η=0.2, no momentum (2/η = 10)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "mse_loss-eos",
+        "type": "mse_loss",
+        "position": {
+          "x": 490.93577478853547,
+          "y": 958.1277775186146
+        },
+        "data": {
+          "lossScale": 1,
+          "lossMaskContextLength": 1,
+          "lossMaskMode": "all",
+          "lossMaskCustom": "",
+          "instanceTitle": "MSE loss (PSD Hessian)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "observable_hessian_eigenvalues-eos",
+        "type": "observable_hessian_eigenvalues",
+        "position": {
+          "x": 477.36098417845415,
+          "y": 574.3072056800953
+        },
+        "data": {
+          "topK": 1,
+          "order": "descending",
+          "instanceTitle": "λ_max (exact Hessian)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "trainer-eos",
+        "type": "trainer",
+        "position": {
+          "x": 913.9474756374844,
+          "y": 415.046225195619
+        },
+        "data": {
+          "trainingSteps": 10000,
+          "logFrequency": 500,
+          "computeDevice": "cpu",
+          "batchSize": -1,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Trainer (full-batch GD, 1000 steps, log every step)"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "training_visualization-eos",
+        "type": "training_visualization",
+        "position": {
+          "x": 1909.5923095444166,
+          "y": 410.58217246910084
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": true,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "observable_viz_hessian-eos",
+        "type": "observable_viz",
+        "position": {
+          "x": 1342.4425833507412,
+          "y": 385.7849009389845
+        },
+        "data": {
+          "pairedObservableId": "observable_hessian_eigenvalues-eos",
+          "pairedTrainerId": "trainer-eos",
+          "topK": 1,
+          "order": "descending",
+          "vizVariant": "hessian_eigenvalues",
+          "logScaleX": false,
+          "logScaleY": false,
+          "sharpnessThreshold": 10,
+          "instanceTitle": "λ_max — dashed line = 2/η = 10"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "trainer-2a70nkgc",
+        "type": "trainer",
+        "position": {
+          "x": 915.5397022825027,
+          "y": 776.5634515533236
+        },
+        "data": {
+          "trainingSteps": 10000,
+          "logFrequency": 1,
+          "computeDevice": "cpu",
+          "batchSize": -1,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "instanceTitle": "Trainer 1"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "training_visualization-j1gnl3ti",
+        "type": "training_visualization",
+        "position": {
+          "x": 1350.5747007856733,
+          "y": 712.3086980339926
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": true,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "lossView": "loss"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-dataset-train",
+        "source": "linear_dataset-eos",
+        "target": "trainer-eos",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-model",
+        "source": "mlp_model-eos",
+        "target": "trainer-eos",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-optimizer",
+        "source": "sgd_optimizer-eos",
+        "target": "trainer-eos",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-loss",
+        "source": "mse_loss-eos",
+        "target": "trainer-eos",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-obs-hessian",
+        "source": "observable_hessian_eigenvalues-eos",
+        "target": "trainer-eos",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-trainer-loss-viz",
+        "source": "trainer-eos",
+        "target": "training_visualization-eos",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-trainer-obs-hessian",
+        "source": "trainer-eos",
+        "target": "observable_viz_hessian-eos",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "xy-edge__linear_dataset-eosdataset-trainer-2a70nkgcdataset",
+        "source": "linear_dataset-eos",
+        "target": "trainer-2a70nkgc",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "xy-edge__mlp_model-eosmodel-trainer-2a70nkgcmodel",
+        "source": "mlp_model-eos",
+        "target": "trainer-2a70nkgc",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "xy-edge__sgd_optimizer-eosoptimizer-trainer-2a70nkgcoptimizer",
+        "source": "sgd_optimizer-eos",
+        "target": "trainer-2a70nkgc",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "xy-edge__mse_loss-eosloss-trainer-2a70nkgcloss",
+        "source": "mse_loss-eos",
+        "target": "trainer-2a70nkgc",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "xy-edge__trainer-2a70nkgcloss_results-training_visualization-j1gnl3titensor_list",
+        "source": "trainer-2a70nkgc",
+        "target": "training_visualization-j1gnl3ti",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      }
+    ],
+    "viewport": {
+      "x": -598.2605506353825,
+      "y": -297.1041619203942,
+      "zoom": 1.0000000000000004
+    }
+  },
+  "savedAt": 1782648244268.0,
+  "libraryOrigin": null
+}

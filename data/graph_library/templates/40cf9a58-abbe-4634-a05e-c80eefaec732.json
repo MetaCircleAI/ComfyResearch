@@ -1,0 +1,232 @@
+{
+  "id": "40cf9a58-abbe-4634-a05e-c80eefaec732",
+  "name": "dataset mixer B",
+  "tier": "small",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "linear_dataset-fpez8a2t",
+        "type": "linear_dataset",
+        "position": {
+          "x": 170.0,
+          "y": 334.0
+        },
+        "data": {
+          "inputDim": 10,
+          "outputDim": 1,
+          "inputDistribution": "standard_normal",
+          "outputDistribution": "additive_gaussian",
+          "trainSize": 800,
+          "testSize": 200,
+          "noiseLevel": 0.25,
+          "alpha": 1,
+          "seed": 0,
+          "samplingMode": "fixed",
+          "instanceTitle": "Linear Dataset 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "random_noise_dataset-kux4v0sm",
+        "type": "random_noise_dataset",
+        "position": {
+          "x": 177.04570807711204,
+          "y": 674.7176288074663
+        },
+        "data": {
+          "inputDim": 10,
+          "outputDim": 1,
+          "inputDistribution": "standard_normal",
+          "outputDistribution": "deterministic",
+          "trainSize": 800,
+          "testSize": 200,
+          "noiseLevel": 0,
+          "alpha": 1,
+          "seed": 0,
+          "samplingMode": "fixed",
+          "instanceTitle": "Random noise dataset 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "dataset_mixer_b-aof6cuin",
+        "type": "dataset_mixer_b",
+        "position": {
+          "x": 514.9100280748801,
+          "y": 602.7137573325322
+        },
+        "data": {
+          "interpolationLambda": 0.5,
+          "instanceTitle": "Dataset Mixer B 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "trainer-wd9z6nok",
+        "type": "trainer",
+        "position": {
+          "x": 996.7820910225166,
+          "y": 501.631399300413
+        },
+        "data": {
+          "trainingSteps": 1000,
+          "logFrequency": 10,
+          "computeDevice": "auto",
+          "batchSize": -1
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "adam_optimizer-50lguc7q",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 563.374172336855,
+          "y": 336.8533088096982
+        },
+        "data": {
+          "learningRate": 0.001,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Adam 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "mse_loss-zqdvw8i9",
+        "type": "mse_loss",
+        "position": {
+          "x": 527.3722365993881,
+          "y": 912.8842806091718
+        },
+        "data": {
+          "lossScale": 1,
+          "lossMaskContextLength": 1,
+          "lossMaskMode": "all",
+          "lossMaskCustom": "",
+          "instanceTitle": "MSE loss 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "mlp_model-01kf2301",
+        "type": "mlp_model",
+        "position": {
+          "x": 910.9313211870183,
+          "y": 861.650756675084
+        },
+        "data": {
+          "inputDim": 10,
+          "outputDim": 1,
+          "depth": 2,
+          "width": 64,
+          "activation": "relu",
+          "seed": 0,
+          "instanceTitle": "MLP 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      },
+      {
+        "id": "training_visualization-vzrksiyr",
+        "type": "training_visualization",
+        "position": {
+          "x": 1296.7820910225166,
+          "y": -18.368600699586977
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": false,
+          "showTrainCurve": true,
+          "showTestCurve": true,
+          "yPlotMetric": "loss",
+          "instanceTitle": "Training viz 0"
+        },
+        "parentId": null,
+        "extent": null,
+        "hidden": null,
+        "style": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "xy-edge__linear_dataset-fpez8a2tdataset-dataset_mixer_b-aof6cuindataset_a",
+        "source": "linear_dataset-fpez8a2t",
+        "target": "dataset_mixer_b-aof6cuin",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset_a"
+      },
+      {
+        "id": "xy-edge__random_noise_dataset-kux4v0smdataset-dataset_mixer_b-aof6cuindataset_b",
+        "source": "random_noise_dataset-kux4v0sm",
+        "target": "dataset_mixer_b-aof6cuin",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset_b"
+      },
+      {
+        "id": "xy-edge__mlp_model-01kf2301model-trainer-wd9z6nokmodel",
+        "source": "mlp_model-01kf2301",
+        "target": "trainer-wd9z6nok",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "xy-edge__adam_optimizer-50lguc7qoptimizer-trainer-wd9z6nokoptimizer",
+        "source": "adam_optimizer-50lguc7q",
+        "target": "trainer-wd9z6nok",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "xy-edge__mse_loss-zqdvw8i9loss-trainer-wd9z6nokloss",
+        "source": "mse_loss-zqdvw8i9",
+        "target": "trainer-wd9z6nok",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "xy-edge__trainer-wd9z6nokloss_results-training_visualization-vzrksiyrtensor_list",
+        "source": "trainer-wd9z6nok",
+        "target": "training_visualization-vzrksiyr",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "xy-edge__dataset_mixer_b-aof6cuindataset-trainer-wd9z6nokdataset",
+        "source": "dataset_mixer_b-aof6cuin",
+        "target": "trainer-wd9z6nok",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      }
+    ],
+    "viewport": {
+      "x": -96.53887452580818,
+      "y": -128.9782563793441,
+      "zoom": 0.9125392525349362
+    }
+  },
+  "savedAt": 1777617424582.0,
+  "libraryOrigin": null
+}

@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/user-guide/execution-model.md:7
+msgid "User Guide"
+msgstr "用户指南"
+
+#: ../../en/user-guide/execution-model.md:10
+msgid "Understand graph execution"
+msgstr "理解图执行"
+
+#: ../../en/user-guide/execution-model.md:13
+msgid ""
+"The canvas is an editor for a typed experiment document; the backend "
+"executes the serialized dependencies, not pixels or visual proximity."
+msgstr "画布是有类型实验文档的编辑器；后端执行的是序列化的依赖关系，而不是像素或视觉邻近性。"
+
+#: ../../en/user-guide/execution-model.md:17
+msgid "From canvas to request"
+msgstr "从画布到请求"
+
+#: ../../en/user-guide/execution-model.md:19
+msgid ""
+"A graph document contains nodes, edges, and viewport state. Each node has a "
+"type, identifier, position, and data fields. Each edge identifies its "
+"source, target, source handle, and target handle."
+msgstr "图文档包含 Nodes、边和视口状态。每个 Node 都有类型、标识符、位置和数据字段。每条边标明其源、目标、源 handle 和目标 handle。"
+
+#: ../../en/user-guide/execution-model.md:23
+msgid ""
+"When a Trainer starts, the frontend serializes the execution graph rooted in"
+" that Trainer. The backend validates required inputs and resolves the "
+"connected dataset, model, optimizer, loss, schedules, and Observables before"
+" allocating the run."
+msgstr ""
+"Trainer 启动时，前端会序列化以该 Trainer 为根的执行图。后端在分配运行前验证必需输入，并解析已连接的数据集、模型、优化器、损失、调度器和"
+" Observables。"
+
+#: ../../en/user-guide/execution-model.md:28
+msgid "Training and measurement are separate"
+msgstr "训练与测量相互分离"
+
+#: ../../en/user-guide/execution-model.md:30
+msgid ""
+"The primary loss participates in backpropagation. Observables read permitted"
+" training state at log points. Connecting an Observable does not add it to "
+"the loss, although computing it can make the run slower."
+msgstr "主损失参与反向传播。Observables 在记录点读取允许的训练状态。连接 Observable 不会将它加入损失，但计算它可能使运行变慢。"
+
+#: ../../en/user-guide/execution-model.md:34
+msgid "The Trainer returns distinct logical outputs:"
+msgstr "Trainer 返回彼此独立的逻辑输出："
+
+#: ../../en/user-guide/execution-model.md:36
+msgid "a model checkpoint for downstream checkpoint consumers;"
+msgstr "供下游检查点消费者使用的模型检查点；"
+
+#: ../../en/user-guide/execution-model.md:37
+msgid "loss and test histories for Training viz;"
+msgstr "供 Training viz 使用的损失和测试历史；"
+
+#: ../../en/user-guide/execution-model.md:38
+msgid "named Observable histories for their paired visualizations."
+msgstr "供配套可视化使用的具名 Observable 历史。"
+
+#: ../../en/user-guide/execution-model.md:40
+msgid ""
+"That separation makes it possible to change a measurement without silently "
+"changing the objective."
+msgstr "这种分离使得可以改变测量，而不会悄然改变目标。"
+
+#: ../../en/user-guide/execution-model.md:43
+msgid "State has more than one lifetime"
+msgstr "状态具有多种生命周期"
+
+#: ../../en/user-guide/execution-model.md:45
+msgid ""
+"Node settings and graph structure belong to the graph document. Workspace "
+"organization belongs to the workspace snapshot. Result histories and model "
+"bytes are runtime state that may be removed by a smaller save tier. Remote "
+"credentials live outside the graph under `.comfyresearch/`."
+msgstr ""
+"Node 设置和图结构属于图文档。工作区组织属于工作区快照。结果历史和模型字节是运行时状态，较小的保存层级可能会移除它们。远程凭据位于图之外的 "
+"`.comfyresearch/` 下。"
+
+#: ../../en/user-guide/execution-model.md:50
+msgid ""
+"Therefore, a visible canvas is not automatically a complete reproducibility "
+"bundle. Choose a save tier and external method record that match the claim."
+msgstr "因此，可见画布并不自动构成完整的可复现性包。请选择与结论相匹配的保存层级和外部方法记录。"
+
+#: ../../en/user-guide/execution-model.md:53
+msgid "Events are incremental"
+msgstr "事件是增量式的"
+
+#: ../../en/user-guide/execution-model.md:55
+msgid ""
+"Training is streamed as newline-delimited JSON. Progress arrives before a "
+"terminal completed, paused, aborted, or error outcome. The frontend commits "
+"histories and checkpoint state back into the graph only as those events are "
+"handled."
+msgstr "训练以换行分隔的 JSON 流式传输。进度事件先于最终的完成、暂停、中止或错误结果到达。前端仅在处理这些事件时才将历史和检查点状态写回图中。"
+
+#: ../../en/user-guide/execution-model.md:60
+msgid ""
+"See [Training API](../reference/training-api.md) for the supported route and"
+" event contracts."
+msgstr "支持的路由和事件契约请参阅[训练 API](../reference/training-api.md)。"

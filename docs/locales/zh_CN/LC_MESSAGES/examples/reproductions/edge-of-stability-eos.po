@@ -1,0 +1,215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-30 20:45+0800\n"
+"PO-Revision-Date: 2026-07-30 20:51+0800\n"
+"Last-Translator: Comfy Research contributors\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:7
+msgid "Optimization Stability and Sharpness · Phenomenon reproduction"
+msgstr "优化稳定性与尖锐度 · 现象复现"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:10
+msgid "Edge of Stability (EOS)"
+msgstr "稳定性边缘（EOS）"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:13
+msgid ""
+"Full-batch gradient descent drives leading curvature toward $2 / \\eta$, "
+"while loss continues to make non-monotonic net progress."
+msgstr "全批量梯度下降会将主导曲率推向 $2 / \\eta$；尽管损失并非单调下降，整体仍会取得进展。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:22
+msgid "QQ"
+msgstr "清宇"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:27
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:35
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:37
+msgid "**Phenomenon reproduction**"
+msgstr "**现象复现**"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:42
+msgid ""
+"This graph demonstrates edge-of-stability dynamics with a small "
+"deterministic regression problem and an exact Hessian observable. It is a"
+" qualitative, mechanism-level reproduction, not a numeric match to a "
+"paper figure."
+msgstr ""
+"本图采用小型确定性回归任务，并通过精确的 Hessian observable 展示稳定性边缘动态。"
+"这是机制层面的定性复现，并非对论文图表的数值复刻。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:47
+msgid ""
+"**Paper:** [Gradient Descent on Neural Networks Typically Occurs at the "
+"Edge of Stability](https://arxiv.org/abs/2103.00065), Cohen et al. (ICLR "
+"2022)"
+msgstr ""
+"**论文：** [Gradient Descent on Neural Networks Typically Occurs at the "
+"Edge of Stability](https://arxiv.org/abs/2103.00065)，Cohen 等人（ICLR "
+"2022）"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:49
+msgid "**Template:** `Edge of stability(EOS)`"
+msgstr "**模板：** `Edge of stability(EOS)`"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:51
+msgid "**Template ID:** `97ff01a8-1724-43ec-8c38-fdb62bbe5faf`"
+msgstr "**模板 ID：** `97ff01a8-1724-43ec-8c38-fdb62bbe5faf`"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:53
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:55
+msgid ""
+"With $\\eta = 0.2$, the local linear stability boundary is $2 / \\eta = "
+"10$. The intended signature is a progressive rise in the largest Hessian "
+"eigenvalue, followed by fluctuations near that value and a loss curve "
+"with local spikes but net decrease."
+msgstr ""
+"当 $\\eta = 0.2$ 时，局部线性稳定性边界为 $2 / \\eta = 10$。预期现象是最大 Hessian 特征值"
+"逐步升高，随后在该值附近波动；损失曲线虽会出现局部尖峰，但整体下降。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:60
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Template setting"
+msgstr "模板设置"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Data"
+msgstr "数据"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid ""
+"Deterministic synthetic regression, 20 inputs to 1 output; 200 train and "
+"50 test examples"
+msgstr "确定性合成回归任务：20 维输入、1 维输出；200 个训练样本和 50 个测试样本"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Two-hidden-layer tanh MLP, width 32, seed 0"
+msgstr "双隐藏层 tanh MLP，宽度为 32，seed 为 0"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Full-batch SGD, learning rate 0.2, no momentum"
+msgstr "全批量 SGD，学习率 0.2，无动量"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Training"
+msgstr "训练"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Two CPU Trainers: 10,000 updates, logged every 500 updates or every update"
+msgstr "两个 CPU Trainer：各运行 10,000 次更新，分别每 500 次和每次更新记录一次"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Observable"
+msgstr "observable"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:39
+msgid "Exact leading Hessian eigenvalue and a reference line at $2 / \\eta = 10$"
+msgstr "精确计算的最大 Hessian 特征值，以及位于 $2 / \\eta = 10$ 的参考线"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:70
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:72
+msgid "Open **Templates** and load `Edge of stability(EOS)`."
+msgstr "打开 **模板** 并加载 `Edge of stability(EOS)`。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:73
+msgid "Run the Trainer paired with the Hessian visualization."
+msgstr "运行与 Hessian 可视化相连的 Trainer。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:74
+#, python-brace-format
+msgid ""
+"Inspect loss and $\\lambda_{\\max}$ together; use the every-update "
+"Trainer to resolve individual oscillations."
+msgstr "同时查看损失和 $\\lambda_{\\max}$；使用逐次更新的 Trainer 观察单次振荡。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:77
+msgid ""
+"Loaded Edge of Stability template with the deterministic regression "
+"graph, full-batch SGD, two CPU Trainers, and Hessian observable."
+msgstr "已载入稳定性边缘模板，其中包括确定性回归图、全批量 SGD、两个 CPU Trainer 和 Hessian observable。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:82
+msgid "Results and Interpretation"
+msgstr "结果与解释"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:84
+#, python-brace-format
+msgid ""
+"$\\lambda_{\\max}$ should approach the dashed threshold and remain near "
+"it rather than increasing without bound. Loss can rise on individual "
+"updates yet trend down over the run, which is consistent with edge-of-"
+"stability behavior in this fixed, full-batch setting."
+msgstr ""
+"$\\lambda_{\\max}$ 应接近虚线阈值并保持在其附近，而非无限增大。损失在个别更新时可能上升，"
+"但在整个训练过程中仍呈下降趋势；这与这一固定全批量设定下的稳定性边缘行为相符。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:89
+msgid ""
+"Completed EOS visualizations showing the leading Hessian eigenvalue near "
+"the 2 over eta threshold together with the training and test loss "
+"trajectories."
+msgstr "完成的 EOS 可视化同时展示了接近 2 / eta 阈值的最大 Hessian 特征值，以及训练损失和测试损失轨迹。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:94
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:96
+msgid "The small MSE regression task is not the paper's full experimental set."
+msgstr "小型 MSE 回归任务并非论文的完整实验设置。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:97
+msgid "One seed is illustrative, not a robustness study."
+msgstr "单个 seed 仅作示例，并非稳健性研究。"
+
+#: ../../en/examples/reproductions/edge-of-stability-eos.md:98
+msgid ""
+"A leading eigenvalue does not establish the full self-stabilization "
+"analysis."
+msgstr "仅凭一个最大特征值无法完成完整的自稳定化分析。"

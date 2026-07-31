@@ -1,0 +1,20 @@
+<div class="cr-version-switch">
+  <button class="cr-version-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="cr-version-menu"
+          aria-label="{{ cr_ui.version_switch_aria_label }}">
+    <span class="fa-solid fa-code-branch cr-version-button__icon" aria-hidden="true"></span>
+    <span class="cr-version-button__label">{{ current_docs_version }}</span>
+    <span class="fa-solid fa-chevron-down cr-version-button__chevron" aria-hidden="true"></span>
+  </button>
+  <div class="cr-version-menu" id="cr-version-menu" role="menu" hidden>
+    {% for version in documentation_versions %}
+      {% if version.is_current %}
+        <span class="cr-version-menu__item is-current" role="menuitem" aria-current="page">{{ version.label }}</span>
+      {% else %}
+        <a class="cr-version-menu__item" role="menuitem" href="{{ version.url }}">{{ version.label }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

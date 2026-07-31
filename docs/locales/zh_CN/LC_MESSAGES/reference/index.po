@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 14:05+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/reference/index.md:27 ../../en/reference/index.md:63
+msgid "Application"
+msgstr "应用"
+
+#: ../../en/reference/index.md:34 ../../en/reference/index.md:63
+msgid "Training API"
+msgstr "训练 API"
+
+#: ../../en/reference/index.md:41 ../../en/reference/index.md:63
+msgid "Data contracts"
+msgstr "数据契约"
+
+#: ../../en/reference/index.md:48 ../../en/reference/index.md:63
+msgid "Node contracts"
+msgstr "Node 契约"
+
+#: ../../en/reference/index.md:55 ../../en/reference/index.md:63
+msgid "Support status"
+msgstr "支持状态"
+
+#: ../../en/reference/index.md:7
+msgid "Reference"
+msgstr "参考"
+
+#: ../../en/reference/index.md:10
+msgid "Runtime and file contracts"
+msgstr "运行时与文件契约"
+
+#: ../../en/reference/index.md:13
+msgid ""
+"Exact commands, routes, document versions, generated artifacts, and support "
+"boundaries for the current development source."
+msgstr "当前开发源码的确切命令、路由、文档版本、生成产物和支持边界。"
+
+#: ../../en/reference/index.md:17
+msgid ""
+"Use these pages to look up a contract. For task sequences, return to the [User Guide"
+"](../user-guide/index.md). The interactive FastAPI schema at `/docs` lists every "
+"development endpoint; this reference concentrates on the supported stable workflow."
+msgstr ""
+"使用这些页面查阅契约。对于任务步骤，请返回[用户指南](../user-guide/index.md)。`/docs` 中的交互式 FastAPI schema "
+"列出每个开发端点；本参考集中说明受支持的稳定工作流。"
+
+#: ../../en/reference/index.md:31
+msgid "CLI options, environment variables, remote precedence, and local state paths."
+msgstr "CLI 选项、环境变量、远程配置优先级和本地状态路径。"
+
+#: ../../en/reference/index.md:38
+msgid "Stable workflow routes and newline-delimited training event contracts."
+msgstr "稳定工作流路由和以换行符分隔的训练事件契约。"
+
+#: ../../en/reference/index.md:45
+msgid "Graph, workspace, and saved-library document shapes and versions."
+msgstr "图、工作区和已保存库文档的结构及版本。"
+
+#: ../../en/reference/index.md:52
+msgid "Definition sources, generated outputs, and validation commands."
+msgstr "定义来源、生成输出和验证命令。"
+
+#: ../../en/reference/index.md:59
+msgid "Stable documentation scope, experimental areas, and development-version policy."
+msgstr "稳定文档范围、实验性领域和开发版本策略。"

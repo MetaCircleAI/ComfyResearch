@@ -1,0 +1,412 @@
+{
+  "id": "repro-jastrzbski-fig1-vgg11",
+  "name": "repro: Jastrz\u0119bski Fig 1 cyclic CBS vs CLR",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "j1-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -280
+        },
+        "data": {
+          "text": "Jastrz\u0119bski 1711.04623 Fig 1 LEFT (VGG-11 + BN, CIFAR-10). CBS (blue) vs CLR (red) should overlap.\nData: RandomState(777) 45k split; pixel-mean/global-std normalization; crop+flip; epoch shuffle.\nCBS: \u03b7=0.005 fixed, B\u2208[128,640] cyclic.\nCLR: B=128 fixed, \u03b7\u2208[0.001,0.005] cyclic.\nSquare wave: 5 epochs high, then 5 epochs low. SGD momentum 0.0, wd 0.0.\nRun Train series on both stacks (seeds 0..4); the plot averages by trainer run.\nFig 1 acc plot (300 data epochs; CBS steps=63450, CLR steps=105600).",
+          "instanceTitle": "Jastrz\u0119bski Fig 1 left"
+        }
+      },
+      {
+        "id": "j1-ds",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 40
+        },
+        "data": {
+          "trainSize": 45000,
+          "testSize": 10000,
+          "initSeed": 777,
+          "seed": 777,
+          "trainingRecipe": "jastrzbski_fig1",
+          "instanceTitle": "CIFAR-10 (45k train, split seed 777)"
+        }
+      },
+      {
+        "id": "j1-model",
+        "type": "vgg11_cifar_model",
+        "position": {
+          "x": 40,
+          "y": 200
+        },
+        "data": {
+          "seed": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "instanceTitle": "VGG-11 + BN (5 seeds)"
+        }
+      },
+      {
+        "id": "j1-ce",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 280,
+          "y": 120
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "CE"
+        }
+      },
+      {
+        "id": "j1-cbs_sched",
+        "type": "cyclic_batch_schedule",
+        "position": {
+          "x": 280,
+          "y": 280
+        },
+        "data": {
+          "batchMin": 128,
+          "batchMax": 640,
+          "cycleLengthEpochs": 10,
+          "refBatchSize": 128,
+          "cycleLengthSteps": 0,
+          "scheduleMode": "square_epoch",
+          "instanceTitle": "Cyclic BS (128\u2194640)"
+        }
+      },
+      {
+        "id": "j1-sgd_cbs",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 280,
+          "y": 420
+        },
+        "data": {
+          "learningRate": 0.005,
+          "momentum": 0.0,
+          "weightDecay": 0.0,
+          "instanceTitle": "SGD CBS (\u03b7=0.005)"
+        }
+      },
+      {
+        "id": "j1-tr_cbs",
+        "type": "trainer",
+        "position": {
+          "x": 560,
+          "y": 280
+        },
+        "data": {
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 300,
+          "trainingSteps": 63450,
+          "logFrequency": 352,
+          "batchSize": 128,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "Trainer CBS (cyclic batch)"
+        }
+      },
+      {
+        "id": "j1-tviz_cbs",
+        "type": "training_visualization",
+        "position": {
+          "x": 860,
+          "y": 280
+        },
+        "data": {
+          "instanceTitle": "CBS loss viz"
+        }
+      },
+      {
+        "id": "j1-acc_cbs",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 560,
+          "y": 440
+        },
+        "data": {
+          "instanceTitle": "CBS accuracy"
+        }
+      },
+      {
+        "id": "j1-oviz_cbs",
+        "type": "observable_viz",
+        "position": {
+          "x": 860,
+          "y": 440
+        },
+        "data": {
+          "pairedObservableId": "j1-acc_cbs",
+          "pairedTrainerId": "j1-tr_cbs",
+          "vizVariant": "accuracy",
+          "instanceTitle": "CBS acc viz"
+        }
+      },
+      {
+        "id": "j1-clr_sched",
+        "type": "cyclic_lr_schedule",
+        "position": {
+          "x": 280,
+          "y": 620
+        },
+        "data": {
+          "lrMin": 0.001,
+          "lrMax": 0.005,
+          "cycleLengthEpochs": 10,
+          "refBatchSize": 128,
+          "cycleLengthSteps": 0,
+          "scheduleMode": "square_epoch",
+          "instanceTitle": "Cyclic LR (0.001\u21940.005)"
+        }
+      },
+      {
+        "id": "j1-sgd_clr",
+        "type": "sgd_optimizer",
+        "position": {
+          "x": 280,
+          "y": 760
+        },
+        "data": {
+          "learningRate": 0.005,
+          "momentum": 0.0,
+          "weightDecay": 0.0,
+          "instanceTitle": "SGD CLR (B=128)"
+        }
+      },
+      {
+        "id": "j1-tr_clr",
+        "type": "trainer",
+        "position": {
+          "x": 560,
+          "y": 620
+        },
+        "data": {
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 300,
+          "trainingSteps": 105600,
+          "logFrequency": 352,
+          "batchSize": 128,
+          "disableExtraObservables": true,
+          "computeDevice": "cuda",
+          "remoteGpu": true,
+          "instanceTitle": "Trainer CLR (cyclic LR)"
+        }
+      },
+      {
+        "id": "j1-tviz_clr",
+        "type": "training_visualization",
+        "position": {
+          "x": 860,
+          "y": 620
+        },
+        "data": {
+          "instanceTitle": "CLR loss viz"
+        }
+      },
+      {
+        "id": "j1-acc_clr",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 560,
+          "y": 780
+        },
+        "data": {
+          "instanceTitle": "CLR accuracy"
+        }
+      },
+      {
+        "id": "j1-oviz_clr",
+        "type": "observable_viz",
+        "position": {
+          "x": 860,
+          "y": 780
+        },
+        "data": {
+          "pairedObservableId": "j1-acc_clr",
+          "pairedTrainerId": "j1-tr_clr",
+          "vizVariant": "accuracy",
+          "instanceTitle": "CLR acc viz"
+        }
+      },
+      {
+        "id": "j1-cstable",
+        "type": "curve_series_table",
+        "position": {
+          "x": 1120,
+          "y": 440
+        },
+        "data": {
+          "rows": [],
+          "captureMetrics": [
+            "train_acc",
+            "test_acc"
+          ],
+          "instanceTitle": "Fig 1 acc curves"
+        }
+      },
+      {
+        "id": "j1-csviz",
+        "type": "curve_series_viz",
+        "position": {
+          "x": 1380,
+          "y": 440
+        },
+        "data": {
+          "instanceTitle": "Fig 1 acc plot (5-seed mean)",
+          "dualAxis": false,
+          "meanByRun": true,
+          "plotXMode": "epoch",
+          "plotXKey": "epoch"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-j1-ds-j1-tr_cbs-dataset-dataset",
+        "source": "j1-ds",
+        "target": "j1-tr_cbs",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-j1-model-j1-tr_cbs-model-model",
+        "source": "j1-model",
+        "target": "j1-tr_cbs",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-j1-sgd_cbs-j1-tr_cbs-optimizer-optimizer",
+        "source": "j1-sgd_cbs",
+        "target": "j1-tr_cbs",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-j1-ce-j1-tr_cbs-loss-loss",
+        "source": "j1-ce",
+        "target": "j1-tr_cbs",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-j1-acc_cbs-j1-tr_cbs-observables-observables",
+        "source": "j1-acc_cbs",
+        "target": "j1-tr_cbs",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-j1-tr_cbs-j1-tviz_cbs-loss_results-tensor_list",
+        "source": "j1-tr_cbs",
+        "target": "j1-tviz_cbs",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-j1-tr_cbs-j1-oviz_cbs-observable_results-tensor",
+        "source": "j1-tr_cbs",
+        "target": "j1-oviz_cbs",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-j1-cbs_sched-j1-tr_cbs-batch_schedule-batch_schedule",
+        "source": "j1-cbs_sched",
+        "target": "j1-tr_cbs",
+        "sourceHandle": "batch_schedule",
+        "targetHandle": "batch_schedule"
+      },
+      {
+        "id": "e-j1-oviz_cbs-j1-cstable-out_tensor-stream",
+        "source": "j1-oviz_cbs",
+        "target": "j1-cstable",
+        "sourceHandle": "out_tensor",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-j1-cstable-j1-csviz-series-curves",
+        "source": "j1-cstable",
+        "target": "j1-csviz",
+        "sourceHandle": "series",
+        "targetHandle": "curves"
+      },
+      {
+        "id": "e-j1-ds-j1-tr_clr-dataset-dataset",
+        "source": "j1-ds",
+        "target": "j1-tr_clr",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-j1-model-j1-tr_clr-model-model",
+        "source": "j1-model",
+        "target": "j1-tr_clr",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-j1-sgd_clr-j1-tr_clr-optimizer-optimizer",
+        "source": "j1-sgd_clr",
+        "target": "j1-tr_clr",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-j1-ce-j1-tr_clr-loss-loss",
+        "source": "j1-ce",
+        "target": "j1-tr_clr",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-j1-acc_clr-j1-tr_clr-observables-observables",
+        "source": "j1-acc_clr",
+        "target": "j1-tr_clr",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-j1-tr_clr-j1-tviz_clr-loss_results-tensor_list",
+        "source": "j1-tr_clr",
+        "target": "j1-tviz_clr",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-j1-tr_clr-j1-oviz_clr-observable_results-tensor",
+        "source": "j1-tr_clr",
+        "target": "j1-oviz_clr",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-j1-clr_sched-j1-sgd_clr-lr_schedule-lr_schedule",
+        "source": "j1-clr_sched",
+        "target": "j1-sgd_clr",
+        "sourceHandle": "lr_schedule",
+        "targetHandle": "lr_schedule"
+      },
+      {
+        "id": "e-j1-oviz_clr-j1-cstable-out_tensor-stream",
+        "source": "j1-oviz_clr",
+        "target": "j1-cstable",
+        "sourceHandle": "out_tensor",
+        "targetHandle": "stream"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.45
+    }
+  },
+  "savedAt": 1785221571237.48
+}

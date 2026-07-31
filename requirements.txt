@@ -1,0 +1,15 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+httpx>=0.27
+pydantic>=2.10.0
+numpy>=1.26.0
+torch>=2.2.0
+matplotlib>=3.8.0
+sympy>=1.13
+antlr4-python3-runtime==4.11.1
+pykan>=0.2.0
+# pykan does not declare these on PyPI; MultKAN imports sklearn, tqdm, pandas, yaml, etc.
+scikit-learn>=1.3.0
+tqdm>=4.66.0
+pandas>=2.0.0
+PyYAML>=6.0

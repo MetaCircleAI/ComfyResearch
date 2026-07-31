@@ -1,0 +1,468 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Comfy Research
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Comfy Research \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 12:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:7
+msgid "Representation Compression and Information Flow · Phenomenon reproduction"
+msgstr "表征压缩与信息流 · 现象复现"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:10
+msgid "Rank Collapse in a Linear Bottleneck"
+msgstr "线性瓶颈中的秩坍塌"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:13
+msgid ""
+"Skewed class frequency plus a representation bottleneck can produce "
+"primacy bias, entropy expansion, and late-window compression - the three "
+"phases of the Rank Collapse trajectory."
+msgstr "类别频率偏斜与表征瓶颈叠加，会形成优先偏差、熵扩张和后期窗口压缩，即 Rank Collapse 轨迹的三个阶段。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:23
+msgid "GS"
+msgstr "绍阳"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:28
+msgid "Author"
+msgstr "作者"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:36
+msgid "Scope"
+msgstr "范围"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:38
+msgid "**Phenomenon reproduction (calibrated)**"
+msgstr "**现象复现（经校准）**"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Abstract"
+msgstr "摘要"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:43
+#, python-brace-format
+msgid ""
+"This template reconstructs Figure 5 of the Rank Collapse paper on a six-"
+"sample orthogonal toy. The full softmax cross-entropy trajectory is run "
+"on a bias-free linear factorization `θ ∈ R^{6×2}, F = Sθ, W ∈ R^{2×4}` "
+"with `d = 2 < |V| = 4`. The canvas directly renders the Figure 5D RankMe "
+"curve and captures `F`, `W`, and the two eigenvalue histories for the "
+"B/C/D report. This is a post-hoc deterministic figure reconstruction, not"
+" exact numerical recovery and not a seed-robustness claim."
+msgstr ""
+"此模板在一个由六个样本组成的正交玩具问题上重建 Rank Collapse 论文的图 5。它在无偏置线性分解 `θ ∈ "
+"R^{6×2}, F = Sθ, W ∈ R^{2×4}` 上运行完整的 softmax 交叉熵轨迹，其中 `d = 2 < |V| = 4`。画布直接呈现图 5D 的 "
+"RankMe 曲线，并记录 `F`、`W` 以及两组特征值历史，用于 B/C/D 的报告。这是事后进行的确定性图形重建，不是精确的数值恢复，也不主张对随机 seed 稳健。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:52
+msgid ""
+"**Paper:** [Tracing the Representation Geometry of Language Models from "
+"Pretraining to Post-training](https://arxiv.org/abs/2509.23024)"
+msgstr "**论文：** [Tracing the Representation Geometry of Language Models from Pretraining to Post-training](https://arxiv.org/abs/2509.23024)"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:54
+msgid "**Template:** `repro: Rank Collapse Figure 5 linear CE (calibrated)`"
+msgstr "**模板：** `repro: Rank Collapse Figure 5 linear CE (calibrated)`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:56
+msgid "**Template ID:** `repro-rank-collapse-figure5-linear-ce`"
+msgstr "**模板 ID：** `repro-rank-collapse-figure5-linear-ce`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:58
+msgid "Reproduction Goal"
+msgstr "复现目标"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:60
+msgid ""
+"The paper claims that skewed class frequency together with a "
+"representation bottleneck can yield three intertwined phenomena:"
+msgstr "论文指出，类别频率偏斜与表征瓶颈共同作用，会产生三个彼此交织的现象："
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:63
+msgid "**Primacy bias** - frequent classes are learned first."
+msgstr "**优先偏差**——出现频率高的类别会先被学会。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:64
+msgid ""
+"**Selection bias** - the per-sample representation drift magnitude "
+"`|dσ_i/dt|` is proportional to the current singular value `σ_i`."
+msgstr "**选择偏差**——每个样本的表征漂移幅度 `|dσ_i/dt|` 与当前奇异值 `σ_i` 成正比。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:66
+msgid ""
+"**Late-window compression** - after an initial entropy expansion, the "
+"effective rank (RankMe) compresses toward the bottleneck dimension `d`."
+msgstr "**后期窗口压缩**——在最初的熵扩张之后，有效秩（RankMe）向瓶颈维度 `d` 收缩。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:70
+msgid ""
+"Figure 5 illustrates this on six inputs with labels `[0, 0, 1, 1, 2, 3]`,"
+" giving class counts `[2, 2, 1, 1]`. Appendix B assumes orthogonal rows "
+"`SSᵀ = I`; this template chooses the canonical coordinates `S = I₆`, with"
+" no test split."
+msgstr ""
+"图 5 用六个输入说明这一点，其标签为 `[0, 0, 1, 1, 2, 3]`，类别计数为 `[2, 2, 1, 1]`。附录 B 假定行正交 "
+"`SSᵀ = I`；此模板选用规范坐标 `S = I₆`，且不设测试集划分。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:75
+msgid "Experiment Configuration"
+msgstr "实验配置"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:77
+msgid "Paper vs. template settings"
+msgstr "论文与模板设置"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:79
+msgid ""
+"The paper does not disclose its learning rate, numerical initialization, "
+"seed, or toy source code. The template therefore locks a *calibrated* "
+"configuration that reproduces the published 0-300 step window."
+msgstr "论文没有披露学习率、数值初始化、seed 或该玩具问题的源代码。因此，模板固定采用一套*经校准的*配置，以重建已发表的 0–300 步区间。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Item"
+msgstr "项目"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Paper (Figure 5)"
+msgstr "论文（图 5）"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Template"
+msgstr "模板"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "six orthogonal samples, labels `[0,0,1,1,2,3]`"
+msgstr "六个正交样本，标签为 `[0,0,1,1,2,3]`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`S = I₆`, same labels"
+msgstr "`S = I₆`，相同标签"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Class counts"
+msgstr "类别计数"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`[2,2,1,1]` (skewed)"
+msgstr "`[2,2,1,1]`（偏斜）"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "same"
+msgstr "相同"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Model"
+msgstr "模型"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+#, python-brace-format
+msgid "`θ ∈ R^{6×2}`, `F = Sθ`, `W ∈ R^{2×4}`"
+msgstr "`θ ∈ R^{6×2}`、`F = Sθ`、`W ∈ R^{2×4}`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "bias-free linear factorization, both Linear biases frozen at zero"
+msgstr "无偏置的线性分解；两个 Linear 层的偏置均冻结为零"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Bottleneck"
+msgstr "瓶颈"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`d = 2 <"
+msgstr "`d = 2 < "
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "V"
+msgstr "V "
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Objective"
+msgstr "目标函数"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "full softmax cross-entropy"
+msgstr "完整 softmax 交叉熵"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Optimizer"
+msgstr "优化器"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "not disclosed"
+msgstr "未披露"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "SGD, `lr = 0.06`, `momentum = 0`, `weight decay = 0`"
+msgstr "SGD，`lr = 0.06`、`momentum = 0`、`weight decay = 0`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Initialization"
+msgstr "初始化"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Theorem B.2 assumes `FᵀF = WWᵀ`"
+msgstr "定理 B.2 假定 `FᵀF = WWᵀ`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`rank_aligned_initialization`, balanced singular values `[1.56, 1.20]`"
+msgstr "`rank_aligned_initialization`，均衡奇异值 `[1.56, 1.20]`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Seed"
+msgstr "seed"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`25`"
+msgstr "`25`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Training length"
+msgstr "训练长度"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "0-300 plotted updates"
+msgstr "绘图覆盖 0–300 次更新"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`300` steps, full-batch (`batchSize = -1`)"
+msgstr "`300` 步，全批量（`batchSize = -1`）"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "Device"
+msgstr "设备"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:40
+msgid "`cpu`"
+msgstr "`cpu`"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:96
+msgid "Node graph"
+msgstr "节点图"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:111
+msgid "Key parameters"
+msgstr "关键参数"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:113
+msgid ""
+"**Dataset** (`paper_classification_dataset`): `experimentMode = "
+"\"rank_figure5_main\"`, `inputDim = 6`, `outputDim = 4`, `trainSize = 6`,"
+" `testSize = 0`, `seed = 25`, `samplingMode = \"fixed\"`."
+msgstr ""
+"**数据集**（`paper_classification_dataset`）：`experimentMode = "
+"\"rank_figure5_main\"`、`inputDim = 6`、`outputDim = 4`、`trainSize = "
+"6`、`testSize = 0`、`seed = 25`、`samplingMode = \"fixed\"`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:116
+msgid ""
+"**Model** (`mlp_model`): `depth = 1`, `width = 2`, `activation = "
+"\"identity\"`, `outputScale = 1.0`, `seed = 25`."
+msgstr ""
+"**模型**（`mlp_model`）：`depth = 1`、`width = 2`、`activation = "
+"\"identity\"`、`outputScale = 1.0`、`seed = 25`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:118
+msgid ""
+"**Initialization** (`rank_aligned_initialization`): `scale = 1.2`, "
+"`singularRatio = 1.3`, `seed = 25`."
+msgstr ""
+"**初始化**（`rank_aligned_initialization`）：`scale = 1.2`、`singularRatio = "
+"1.3`、`seed = 25`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:120
+msgid ""
+"**Optimizer** (`sgd_optimizer`): `learningRate = 0.06`, `momentum = 0.0`,"
+" `weightDecay = 0.0`."
+msgstr ""
+"**优化器**（`sgd_optimizer`）：`learningRate = 0.06`、`momentum = "
+"0.0`、`weightDecay = 0.0`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:122
+msgid ""
+"**Trainer**: `trainingSteps = 300`, `logFrequency = 1`, `batchSize = -1`,"
+" `computeDevice = \"cpu\"`, `gradClipMaxNorm = 0.0`."
+msgstr ""
+"**Trainer**：`trainingSteps = 300`、`logFrequency = 1`、`batchSize = "
+"-1`、`computeDevice = \"cpu\"`、`gradClipMaxNorm = 0.0`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:124
+msgid ""
+"**Observable** (`observable_representation_rankme`): `representationId = "
+"\"0::output\"`, `captureTrajectories = true`."
+msgstr ""
+"**Observable**（`observable_representation_rankme`）：`representationId = "
+"\"0::output\"`、`captureTrajectories = true`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:127
+msgid "Run in Comfy Research"
+msgstr "在 Comfy Research 中运行"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:129
+msgid ""
+"Open **Templates** and load `repro: Rank Collapse Figure 5 linear CE "
+"(calibrated)`."
+msgstr ""
+"打开 **Templates**，加载 `repro: Rank Collapse Figure 5 linear CE "
+"(calibrated)`。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:130
+msgid "Click **Train** on the `Trainer` node."
+msgstr "在 `Trainer` 节点上点击 **Train**。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:131
+msgid ""
+"Inspect the `Figure 5D · RankMe trajectory` panel for the three phases: "
+"warmup → entropy expansion → late-window compression."
+msgstr "在 `Figure 5D · RankMe trajectory` 面板中查看三个阶段：预热 → 熵扩张 → 后期窗口压缩。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:133
+msgid ""
+"The `Full-training accuracy` panel confirms that the model still fits the"
+" skewed training set despite the rank collapse."
+msgstr "`Full-training accuracy` 面板显示，尽管发生秩坍塌，模型仍可拟合频率偏斜的训练集。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:136
+msgid ""
+"The data is generated on the fly by `paper_classification_dataset` - no "
+"offline dataset file is needed. Changing `experimentMode`, `inputDim`, or"
+" `trainSize` immediately regenerates the synthetic matrix."
+msgstr ""
+"数据由 `paper_classification_dataset` 即时生成，无需离线数据集文件。修改 "
+"`experimentMode`、`inputDim` 或 `trainSize` 会立即重新生成合成矩阵。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:140
+msgid "Results"
+msgstr "结果"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:142
+msgid "Figure 5D: RankMe trajectory"
+msgstr "图 5D：RankMe 轨迹"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:144
+msgid ""
+"The RankMe curve exhibits the paper's three-phase signature within the "
+"0-300 step window:"
+msgstr "在 0–300 步区间内，RankMe 曲线呈现出论文所述的三阶段特征："
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:147
+msgid ""
+"**Warmup (≈ steps 0-40):** RankMe stays near its initial value, close to "
+"the `d = 2` ceiling, because the softmax predictions are still near-"
+"uniform."
+msgstr "**预热（约第 0–40 步）：** RankMe 维持在接近初始值、也接近 `d = 2` 上限的位置，因为 softmax 预测仍近似均匀。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:150
+msgid ""
+"**Entropy expansion (≈ steps 40-150):** as frequent classes are learned "
+"first, the representation differentiates and RankMe rises briefly above "
+"the initialization before the bottleneck re-asserts itself."
+msgstr "**熵扩张（约第 40–150 步）：** 高频类别先被学会，表征随之分化，RankMe 会短暂高于初始化值，之后瓶颈重新占据主导。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:154
+msgid ""
+"**Late-window compression (≈ steps 150-300):** the two leading singular "
+"values separate and RankMe compresses toward `d = 2`."
+msgstr "**后期窗口压缩（约第 150–300 步）：** 前两个奇异值逐渐分离，RankMe 向 `d = 2` 收缩。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:157
+msgid "Boundary of the reconstruction"
+msgstr "重建边界"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:159
+msgid ""
+"The `0-300` published window is reconstructed; extending the *same* "
+"configuration to `10,000` steps re-expands RankMe toward the `d = 2` "
+"RankMe ceiling. **Persistent/asymptotic collapse is not claimed.**"
+msgstr ""
+"这里重建的是已发表的 `0-300` 区间；将*同一*配置延长至 `10,000` 步后，RankMe 会重新向 `d = 2` 的 RankMe "
+"上限扩张。**并不主张存在持续性或渐近性的坍塌。**"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:162
+msgid ""
+"Theorem B.2's aligned-initialization invariant `FᵀF = WWᵀ` is preserved "
+"by construction; Theorem B.3's dominant-class-size bound additionally "
+"assumes near-uniform initial predictions and `|V| ≫ 1`, so its "
+"quantitative bound is not exact for this four-class toy."
+msgstr ""
+"定理 B.2 的对齐初始化不变量 `FᵀF = WWᵀ` 由构造保证；定理 B.3 的主导类别大小界还假定初始预测近似均匀且 `|V| ≫ "
+"1`，因此其定量界对这个四类别玩具问题并不精确。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:166
+msgid ""
+"This is a post-hoc deterministic figure reconstruction, not exact "
+"numerical recovery and not a random-seed robustness claim."
+msgstr "这是事后进行的确定性图形重建，不是精确的数值恢复，也不主张对随机 seed 稳健。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:169
+msgid "Interpretation"
+msgstr "解读"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:171
+msgid ""
+"The run qualitatively supports the paper's central mechanism: under "
+"skewed class frequency and a `d < |V|` bottleneck, full-batch softmax "
+"cross-entropy produces a RankMe trajectory with warmup, expansion, and "
+"terminal compression. The template makes the bias-free linear "
+"factorization explicit (`F = Sθ`, `W` direct) so that the `dσ_i/dt ∝ σ_i`"
+" selection-bias relation can be read off the two eigenvalue histories "
+"captured by the `observable_representation_rankme` node."
+msgstr ""
+"这次运行从定性上支持论文的核心机制：在类别频率偏斜和 `d < |V|` 瓶颈的条件下，全批量 softmax 交叉熵会产生经历预热、扩张和末端压缩的 "
+"RankMe 轨迹。模板明确给出无偏置的线性分解（`F = Sθ`，并直接使用 `W`），因此可根据 "
+"`observable_representation_rankme` 节点记录的两组特征值历史，读出 `dσ_i/dt ∝ σ_i` "
+"这一选择偏差关系。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:180
+msgid "Limitations"
+msgstr "局限性"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:182
+msgid "Six-sample toy only; no natural corpus and no test split."
+msgstr "仅限于六样本玩具问题；不含自然语料，也没有测试集划分。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:183
+msgid ""
+"Calibrated `lr = 0.06`, `seed = 25`, singular values `[1.56, 1.20]` are "
+"not paper-backed; they were chosen to reconstruct the published window."
+msgstr "经校准的 `lr = 0.06`、`seed = 25` 和奇异值 `[1.56, 1.20]` 均无论文依据；选择这些值是为了重建已发表的区间。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:186
+msgid "The late decline is finite-window; asymptotic collapse is not claimed."
+msgstr "后期下降仅发生在有限窗口内；不主张渐近坍塌。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:187
+msgid ""
+"The class-wise primacy ordering (Figure 5B/5C) is not separately "
+"validated by this template - only the Panel-D RankMe signature."
+msgstr "此模板没有单独验证按类别划分的优先次序（图 5B/5C），仅验证 Panel-D 的 RankMe 特征。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:189
+msgid "No Grokking task is used."
+msgstr "未使用 Grokking 任务。"
+
+#: ../../en/examples/reproductions/rank-collapse-figure5.md:191
+msgid ""
+"These limitations mean the result should be read as a mechanism-level "
+"stress test, not a strict numeric replication or a universal causal "
+"claim."
+msgstr "这些局限意味着，结果应被视为机制层面的压力测试，而非严格的数值复现或普遍的因果主张。"

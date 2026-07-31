@@ -1,0 +1,548 @@
+{
+  "id": "repro-spectral-bias-fig1a",
+  "name": "repro: Rahaman Spectral Bias Figure 1(a)",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "sbf-notes",
+        "type": "comment",
+        "position": {
+          "x": 0,
+          "y": -330
+        },
+        "data": {
+          "instanceTitle": "Rahaman et al. Figure 1(a) protocol",
+          "text": "N=200 on periodic [0,1); k=(5,10,...,50), equal amplitudes; six Linear layers of width 256; ReLU; full-batch Adam at 3e-4; 80,000 updates. Repeat with independent phases for the paper aggregate."
+        },
+        "style": {
+          "width": 1200,
+          "height": 180
+        }
+      },
+      {
+        "id": "sbf-dataset",
+        "type": "symbolic_func_dataset",
+        "position": {
+          "x": 0,
+          "y": 20
+        },
+        "data": {
+          "equationLatex": "\\sin(10\\pi x_1+0.6436927301600186)+\\sin(20\\pi x_1+1.1941082261878455)+\\sin(30\\pi x_1+2.7301369155721904)+\\sin(40\\pi x_1+4.709296377866848)+\\sin(50\\pi x_1+0.6817614008109596)+\\sin(60\\pi x_1+2.9141271783796023)+\\sin(70\\pi x_1+4.2626177045209115)+\\sin(80\\pi x_1+5.136228202156513)+\\sin(90\\pi x_1+1.7911816441648662)+\\sin(100\\pi x_1+1.766823092449019)",
+          "inputDim": 1,
+          "outputDim": 1,
+          "inputDistribution": "linspace_0_1_endpoint_excluded",
+          "evaluationPrecision": "float64",
+          "outputDistribution": "deterministic",
+          "trainSize": 200,
+          "testSize": 0,
+          "noiseLevel": 0,
+          "seed": 1703,
+          "samplingMode": "fixed",
+          "instanceTitle": "Phase target: k=5..50 on [0,1)"
+        }
+      },
+      {
+        "id": "sbf-model",
+        "type": "mlp_model",
+        "position": {
+          "x": 0,
+          "y": 430
+        },
+        "data": {
+          "inputDim": 1,
+          "outputDim": 1,
+          "depth": 5,
+          "width": 256,
+          "activation": "relu",
+          "outputScale": 1,
+          "seed": 2703,
+          "instanceTitle": "6 Linear layers x 256 ReLU"
+        }
+      },
+      {
+        "id": "sbf-loss",
+        "type": "mse_loss",
+        "position": {
+          "x": 390,
+          "y": 20
+        },
+        "data": {
+          "lossScale": 1,
+          "lossMaskContextLength": 1,
+          "lossMaskMode": "all",
+          "lossMaskCustom": "",
+          "instanceTitle": "Mean squared error"
+        }
+      },
+      {
+        "id": "sbf-optimizer",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 390,
+          "y": 285
+        },
+        "data": {
+          "learningRate": 0.0003,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "epsilon": 1e-08,
+          "weightDecay": 0,
+          "instanceTitle": "Adam lr=3e-4"
+        }
+      },
+      {
+        "id": "sbf-trainer",
+        "type": "trainer",
+        "position": {
+          "x": 770,
+          "y": 90
+        },
+        "data": {
+          "trainingLengthMode": "steps",
+          "trainingEpochs": 100,
+          "trainingSteps": 80000,
+          "logFrequency": 100,
+          "logTiming": "pre_update",
+          "computeDevice": "cuda",
+          "batchSize": -1,
+          "gradClipMaxNorm": 0,
+          "disableExtraObservables": false,
+          "remoteGpu": true,
+          "instanceTitle": "Full-batch trainer"
+        }
+      },
+      {
+        "id": "sbf-loss-viz",
+        "type": "training_visualization",
+        "position": {
+          "x": 1220,
+          "y": -20
+        },
+        "data": {
+          "logScaleX": false,
+          "logScaleY": true,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "yPlotMetric": "loss",
+          "lossView": "loss",
+          "lossHistory": [],
+          "testLossHistory": [],
+          "regLossHistory": [],
+          "stepTicks": [],
+          "instanceTitle": "Full-batch loss"
+        }
+      },
+      {
+        "id": "sbf-f5",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 0,
+          "y": 790
+        },
+        "data": {
+          "frequency": 5,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=5 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f10",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 280,
+          "y": 790
+        },
+        "data": {
+          "frequency": 10,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=10 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f15",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 560,
+          "y": 790
+        },
+        "data": {
+          "frequency": 15,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=15 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f20",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 840,
+          "y": 790
+        },
+        "data": {
+          "frequency": 20,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=20 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f25",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 1120,
+          "y": 790
+        },
+        "data": {
+          "frequency": 25,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=25 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f30",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 0,
+          "y": 1040
+        },
+        "data": {
+          "frequency": 30,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=30 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f35",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 280,
+          "y": 1040
+        },
+        "data": {
+          "frequency": 35,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=35 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f40",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 560,
+          "y": 1040
+        },
+        "data": {
+          "frequency": 40,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=40 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f45",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 840,
+          "y": 1040
+        },
+        "data": {
+          "frequency": 45,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=45 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-f50",
+        "type": "observable_fourier_component",
+        "position": {
+          "x": 1120,
+          "y": 1040
+        },
+        "data": {
+          "frequency": 50,
+          "metric": "amplitude_ratio",
+          "inputAxis": 0,
+          "outputIndex": 0,
+          "instanceTitle": "k=50 amplitude / target"
+        }
+      },
+      {
+        "id": "sbf-layer-norm",
+        "type": "observable_layer_spectral_norm",
+        "position": {
+          "x": 0,
+          "y": 1320
+        },
+        "data": {
+          "estimator": "author_figure1",
+          "powerIterations": 10,
+          "startVector": "seeded_gaussian",
+          "seed": 3703,
+          "instanceTitle": "Figure 1 layer norms"
+        }
+      },
+      {
+        "id": "sbf-viz-f5",
+        "type": "observable_viz",
+        "position": {
+          "x": 1650,
+          "y": 300
+        },
+        "data": {
+          "pairedObservableId": "sbf-f5",
+          "pairedTrainerId": "sbf-trainer",
+          "observableName": "k=5 amplitude ratio",
+          "logScaleX": false,
+          "logScaleY": false,
+          "showSeries": true,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "vizVariant": "user",
+          "valueHistory": [],
+          "valueHistories": [],
+          "seriesLabels": [],
+          "stepTicks": [],
+          "instanceTitle": "Low frequency k=5"
+        }
+      },
+      {
+        "id": "sbf-viz-f25",
+        "type": "observable_viz",
+        "position": {
+          "x": 1650,
+          "y": 620
+        },
+        "data": {
+          "pairedObservableId": "sbf-f25",
+          "pairedTrainerId": "sbf-trainer",
+          "observableName": "k=25 amplitude ratio",
+          "logScaleX": false,
+          "logScaleY": false,
+          "showSeries": true,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "vizVariant": "user",
+          "valueHistory": [],
+          "valueHistories": [],
+          "seriesLabels": [],
+          "stepTicks": [],
+          "instanceTitle": "Middle frequency k=25"
+        }
+      },
+      {
+        "id": "sbf-viz-f50",
+        "type": "observable_viz",
+        "position": {
+          "x": 1650,
+          "y": 940
+        },
+        "data": {
+          "pairedObservableId": "sbf-f50",
+          "pairedTrainerId": "sbf-trainer",
+          "observableName": "k=50 amplitude ratio",
+          "logScaleX": false,
+          "logScaleY": false,
+          "showSeries": true,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "vizVariant": "user",
+          "valueHistory": [],
+          "valueHistories": [],
+          "seriesLabels": [],
+          "stepTicks": [],
+          "instanceTitle": "High frequency k=50"
+        }
+      },
+      {
+        "id": "sbf-viz-layer-norm",
+        "type": "observable_viz",
+        "position": {
+          "x": 1650,
+          "y": 1260
+        },
+        "data": {
+          "pairedObservableId": "sbf-layer-norm",
+          "pairedTrainerId": "sbf-trainer",
+          "observableName": "Layer spectral norms",
+          "logScaleX": false,
+          "logScaleY": false,
+          "showSeries": true,
+          "showTrainCurve": true,
+          "showTestCurve": false,
+          "vizVariant": "layer_spectral_norm",
+          "valueHistory": [],
+          "valueHistories": [],
+          "seriesLabels": [],
+          "stepTicks": [],
+          "instanceTitle": "Layer 1..6 norms"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-sbf-dataset-sbf-trainer-dataset-dataset",
+        "source": "sbf-dataset",
+        "target": "sbf-trainer",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-sbf-model-sbf-trainer-model-model",
+        "source": "sbf-model",
+        "target": "sbf-trainer",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-sbf-loss-sbf-trainer-loss-loss",
+        "source": "sbf-loss",
+        "target": "sbf-trainer",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-sbf-optimizer-sbf-trainer-optimizer-optimizer",
+        "source": "sbf-optimizer",
+        "target": "sbf-trainer",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-sbf-trainer-sbf-loss-viz-loss_results-tensor_list",
+        "source": "sbf-trainer",
+        "target": "sbf-loss-viz",
+        "sourceHandle": "loss_results",
+        "targetHandle": "tensor_list"
+      },
+      {
+        "id": "e-sbf-f5-sbf-trainer-observables-observables",
+        "source": "sbf-f5",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f10-sbf-trainer-observables-observables",
+        "source": "sbf-f10",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f15-sbf-trainer-observables-observables",
+        "source": "sbf-f15",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f20-sbf-trainer-observables-observables",
+        "source": "sbf-f20",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f25-sbf-trainer-observables-observables",
+        "source": "sbf-f25",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f30-sbf-trainer-observables-observables",
+        "source": "sbf-f30",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f35-sbf-trainer-observables-observables",
+        "source": "sbf-f35",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f40-sbf-trainer-observables-observables",
+        "source": "sbf-f40",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f45-sbf-trainer-observables-observables",
+        "source": "sbf-f45",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-f50-sbf-trainer-observables-observables",
+        "source": "sbf-f50",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-layer-norm-sbf-trainer-observables-observables",
+        "source": "sbf-layer-norm",
+        "target": "sbf-trainer",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-sbf-trainer-sbf-viz-f5-observable_results-tensor",
+        "source": "sbf-trainer",
+        "target": "sbf-viz-f5",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-sbf-trainer-sbf-viz-f25-observable_results-tensor",
+        "source": "sbf-trainer",
+        "target": "sbf-viz-f25",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-sbf-trainer-sbf-viz-f50-observable_results-tensor",
+        "source": "sbf-trainer",
+        "target": "sbf-viz-f50",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-sbf-trainer-sbf-viz-layer-norm-observable_results-tensor",
+        "source": "sbf-trainer",
+        "target": "sbf-viz-layer-norm",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.4
+    }
+  },
+  "savedAt": 1784601927066.3975
+}

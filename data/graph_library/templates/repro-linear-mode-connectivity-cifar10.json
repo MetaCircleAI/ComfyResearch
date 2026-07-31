@@ -1,0 +1,46 @@
+{
+  "id": "repro-linear-mode-connectivity-cifar10",
+  "name": "repro: Linear Mode Connectivity (CIFAR-10, same init)",
+  "tier": "small",
+  "savedAt": 1784700000000,
+  "document": {
+    "version": 1,
+    "nodes": [
+      {"id":"lmc-note","type":"comment","position":{"x":-620,"y":-100},"data":{"text":"# Linear and Curve Mode Connectivity: same initialization, different training seed\n\nThis `small` template trains two CIFAR-10 classifiers from the identical ResNet initialization (`seed=0`) on the same full training set (`subsetSeed=0`). The only changed variable is the trainer RNG: endpoint A uses `trainSeed=0`; endpoint B uses `trainSeed=1`.\n\n**Default study budget:** 50,000 train images, 10,000 test images, batch size 128, and 50,000 updates per endpoint. Save the two endpoint checkpoints, run the 21-point linear interpolation barrier, then run the quadratic Bezier evaluator. The linear panel shows direct interpolation. The Bezier panel shows only the optimized curve and reports the linear-to-Bezier barrier comparison. BN calibration defaults to 100 train batches for both evaluators."},"style":{"width":760},"parentId":null,"extent":null,"hidden":null},
+      {"id":"lmc-dataset","type":"cifar10_dataset","position":{"x":-620,"y":230},"data":{"trainSize":50000,"testSize":10000,"subsetSeed":0,"classBalanced":true,"normalize":"zero_one","samplingMode":"fixed","instanceTitle":"CIFAR-10 (full fixed split)"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-model","type":"resnet_model","position":{"x":-360,"y":180},"data":{"variant":"self_defined","baseChannels":16,"blocksStage1":1,"blocksStage2":1,"blocksStage3":1,"blocksStage4":1,"kernelSize":3,"seed":0,"instanceTitle":"Small ResNet (shared init)"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-adam-a","type":"adam_optimizer","position":{"x":-330,"y":430},"data":{"learningRate":0.001,"beta1":0.9,"beta2":0.999,"epsilon":1e-8,"weightDecay":0,"instanceTitle":"Adam endpoint A"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-adam-b","type":"adam_optimizer","position":{"x":-330,"y":640},"data":{"learningRate":0.001,"beta1":0.9,"beta2":0.999,"epsilon":1e-8,"weightDecay":0,"instanceTitle":"Adam endpoint B"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-loss","type":"cross_entropy_loss","position":{"x":-90,"y":160},"data":{"instanceTitle":"Cross-entropy loss"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-trainer-a","type":"trainer","position":{"x":0,"y":310},"data":{"trainingSteps":50000,"logFrequency":100,"batchSize":128,"trainSeed":0,"computeDevice":"auto","instanceTitle":"Endpoint A (train seed 0)"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-trainer-b","type":"trainer","position":{"x":0,"y":580},"data":{"trainingSteps":50000,"logFrequency":100,"batchSize":128,"trainSeed":1,"computeDevice":"auto","instanceTitle":"Endpoint B (train seed 1)"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-checkpoint-a","type":"model_checkpoint","position":{"x":280,"y":310},"data":{"checkpointSource":"memory","instanceTitle":"Checkpoint A"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-checkpoint-b","type":"model_checkpoint","position":{"x":280,"y":580},"data":{"checkpointSource":"memory","instanceTitle":"Checkpoint B"},"parentId":null,"extent":null,"hidden":null,"style":null},
+      {"id":"lmc-barrier","type":"observable_linear_interpolation_barrier","position":{"x":580,"y":350},"data":{"alphaMin":0.0,"alphaMax":1.0,"alphaSteps":21,"recomputeBnStats":false,"bnCalibrationBatches":100,"evalBatchSize":256,"instanceTitle":"Interpolation loss barrier"},"parentId":null,"extent":null,"hidden":null,"style":null}
+      ,{"id":"lmc-bezier","type":"observable_bezier_mode_connectivity","position":{"x":900,"y":350},"data":{"alphaSteps":21,"curveOptimizationSteps":500,"curveSamplesPerStep":4,"curveBatchSize":256,"curveLearningRate":0.01,"recomputeBnStats":true,"bnCalibrationBatches":100,"evalBatchSize":256,"instanceTitle":"Bezier mode connectivity"},"parentId":null,"extent":null,"hidden":null,"style":null}
+    ],
+    "edges": [
+      {"id":"e-lmc-dataset-a","source":"lmc-dataset","sourceHandle":"dataset","target":"lmc-trainer-a","targetHandle":"dataset"},
+      {"id":"e-lmc-model-a","source":"lmc-model","sourceHandle":"model","target":"lmc-trainer-a","targetHandle":"model"},
+      {"id":"e-lmc-adam-a","source":"lmc-adam-a","sourceHandle":"optimizer","target":"lmc-trainer-a","targetHandle":"optimizer"},
+      {"id":"e-lmc-loss-a","source":"lmc-loss","sourceHandle":"loss","target":"lmc-trainer-a","targetHandle":"loss"},
+      {"id":"e-lmc-dataset-b","source":"lmc-dataset","sourceHandle":"dataset","target":"lmc-trainer-b","targetHandle":"dataset"},
+      {"id":"e-lmc-model-b","source":"lmc-model","sourceHandle":"model","target":"lmc-trainer-b","targetHandle":"model"},
+      {"id":"e-lmc-adam-b","source":"lmc-adam-b","sourceHandle":"optimizer","target":"lmc-trainer-b","targetHandle":"optimizer"},
+      {"id":"e-lmc-loss-b","source":"lmc-loss","sourceHandle":"loss","target":"lmc-trainer-b","targetHandle":"loss"},
+      {"id":"e-lmc-checkpoint-a","source":"lmc-trainer-a","sourceHandle":"checkpoint","target":"lmc-checkpoint-a","targetHandle":"model_checkpoint"},
+      {"id":"e-lmc-checkpoint-b","source":"lmc-trainer-b","sourceHandle":"checkpoint","target":"lmc-checkpoint-b","targetHandle":"model_checkpoint"},
+      {"id":"e-lmc-barrier-a","source":"lmc-checkpoint-a","sourceHandle":"model","target":"lmc-barrier","targetHandle":"checkpoint_a"},
+      {"id":"e-lmc-barrier-b","source":"lmc-checkpoint-b","sourceHandle":"model","target":"lmc-barrier","targetHandle":"checkpoint_b"},
+      {"id":"e-lmc-barrier-model","source":"lmc-model","sourceHandle":"model","target":"lmc-barrier","targetHandle":"model"},
+      {"id":"e-lmc-barrier-dataset","source":"lmc-dataset","sourceHandle":"dataset","target":"lmc-barrier","targetHandle":"dataset"},
+      {"id":"e-lmc-barrier-loss","source":"lmc-loss","sourceHandle":"loss","target":"lmc-barrier","targetHandle":"loss"}
+      ,{"id":"e-lmc-bezier-a","source":"lmc-checkpoint-a","sourceHandle":"model","target":"lmc-bezier","targetHandle":"checkpoint_a"}
+      ,{"id":"e-lmc-bezier-b","source":"lmc-checkpoint-b","sourceHandle":"model","target":"lmc-bezier","targetHandle":"checkpoint_b"}
+      ,{"id":"e-lmc-bezier-model","source":"lmc-model","sourceHandle":"model","target":"lmc-bezier","targetHandle":"model"}
+      ,{"id":"e-lmc-bezier-dataset","source":"lmc-dataset","sourceHandle":"dataset","target":"lmc-bezier","targetHandle":"dataset"}
+      ,{"id":"e-lmc-bezier-loss","source":"lmc-loss","sourceHandle":"loss","target":"lmc-bezier","targetHandle":"loss"}
+    ],
+    "viewport": null
+  }
+}

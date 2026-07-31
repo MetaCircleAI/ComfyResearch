@@ -1,0 +1,461 @@
+{
+  "id": "repro-keskar-fig23-sb-lb",
+  "name": "repro: Keskar Fig 2+3 SB/LB",
+  "tier": "medium",
+  "document": {
+    "version": 1,
+    "nodes": [
+      {
+        "id": "k23-note",
+        "type": "comment",
+        "position": {
+          "x": 40,
+          "y": -280
+        },
+        "data": {
+          "text": "Keskar 1609.04836 Fig 2 + Fig 3; C1 / CIFAR-10 only. Both independent trainers start from model seed 0.\nSB: B=256, 100 epochs (19600 steps). LB: B=5000=10% train, 100 epochs (1000 steps).\nClick Train on both trainers. Each writes its own checkpoint and appends train/test accuracy to the Fig 2 epoch plot.\nThen click Run on Fig 3: 25 points over \u03b1\u2208[-1,2]. Trainable parameters are interpolated; evaluation uses per-batch BatchNorm statistics, matching the paper protocol.",
+          "instanceTitle": "Keskar Fig 2+3"
+        }
+      },
+      {
+        "id": "k23-ds",
+        "type": "cifar10_dataset",
+        "position": {
+          "x": 40,
+          "y": 80
+        },
+        "data": {
+          "trainSize": 50000,
+          "testSize": 10000,
+          "seed": 0,
+          "flattenOutput": false,
+          "samplingMode": "fixed",
+          "instanceTitle": "CIFAR-10 (C1)"
+        }
+      },
+      {
+        "id": "k23-model",
+        "type": "keskar_c1_c2_cnn_model",
+        "position": {
+          "x": 40,
+          "y": 300
+        },
+        "data": {
+          "architecture": "c1",
+          "seed": 0,
+          "instanceTitle": "Keskar C1"
+        }
+      },
+      {
+        "id": "k23-adam",
+        "type": "adam_optimizer",
+        "position": {
+          "x": 300,
+          "y": 200
+        },
+        "data": {
+          "learningRate": 0.001,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "weightDecay": 0.0,
+          "instanceTitle": "Adam"
+        }
+      },
+      {
+        "id": "k23-lr",
+        "type": "lr_schedule",
+        "position": {
+          "x": 300,
+          "y": 60
+        },
+        "data": {
+          "lrSchedule": "constant",
+          "lrWarmupSteps": 0,
+          "instanceTitle": "LR constant"
+        }
+      },
+      {
+        "id": "k23-ce",
+        "type": "cross_entropy_loss",
+        "position": {
+          "x": 300,
+          "y": 360
+        },
+        "data": {
+          "lossScale": 1,
+          "instanceTitle": "CE"
+        }
+      },
+      {
+        "id": "k23-acc_sb",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 300,
+          "y": 520
+        },
+        "data": {
+          "instanceTitle": "SB accuracy"
+        }
+      },
+      {
+        "id": "k23-acc_lb",
+        "type": "observable_accuracy",
+        "position": {
+          "x": 300,
+          "y": 680
+        },
+        "data": {
+          "instanceTitle": "LB accuracy"
+        }
+      },
+      {
+        "id": "k23-tr_sb",
+        "type": "trainer",
+        "position": {
+          "x": 600,
+          "y": 80
+        },
+        "data": {
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 100,
+          "trainingSteps": 19600,
+          "logFrequency": 196,
+          "batchSize": 256,
+          "disableExtraObservables": true,
+          "computeDevice": "auto",
+          "remoteGpu": false,
+          "gradClipMaxNorm": 0,
+          "instanceTitle": "Trainer SB (B=256)"
+        }
+      },
+      {
+        "id": "k23-tr_lb",
+        "type": "trainer",
+        "position": {
+          "x": 600,
+          "y": 620
+        },
+        "data": {
+          "trainingLengthMode": "epochs",
+          "trainingEpochs": 100,
+          "trainingSteps": 1000,
+          "logFrequency": 10,
+          "batchSize": 5000,
+          "disableExtraObservables": true,
+          "computeDevice": "auto",
+          "remoteGpu": false,
+          "gradClipMaxNorm": 0,
+          "instanceTitle": "Trainer LB (B=5000)"
+        }
+      },
+      {
+        "id": "k23-oviz_sb",
+        "type": "observable_viz",
+        "position": {
+          "x": 900,
+          "y": 80
+        },
+        "data": {
+          "pairedObservableId": "k23-acc_sb",
+          "pairedTrainerId": "k23-tr_sb",
+          "vizVariant": "accuracy",
+          "instanceTitle": "SB train/test accuracy"
+        }
+      },
+      {
+        "id": "k23-oviz_lb",
+        "type": "observable_viz",
+        "position": {
+          "x": 900,
+          "y": 620
+        },
+        "data": {
+          "pairedObservableId": "k23-acc_lb",
+          "pairedTrainerId": "k23-tr_lb",
+          "vizVariant": "accuracy",
+          "instanceTitle": "LB train/test accuracy"
+        }
+      },
+      {
+        "id": "k23-ckpt_sb",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 900,
+          "y": 400
+        },
+        "data": {
+          "checkpointSource": "memory",
+          "instanceTitle": "Checkpoint SB (B=256)"
+        }
+      },
+      {
+        "id": "k23-ckpt_lb",
+        "type": "model_checkpoint",
+        "position": {
+          "x": 900,
+          "y": 940
+        },
+        "data": {
+          "checkpointSource": "memory",
+          "instanceTitle": "Checkpoint LB (B=5000)"
+        }
+      },
+      {
+        "id": "k23-cstable_fig2",
+        "type": "curve_series_table",
+        "position": {
+          "x": 1180,
+          "y": 180
+        },
+        "data": {
+          "rows": [],
+          "captureMetrics": [
+            "train_acc",
+            "test_acc"
+          ],
+          "instanceTitle": "Fig 2 accuracy curves"
+        }
+      },
+      {
+        "id": "k23-csviz_fig2",
+        "type": "curve_series_viz",
+        "position": {
+          "x": 1460,
+          "y": 180
+        },
+        "data": {
+          "instanceTitle": "Fig 2 accuracy plot",
+          "dualAxis": false,
+          "plotXMode": "epoch",
+          "plotXKey": "epoch"
+        }
+      },
+      {
+        "id": "k23-sampler",
+        "type": "parametric_path_sampler",
+        "position": {
+          "x": 1180,
+          "y": 680
+        },
+        "data": {
+          "alphaMin": -1,
+          "alphaMax": 2,
+          "alphaSteps": 25,
+          "computeDevice": "auto",
+          "remoteGpu": false,
+          "instanceTitle": "Fig 3 parametric path"
+        }
+      },
+      {
+        "id": "k23-cstable_fig3",
+        "type": "curve_series_table",
+        "position": {
+          "x": 1460,
+          "y": 680
+        },
+        "data": {
+          "rows": [],
+          "captureMetrics": [],
+          "instanceTitle": "Fig 3 path curves"
+        }
+      },
+      {
+        "id": "k23-csviz_fig3",
+        "type": "curve_series_viz",
+        "position": {
+          "x": 1740,
+          "y": 680
+        },
+        "data": {
+          "instanceTitle": "Fig 3 path plot",
+          "dualAxis": true,
+          "plotXMode": "param",
+          "plotXKey": "param"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-k23-lr-k23-adam-lr_schedule-lr_schedule",
+        "source": "k23-lr",
+        "target": "k23-adam",
+        "sourceHandle": "lr_schedule",
+        "targetHandle": "lr_schedule"
+      },
+      {
+        "id": "e-k23-ds-k23-tr_sb-dataset-dataset",
+        "source": "k23-ds",
+        "target": "k23-tr_sb",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-k23-model-k23-tr_sb-model-model",
+        "source": "k23-model",
+        "target": "k23-tr_sb",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-k23-adam-k23-tr_sb-optimizer-optimizer",
+        "source": "k23-adam",
+        "target": "k23-tr_sb",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-k23-ce-k23-tr_sb-loss-loss",
+        "source": "k23-ce",
+        "target": "k23-tr_sb",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-k23-acc_sb-k23-tr_sb-observables-observables",
+        "source": "k23-acc_sb",
+        "target": "k23-tr_sb",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-k23-tr_sb-k23-oviz_sb-observable_results-tensor",
+        "source": "k23-tr_sb",
+        "target": "k23-oviz_sb",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-k23-tr_sb-k23-ckpt_sb-checkpoint-model_checkpoint",
+        "source": "k23-tr_sb",
+        "target": "k23-ckpt_sb",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e-k23-oviz_sb-k23-cstable_fig2-out_tensor-stream",
+        "source": "k23-oviz_sb",
+        "target": "k23-cstable_fig2",
+        "sourceHandle": "out_tensor",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-k23-ds-k23-tr_lb-dataset-dataset",
+        "source": "k23-ds",
+        "target": "k23-tr_lb",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-k23-model-k23-tr_lb-model-model",
+        "source": "k23-model",
+        "target": "k23-tr_lb",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-k23-adam-k23-tr_lb-optimizer-optimizer",
+        "source": "k23-adam",
+        "target": "k23-tr_lb",
+        "sourceHandle": "optimizer",
+        "targetHandle": "optimizer"
+      },
+      {
+        "id": "e-k23-ce-k23-tr_lb-loss-loss",
+        "source": "k23-ce",
+        "target": "k23-tr_lb",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-k23-acc_lb-k23-tr_lb-observables-observables",
+        "source": "k23-acc_lb",
+        "target": "k23-tr_lb",
+        "sourceHandle": "observables",
+        "targetHandle": "observables"
+      },
+      {
+        "id": "e-k23-tr_lb-k23-oviz_lb-observable_results-tensor",
+        "source": "k23-tr_lb",
+        "target": "k23-oviz_lb",
+        "sourceHandle": "observable_results",
+        "targetHandle": "tensor"
+      },
+      {
+        "id": "e-k23-tr_lb-k23-ckpt_lb-checkpoint-model_checkpoint",
+        "source": "k23-tr_lb",
+        "target": "k23-ckpt_lb",
+        "sourceHandle": "checkpoint",
+        "targetHandle": "model_checkpoint"
+      },
+      {
+        "id": "e-k23-oviz_lb-k23-cstable_fig2-out_tensor-stream",
+        "source": "k23-oviz_lb",
+        "target": "k23-cstable_fig2",
+        "sourceHandle": "out_tensor",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-k23-cstable_fig2-k23-csviz_fig2-series-curves",
+        "source": "k23-cstable_fig2",
+        "target": "k23-csviz_fig2",
+        "sourceHandle": "series",
+        "targetHandle": "curves"
+      },
+      {
+        "id": "e-k23-ds-k23-sampler-dataset-dataset",
+        "source": "k23-ds",
+        "target": "k23-sampler",
+        "sourceHandle": "dataset",
+        "targetHandle": "dataset"
+      },
+      {
+        "id": "e-k23-model-k23-sampler-model-model",
+        "source": "k23-model",
+        "target": "k23-sampler",
+        "sourceHandle": "model",
+        "targetHandle": "model"
+      },
+      {
+        "id": "e-k23-ce-k23-sampler-loss-loss",
+        "source": "k23-ce",
+        "target": "k23-sampler",
+        "sourceHandle": "loss",
+        "targetHandle": "loss"
+      },
+      {
+        "id": "e-k23-ckpt_sb-k23-sampler-model-checkpoint_sb",
+        "source": "k23-ckpt_sb",
+        "target": "k23-sampler",
+        "sourceHandle": "model",
+        "targetHandle": "checkpoint_sb"
+      },
+      {
+        "id": "e-k23-ckpt_lb-k23-sampler-model-checkpoint_lb",
+        "source": "k23-ckpt_lb",
+        "target": "k23-sampler",
+        "sourceHandle": "model",
+        "targetHandle": "checkpoint_lb"
+      },
+      {
+        "id": "e-k23-sampler-k23-cstable_fig3-stream-stream",
+        "source": "k23-sampler",
+        "target": "k23-cstable_fig3",
+        "sourceHandle": "stream",
+        "targetHandle": "stream"
+      },
+      {
+        "id": "e-k23-cstable_fig3-k23-csviz_fig3-series-curves",
+        "source": "k23-cstable_fig3",
+        "target": "k23-csviz_fig3",
+        "sourceHandle": "series",
+        "targetHandle": "curves"
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.45
+    }
+  },
+  "savedAt": 1785221571237.1
+}
