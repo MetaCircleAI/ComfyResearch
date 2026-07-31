@@ -40,10 +40,10 @@ standalone graph-to-PDF command.
 
 ## Version path
 
-This site is published under `/en/dev/` and describes the development source
-used to build it. It should not retroactively describe older releases. A tagged
-release should build documentation from that tag and publish it under a
-distinct version path.
+This site is published under `/en/0.1.0/` and describes the `v0.1.0` release.
+It should not retroactively describe older or newer releases. Other tagged
+releases should build documentation from their tags and publish it under
+distinct version paths.
 
 When documentation and source disagree, the validated source contract wins for
-the development build and the documentation should be corrected.
+this release and the documentation should be corrected.

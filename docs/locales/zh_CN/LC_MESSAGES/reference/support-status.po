@@ -100,14 +100,14 @@ msgstr "版本路径"
 
 #: ../../en/reference/support-status.md:43
 msgid ""
-"This site is published under `/en/dev/` and describes the development "
-"source used to build it. It should not retroactively describe older "
-"releases. A tagged release should build documentation from that tag and "
-"publish it under a distinct version path."
-msgstr "本站发布于 `/en/dev/`，描述用于构建它的开发源码。它不应追溯描述旧版本。带标签的发布应从该标签构建文档，并发布到独立的版本路径。"
+"This site is published under `/en/0.1.0/` and describes the `v0.1.0` "
+"release. It should not retroactively describe older or newer releases. "
+"Other tagged releases should build documentation from their tags and "
+"publish it under distinct version paths."
+msgstr "本站发布于 `/en/0.1.0/`，描述 `v0.1.0` 版本。它不应追溯描述更早或更晚的版本。其他带标签的版本应从对应标签构建文档，并发布到各自独立的版本路径。"
 
 #: ../../en/reference/support-status.md:48
 msgid ""
 "When documentation and source disagree, the validated source contract "
-"wins for the development build and the documentation should be corrected."
-msgstr "当文档与源码不一致时，开发构建以经过验证的源码契约为准，且应修正文档。"
+"wins for this release and the documentation should be corrected."
+msgstr "当文档与源码不一致时，此版本以经过验证的源码契约为准，且应修正文档。"

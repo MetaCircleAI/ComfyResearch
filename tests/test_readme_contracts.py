@@ -34,11 +34,11 @@ def test_readme_routes_docs_to_rendered_site() -> None:
     targets = re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", source)
 
     assert (
-        "[Documentation](https://docs.comfy-research.com/en/dev/introduction/)"
+        "[Documentation](https://docs.comfy-research.com/en/0.1.0/introduction/)"
         in source
     )
     assert (
-        "[中文文档](https://docs.comfy-research.com/zh/dev/introduction/)"
+        "[中文文档](https://docs.comfy-research.com/zh/0.1.0/introduction/)"
         in source
     )
     assert not [

@@ -41,11 +41,11 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         "reference",
     ]
     for route in routes:
-        assert (site / "en/dev" / route / "index.html").is_file()
+        assert (site / "en/0.1.0" / route / "index.html").is_file()
 
     for route in ("first-graph", "development-mode"):
-        assert (site / "en/dev/get-started" / route / "index.html").is_file()
-    assert (site / "en/dev/extend/add-observable/index.html").is_file()
+        assert (site / "en/0.1.0/get-started" / route / "index.html").is_file()
+    assert (site / "en/0.1.0/extend/add-observable/index.html").is_file()
 
     for route in (
         "build-and-run-graphs",
@@ -56,7 +56,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         "troubleshooting",
         "execution-model",
     ):
-        assert (site / "en/dev/user-guide" / route / "index.html").is_file()
+        assert (site / "en/0.1.0/user-guide" / route / "index.html").is_file()
 
     for route in (
         "application",
@@ -65,15 +65,15 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         "node-contracts",
         "support-status",
     ):
-        assert (site / "en/dev/reference" / route / "index.html").is_file()
+        assert (site / "en/0.1.0/reference" / route / "index.html").is_file()
 
-    assert "en/dev/introduction/" in (site / "index.html").read_text()
-    assert "introduction/" in (site / "en/dev/index.html").read_text()
+    assert "en/0.1.0/introduction/" in (site / "index.html").read_text()
+    assert "introduction/" in (site / "en/0.1.0/index.html").read_text()
     assert (site / build_docs.OUTPUT_MARKER).is_file()
-    assert (site / "en/dev/_static/comfyresearch.css").is_file()
-    assert (site / "en/dev/_static/comfyresearch.js").is_file()
+    assert (site / "en/0.1.0/_static/comfyresearch.css").is_file()
+    assert (site / "en/0.1.0/_static/comfyresearch.js").is_file()
 
-    introduction_html = (site / "en/dev/introduction/index.html").read_text()
+    introduction_html = (site / "en/0.1.0/introduction/index.html").read_text()
     assert 'data-page="introduction"' in introduction_html
     assert 'class="navbar-brand cr-brand"' in introduction_html
     assert 'class="cr-brand-logo cr-brand-logo--light"' in introduction_html
@@ -88,7 +88,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert 'class="cr-version-button"' in introduction_html
     assert "theme-switch-container" in introduction_html
     assert "theme-switch-button" in introduction_html
-    assert '>dev<' in introduction_html
+    assert '>v0.1.0<' in introduction_html
     assert 'class="cr-search-form"' in introduction_html
     assert 'class="cr-search-input"' in introduction_html
     assert 'class="cr-search-results"' in introduction_html
@@ -121,23 +121,23 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert "copybutton.js" in introduction_html
 
     for generated_page in ("search/index.html", "genindex/index.html"):
-        generated_html = (site / "en/dev" / generated_page).read_text()
+        generated_html = (site / "en/0.1.0" / generated_page).read_text()
         assert 'class="cr-page-identity"' not in generated_html
         assert 'cr-page-badge--"' not in generated_html
 
-    get_started_page = site / "en/dev/get-started/index.html"
+    get_started_page = site / "en/0.1.0/get-started/index.html"
     get_started_html = get_started_page.read_text()
     get_started_text = rendered_text(get_started_page)
     assert "copybutton.css" in get_started_html
     assert "copybutton.js" in get_started_html
     assert 'class="highlight-bash notranslate"' in get_started_html
-    assert "copybtn" in (site / "en/dev/_static/copybutton.js").read_text()
-    assert (site / "en/dev/_static/clipboard.min.js").is_file()
+    assert "copybtn" in (site / "en/0.1.0/_static/copybutton.js").read_text()
+    assert (site / "en/0.1.0/_static/clipboard.min.js").is_file()
     assert "Python 3.10 or newer" in get_started_text
     assert "npm --prefix frontend ci" in get_started_text
     assert "/api/health" in get_started_text
 
-    first_graph_page = site / "en/dev/get-started/first-graph/index.html"
+    first_graph_page = site / "en/0.1.0/get-started/first-graph/index.html"
     first_graph_html = first_graph_page.read_text()
     first_graph_text = rendered_text(first_graph_page)
     assert "Edge of Stability (CPU)" in first_graph_text
@@ -150,7 +150,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert ">Tutorial<" in first_graph_html
     assert ">Stable core<" in first_graph_html
 
-    user_guide_page = site / "en/dev/user-guide/index.html"
+    user_guide_page = site / "en/0.1.0/user-guide/index.html"
     user_guide_html = user_guide_page.read_text()
     user_guide_text = rendered_text(user_guide_page)
     assert "Work with experiments" in user_guide_text
@@ -160,19 +160,19 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert 'id="pst-secondary-sidebar"' not in user_guide_html
     assert (
         'id="pst-secondary-sidebar"'
-        in (site / "en/dev/user-guide/build-and-run-graphs/index.html").read_text()
+        in (site / "en/0.1.0/user-guide/build-and-run-graphs/index.html").read_text()
     )
 
     artifacts_text = rendered_text(
-        site / "en/dev/user-guide/projects-and-artifacts/index.html"
+        site / "en/0.1.0/user-guide/projects-and-artifacts/index.html"
     )
     for tier in ("Small", "Medium", "Large"):
         assert tier in artifacts_text
     assert "Record the experiment contract" in rendered_text(
-        site / "en/dev/user-guide/reproducibility/index.html"
+        site / "en/0.1.0/user-guide/reproducibility/index.html"
     )
 
-    stylesheet = (site / "en/dev/_static/comfyresearch.css").read_text()
+    stylesheet = (site / "en/0.1.0/_static/comfyresearch.css").read_text()
     assert (
         '--cr-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", '
         "Helvetica, Arial, sans-serif;"
@@ -204,12 +204,12 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert "@media (max-width: 1279px)" in stylesheet
     assert 'html[data-theme="light"] .bd-article div.highlight span' in stylesheet
 
-    extend_text = rendered_text(site / "en/dev/extend/index.html")
+    extend_text = rendered_text(site / "en/0.1.0/extend/index.html")
     assert "Extend Comfy Research" in extend_text
     assert "Add a scalar Observable" in extend_text
     assert "Node contracts" not in extend_text
     assert "observable_def" not in extend_text
-    tutorial_text = rendered_text(site / "en/dev/extend/add-observable/index.html")
+    tutorial_text = rendered_text(site / "en/0.1.0/extend/add-observable/index.html")
     assert "observable_def" in tutorial_text
     assert "recorder_for" in tutorial_text
     assert "generate:node-manifest" in tutorial_text
@@ -220,23 +220,23 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         assert "—" not in source_text
         assert "–" not in source_text
 
-    reference_text = rendered_text(site / "en/dev/reference/index.html")
+    reference_text = rendered_text(site / "en/0.1.0/reference/index.html")
     assert "Runtime and file contracts" in reference_text
     assert "Application" in reference_text
     assert "Training API" in reference_text
     assert "Node contracts" in reference_text
     assert "application/x-ndjson" in rendered_text(
-        site / "en/dev/reference/training-api/index.html"
+        site / "en/0.1.0/reference/training-api/index.html"
     )
     assert "data/workspace.json" in rendered_text(
-        site / "en/dev/reference/application/index.html"
+        site / "en/0.1.0/reference/application/index.html"
     )
-    assert "/en/dev/" in rendered_text(
-        site / "en/dev/reference/support-status/index.html"
+    assert "/en/0.1.0/" in rendered_text(
+        site / "en/0.1.0/reference/support-status/index.html"
     )
 
     stable_docs_text = "\n".join(
-        rendered_text(site / "en/dev" / route / "index.html")
+        rendered_text(site / "en/0.1.0" / route / "index.html")
         for route in (
             "introduction",
             "get-started",
@@ -248,11 +248,11 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     for excluded_product_area in ("Architecture IQ", "LMech", "PVI"):
         assert excluded_product_area not in stable_docs_text
 
-    examples_html = (site / "en/dev/examples/index.html").read_text()
+    examples_html = (site / "en/0.1.0/examples/index.html").read_text()
     assert examples_html.count("cr-example-card") == 16
     assert "Wang Jinxin" not in examples_html
     assert "Author attribution appears inside each article" in rendered_text(
-        site / "en/dev/examples/index.html"
+        site / "en/0.1.0/examples/index.html"
     )
     assert "max-width: 560px;" not in stylesheet
     assert "min-height: 248px;" not in stylesheet
@@ -274,7 +274,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         "rank-collapse-tinyshakespeare",
     ]
     for route in example_routes:
-        page = site / "en/dev/examples/reproductions" / route / "index.html"
+        page = site / "en/0.1.0/examples/reproductions" / route / "index.html"
         assert page.is_file()
         html = page.read_text()
         assert ">Author<" in html
@@ -295,10 +295,10 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     }
     assert forbidden_screenshot_hashes.isdisjoint(published_hashes)
 
-    examples_text = rendered_text(site / "en/dev/examples/index.html")
+    examples_text = rendered_text(site / "en/0.1.0/examples/index.html")
     jastrzebski_text = rendered_text(
         site
-        / "en/dev/examples/reproductions"
+        / "en/0.1.0/examples/reproductions"
         / "jastrzebski-fig1-cyclic-cbs-vs-clr"
         / "index.html"
     )
@@ -310,7 +310,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert stale_jastrzebski_id not in jastrzebski_text
 
     keskar_text = rendered_text(
-        site / "en/dev/examples/reproductions" / "keskar-fig2-3-sb-lb" / "index.html"
+        site / "en/0.1.0/examples/reproductions" / "keskar-fig2-3-sb-lb" / "index.html"
     )
     assert "repro: Keskar Fig 2+3 SB/LB" in keskar_text
     assert "repro: Keskar Fig 2+3 SB/LB - with plot" not in keskar_text
@@ -406,7 +406,7 @@ def test_build_docs_rebuilds_tool_owned_output(tmp_path: Path) -> None:
 
     assert (site / build_docs.OUTPUT_MARKER).is_file()
     assert not stale_file.exists()
-    assert (site / "en/dev/introduction/index.html").is_file()
+    assert (site / "en/0.1.0/introduction/index.html").is_file()
 
 
 def test_failed_build_preserves_tool_owned_output(

@@ -174,19 +174,19 @@ def test_page_context_injects_localized_ui(
         assert context["cr_ui"]["language_switch_label"] == "中文"
     assert "%(query)s" in context["cr_ui"]["search_no_results"]
     assert context["alternate_language_label"] == context["cr_ui"]["language_switch_label"]
-    assert context["current_docs_version"] == "dev"
+    assert context["current_docs_version"] == "v0.1.0"
     assert context["documentation_versions"] == [
-        {"label": "dev", "url": "./", "is_current": True}
+        {"label": "v0.1.0", "url": "./", "is_current": True}
     ]
 
 
 @pytest.mark.parametrize(
     ("language", "pagename", "expected"),
     [
-        ("en", "get-started/first-graph", "../../../../zh/dev/get-started/first-graph/"),
-        ("zh_CN", "get-started/first-graph", "../../../../en/dev/get-started/first-graph/"),
-        ("en", "search", "../../../zh/dev/search/"),
-        ("zh_CN", "genindex", "../../../en/dev/genindex/"),
+        ("en", "get-started/first-graph", "../../../../zh/0.1.0/get-started/first-graph/"),
+        ("zh_CN", "get-started/first-graph", "../../../../en/0.1.0/get-started/first-graph/"),
+        ("en", "search", "../../../zh/0.1.0/search/"),
+        ("zh_CN", "genindex", "../../../en/0.1.0/genindex/"),
     ],
 )
 def test_page_context_links_to_the_same_page_in_the_other_language(
@@ -199,11 +199,11 @@ def test_page_context_links_to_the_same_page_in_the_other_language(
     assert context["alternate_language_url"] == expected
     target = posixpath.normpath(
         posixpath.join(
-            f"{'en' if language == 'en' else 'zh'}/dev/{pagename}",
+            f"{'en' if language == 'en' else 'zh'}/0.1.0/{pagename}",
             context["alternate_language_url"],
         )
     )
-    assert target == f"{'zh' if language == 'en' else 'en'}/dev/{pagename}"
+    assert target == f"{'zh' if language == 'en' else 'en'}/0.1.0/{pagename}"
 
 
 def test_docs_config_registers_page_context_handler() -> None:
@@ -262,15 +262,15 @@ def test_build_runs_both_locales_in_one_staging_tree_and_writes_redirects(
         "language=en",
         "language=zh_CN",
     ]
-    assert commands[0][-1].endswith("/en/dev")
-    assert commands[1][-1].endswith("/zh/dev")
-    assert (output / "en/dev/introduction/index.html").is_file()
-    assert (output / "zh/dev/introduction/index.html").is_file()
-    assert "en/dev/introduction/" in (output / "index.html").read_text()
-    assert "introduction/" in (output / "en/dev/index.html").read_text()
-    assert "introduction/" in (output / "zh/dev/index.html").read_text()
-    assert (output / "en/dev/searchindex.js").read_text() != (
-        output / "zh/dev/searchindex.js"
+    assert commands[0][-1].endswith("/en/0.1.0")
+    assert commands[1][-1].endswith("/zh/0.1.0")
+    assert (output / "en/0.1.0/introduction/index.html").is_file()
+    assert (output / "zh/0.1.0/introduction/index.html").is_file()
+    assert "en/0.1.0/introduction/" in (output / "index.html").read_text()
+    assert "introduction/" in (output / "en/0.1.0/index.html").read_text()
+    assert "introduction/" in (output / "zh/0.1.0/index.html").read_text()
+    assert (output / "en/0.1.0/searchindex.js").read_text() != (
+        output / "zh/0.1.0/searchindex.js"
     ).read_text()
 
 
@@ -505,21 +505,21 @@ def language_switch_href(page: Path) -> str:
 def test_real_build_has_bilingual_routes_and_language_metadata(
     built_site: Path,
 ) -> None:
-    english = built_site / "en/dev/introduction/index.html"
-    chinese = built_site / "zh/dev/introduction/index.html"
+    english = built_site / "en/0.1.0/introduction/index.html"
+    chinese = built_site / "zh/0.1.0/introduction/index.html"
 
     assert english.is_file()
     assert chinese.is_file()
     assert '<html lang="en"' in english.read_text()
     assert '<html lang="zh-CN"' in chinese.read_text()
-    assert "搜索" in (built_site / "zh/dev/search/index.html").read_text()
+    assert "搜索" in (built_site / "zh/0.1.0/search/index.html").read_text()
 
 
 def test_real_build_preserves_introduction_cta_components_in_both_languages(
     built_site: Path,
 ) -> None:
-    english = (built_site / "en/dev/introduction/index.html").read_text()
-    chinese = (built_site / "zh/dev/introduction/index.html").read_text()
+    english = (built_site / "en/0.1.0/introduction/index.html").read_text()
+    chinese = (built_site / "zh/0.1.0/introduction/index.html").read_text()
 
     assert "Start on CPU · 10–15 min" in english
     assert "Already installed? Run the first graph" in english
@@ -546,7 +546,7 @@ def test_real_build_preserves_author_names_in_both_languages(
         page = (
             built_site
             / language
-            / "dev/examples/reproductions"
+            / "0.1.0/examples/reproductions"
             / route
             / "index.html"
         )
@@ -556,12 +556,12 @@ def test_real_build_preserves_author_names_in_both_languages(
 @pytest.mark.parametrize(
     ("route", "expected"),
     [
-        ("en/dev/introduction/index.html", "../../../zh/dev/introduction/"),
-        ("zh/dev/introduction/index.html", "../../../en/dev/introduction/"),
-        ("en/dev/search/index.html", "../../../zh/dev/search/"),
-        ("zh/dev/search/index.html", "../../../en/dev/search/"),
-        ("en/dev/genindex/index.html", "../../../zh/dev/genindex/"),
-        ("zh/dev/genindex/index.html", "../../../en/dev/genindex/"),
+        ("en/0.1.0/introduction/index.html", "../../../zh/0.1.0/introduction/"),
+        ("zh/0.1.0/introduction/index.html", "../../../en/0.1.0/introduction/"),
+        ("en/0.1.0/search/index.html", "../../../zh/0.1.0/search/"),
+        ("zh/0.1.0/search/index.html", "../../../en/0.1.0/search/"),
+        ("en/0.1.0/genindex/index.html", "../../../zh/0.1.0/genindex/"),
+        ("zh/0.1.0/genindex/index.html", "../../../en/0.1.0/genindex/"),
     ],
 )
 def test_real_build_switches_to_the_same_page(
@@ -573,8 +573,8 @@ def test_real_build_switches_to_the_same_page(
 
 
 def test_real_build_writes_independent_search_indexes(built_site: Path) -> None:
-    english_index = built_site / "en/dev/searchindex.js"
-    chinese_index = built_site / "zh/dev/searchindex.js"
+    english_index = built_site / "en/0.1.0/searchindex.js"
+    chinese_index = built_site / "zh/0.1.0/searchindex.js"
 
     assert english_index.is_file()
     assert chinese_index.is_file()

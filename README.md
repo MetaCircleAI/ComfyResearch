@@ -10,7 +10,7 @@
 ![Node.js 20+](https://img.shields.io/badge/Node.js-20%2B-339933?logo=nodedotjs&logoColor=white)
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Quick start](#quick-start) · [Documentation](https://docs.comfy-research.com/en/dev/introduction/) · [中文文档](https://docs.comfy-research.com/zh/dev/introduction/) · [Reproductions](https://docs.comfy-research.com/en/dev/examples/) · [Extend](https://docs.comfy-research.com/en/dev/extend/)
+[Quick start](#quick-start) · [Documentation](https://docs.comfy-research.com/en/0.1.0/introduction/) · [中文文档](https://docs.comfy-research.com/zh/0.1.0/introduction/) · [Reproductions](https://docs.comfy-research.com/en/0.1.0/examples/) · [Extend](https://docs.comfy-research.com/en/0.1.0/extend/)
 
 </div>
 
@@ -119,7 +119,7 @@ The first run is complete when:
 
 Exact crossing steps and amplitudes are not pass criteria. This is a small qualitative reproduction, not a numerical replication of the original CIFAR-10 experiment.
 
-This bundled graph is a small qualitative reproduction designed to run without downloading a dataset. The [first-graph tutorial](https://docs.comfy-research.com/en/dev/get-started/first-graph/) explains the expected result and its scientific limits.
+This bundled graph is a small qualitative reproduction designed to run without downloading a dataset. The [first-graph tutorial](https://docs.comfy-research.com/en/0.1.0/get-started/first-graph/) explains the expected result and its scientific limits.
 
 ![Completed Edge of Stability CPU experiment with loss and Hessian-eigenvalue histories](docs/en/_images/app/edge-of-stability-cpu.png)
 
@@ -142,18 +142,18 @@ npm --prefix frontend run build
 make docs-test
 ```
 
-These reproduce the blocking checks. Browser E2E is a non-blocking lane; see the [CI workflow](https://github.com/MetaCircleAI/ComfyResearch/actions/workflows/ci.yml) for the matrix and [Development mode](https://docs.comfy-research.com/en/dev/get-started/development-mode/) for hot reload.
+These reproduce the blocking checks. Browser E2E is a non-blocking lane; see the [CI workflow](https://github.com/MetaCircleAI/ComfyResearch/actions/workflows/ci.yml) for the matrix and [Development mode](https://docs.comfy-research.com/en/0.1.0/get-started/development-mode/) for hot reload.
 
 ## Documentation
 
 | Guide | Use it to |
 | --- | --- |
-| [Get started](https://docs.comfy-research.com/en/dev/get-started/) | Install from source and complete a CPU smoke test |
-| [User guide](https://docs.comfy-research.com/en/dev/user-guide/) | Build graphs, record Observables, manage artifacts, and troubleshoot runs |
-| [Reproductions](https://docs.comfy-research.com/en/dev/examples/) | Explore runnable learning-mechanics and physics-of-AI experiments |
-| [Remote GPU](https://docs.comfy-research.com/en/dev/user-guide/remote-gpu/) | Configure an existing SSH host and protect credentials |
-| [Extend](https://docs.comfy-research.com/en/dev/extend/) | Add a Node or Observable through the generated definition pipeline |
-| [Reference](https://docs.comfy-research.com/en/dev/reference/) | Look up application, API, graph, workspace, and Node contracts |
+| [Get started](https://docs.comfy-research.com/en/0.1.0/get-started/) | Install from source and complete a CPU smoke test |
+| [User guide](https://docs.comfy-research.com/en/0.1.0/user-guide/) | Build graphs, record Observables, manage artifacts, and troubleshoot runs |
+| [Reproductions](https://docs.comfy-research.com/en/0.1.0/examples/) | Explore runnable learning-mechanics and physics-of-AI experiments |
+| [Remote GPU](https://docs.comfy-research.com/en/0.1.0/user-guide/remote-gpu/) | Configure an existing SSH host and protect credentials |
+| [Extend](https://docs.comfy-research.com/en/0.1.0/extend/) | Add a Node or Observable through the generated definition pipeline |
+| [Reference](https://docs.comfy-research.com/en/0.1.0/reference/) | Look up application, API, graph, workspace, and Node contracts |
 
 ## Getting help
 

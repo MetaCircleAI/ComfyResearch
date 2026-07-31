@@ -90,8 +90,9 @@ def build(output: Path) -> None:
                 raise FileNotFoundError(introduction)
 
         (staging / ".nojekyll").write_text("")
+        default_route = LOCALE_ROUTES["en"]
         (staging / "index.html").write_text(
-            '<meta http-equiv="refresh" content="0; url=en/dev/introduction/">\n'
+            f'<meta http-equiv="refresh" content="0; url={default_route}/introduction/">\n'
         )
         for _, route in LOCALES:
             (staging / route / "index.html").write_text(

@@ -1,10 +1,8 @@
 """Documentation version labels and their published path segments."""
 
-# Release branches change these values together. For v0.1.0, use:
-# CURRENT_DOCS_VERSION = "v0.1.0"
-# CURRENT_DOCS_PATH = "0.1.0"
-CURRENT_DOCS_VERSION = "dev"
-CURRENT_DOCS_PATH = "dev"
+# Release branches change these values together.
+CURRENT_DOCS_VERSION = "v0.1.0"
+CURRENT_DOCS_PATH = "0.1.0"
 
 # List every version deployed under the same static-site root. Each item is a
 # (label, path) pair so the UI can keep a release label such as v0.1.0 while
