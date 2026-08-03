@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: b38ae9dd-735b-46c4-973f-a850a2a55544
 ---
 
 :::{div} cr-eyebrow
@@ -57,7 +58,7 @@ Ganguli, Yamins & Tanaka, ICLR 2021 (arXiv:2012.04728).
 
 **Template:** `Symmetry & Broken Conservation Laws (GPU)`
 
-**Template ID:** `symmetry-broken-conservation-laws`
+**Template ID:** `b38ae9dd-735b-46c4-973f-a850a2a55544`
 
 ## Reproduction Goal
 

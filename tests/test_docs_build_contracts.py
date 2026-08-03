@@ -74,6 +74,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert (site / "en/0.1.0/_static/comfyresearch.js").is_file()
 
     introduction_html = (site / "en/0.1.0/introduction/index.html").read_text()
+    assert 'class="cr-template-link"' not in introduction_html
     assert 'data-page="introduction"' in introduction_html
     assert 'class="navbar-brand cr-brand"' in introduction_html
     assert 'class="cr-brand-logo cr-brand-logo--light"' in introduction_html
@@ -148,6 +149,9 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert 'class="prev-next-footer d-print-none"' in first_graph_html
     assert 'id="pst-secondary-sidebar"' in first_graph_html
     assert ">Tutorial<" in first_graph_html
+    assert 'class="cr-template-link"' in first_graph_html
+    assert "templateId=edge-of-stability-cpu" in first_graph_html
+    assert "Open template ↗" in first_graph_html
     assert ">Stable core<" in first_graph_html
 
     user_guide_page = site / "en/0.1.0/user-guide/index.html"
@@ -220,6 +224,8 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         assert "—" not in source_text
         assert "–" not in source_text
 
+    reference_html = (site / "en/0.1.0/reference/index.html").read_text()
+    assert 'class="cr-template-link"' not in reference_html
     reference_text = rendered_text(site / "en/0.1.0/reference/index.html")
     assert "Runtime and file contracts" in reference_text
     assert "Application" in reference_text

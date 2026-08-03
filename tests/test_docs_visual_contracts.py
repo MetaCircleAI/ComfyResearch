@@ -18,6 +18,17 @@ def contrast_ratio(foreground: str, background: str) -> float:
     return (lighter + 0.05) / (darker + 0.05)
 
 
+def test_template_link_uses_brand_action_tokens() -> None:
+    stylesheet = Path("docs/_static/comfyresearch.css").read_text()
+    block = css_block_with(stylesheet, ".cr-template-link", "background: var(--cr-accent);")
+    hover = css_block_with(stylesheet, ".cr-template-link:hover", "background: var(--cr-accent-dark);")
+    assert "background: var(--cr-accent);" in block
+    assert "color: var(--cr-on-accent);" in block
+    assert "border: 1px solid var(--cr-accent);" in block
+    assert "background: var(--cr-accent-dark);" in hover
+    assert "transform: translateY(-1px);" in hover
+
+
 def test_product_screenshot_style() -> None:
     stylesheet = Path("docs/_static/comfyresearch.css").read_text()
     screenshots = css_block(

@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-linear-mode-connectivity-cifar10
 ---
 
 :::{div} cr-eyebrow

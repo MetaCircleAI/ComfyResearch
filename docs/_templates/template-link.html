@@ -1,0 +1,11 @@
+{% if template_id %}
+  <a
+    class="cr-template-link"
+    href="https://online.comfy-research.com/?templateId={{ template_id }}"
+    target="_blank"
+    rel="noopener"
+    aria-label="{{ cr_ui.open_template }}"
+  >
+    {{ cr_ui.open_template }}
+  </a>
+{% endif %}
