@@ -92,7 +92,7 @@ def test_docs_pages_publish_identity_and_governance() -> None:
 
     template_link = Path("docs/_templates/template-link.html").read_text()
     assert "cr-template-link" in template_link
-    assert "templateId={{ template_id }}" in template_link
+    assert "templateId={{ online_template_id }}" in template_link
     assert 'target="_blank"' in template_link
     assert 'rel="noopener"' in template_link
     assert "cr_ui.open_template" in template_link
@@ -116,11 +116,17 @@ def test_docs_pages_publish_identity_and_governance() -> None:
         "examples/reproductions/in-context-associative-recall.md": "5d1a2ab4-825d-4251-8a5a-d7b83b42c1d7",
         "get-started/first-graph.md": "edge-of-stability-cpu",
     }
+    expected_online_template_ids = {
+        **expected_template_ids,
+        "examples/reproductions/Neural_Mechanics.md": "b15a6036-0e38-4f8f-84ba-8b763c408dc9",
+        "examples/reproductions/saad_solla_plateau_reproduction.md": "de684a36-a2d5-440f-bb2b-3c249abb8270",
+    }
     template_root = Path("data/graph_library/templates")
     for relative_path, template_id in expected_template_ids.items():
         metadata = front_matter(source_root / relative_path)
         assert metadata["template_id"] == template_id
         assert (template_root / f"{template_id}.json").is_file()
+        assert metadata.get("online_template_id", template_id) == expected_online_template_ids[relative_path]
     assert '"doc_status_stable_core": "Stable core"' in config
     assert '"doc_status_phenomenon": "Phenomenon reproduction"' in config
 

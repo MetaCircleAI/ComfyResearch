@@ -159,6 +159,7 @@ def add_page_context(app, pagename, templatename, context, doctree):
     template_id = page_meta.get("template_id")
     if not template_id and doctree is not None:
         template_id = doctree.get("template_id")
+    online_template_id = page_meta.get("online_template_id") or template_id
 
     context.update(
         {
@@ -168,7 +169,7 @@ def add_page_context(app, pagename, templatename, context, doctree):
             "alternate_language_label": UI_TEXT[locale]["language_switch_label"],
             "current_docs_version": CURRENT_DOCS_VERSION,
             "documentation_versions": version_options,
-            "template_id": template_id,
+            "online_template_id": online_template_id,
         }
     )
 

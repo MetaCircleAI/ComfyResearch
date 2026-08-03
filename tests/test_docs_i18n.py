@@ -157,6 +157,7 @@ def test_page_context_injects_localized_ui(
         "doc_type_reproduction",
         "doc_status_stable_core",
         "doc_status_phenomenon",
+        "open_template",
         "github_repo_aria_label",
         "version_switch_aria_label",
         "language_switch_label",
@@ -169,9 +170,11 @@ def test_page_context_injects_localized_ui(
     if language == "zh_CN":
         assert context["cr_ui"]["search_placeholder"] == "搜索文档"
         assert context["cr_ui"]["language_switch_label"] == "EN"
+        assert context["cr_ui"]["open_template"] == "在线打开模板 ↗"
     else:
         assert context["cr_ui"]["search_placeholder"] == "Search the docs"
         assert context["cr_ui"]["language_switch_label"] == "中文"
+        assert context["cr_ui"]["open_template"] == "Open template ↗"
     assert "%(query)s" in context["cr_ui"]["search_no_results"]
     assert context["alternate_language_label"] == context["cr_ui"]["language_switch_label"]
     assert context["current_docs_version"] == "v0.1.0"
