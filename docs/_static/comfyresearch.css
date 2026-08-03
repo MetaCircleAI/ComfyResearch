@@ -764,6 +764,41 @@ body[data-page="examples/index"] .bd-header-article .bd-breadcrumbs {
   color: var(--cr-accent-dark);
 }
 
+.cr-template-link {
+  display: inline-flex;
+  width: fit-content;
+  margin: 10px 0 0;
+  padding: 7px 14px;
+  align-items: center;
+  border: 1px solid var(--cr-accent);
+  border-radius: 999px;
+  background: var(--cr-accent);
+  color: var(--cr-on-accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.cr-template-link:hover {
+  border-color: var(--cr-accent-dark);
+  background: var(--cr-accent-dark);
+  color: var(--cr-on-accent);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.cr-template-link:focus-visible {
+  color: var(--cr-on-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-template-link {
+    transition: none;
+  }
+}
+
 .cr-page-identity {
   display: flex;
   margin-left: auto;

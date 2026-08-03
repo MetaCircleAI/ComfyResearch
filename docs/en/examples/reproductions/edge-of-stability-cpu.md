@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: edge-of-stability-cpu
 ---
 
 :::{div} cr-eyebrow

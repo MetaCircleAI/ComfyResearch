@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-jastrzbski-fig1-vgg11
 ---
 
 :::{div} cr-eyebrow

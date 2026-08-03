@@ -74,6 +74,7 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert (site / "en/0.1.0/_static/comfyresearch.js").is_file()
 
     introduction_html = (site / "en/0.1.0/introduction/index.html").read_text()
+    assert 'class="cr-template-link"' not in introduction_html
     assert 'data-page="introduction"' in introduction_html
     assert 'class="navbar-brand cr-brand"' in introduction_html
     assert 'class="cr-brand-logo cr-brand-logo--light"' in introduction_html
@@ -148,6 +149,9 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
     assert 'class="prev-next-footer d-print-none"' in first_graph_html
     assert 'id="pst-secondary-sidebar"' in first_graph_html
     assert ">Tutorial<" in first_graph_html
+    assert 'class="cr-template-link"' in first_graph_html
+    assert "templateId=edge-of-stability-cpu" in first_graph_html
+    assert "Open template ↗" in first_graph_html
     assert ">Stable core<" in first_graph_html
 
     user_guide_page = site / "en/0.1.0/user-guide/index.html"
@@ -220,6 +224,8 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         assert "—" not in source_text
         assert "–" not in source_text
 
+    reference_html = (site / "en/0.1.0/reference/index.html").read_text()
+    assert 'class="cr-template-link"' not in reference_html
     reference_text = rendered_text(site / "en/0.1.0/reference/index.html")
     assert "Runtime and file contracts" in reference_text
     assert "Application" in reference_text
@@ -283,6 +289,32 @@ def test_build_docs_writes_the_docs_site(tmp_path: Path) -> None:
         assert "Limitations" in html
         assert "cr-article-meta" in html
         assert "cr-abstract" in html
+
+    template_link_routes = {
+        "get-started/first-graph": "edge-of-stability-cpu",
+        "examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr": "repro-jastrzbski-fig1-vgg11",
+        "examples/reproductions/edge-of-stability-cpu": "edge-of-stability-cpu",
+        "examples/reproductions/edge-of-stability-eos": "97ff01a8-1724-43ec-8c38-fdb62bbe5faf",
+        "examples/reproductions/keskar-fig2-3-sb-lb": "repro-keskar-fig23-sb-lb",
+        "examples/reproductions/lazy-vs-rich-regime": "d2e8cdd7-d14c-42c3-94dc-ba2b419c07f9",
+        "examples/reproductions/staggered-singular-value-dynamics": "a04f21b3-e31c-4ba3-b8b9-d3af752f77d4",
+        "examples/reproductions/spectral-bias-figure1a": "repro-spectral-bias-fig1a",
+        "examples/reproductions/saad_solla_plateau_reproduction": "de684a36-a2d5-440f-bb2b-3c249abb8270",
+        "examples/reproductions/rank-collapse-figure5": "repro-rank-collapse-figure5-linear-ce",
+        "examples/reproductions/rank-collapse-tinyshakespeare": "repro-rank-collapse-tinyshakespeare-pretraining",
+        "examples/reproductions/information-bottleneck-figure3": "dafb8339-a932-4b10-b3b6-185fc53a5a4f",
+        "examples/reproductions/diffusion-reproducibility": "repro-diffusion-same-init-different-seed",
+        "examples/reproductions/random-label-memorization-figure1a": "repro-random-label-memorization-fig1a",
+        "examples/reproductions/linear-mode-connectivity": "repro-linear-mode-connectivity-cifar10",
+        "examples/reproductions/Neural_Mechanics": "b15a6036-0e38-4f8f-84ba-8b763c408dc9",
+        "examples/reproductions/in-context-associative-recall": "5d1a2ab4-825d-4251-8a5a-d7b83b42c1d7",
+    }
+    for locale_root, link_label in (("en/0.1.0", "Open template ↗"), ("zh/0.1.0", "在线打开模板 ↗")):
+        for route, online_template_id in template_link_routes.items():
+            html = (site / locale_root / route / "index.html").read_text()
+            assert 'class="cr-template-link"' in html
+            assert f"templateId={online_template_id}" in html
+            assert link_label in html
 
     forbidden_screenshot_hashes = {
         "afed5be9d3cc79c3b9ede8f988b3d73c52e8f1813f5d629d51a4a3da9a94c238",

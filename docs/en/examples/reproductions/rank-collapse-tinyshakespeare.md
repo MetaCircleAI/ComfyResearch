@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-rank-collapse-tinyshakespeare-pretraining
 ---
 
 :::{div} cr-eyebrow

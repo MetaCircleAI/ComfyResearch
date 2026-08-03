@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-spectral-bias-fig1a
 ---
 
 :::{div} cr-eyebrow

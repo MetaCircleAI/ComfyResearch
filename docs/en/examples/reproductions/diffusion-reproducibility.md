@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-diffusion-same-init-different-seed
 ---
 
 :::{div} cr-eyebrow

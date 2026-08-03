@@ -1,6 +1,7 @@
 ---
 doc_type: tutorial
 doc_status: stable-core
+template_id: edge-of-stability-cpu
 ---
 
 :::{div} cr-eyebrow

@@ -10,7 +10,9 @@ def test_docs_pages_publish_identity_and_governance() -> None:
 
     assert "sphinx-copybutton==0.5.2" in requirements
     assert '"sphinx_copybutton"' in config
-    assert '"article_header_start": ["breadcrumbs", "page-status.html"]' in config
+    assert '"article_header_start":' in config
+    assert '"page-status.html"' in config
+    assert '"template-link.html"' in config
     assert '"article_footer_items": []' in config
     assert '"use_edit_page_button": True' not in config
     assert "html_context = {" not in config
@@ -87,6 +89,44 @@ def test_docs_pages_publish_identity_and_governance() -> None:
     assert "cr_ui.doc_status_stable_core" in status_template
     assert "cr_ui.doc_status_phenomenon" in status_template
     assert "doc_version_dev" not in status_template
+
+    template_link = Path("docs/_templates/template-link.html").read_text()
+    assert "cr-template-link" in template_link
+    assert "templateId={{ online_template_id }}" in template_link
+    assert 'target="_blank"' in template_link
+    assert 'rel="noopener"' in template_link
+    assert "cr_ui.open_template" in template_link
+
+    expected_template_ids = {
+        "examples/reproductions/jastrzebski-fig1-cyclic-cbs-vs-clr.md": "repro-jastrzbski-fig1-vgg11",
+        "examples/reproductions/edge-of-stability-cpu.md": "edge-of-stability-cpu",
+        "examples/reproductions/edge-of-stability-eos.md": "97ff01a8-1724-43ec-8c38-fdb62bbe5faf",
+        "examples/reproductions/keskar-fig2-3-sb-lb.md": "repro-keskar-fig23-sb-lb",
+        "examples/reproductions/lazy-vs-rich-regime.md": "d2e8cdd7-d14c-42c3-94dc-ba2b419c07f9",
+        "examples/reproductions/staggered-singular-value-dynamics.md": "a04f21b3-e31c-4ba3-b8b9-d3af752f77d4",
+        "examples/reproductions/spectral-bias-figure1a.md": "repro-spectral-bias-fig1a",
+        "examples/reproductions/saad_solla_plateau_reproduction.md": "e399fd7d-e107-44d0-94b6-7e2159392253",
+        "examples/reproductions/rank-collapse-figure5.md": "repro-rank-collapse-figure5-linear-ce",
+        "examples/reproductions/rank-collapse-tinyshakespeare.md": "repro-rank-collapse-tinyshakespeare-pretraining",
+        "examples/reproductions/information-bottleneck-figure3.md": "dafb8339-a932-4b10-b3b6-185fc53a5a4f",
+        "examples/reproductions/diffusion-reproducibility.md": "repro-diffusion-same-init-different-seed",
+        "examples/reproductions/random-label-memorization-figure1a.md": "repro-random-label-memorization-fig1a",
+        "examples/reproductions/linear-mode-connectivity.md": "repro-linear-mode-connectivity-cifar10",
+        "examples/reproductions/Neural_Mechanics.md": "b38ae9dd-735b-46c4-973f-a850a2a55544",
+        "examples/reproductions/in-context-associative-recall.md": "5d1a2ab4-825d-4251-8a5a-d7b83b42c1d7",
+        "get-started/first-graph.md": "edge-of-stability-cpu",
+    }
+    expected_online_template_ids = {
+        **expected_template_ids,
+        "examples/reproductions/Neural_Mechanics.md": "b15a6036-0e38-4f8f-84ba-8b763c408dc9",
+        "examples/reproductions/saad_solla_plateau_reproduction.md": "de684a36-a2d5-440f-bb2b-3c249abb8270",
+    }
+    template_root = Path("data/graph_library/templates")
+    for relative_path, template_id in expected_template_ids.items():
+        metadata = front_matter(source_root / relative_path)
+        assert metadata["template_id"] == template_id
+        assert (template_root / f"{template_id}.json").is_file()
+        assert metadata.get("online_template_id", template_id) == expected_online_template_ids[relative_path]
     assert '"doc_status_stable_core": "Stable core"' in config
     assert '"doc_status_phenomenon": "Phenomenon reproduction"' in config
 
@@ -250,7 +290,7 @@ def test_docs_theme_uses_native_navigation_and_search() -> None:
         '"search_as_you_type": False',
         '"disable_search": True',
         '"navbar_persistent": []',
-        '"article_header_start": ["breadcrumbs", "page-status.html"]',
+        '"article_header_start":',
         '"**": ["sidebar-nav-bs.html"]',
         '"introduction": []',
         '"examples/index": []',

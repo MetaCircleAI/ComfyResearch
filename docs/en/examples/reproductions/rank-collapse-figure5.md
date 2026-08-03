@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-rank-collapse-figure5-linear-ce
 ---
 
 :::{div} cr-eyebrow

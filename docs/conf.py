@@ -42,6 +42,7 @@ UI_TEXT = {
         "doc_type_reproduction": "Reproduction",
         "doc_status_stable_core": "Stable core",
         "doc_status_phenomenon": "Phenomenon reproduction",
+        "open_template": "Open template ↗",
         "github_repo_aria_label": "Open the GitHub repository",
         "version_switch_aria_label": "Switch documentation version",
         "language_switch_label": "中文",
@@ -68,6 +69,7 @@ UI_TEXT = {
         "doc_type_reproduction": "复现",
         "doc_status_stable_core": "稳定核心",
         "doc_status_phenomenon": "现象复现",
+        "open_template": "在线打开模板 ↗",
         "github_repo_aria_label": "打开 GitHub 仓库",
         "version_switch_aria_label": "切换文档版本",
         "language_switch_label": "EN",
@@ -93,7 +95,11 @@ html_theme_options = {
         "theme-switcher",
     ],
     "navbar_persistent": [],
-    "article_header_start": ["breadcrumbs", "page-status.html"],
+    "article_header_start": [
+        "breadcrumbs",
+        "page-status.html",
+        "template-link.html",
+    ],
     "article_footer_items": [],
     "secondary_sidebar_items": ["page-toc"],
     "show_prev_next": True,
@@ -149,6 +155,12 @@ def add_page_context(app, pagename, templatename, context, doctree):
             }
         )
 
+    page_meta = context.get("meta") or {}
+    template_id = page_meta.get("template_id")
+    if not template_id and doctree is not None:
+        template_id = doctree.get("template_id")
+    online_template_id = page_meta.get("online_template_id") or template_id
+
     context.update(
         {
             "cr_ui": UI_TEXT[locale],
@@ -157,6 +169,7 @@ def add_page_context(app, pagename, templatename, context, doctree):
             "alternate_language_label": UI_TEXT[locale]["language_switch_label"],
             "current_docs_version": CURRENT_DOCS_VERSION,
             "documentation_versions": version_options,
+            "online_template_id": online_template_id,
         }
     )
 

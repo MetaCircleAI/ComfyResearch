@@ -1,6 +1,7 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: repro-keskar-fig23-sb-lb
 ---
 
 :::{div} cr-eyebrow

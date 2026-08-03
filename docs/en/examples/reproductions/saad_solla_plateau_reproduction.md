@@ -1,6 +1,8 @@
 ---
 doc_type: reproduction
 doc_status: phenomenon
+template_id: e399fd7d-e107-44d0-94b6-7e2159392253
+online_template_id: de684a36-a2d5-440f-bb2b-3c249abb8270
 ---
 
 :::{div} cr-eyebrow
@@ -57,7 +59,7 @@ Saad & Solla, Phys. Rev. Lett. 74, 4337-4340 (1995).
 
 **Template:** `Saad & Solla Over-Realizable (CPU)`
 
-**Template ID:** `saad-solla-over-realizable-cpu`
+**Template ID:** `e399fd7d-e107-44d0-94b6-7e2159392253`
 
 ## Reproduction Goal
 
